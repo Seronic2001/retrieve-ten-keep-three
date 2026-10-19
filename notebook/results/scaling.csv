@@ -1,0 +1,5 @@
+corpus_size_chunks,cross_encoder_full_scan_s,two_stage_rerank_10_ms
+305,2.65,82.62
+100000,870.01,82.62
+1000000,8700.12,82.62
+10000000,87001.24,82.62

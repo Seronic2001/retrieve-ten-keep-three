@@ -1,0 +1,14 @@
+category,query,gold_chunks,baseline_rank,reranked_rank,restored,degraded
+keyword_trap,Does a startup with 10 staff have to maintain records of processing?,[193],7.0,3.0,True,False
+keyword_trap,How long can personal data be stored?,[146],,,False,False
+exception,Must every company appoint a data protection officer?,[205],4.0,1.0,True,False
+exception,Can data collected for one purpose be used for scientific research later?,[146],9.0,2.0,True,False
+exception,Does a controller always have to notify the affected individuals about a data breach?,"[197, 198]",4.0,2.0,True,False
+exception,Can a company refuse a person's request to have their data erased?,"[172, 173]",3.0,3.0,False,False
+negation,Is processing someone's religious beliefs or health information prohibited?,[153],10.0,2.0,True,False
+negation,Can the data protection officer be fired for doing their job?,[207],1.0,1.0,False,False
+negation,In which cases does the right to data portability not apply?,[176],3.0,1.0,False,False
+buried,What is the maximum fine for breaching the basic principles of processing?,"[291, 292]",7.0,1.0,True,False
+buried,At what age can a child give consent for an online service on their own?,"[152, 153]",1.0,1.0,False,False
+control,Who pays if a person suffers harm because a company mishandled their data?,"[110, 114, 115, 285, 286, 287, 288]",1.0,1.0,False,False
+degraded,Can the Commission ask the Board to examine a matter that affects more than one Member State?,[264],2.0,8.0,False,True

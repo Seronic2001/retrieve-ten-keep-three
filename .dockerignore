@@ -1,0 +1,12 @@
+# Keep the image build context small and free of secrets (used by app/space/Dockerfile)
+.env
+.venv/
+**/__pycache__/
+**/.ipynb_checkpoints/
+**/node_modules/
+app/ui/dist/
+app/uploads/*
+!app/uploads/library.json
+!app/uploads/a914ab3a3b.*
+report/
+notebook/*.ipynb

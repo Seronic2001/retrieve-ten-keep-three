@@ -1,0 +1,14 @@
+torch
+sentence-transformers
+faiss-cpu
+pymupdf
+google-genai
+pandas
+python-dotenv
+accelerate
+ipykernel
+fastapi
+uvicorn
+python-multipart
+scikit-learn
+onnxruntime

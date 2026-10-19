@@ -1,0 +1,4 @@
+stage,mean_ms,median_ms
+Bi-encoder retrieval (embed + FAISS top 10),12.73,11.84
+Cross-encoder re-rank (10 pairs),82.62,83.18
+LLM generation,9223.5,9223.5

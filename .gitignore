@@ -1,0 +1,13 @@
+.venv/
+.env
+__pycache__/
+.ipynb_checkpoints/
+app/uploads/*
+!app/uploads/library.json
+!app/uploads/a914ab3a3b.*
+# LaTeX build files
+report/*.aux
+report/*.log
+report/*.out
+node_modules/
+app/ui/dist/

@@ -1,0 +1,120 @@
+query,baseline_top3,reranked_top3,gold_in_baseline_top3,gold_in_reranked_top3,answer_1_baseline,answer_2_reranked,t_llm_1_ms,t_llm_2_ms
+Does a startup with 10 staff have to maintain records of processing?,"[296, 67, 188]","[67, 8, 193]",False,True,"Based on the provided context, it is not possible to answer whether a startup with 10 staff specifically has to maintain records of processing activities, as the passages do not contain information or exemptions regarding organization size or employee thresholds. 
+
+The context only states generally in Recital (82) (Passage 2) that:
+> *""In order to demonstrate compliance with this Regulation, the controller or processor should maintain records of processing activities under its responsibility. Each controller and processor should be obliged to cooperate with the supervisory authority and make those records, on request, available to it, so that it might serve for monitoring those processing operations.""*
+
+Because the specific rules, conditions, or exceptions relating to staff size (such as Article 30(5)) are not included in the provided text, the context does not provide a definitive answer for a 10-person startup.","Based on the provided context, a startup with 10 staff (qualifying as an enterprise or organization employing fewer than 250 persons) is **generally exempt** from the obligation to maintain records of processing activities, **unless** specific conditions apply.
+
+According to **Article 30(5)** (and Recital 13), the record-keeping obligation does not apply to an enterprise or organisation employing fewer than 250 persons, **unless**:
+* the processing it carries out is likely to result in a risk to the rights and freedoms of data subjects,
+* the processing is not occasional, or
+* the processing includes special categories of data as referred to in Article 9(1) or personal data relating to criminal convictions and offences referred to in Article 10.
+
+If any of these conditions are met, the startup must maintain records of its processing activities.",6946.3390999953845,5507.541399994807
+Must every company appoint a data protection officer?,"[206, 207, 208]","[205, 206, 208]",False,True,"Based on the provided context, **no, not every company is required to appoint a data protection officer.**
+
+According to Passage 1 (paragraph 4):
+* In cases other than those referred to in paragraph 1, a controller or processor **""may or, where required by Union or Member State law shall, designate a data protection officer.""** 
+
+**Conditions and Missing Context:**
+* Designation is voluntary (""may"") unless required by Union or Member State law (""shall"").
+* While paragraph 4 refers to mandatory conditions in ""paragraph 1"", the context does not contain the text of paragraph 1, so the full set of specific cases where a company is strictly mandated to appoint a DPO is not explicitly detailed in the provided text.","Based on the provided context, **no**, not every company is required to appoint a data protection officer (DPO). 
+
+Under **Article 37(1)**, a controller or processor is required to designate a data protection officer only in specific cases where:
+* **(a)** the processing is carried out by a public authority or body, except for courts acting in their judicial capacity;
+* **(b)** the core activities of the controller or the processor consist of processing operations which, by virtue of their nature, their scope, and/or their purposes, require regular and systematic monitoring of data subjects on a large scale; or
+* **(c)** the core activities of the controller or the processor consist of processing on a large scale of special categories of data (pursuant to Article 9) and personal data relating to criminal convictions and offences (referred to in Article 10).
+
+**Conditions and Exceptions:**
+* **Voluntary vs. Member State Law:** Under **Article 37(4)**, in cases other than those specified in paragraph 1, controllers, processors, or associations/bodies representing them *may* designate a DPO voluntarily, but they *shall* designate one if required by Union or Member State law.
+* **Groups of Undertakings:** According to **Article 37(2)**, a group of undertakings does not necessarily have to appoint a separate DPO for each company; they may appoint a single data protection officer, provided that the officer is ""easily accessible from each establishment.""",7270.658200002799,6923.8305000035325
+Can data collected for one purpose be used for scientific research later?,"[125, 48, 127]","[22, 146, 48]",False,True,"Based on the provided context, **yes**, personal data collected for one purpose can be further processed for another purpose, such as scientific research, provided specific rules, safeguards, and conditions are met. 
+
+*(Note: The provided passages cite Recitals rather than specific GDPR Articles; citations below reference these passages and recitals).*
+
+### Conditions and Requirements
+* **Information requirements:** Generally, where a controller intends to process personal data for a purpose other than that for which they were collected, the controller must provide the data subject prior to that further processing with information on that other purpose and other necessary information (Passage 2 / Recital 61–62).
+* **Safeguards and data minimization:** Processing for scientific research purposes is to be carried out when the controller has assessed the feasibility of fulfilling those purposes by processing data that do not permit or no longer permit the identification of data subjects, provided appropriate safeguards exist (such as pseudonymisation) (Passage 1).
+* **Proportionality and other legislation:** Technical and organisational measures must be implemented to minimise data processing in pursuance of the proportionality and necessity principles. The processing must also comply with other relevant legislation, such as laws on clinical trials (Passage 1).
+
+### Exceptions
+* **Exception to the obligation to provide information:** It is not necessary to impose the obligation to inform the data subject if:
+  1. The data subject already possesses the information;
+  2. The recording or disclosure of the data is expressly laid down by law; or
+  3. Providing the information proves **impossible or would involve a disproportionate effort**. The context explicitly notes that disproportionate effort *""could in particular be the case where processing is carried out for archiving purposes in the public interest, scientific or historical research purposes or statistical purposes""* (taking into account the number of data subjects, the age of the data, and appropriate safeguards) (Passage 2 / Recital 62).
+* **Member State derogations:** Member States are authorized to provide specifications and derogations under specific conditions regarding information requirements and certain data subject rights (rights to rectification, erasure/to be forgotten, restriction of processing, data portability, and to object) when processing for scientific research purposes (Passage 1).","Yes, personal data collected for one purpose can be used for scientific research later. 
+
+According to the provided context, the following rules, citations, and conditions apply:
+
+* **Compatibility with Initial Purposes:** Under the principle of ""purpose limitation,"" data must not be further processed in a manner incompatible with the initial purposes. However, **""further processing for archiving purposes in the public interest, scientific or historical research purposes or statistical purposes shall, in accordance with Article 89(1), not be considered to be incompatible with the initial purposes""** [Passage 2].
+* **Longer Storage:** Personal data may be kept for longer periods than initially necessary **""insofar as the personal data will be processed solely for archiving purposes in the public interest, scientific [research purposes]...""** [Passage 2].
+* **Information Obligations and Exceptions:** 
+  * Normally, when a controller intends to process data for a purpose other than that for which it was collected, they must inform the data subject prior to that processing [Passage 3, Recital 62].
+  * However, there is an exception to this obligation if providing the information **""proves to be impossible or would involve a disproportionate effort,""** which **""could in particular be the case where processing is carried out for archiving purposes in the public interest, scientific or historical research purposes or statistical purposes.""** In such cases, the number of data subjects, the age of the data, and any appropriate safeguards adopted must be taken into account [Passage 3, Recital 62].
+* **Consent Conditions:** If consent is relied upon, data subjects should be permitted to give consent to certain areas of scientific research **""when in keeping with recognised ethical standards for scientific research,""** and should have the opportunity to limit consent to certain areas or parts of research projects [Passage 1, Recital 33].",12813.684799999464,8573.38599999639
+Does a controller always have to notify the affected individuals about a data breach?,"[70, 196, 69]","[70, 198, 196]",False,True,"Based on the provided context, **no**, a controller does not always have to notify affected individuals (data subjects) about a personal data breach. 
+
+According to **Recital (86)** (Passage 1), notification is subject to specific conditions:
+
+* **Condition for notification:** The controller is required to communicate the breach to the data subject only **""where that personal data breach is likely to result in a high risk to the rights and freedoms of the natural person""** in order to allow them to take necessary precautions. 
+* **Timing and cooperation:** When required, the communication must be made ""without undue delay,"" ""as soon as reasonably feasible,"" and ""in close cooperation with the supervisory authority.""
+* **Content:** The notification must describe the nature of the personal data breach and provide recommendations for the individual to mitigate potential adverse effects.
+
+*(Note: The provided context does not cite the specific Article number governing communication to data subjects, only Recital (86); Article 55 is mentioned in Passage 2 solely in relation to the competent supervisory authority).*","Based on the provided context, **no**, a controller does not always have to notify affected individuals (data subjects) about a personal data breach. 
+
+First, communication to the data subject is only required **""where that personal data breach is likely to result in a high risk to the rights and freedoms of the natural person""** ([Passage 1 | chunk 70]).
+
+Second, even in high-risk cases, communication to the data subject is **not required** if any of the following conditions/exceptions are met ([Passage 2 | chunk 198]):
+
+1. **Appropriate protection measures were applied:** The controller implemented appropriate technical and organisational protection measures to the affected data, particularly measures rendering the data unintelligible to unauthorised persons, such as encryption (Condition a).
+2. **Subsequent mitigating measures:** The controller took subsequent measures ensuring that the high risk to the rights and freedoms of data subjects is no longer likely to materialise (Condition b).
+3. **Disproportionate effort:** Direct communication would involve disproportionate effort. In such a case, there must instead be a public communication or similar measure that informs the data subjects in an equally effective manner (Condition c).
+
+*(Note: The supervisory authority may still require the controller to communicate the breach after considering the likelihood of high risk, or it may decide that any of the above conditions are met [Passage 2 | chunk 198]).*",8550.122900000133,6762.79870000144
+Is processing someone's religious beliefs or health information prohibited?,"[299, 44, 40]","[61, 153, 44]",False,True,"Based on the provided context, the passages do not explicitly define or list ""religious beliefs"" or ""health information"" as prohibited categories. Therefore, the context does not explicitly state that processing these specific items is prohibited. 
+
+However, the context does reference a **""general prohibition for processing such special categories of personal data""** [Passage 3, Recital (51)–(52)] and outlines several derogations, exceptions, and conditions that relate to health and religious bodies:
+
+### Exceptions and Conditions Regarding Health
+According to Passage 3 [Recital (52)], derogations from the prohibition on processing special categories of personal data are allowed:
+*   When provided for in Union or Member State law and subject to suitable safeguards.
+*   Where it is in the public interest, specifically:
+    *   *""in particular processing personal data in the field of employment law, social protection law including pensions and for health security, monitoring and alert purposes, the prevention or control of communicable diseases and other serious threats to health.""*
+    *   *""Such a derogation may be made for health...""*
+
+### Exceptions and Conditions Regarding Religion
+The passages address religious processing under specific conditions:
+*   **Fundamental freedoms / associations:** A derogation applies where the data subject gives explicit consent, or *""where the processing is carried out in the course of legitimate activities by certain associations or foundations the purpose of which is to permit the exercise of fundamental freedoms""* [Passage 3, Recital (51)].
+*   **Official authorities:** The processing of personal data by official authorities to achieve the aims of officially recognised religious associations (laid down by constitutional or international public law) *""is carried out on grounds of public interest""* [Passage 2, Recital (55)].
+*   **Rules of churches and religious associations (Article 91):** 
+    *   Under **Article 91(1)**, existing comprehensive rules applied by churches and religious associations/communities relating to the protection of natural persons with regard to processing *""may continue to apply, provided that they are brought into line with this Regulation.""*
+    *   Under **Article 91(2)**, they *""shall be subject to the supervision of an independent supervisory authority, which may be specific, provided that it fulfils the conditions laid down in","Yes. Under **Article 9(1)** of the GDPR, the processing of personal data revealing **religious or philosophical beliefs** and the processing of **data concerning health** is generally **prohibited**.
+
+However, this prohibition does not apply if certain exceptions are met under **Article 9(2)**:
+* **Explicit consent:** Under Article 9(2)(a), processing is permitted if *""the data subject has given explicit consent to the processing of those personal data for one or more specified purposes, except where Union or Member State law provide that the prohibition referred to in paragraph 1 may not be""* lifted by the data subject.
+
+Additionally, the context notes related conditions/grounds:
+* **Official religious associations:** Recital (55) mentions that *""the processing of personal data by official authorities for the purpose of achieving the aims, laid down by constitutional law or by international public law, of officially recognised religious associations, is carried out on grounds of public interest.""*",12908.807899999374,14928.490399994189
+What is the maximum fine for breaching the basic principles of processing?,"[290, 117, 289]","[291, 289, 290]",False,True,"Based on the provided context, it is not explicitly stated what the maximum fine is for breaching the basic principles of processing. 
+
+While Passage 1 provides administrative fine tiers up to ""10 000 000 EUR, or in the case of an undertaking, up to 2 % of the total worldwide annual turnover of the preceding financial year, whichever is higher"" for certain obligations (such as Articles 8, 11, 25 to 39, 42, and 43), paragraph 5 cuts off and does not contain the provisions or fine amounts related to the basic principles of processing.","Based on the provided context, infringements of **the basic principles for processing** (including conditions for consent, pursuant to **Articles 5, 6, 7, and 9**) are subject to administrative fines of:
+
+* Up to **20 000 000 EUR**, or 
+* In the case of an undertaking, up to **4 % of the total worldwide annual turnover of the preceding financial year**, whichever is higher (Passage 1, paragraph 5(a)).
+
+### Conditions and Exceptions:
+* **Assessment criteria (Paragraph 2):** When determining whether to impose a fine and its specific amount, due regard must be given to factors including the nature, gravity, and duration of the infringement, intentional or negligent character, mitigation measures taken, degree of cooperation with supervisory authorities, and any aggravating or mitigating factors (Passages 2 and 3).
+* **Multiple infringements limit (Paragraph 3):** If a controller or processor intentionally or negligently infringes several provisions for the same or linked processing operations, the total fine cannot exceed the amount specified for the gravest infringement.",5841.293100005714,18169.58159999922
+Can the Commission ask the Board to examine a matter that affects more than one Member State?,"[273, 264, 113]","[261, 260, 273]",True,False,"Yes. According to the provided context, the Commission can request that such a matter be examined by the Board.
+
+Specifically, Passage 2 (paragraph 2) states:
+> *""Any supervisory authority, the Chair of the Board or the Commission may request that any matter of general application or producing effects in more than one Member State be examined by the Board with a view to obtaining an opinion[...]""*
+
+**Conditions and particular applications mentioned:**
+* The examination is requested **""with a view to obtaining an opinion.""**
+* The passage highlights that this applies **""in particular where a competent supervisory authority does not comply with the obligations for mutual assistance in accordance with Article 61 or for joint operations in accordance with Article 62.""** 
+
+*(Note: While the specific Article heading for this paragraph is not explicitly printed in the passage text, it references obligations under Articles 61 and 62).*","Based on the provided context, it is not explicitly stated whether the Commission can ask the Board to examine a matter that affects more than one Member State. 
+
+The context notes under **Article 69(2)** and **Article 70(1)** that the Board performs tasks ""on its own initiative or, where relevant, at the request of the Commission"" (referencing requests under point (b) of Article 70(1) and Article 70(2)), but the text cuts off before detailing what those specific requests or tasks entail.",7250.688499996613,6681.797400000505

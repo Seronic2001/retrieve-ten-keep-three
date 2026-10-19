@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Retrieve ten, keep three: the top three bars are kept (orange), the rest are dropped (grey) -->
+  <rect width="32" height="32" rx="7" fill="#0d0f12"/>
+  <rect x="6" y="5.5" width="20" height="3.5" rx="1.75" fill="#ff5a1f"/>
+  <rect x="6" y="11" width="17" height="3.5" rx="1.75" fill="#ff5a1f"/>
+  <rect x="6" y="16.5" width="14" height="3.5" rx="1.75" fill="#ff5a1f"/>
+  <rect x="6" y="22.5" width="11" height="1.6" rx="0.8" fill="#6f7581"/>
+  <rect x="6" y="26" width="8" height="1.6" rx="0.8" fill="#6f7581"/>
+</svg>

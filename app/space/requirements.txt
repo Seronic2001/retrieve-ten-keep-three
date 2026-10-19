@@ -1,0 +1,15 @@
+# Pinned to the versions the project was built with. The encoders run on ONNX Runtime, so no torch.
+onnxruntime==1.31.0
+tokenizers==0.23.3
+huggingface_hub==1.33.0
+faiss-cpu==1.15.1
+pymupdf==1.28.2
+google-genai==2.31.0
+numpy==2.5.2
+pandas==3.0.6
+scikit-learn==1.9.1
+python-dotenv==1.2.4
+fastapi==0.146.0
+uvicorn==0.54.0
+python-multipart==0.0.32
+httpx==0.28.1
