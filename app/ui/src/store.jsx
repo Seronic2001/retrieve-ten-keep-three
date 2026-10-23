@@ -251,7 +251,7 @@ export function StoreProvider({ children }) {
     backend: turn.backend ?? 'gemini', pipelines: [pipeline],
   }), [streamAnswers])
 
-  const ask = useCallback(async (query, { withLlm, backend = 'gemini', compare = false }) => {
+  const ask = useCallback(async (query, { withLlm, backend = 'gemini', compare = false, retrieval = 'dense' }) => {
     const id = nextId.current++
     const docId = activeDoc?.id ?? GDPR_ID
     const isCase = docId === GDPR_ID
@@ -261,7 +261,7 @@ export function StoreProvider({ children }) {
     // Stage 1 + 2: live retrieval, or the precomputed result for a known test question.
     let candidates, timings, source
     try {
-      const r = await post('api/retrieve', { query, doc: docId })
+      const r = await post('api/retrieve', { query, doc: docId, retrieval })
       candidates = r.candidates
       timings = r.timings
       source = 'live'
@@ -282,18 +282,19 @@ export function StoreProvider({ children }) {
       candidates = study.queries[test].candidates
       timings = null
       source = 'saved'
+      retrieval = 'dense'   // the saved notebook run used the bi-encoder alone
     }
     if (test >= 0) {
       const gold = new Set(study.queries[test].gold)
       candidates = candidates.map((c) => ({ ...c, gold: gold.has(c.chunk) }))
     }
-    patch(id, { candidates, timings, source, backend, status: withLlm ? 'answering' : 'done' })
+    patch(id, { candidates, timings, source, backend, retrieval, status: withLlm ? 'answering' : 'done' })
     if (!withLlm) return
 
     // Stage 3: answers. Saved case-study answers are reused for test questions when they came from the
     // same kind of model, to spare the API quota; otherwise answers are generated fresh.
     const savedBackend = study?.generated?.backend ?? 'gemini'
-    const saved = test >= 0 && backend === savedBackend ? study.queries[test].answers : null
+    const saved = test >= 0 && backend === savedBackend && retrieval === 'dense' ? study.queries[test].answers : null
     if (saved) {
       patch(id, {
         status: 'done',

@@ -76,7 +76,11 @@ function AssistantTurn({ turn, onOpen }) {
   const base = top3(turn.candidates, 'biRank')
   const rer = top3(turn.candidates, 'ceRank')
   const swapped = rer.filter((c) => !base.some((b) => b.chunk === c.chunk)).length
-  const panes = { baseline: ['Baseline · Pipeline 1', base], reranked: ['Re-ranked · Pipeline 2', rer] }
+  const hybrid = turn.retrieval === 'hybrid'
+  const panes = {
+    baseline: [hybrid ? 'Baseline · hybrid, no re-rank' : 'Baseline · Pipeline 1', base],
+    reranked: [hybrid ? 'Re-ranked · hybrid + cross-encoder' : 'Re-ranked · Pipeline 2', rer],
+  }
   const shown = view === 'compare' ? ['baseline', 'reranked'] : [view]
 
   return (
@@ -169,7 +173,11 @@ function ChunkDrawer({ chunk, onClose }) {
           <button className="btn" onClick={onClose}>Close</button>
         </div>
         <div className="chunk-scores">
-          <span>bi <b>#{chunk.biRank}</b> ({chunk.biScore.toFixed(3)})</span>
+          {'bm25Rank' in chunk ? (
+            <span>
+              fused <b>#{chunk.biRank}</b> · dense {chunk.denseRank ? `#${chunk.denseRank}` : '>20'} · BM25 {chunk.bm25Rank ? `#${chunk.bm25Rank}` : '>20'}
+            </span>
+          ) : <span>bi <b>#{chunk.biRank}</b> ({chunk.biScore.toFixed(3)})</span>}
           <span>cross <b>#{chunk.ceRank}</b> ({chunk.ceScore.toFixed(2)})</span>
           <span>chunk <b>#{chunk.chunk}</b></span>
           {chunk.gold && <span className="gold-tag">the answer</span>}
@@ -186,6 +194,8 @@ export default function Chat() {
   const [mode, setMode] = useState('answer')   // 'answer' (re-ranked only) | 'compare' | 'chunks'
   // The local model is the default; when llama-server is not running, Gemini is used instead.
   const [backend, setBackend] = useState('local')
+  // 'dense': the bi-encoder's top 10 (the notebook's pipeline). 'hybrid': bi-encoder and BM25 fused by RRF.
+  const [retrieval, setRetrieval] = useState('dense')
   const llm = backend === 'local' && server.local ? 'local' : 'gemini'
   const [open, setOpen] = useState(null)
   const isCase = activeDoc?.id === GDPR_ID
@@ -217,7 +227,7 @@ export default function Chat() {
     const query = (q ?? text).trim()
     if (query.length < 3 || busy || !canAsk) return
     setText('')
-    ask(query, { withLlm: mode !== 'chunks', compare: mode === 'compare', backend: llm })
+    ask(query, { withLlm: mode !== 'chunks', compare: mode === 'compare', backend: llm, retrieval })
   }
   const suggestions = study
     ? [...study.queries.filter((q) => q.answers).map((q) => q.query).slice(0, 4), ...(isCase && server.state === 'live' ? GDPR_OWN : [])]
@@ -298,6 +308,14 @@ export default function Chat() {
             <button type="button" aria-pressed={mode === 'answer'} onClick={() => setMode('answer')}>Answer</button>
             <button type="button" aria-pressed={mode === 'compare'} onClick={() => setMode('compare')}>Compare both</button>
             <button type="button" aria-pressed={mode === 'chunks'} onClick={() => setMode('chunks')}>Chunks only</button>
+          </div>
+          <div className="tabs" role="group" aria-label="Retrieval">
+            <button type="button" aria-pressed={retrieval === 'dense'} onClick={() => setRetrieval('dense')}
+              title="Bi-encoder top 10, as in the notebook">Dense</button>
+            <button type="button" aria-pressed={retrieval === 'hybrid'} disabled={server.state !== 'live'}
+              title="Bi-encoder and BM25 keyword search, fused by Reciprocal Rank Fusion" onClick={() => setRetrieval('hybrid')}>
+              Hybrid + BM25
+            </button>
           </div>
           {mode !== 'chunks' && (
             <div className="tabs" role="group" aria-label="Language model">
