@@ -1,0 +1,268 @@
+set,category,query,gold,evidence,dense_gold_in_top3,dense_answer,dense_ms,model,hybrid_gold_in_top3,hybrid_answer,hybrid_ms
+study,buried,"How many members, besides the Chairperson and Vice-Chairperson, comprise the Commission?",[446],three other members,False,"Based on the provided context passages, the Commission consists of **three** other members besides the Chairperson and Vice-Chairperson.
+
+This is explicitly stated in:
+*   **Article 338(2)** (Passage 2): ""the Commission shall consist of a Chairperson, Vice-Chairperson and **three other Members**...""
+*   **Article 338(2)** (Passage 1): ""the Commission shall consist of a Chairperson, Vice-Chairperson and **three other Members**...""
+
+**Answer:** Three other members.",10553,Qwen3.5-4B,True,"Based on the provided context passages, the Commission consists of **three** other members besides the Chairperson and Vice-Chairperson.
+
+This is explicitly stated in:
+*   **Article 338, Clause (2)** (Passage 2): ""the Commission shall consist of a Chairperson, Vice-Chairperson and **three other Members**...""
+*   **Article 338, Clause (2)** (Passage 1): ""the Commission shall consist of a Chairperson, Vice-Chairperson and **three other Members**...""
+
+**Answer:** Three other Members.",9636
+hunt,trap,Which legislative body must the Council of Ministers be collectively responsible to in the context of the Union?,[98],collectively responsible to the house of the people,False,"Based on the provided context passages, there is **no explicit statement** in the given text that defines the legislative body to which the Council of Ministers of the **Union** (Central Government) is collectively responsible.
+
+The provided context includes:
+*   **Article 79** (Passage 1), which establishes the Parliament of the Union consisting of the President, the Council of States, and the House of the People, but does not specify the collective responsibility clause for the Union Council of Ministers in this excerpt.
+*   **Article 164** (Passage 3), which explicitly states in clause (2): ""The Council of Ministers shall be collectively responsible to the **Legislative Assembly of the State**."" This applies to State Governments, not the Union.
+
+While the actual Constitution of India (Article 79(4)) states that the Council of Ministers is collectively responsible to the House of the People, this specific provision is **not present** in the provided context passages.
+
+**Answer:** The provided context does not contain the answer regarding the legislative body the Union Council of Ministers is responsible to. It only specifies that the Council of Ministers of a State is collectively responsible to the Legislative Assembly of the State (Article 164(2)).",18864,Qwen3.5-4B,True,"Based on the provided context passages, the Council of Ministers must be collectively responsible to the **House of the People** (also referred to as the Legislative Assembly in specific contexts like the National Capital Territory).
+
+*   **Article 75, Clause (3)** explicitly states: ""The Council of Ministers shall be collectively responsible to the House of the People.""
+*   **Article 237, Clause (6)** states: ""The Council of Ministers shall be collectively responsible to the Legislative Assembly."" This applies specifically in relation to the National Capital Territory, where the Lieutenant Governor and Legislative Assembly functions are governed by Article 239AB.
+
+Therefore, for the Union as a whole, the responsibility is to the **House of the People**.",11585
+hunt,natural,Under what specific condition regarding a Legislative Council does the creation of posts common to both Houses not prevent the clause?,[208],"provided that nothing in this clause shall, in the case of the legislature of a state having a legislative council, be construed as preventing the creation of posts common to both houses of such legislature",False,"Based on the provided context, the creation of posts common to both Houses of Parliament does **not** prevent the clause when such posts are created for the **secretarial staff** of either House of Parliament.
+
+This is explicitly stated in **Article 98(1)** of the Constitution:
+> ""Each House of Parliament shall have a separate secretarial staff: **Provided that nothing in this clause shall be construed as preventing the creation of posts common to both Houses of Parliament.**""
+
+The context does not specify any further conditions or exceptions regarding the nature of these common posts other than they must be within the secretarial staff of the Houses of Parliament.",10051,Qwen3.5-4B,True,"The creation of posts common to both Houses does not prevent the clause **in the case of the Legislature of a State having a Legislative Council**.
+
+This exception is explicitly stated in **Article 187(1)** of the Constitution:
+> ""Provided that nothing in this clause shall, in the case of the Legislature of a State having a Legislative Council, be construed as preventing the creation of posts common to both Houses of such Legislature.""
+
+(Note: Article 98(1) regarding Parliament does not contain this specific exception and only allows for common posts generally without the conditional phrasing found in Article 187.)",9684
+hunt,natural,"In which year was the Supreme Court (Number of Judges) Amendment Act passed, changing the number of judges?",[244],,True,"The Supreme Court (Number of Judges) Amendment Act was passed in **2019**.
+
+According to Passage 1, the text states: ""Now 'thirty-three' vide the Supreme Court (Number of Judges) Amendment Act, 2019 (37 of 2019), s. 2 (w.e.f. 9-8-2019)."" This amendment changed the number of judges to thirty-three.",7620,Qwen3.5-4B,False,"The Supreme Court (Number of Judges) Amendment Act was passed in **2019**.
+
+According to Passage 2 (chunk 148), the text states: ""Now 'thirty-three' vide the Supreme Court (Number of Judges) Amendment Act, 2019 (37 of 2019), s. 2 (w.e.f. 9-8-2019)."" This amendment changed the number of judges to thirty-three.",8207
+hunt,natural,"What is the specific date when the Constitution (Fourteenth Amendment) Act, 1962, came into effect regarding this section?","[280, 281]","ins. by the constitution (fourteenth amendment) act, 1962, s. 5 (w.e.f. 28-12-1962)",False,"Based on the provided context passages, there is no mention of the **Constitution (Fourteenth Amendment) Act, 1962**, nor is there any specific date associated with its commencement or effect regarding the section discussed in the text.
+
+The provided passages reference the following amendments and dates:
+*   **Constitution (Seventh Amendment) Act, 1956** (effective 1-11-1956) [Passage 1]
+*   **Constitution (Twenty-fourth Amendment) Act, 1971** (effective 5-11-1971) [Passage 1]
+*   **Constitution (Forty-second Amendment) Act, 1976** [Passage 1]
+*   **Constitution (Forty-fourth Amendment) Act, 1978** [Passage 3]
+*   **Constitution (Sixty-fourth Amendment) Act, 1990** [Passage 3]
+*   **Constitution (Sixty-seventh Amendment) Act, 1990** [Passage 3]
+*   **Constitution (Sixty-eighth Amendment) Act, 1991** [Passage 3]
+*   **Constitution (Ninth Amendment) Act, 1960** [Passage 2]
+*   **Constitution (One Hundredth Amendment) Act, 2015** [Passage 2]
+*   **Constitution (Forty-second Amendment) Act, 1976** (specifically section 55) [Passage 1]
+
+Since the document provided does not contain information about the Constitution (Fourteenth Amendment) Act, 1962, I cannot state the specific date it came into effect based on this context.",28178,Qwen3.5-4B,True,"Based on the provided context passages, the **Constitution (Fourteenth Amendment) Act, 1962** came into effect on **28-12-1962** regarding the insertion of the relevant section (Article 239AB, proviso).
+
+This is explicitly stated in:
+*   **Passage 1**: ""10. Ins. by the Constitution (Fourteenth Amendment) Act, 1962, s. 5 (w.e.f. **28-12-1962**).""
+*   **Passage 2**: ""10. Ins. by the Constitution (Fourteenth Amendment) Act, 1962, s. 5 (w.e.f. **28-12-1962**).""
+
+**Article Reference**: Article 239AB (specifically the proviso added by Section 5 of the Act).
+
+**Exceptions or Conditions**:
+The context notes that this amendment inserted a proviso to Article 239AB which applies specifically when the legislature for the Union territory of **Puducherry** is dissolved or its functioning is suspended due to action under the law referred to in clause (1) of Article 239A. During such periods, the President may make regulations for the peace, progress, and good government of that Union territory.",20978
+hunt,natural,What force and effect do regulations made by the President have when promulgated for Puducherry?,[281],shall have the same force and effect as an act of parliament which applies to that territory,False,"Based on the provided context passages, there is **no information** regarding the force and effect of **regulations** made by the President for Puducherry.
+
+The document provided discusses **Ordinances** promulgated by the **Administrator** of the Union Territory of Puducherry under **Article 239B** (Passage 1), but it does not mention ""regulations"" or the specific legal effect of regulations in this context.
+
+**Relevant Context on Ordinances (for comparison):**
+*   **Article 239B(2)** states that an Ordinance promulgated by the Administrator of Puducherry ""shall be deemed to be an Act of the Legislature of the Union territory which has been duly enacted after complying with the provisions in that behalf contained in any such law as is referred to in clause (1) of article 239A.""
+*   However, this applies specifically to **Ordinances**, not **regulations**.
+
+**Conclusion:**
+The provided text does not contain the answer regarding the force and effect of **regulations** made by the President for Puducherry.",17088,Qwen3.5-4B,True,"Based on the provided context passages, regulations made by the President for the Union territory of Puducherry have the **same force and effect as an Act of Parliament** which applies to that territory.
+
+This is explicitly stated in **Article 240, Clause (2)** (found in Passage 3), which reads:
+> ""Any regulation so made may repeal or amend any Act made by Parliament or any other law, which is for the time being applicable to the Union territory and, when promulgated by the President, shall have the same force and effect as an Act of Parliament which applies to that territory.""
+
+**Exceptions and Conditions:**
+*   **Legislature Functioning:** According to **Article 240, Clause (1)** (Passage 2), the President shall **not** make any regulation for the peace, progress, and good government of Puducherry with effect from the date appointed for the first meeting of the Legislature created under Article 239A.
+*   **Dissolution or Suspension:** However, if the body functioning as the Legislature for Puducherry is dissolved, or its functioning is suspended due to actions under Article 239A, the President **may** make regulations during such periods (as noted in the proviso to Article 240, Clause (1) in Passage 3).
+*   **Scope of Regulation:** The regulations can only repeal or amend Acts of Parliament or other laws that are currently applicable to the Union territory.",22165
+hunt,natural,What specific subjects may Parliament formulate principles for determining the place of supply?,[354],"the place of supply, and when a supply of goods, or of services, or both takes place",False,"Based on the provided context, **Article 286(2)** specifies the subjects for which Parliament may formulate principles.
+
+According to **Article 286(2)**:
+> ""Parliament may by law formulate principles for determining when a **supply of goods or of services or both** in any of the ways mentioned in clause (1).""
+
+The ""ways mentioned in clause (1)"" (as per **Article 286(1)**) are:
+1.  Outside the State; or
+2.  In the course of the import of the goods or services or both into, or export of the goods or services or both out of, the territory of India.
+
+Therefore, Parliament may formulate principles for determining the place of supply of **goods, services, or both** when the supply takes place **outside the State** or **in the course of import into or export out of India**.
+
+*Note: The context provided includes a partial text of Article 286(2) which ends abruptly (""for 'sale or""), but the preceding text clearly identifies the subjects as ""supply of goods or of services or both"" and the conditions as those listed in clause (1).*",18254,Qwen3.5-4B,True,"Based on the provided context passages, Parliament may formulate principles for determining the place of supply in the following specific subjects:
+
+*   **Goods or services in inter-State trade or commerce:** Under **Article 269(5)**, Parliament may formulate principles for determining ""the place of supply, and when a supply of goods, or of services, or both takes place in the course of inter-State trade or commerce.""
+*   **Sale or purchase of goods:** Under **Article 269(3)** (as amended), Parliament may formulate principles for determining ""when a sale or purchase of, or consignment of goods takes place in the course of inter-State trade or commerce.""
+*   **Consignment of goods:** Under **Article 269(3)** (as amended), the principles also apply to determining when a ""consignment of goods"" takes place in the course of inter-State trade or commerce.
+
+These provisions are found in **Passage 2** (Article 269, clause 5) and **Passage 3** (Article 269, clause 3 and Article 269A).",17312
+hunt,natural,What is the specific date when the words in section 329A were substituted by the Thirty-ninth Amendment Act?,"[426, 427]","subs. by the constitution (thirty-ninth amendment) act, 1975, s. 3, for certain words (w.e.f. 10-8-1975)",False,"Based on the provided context passages, there is no information regarding **Article 329A** or the **Thirty-ninth Amendment Act**.
+
+The provided text contains details about:
+*   **Article 338** (Commission for Scheduled Tribes) and its amendments (89th, 65th, 102nd).
+*   **Articles 335–336** (Reservation in services and Anglo-Indian community) and amendments (95th, 79th, 62nd, 45th, 106th).
+*   **Articles 80–82** (President, Vice-President, and Readjustment after each census) and various amendments (35th, 36th, 31st, Goa Daman and Diu Reorganisation Act).
+
+None of the passages mention Article 329A or the Thirty-ninth Amendment Act. Therefore, the specific date cannot be determined from the given context.",15991,Qwen3.5-4B,True,"Based on the provided context, the words in Article 329A were substituted by the **Constitution (Thirty-ninth Amendment) Act, 1975, s. 3** with effect from **10-8-1975** (October 10, 1975).
+
+This is explicitly stated in Passage 1:
+> ""1. Subs. by the Constitution (Thirty-ninth Amendment) Act, 1975, s. 3, for certain words (w.e.f. 10-8-1975).""
+
+*(Note: The text indicates that the words ""but subject to the provisions of article 329A"" were subsequently omitted by the Constitution (Forty-fourth Amendment) Act, 1978, s. 35, effective 20-6-1979.)*",14295
+hunt,natural,Under what condition can the President issue directions regarding the report mentioned in clause (5)?,"[462, 463]",after consideration of the report referred to in clause (5),False,"Based on the provided context passages, the President does **not** issue directions regarding the report mentioned in clause (5) under any condition.
+
+The text explicitly states the following procedure for reports under Article 338:
+*   **Clause (6)** states: ""The President shall cause all such reports to be laid before each House of Parliament...""
+*   **Clause (7)** states: ""Where any such report... relates to any matter with which any State Government is concerned, a copy of such report shall be forwarded to the Governor of the State...""
+
+The document does not mention the President issuing ""directions"" regarding these reports. Instead, the President's role is to lay the report before Parliament, and the Governor's role (for State matters) is to lay the report before the State Legislature. The text notes that the Governor must explain the ""action taken or proposed to be taken"" on the recommendations, but it does not describe the President issuing directions to the Governor or the Legislature regarding the report itself.
+
+Therefore, using **ONLY** the provided context, there is no condition under which the President issues directions regarding the report mentioned in clause (5).",17187,Qwen3.5-4B,True,"Based on the provided context passages, the President can issue directions regarding the report mentioned in clause (5) under the following condition:
+
+**Notwithstanding anything in Article 343**, the President may, **after consideration of the report referred to in clause (5)**, issue directions in accordance with the whole or any part of that report.
+
+This provision is explicitly stated in:
+*   **Article 344, Clause (6)** (Passage 2)
+*   **Article 345** (Passage 1)
+
+The condition applies to reports made by the Commission constituted under Article 344 regarding the official language of the Union and the language for communication between the Union and a State or between one State and another.",11598
+hunt,natural,What specific date marks the cutoff for appointments made to posts under the Government of Hyderabad?,[535],"before the 1st day of november, 1956",True,"Based on the provided context passages, the specific date that marks the cutoff for appointments made to posts under the Government of Hyderabad is **the 1st day of November, 1956**.
+
+This is explicitly stated in **Article 369, Clause (9)(a)(i)**:
+> ""no appointment, posting, promotion or transfer of any person— (i) made before the **1st day of November, 1956**, to any post under the Government of, or any local authority within, the State of Hyderabad as it existed before that date...""
+
+The text further clarifies that provisions regarding such appointments are deemed illegal or void if they were not made in accordance with laws providing for residence requirements within the State of Hyderabad at that time.",11945,Qwen3.5-4B,False,"Based on the provided context, there is **no specific date** mentioned that marks the cutoff for appointments made to posts under the Government of Hyderabad.
+
+The text in **Passage 1 (Art. 369)** refers to appointments made ""before the commencement of the Constitution (Thirty-second Amendment) Act, 1973"" to posts within the State of Andhra Pradesh, but it does not specify a date for appointments to posts under the Government of **Hyderabad** itself. The passage only states that such appointments (made before the 1973 Act to Andhra Pradesh posts or to Hyderabad posts as they existed before 1956) shall be deemed illegal or void if not made in accordance with the law regarding residence requirements.
+
+Therefore, the document does not contain the answer to what specific date marks the cutoff for appointments to posts under the Government of Hyderabad.",13494
+hunt,natural,Does the entitlement to emoluments and allowances apply to a person acting for whom they do not discharge the functions?,"[580, 581]","as the president or the governor whose functions he discharges or for whom he acts, as the case may be",False,"Based on the provided context passages, the entitlement to emoluments and allowances applies to a person acting as President or Governor, even if they are not the incumbent holding the office.
+
+**Passage 1 (Article 60)** explicitly states regarding the President:
+> ""Every **President and every person acting as President** or discharging the functions of the President shall, before entering upon his office, make and subscribe... an oath or affirmation...""
+
+While the text provided cuts off before listing the specific emoluments for the acting President, the inclusion of ""every person acting as President"" in the same clause as the oath requirement (which is tied to the office's privileges) implies their inclusion. Furthermore, **Article 60(3)** states that the President is entitled to emoluments ""as may be determined by Parliament by law,"" and historically, the same determination applies to acting Presidents unless specified otherwise.
+
+**Passage 2 (Article 158)** similarly covers the Governor:
+> ""The **Governor** shall be entitled without payment of rent to the use of his official residences and shall be also entitled to such emoluments, allowances and privileges...""
+
+**Passage 2 (Article 159)** confirms the scope for acting Governors:
+> ""Every **Governor and every person discharging the functions of the Governor** shall, before entering upon his office, make and subscribe... an oath or affirmation...""
+
+**Conclusion:**
+Yes, the entitlement applies. The text explicitly includes ""every person acting as President"" (Article 60) and ""every person discharging the functions of the Governor"" (Article 159) in the provisions regarding the office. Therefore, a person acting for whom they do not discharge the functions (i.e., an acting President or Governor) is covered under these provisions.
+
+*Note: The provided text does not explicitly list the specific monetary amounts or detailed privileges for an ""acting"" President or Governor separately from the incumbent, but it establishes their inclusion in the oath-taking and general entitlement clauses.*",30033,Qwen3.5-4B,True,"No, the entitlement to emoluments and allowances **does not** apply to a person acting for whom they do not discharge the functions.
+
+According to **Article 59(3)** and **Part A, Clause 4 of the Second Schedule**, the entitlement is explicitly conditional on the person either:
+1.  Discharging the functions of the office, or
+2.  Acting as the holder of the office.
+
+The text states:
+> ""While the Vice-President or any other person is discharging the functions of, or is acting as, President, or any person is discharging the functions of the Governor, he shall be entitled to the same emoluments, allowances and privileges as the President or the Governor whose functions he discharges or for whom he acts, as the case may be.""
+
+This phrasing (""discharging the functions of, or is acting as"") implies that the entitlement is granted to the individual currently holding the role or performing the duties. If a person is merely ""acting for whom they do not discharge the functions"" (i.e., they are not the one performing the duties nor acting in the capacity of the office holder), they do not meet the criteria for entitlement under these provisions.
+
+*Note: While the Second Schedule mentions that a person discharging functions is entitled to the same emoluments as the President or Governor ""for whom he acts,"" this applies to the person **discharging** the functions, not to a third party acting on their behalf without discharging the functions themselves.*",22377
+hunt,natural,Is a person discharging the functions of the Governor entitled to different emoluments than the President?,"[580, 581]","entitled to the same emoluments, allowances and privileges as the president",False,"Based on the provided context passages, there is **no explicit statement** indicating that a person discharging the functions of the Governor is entitled to *different* emoluments than the President. In fact, the text suggests they are entitled to the **same** emoluments, allowances, and privileges.
+
+Here is the breakdown based on the text:
+
+1.  **President's Entitlements (Article 60):**
+    *   The President is entitled to emoluments, allowances, and privileges determined by Parliament by law.
+    *   Until such provision is made, they are entitled to those specified in the **Second Schedule**.
+    *   *Passage 1, Article 60(3):* ""...entitled to such emoluments, allowances and privileges as may be determined by Parliament by law and, until provision in that behalf is so made, such emoluments, allowances and privileges as are specified in the Second Schedule.""
+
+2.  **Governor's Entitlements (Article 158):**
+    *   The Governor is entitled to the exact same categories of benefits.
+    *   Until such provision is made, they are entitled to those specified in the **Second Schedule**.
+    *   *Passage 2, Article 158(3):* ""...entitled to such emoluments, allowances and privileges as may be determined by Parliament by law and, until provision in that behalf is so made, such emoluments, allowances and privileges as are specified in the Second Schedule.""
+
+3.  **Vice-President Acting as President (Article 65):**
+    *   The text explicitly confirms that when the Vice-President acts as President, they have ""all the powers and immunities of the President"" and are entitled to the same emoluments as the President.
+    *   *Passage 3, Article 65(3):* ""...have all the powers and immunities of the President and be entitled to such emoluments, allowances and privileges as may be determined by Parliament by law...""
+
+**Conclusion:**
+According to the provided text, a person discharging the functions of the Governor is entitled to the **same** emoluments, allowances, and privileges as the President (specifically, those determined by Parliament or those in the Second Schedule). The text does not mention any difference in entitlements between the two roles.",34655,Qwen3.5-4B,True,"No, a person discharging the functions of the Governor is **not** entitled to different emoluments than the President; rather, they are entitled to the **same** emoluments, allowances, and privileges as the President (or the Governor whose functions they are discharging, depending on the specific context of the acting role).
+
+According to **Article 164(5)** (cited in Passage 2, Second Schedule, Part A), while a person is discharging the functions of the Governor, ""he shall be entitled to the same emoluments, allowances and privileges as the President or the Governor whose functions he discharges or for whom he acts, as the case may be.""
+
+Additionally, **Article 59(3)** (also cited in Passage 2) states that the President is entitled to emoluments, allowances, and privileges as specified in the Second Schedule. While Article 59(3) specifically lists the President's entitlements, the proviso in Article 164(5) ensures that an acting Governor receives the same terms as the President if they are acting in that capacity.
+
+**Exceptions/Conditions:**
+*   The entitlement applies specifically when a person is ""discharging the functions of the Governor.""
+*   The specific emoluments and allowances are determined by the Second Schedule (which lists the President's emoluments as 10,000 rupees and the Governor's as 5,500 rupees per month under the original text, though these amounts have been amended by subsequent Finance Acts as noted in the context).
+*   The entitlement includes the same privileges as the President or Governor whose functions are being discharged.",24892
+hunt,natural,Which local authorities are mentioned in the list of State subjects?,[623],"municipal corporation, improvement trust, district boards and other local authorities",False,"Based on **Entry 5** of the **Twelfth Schedule** (State List) found in **Passage 1**, the local authorities mentioned in the list of State subjects are:
+
+*   **Municipal corporations**
+*   **Improvement trusts**
+*   **Districts boards**
+*   **Mining settlement authorities**
+*   **Other local authorities**
+
+The context specifies that these authorities are included for the purpose of **local self-government or village administration**.
+
+**Relevant Citation:**
+> **Passage 1 | chunk 686 | page 348 | Sch. Sixth**
+> ""5. Local government, that is to say, the constitution and powers of municipal corporations, improvement trusts, districts boards, mining settlement authorities and other local authorities for the purpose of local self-government or village administration.""",13132,Qwen3.5-4B,True,"Based on the provided context passages, the local authorities mentioned in the list of State subjects (List II of the Seventh Schedule) are:
+
+*   **Municipal corporations**
+*   **Improvement trusts**
+*   **District boards**
+*   **Mining settlement authorities**
+*   **Other local authorities** (specifically defined as those ""for the purpose of local self-government or village administration"")
+
+These are found in **Entry 5** of the State List in **Passage 1** and reiterated in **Passage 3**. The text defines this entry as: ""Local government, that is to say, the constitution and powers of municipal corporations, improvement trusts, districts boards, mining settlement authorities and other local authorities for the purpose of local self-government or village administration.""
+
+Additionally, **Entry 19** in **Passage 3** specifically lists: ""municipal corporation, improvement trust, district boards and other local authorities.""",14560
+hunt,trap,"Which institutions are controlled or financed by the State, similar to those mentioned in the similar passage?",[623],museum and archaeology institutions controlled or financed by the state,False,"Based on the provided context passages, the institutions controlled or financed by the State are those in which **justice, social, economic, and political** justice shall inform all their operations.
+
+According to **Article 38(1)** in Passage 1:
+> ""The State shall strive to promote the welfare of the people by securing and protecting as effectively as it may a social order in which justice, social, economic and political, shall inform all the institutions of the national life.""
+
+The text does not list specific named institutions (such as courts, schools, or hospitals) in this passage; rather, it refers broadly to ""all the institutions of the national life."" The State's duty is to ensure that these institutions are guided by the four types of justice mentioned.
+
+Additionally, **Article 39** in Passage 1 outlines specific principles of policy the State must direct toward securing rights and distributions within these institutions, such as:
+*   Ensuring citizens have an adequate means of livelihood.
+*   Distributing ownership and control of material resources for the common good.
+*   Preventing the concentration of wealth.
+*   Ensuring equal pay for equal work.
+*   Protecting the health and strength of workers and children.
+
+**Article 283** in Passage 3 mentions the custody and regulation of funds (Consolidated Fund, Contingency Fund, and public accounts) for the Union and States, which relates to the financial control of the State over public moneys, but it does not name specific operational institutions in the same manner as Article 38.
+
+**Answer:**
+The institutions controlled or financed by the State are **""all the institutions of the national life,""** which must be guided by **justice, social, economic, and political** justice. This is stipulated in **Article 38(1)**. The State is required to direct its policy toward securing specific outcomes within these institutions, including adequate livelihood, equitable distribution of resources, and protection of workers' rights, as detailed in **Article 39**.",29529,Qwen3.5-4B,True,"Based on the provided context passages from the Seventh Schedule of the Constitution of India, the institutions controlled or financed by the State (specifically State Governments) are mentioned in the following entries:
+
+*   **Libraries, museums, and similar institutions:** Entry 12 of List II (State List) covers ""Libraries, museums and other similar institutions controlled or financed by the State.""
+*   **Ancient and historical monuments:** Entry 12 of List II also includes ""ancient and historical monuments and records other than those declared by or under law made by Parliament to be of national importance.""
+*   **Library services:** Entry 16 of List II specifies ""library services (financed and controlled by the State Government).""
+*   **Museum and archaeology institutions:** Entry 20 of List II covers ""museum and archaeology institutions controlled or financed by the State.""
+*   **Ancient and historical monuments (State context):** Entry 20 of List II reiterates ""ancient and historical monuments and records other than those declared by or under any law made by Parliament to be of national importance.""
+
+**Relevant Articles/Entries:**
+*   **List II, Entry 12:** ""Libraries, museums and other similar institutions controlled or financed by the State; ancient and historical monuments and records other than those declared by or under law made by Parliament to be of national importance.""
+*   **List II, Entry 16:** ""library services (financed and controlled by the State Government).""
+*   **List II, Entry 20:** ""museum and archaeology institutions controlled or financed by the State, ancient and historical monuments and records other than those declared by or under any law made by Parliament to be of national importance.""
+
+**Exceptions/Conditions:**
+*   The inclusion of ""ancient and historical monuments and records"" is explicitly **excluded** if they are ""declared by or under law made by Parliament to be of national importance."" This means such monuments fall under the Union's jurisdiction rather than the State's, as per the text in Entries 12 and 20 of List II.
+*   Similarly, in List I (Union List), Entry 62 and 63 specify institutions declared by Parliament by law to be of ""national importance,"" which are financed by the Government of India.",33975
+hunt,natural,"What is the notification number associated with the Presidential order dated August 6, 2019?",[761],"notification no. g.s.r. 562(e), dated the 6th august, 2019",False,"Based on the provided context, the notification number associated with the Presidential order dated August 6, 2019, is **C.O. 272**.
+
+This is found in **Passage 1 | chunk 518 | page 263 | Art. 369**, specifically in the footnote:
+> ""1[clause (2) of Legislative Assembly of the State] shall be necessary before the President issues such a notification. See Appendix II. 1. Subs. by **C.O. 272**, dated the **5-8-2019**, s.2. for ""Constituent Assembly of the State referred to in clause (2)"" (w.e.f. 5-8-2019).""
+
+*Note: The date in the text is listed as 5-8-2019 (August 5, 2019), which is the date of the order/substitution, while the order came into effect (w.e.f.) on the same date.*",16168,Qwen3.5-4B,True,"The notification number associated with the Presidential order dated August 6, 2019, is **G.S.R. 562(E)**.
+
+This is explicitly stated in **Passage 1**, which reads:
+""Published with the Ministry of Law and Justice, (Legislative Department) notification No. **G.S.R. 562(E)**, dated the 6th August, 2019...""
+
+This notification pertains to the declaration under Article 370 that all its clauses ceased to be operative as of August 6, 2019, except for the modified text provided in the schedule.",10275

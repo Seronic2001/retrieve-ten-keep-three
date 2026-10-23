@@ -395,7 +395,11 @@ the Art.~30(5) exemption (``fewer than 250 persons'') from rank 3 to 5, and the 
 startup must keep records. The hand-labelled set was written to defeat keyword overlap, so its small loss is
 expected; the hunt is closer to everyday questions. On a second document, the Constitution of India (124 hunt
 questions), hybrid helps more evenly: re-ranked Hit@3 0.67 to 0.75 and Hit@10 0.77 to 0.91, with 12 questions
-restored and 2 degraded, and its 12-question case study gains one and loses none.
+restored and 2 degraded, and its 12-question case study gains one and loses none. Answering the 15 changed
+questions with Qwen3.5-4B (fp16 on a Kaggle T4, same prompt), hybrid turned 9 wrong or ``not in the context''
+answers into correct ones; 4 were correct either way, because another chunk repeated the fact; one became an
+abstention (a cut-off date the dense top 3 had); one question was too garbled to grade. Hybrid produced no
+confident wrong answer, where dense gave five (for example citing Art.~98 for a rule in Art.~187).
 
 HyDE adds almost nothing over hybrid on the hunt (Hit@3 $+1$ point; 6 restored, 5 degraded) and loses a question on
 the hand-labelled set, for 5.6\,s of generation per query. A 4B model's guess at the law is often wrong in the
