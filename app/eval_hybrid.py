@@ -8,6 +8,8 @@ The dense rows should reproduce the report's Table 2, which checks that nothing 
   ../.venv/Scripts/python.exe eval_hybrid.py              # retrieval metrics and latency only
   ../.venv/Scripts/python.exe eval_hybrid.py --answers 8  # plus answers from the local model (start_local_llm.sh)
                                                           # for up to 8 questions whose top 3 changed
+  ../.venv/Scripts/python.exe eval_hybrid.py --hyde       # adds "hyde": hybrid plus a passage the local model writes
+                                                          # in the regulation's wording (cached in hyde_passages.json)
 Writes notebook/results/hybrid_eval.json, hybrid_ranks.csv and (with --answers) hybrid_answers.csv.
 """
 import argparse
@@ -20,6 +22,12 @@ from rag_core import RESULTS_DIR, TOP_K_FINAL, Models, gdpr_index, generate_loca
 
 MODES = ("dense", "hybrid")
 LATENCY_RUNS = 5
+HYDE_PROMPT = """Write the passage of {subject} that answers the question below, in the regulation's own legal
+wording (for example "shall", "the controller", "the data subject"). Write one or two sentences and nothing else.
+
+Question: {question}
+
+Passage:"""
 
 
 def question_sets():
@@ -48,19 +56,41 @@ def top3(candidates, key):
     return [c["chunk"] for c in sorted(candidates, key=lambda c: c[key])[:TOP_K_FINAL]]
 
 
+def hyde_passages(idx, questions):
+    """One local-model passage per question, cached by question so a rerun costs no generation."""
+    path = RESULTS_DIR / "hyde_passages.json"
+    cache = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    model = None
+    for i, q in enumerate(questions, 1):
+        if q["query"] in cache:
+            continue
+        model = model or local_status(timeout=3)
+        if not model:
+            raise SystemExit("The local model is not reachable; start app/start_local_llm.sh in WSL first")
+        print(f"hyde {i}/{len(questions)}: {q['query'][:70]}", flush=True)
+        text, used, ms = generate_local(HYDE_PROMPT.format(subject=idx.subject, question=q["query"]), max_tokens=120)
+        cache[q["query"]] = {"text": text, "model": used, "ms": ms}
+        path.write_text(json.dumps(cache, indent=1, ensure_ascii=False), encoding="utf-8")
+    return cache
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--answers", type=int, default=0, help="answer up to N changed questions with the local model")
+    ap.add_argument("--hyde", action="store_true", help="also evaluate hybrid with a local-model HyDE passage")
     args = ap.parse_args()
+    modes = MODES + ("hyde",) if args.hyde else MODES
 
     idx = gdpr_index(Models())
     idx.retrieve_and_rerank("warm-up")
     stress, hunt = question_sets()
+    hyde = hyde_passages(idx, stress + hunt) if args.hyde else {}
     rows = []
     for q in stress + hunt:
         row = dict(q)
-        for mode in MODES:
-            cands, _ = idx.retrieve_and_rerank(q["query"], mode)
+        for mode in modes:
+            cands, _ = (idx.retrieve_and_rerank(q["query"], "hybrid", hyde[q["query"]]["text"]) if mode == "hyde"
+                        else idx.retrieve_and_rerank(q["query"], mode))
             row[mode] = {"stage1": first_gold(cands, q["gold"], "biRank"),
                          "reranked": first_gold(cands, q["gold"], "ceRank"),
                          "top3": top3(cands, "ceRank")}
@@ -73,13 +103,14 @@ def main():
     summary = {}
     for name, rs in groups.items():
         summary[name] = {f"{mode}/{stage}": metrics([r[mode][stage] for r in rs])
-                         for mode in MODES for stage in ("stage1", "reranked")}
+                         for mode in modes for stage in ("stage1", "reranked")}
         in3 = lambda r, m: r[m]["reranked"] is not None and r[m]["reranked"] <= TOP_K_FINAL   # noqa: E731
-        summary[name]["hybridVsDense"] = {
-            "restored": sum(in3(r, "hybrid") and not in3(r, "dense") for r in rs),
-            "degraded": sum(in3(r, "dense") and not in3(r, "hybrid") for r in rs),
-            "recovered@10": sum(r["dense"]["stage1"] is None and r["hybrid"]["stage1"] is not None for r in rs),
-            "lost@10": sum(r["dense"]["stage1"] is not None and r["hybrid"]["stage1"] is None for r in rs)}
+        for new, old in [("hybrid", "dense")] + ([("hyde", "dense"), ("hyde", "hybrid")] if args.hyde else []):
+            summary[name][f"{new}Vs{old.title()}"] = {
+                "restored": sum(in3(r, new) and not in3(r, old) for r in rs),
+                "degraded": sum(in3(r, old) and not in3(r, new) for r in rs),
+                "recovered@10": sum(r[old]["stage1"] is None and r[new]["stage1"] is not None for r in rs),
+                "lost@10": sum(r[old]["stage1"] is not None and r[new]["stage1"] is None for r in rs)}
 
     latency = {}
     for mode in MODES:
@@ -88,13 +119,16 @@ def main():
                          for k in ("embedMs", "searchMs", "fuseMs", "rerankMs")}
         latency[mode]["totalMs"] = round(sum(latency[mode].values()), 2)
 
+    if args.hyde:
+        latency["hyde"] = {"generateMs": round(statistics.mean(h["ms"] for h in hyde.values()))}
+
     with open(RESULTS_DIR / "hybrid_ranks.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["set", "category", "query", "gold", "dense_stage1", "dense_reranked", "hybrid_stage1",
-                    "hybrid_reranked", "dense_top3", "hybrid_top3"])
+        w.writerow(["set", "category", "query", "gold"] + [f"{m}_{k}" for m in modes for k in ("stage1", "reranked")]
+                   + [f"{m}_top3" for m in modes])
         for r in rows:
-            w.writerow([r["set"], r["category"], r["query"], r["gold"], r["dense"]["stage1"], r["dense"]["reranked"],
-                        r["hybrid"]["stage1"], r["hybrid"]["reranked"], r["dense"]["top3"], r["hybrid"]["top3"]])
+            w.writerow([r["set"], r["category"], r["query"], r["gold"]]
+                       + [r[m][k] for m in modes for k in ("stage1", "reranked")] + [r[m]["top3"] for m in modes])
 
     answers = []
     if args.answers:

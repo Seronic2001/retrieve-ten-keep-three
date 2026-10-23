@@ -357,15 +357,56 @@ hours per question.
 \end{itemize}
 
 The catch is that the re-ranker can only promote what the bi-encoder found (30 of 100 hunt questions missed in
-both). A larger pool ($k = 20$--$50$) or hybrid BM25 + vector retrieval would target those, at a cost that grows
-with $k$, not $N$.
+both). Section~6 widens the first stage with BM25 to target those, at a cost that grows with $k$, not $N$.
+
+\section{Follow-up: hybrid retrieval and query rewriting}
+
+\textbf{Hybrid.} BM25 (over the same chunks, numbers kept as tokens) and the bi-encoder each return their top 20;
+Reciprocal Rank Fusion ($\sum 1/(60 + \mathrm{rank})$) merges the lists and the fused top 10 go to the same
+cross-encoder, so re-ranking still costs 10 pairs. Fusion adds 1.3\,ms per query.
+\textbf{HyDE.} The local Qwen3.5-4B (Q4\_K\_M, temperature 0) writes one or two sentences of the passage that
+would answer the question, in the regulation's wording; the bi-encoder's ranking for that passage is fused as a
+third list and BM25 searches question and passage together. The cross-encoder still scores the original question.
+
+\begin{table}[!htbp]
+\centering\small
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \multicolumn{3}{c}{\textbf{13 hand-labelled}} & \multicolumn{3}{c}{\textbf{100 generated}} \\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+\textbf{After re-ranking} & \textbf{Dense} & \textbf{Hybrid} & \textbf{+\,HyDE} & \textbf{Dense} & \textbf{Hybrid} & \textbf{+\,HyDE} \\
+\midrule
+Hit@1   & \textbf{0.46} & 0.38 & \textbf{0.46} & 0.42 & 0.43 & \textbf{0.44} \\
+Hit@3   & \textbf{0.85} & 0.77 & 0.69 & 0.63 & 0.72 & \textbf{0.73} \\
+Hit@10  & 0.92 & 0.92 & 0.85 & 0.77 & \textbf{0.93} & 0.92 \\
+MRR@10  & \textbf{0.64} & 0.59 & 0.59 & 0.55 & \textbf{0.61} & \textbf{0.61} \\
+Added latency & -- & 1.3\,ms & 5.6\,s & -- & 1.3\,ms & 5.6\,s \\
+\bottomrule
+\end{tabular}
+\caption{Dense is the report's Pipeline 2 and reproduces Table~2. Hybrid and HyDE change only the 10 candidates.}
+\end{table}
+
+On the hunt, hybrid brought 16 of the 23 questions the bi-encoder missed into the top 10 and lost none; the gold
+reached the LLM for 12 more questions and 3 fewer. To check that this reaches the answers, the 16 questions whose
+top 3 changed were answered by Qwen from both top 3s. All 12 gains became correct answers (dense: 10 ``not in the
+context'', one wrong, one incomplete). Of the 4 losses, one stayed correct, one became an abstention, one partly
+right, and one wrong: the startup question, where BM25 matches ``records of processing'' in Art.~30(1) and pushes
+the Art.~30(5) exemption (``fewer than 250 persons'') from rank 3 to 5, and the model answers that a 10-person
+startup must keep records. The hand-labelled set was written to defeat keyword overlap, so its small loss is
+expected; the hunt is closer to everyday questions.
+
+HyDE adds almost nothing over hybrid on the hunt (Hit@3 $+1$ point; 6 restored, 5 degraded) and loses a question on
+the hand-labelled set, for 5.6\,s of generation per query. A 4B model's guess at the law is often wrong in the
+detail that matters: for the startup question it invented the Art.~30 criteria instead of the 250-person
+threshold, so the rewrite pulls toward the general rule. Hybrid is worth keeping; HyDE with a small model is not.
 
 \section*{Conclusion}
 
 On a legal text where the deciding clause often sits beside a general rule (an exemption, a higher fine tier, a
 prohibition), a cross-encoder re-ranker is worth its 83\,ms: it turned 6 incomplete or wrong answers into correct,
 cited ones. It is not free of failure: wording traps can mislead it, and it cannot recover passages the bi-encoder
-never retrieves. Widening the first-stage candidate pool is the next lever.
+never retrieves. Fusing BM25 into the first stage fixes most of those for 1.3\,ms (hunt Hit@10 0.77 to 0.93, Hit@3
+0.63 to 0.72); rewriting the query with a small local model does not pay for its 5.6\,s.
 
 \section*{Code}
 

@@ -294,13 +294,18 @@ class DocIndex:
         self.bm25 = BM25(self.search_texts)
         report("ready", len(self.texts), len(self.texts))
 
-    def retrieve_and_rerank(self, query, mode="dense"):
+    def retrieve_and_rerank(self, query, mode="dense", expansion=None):
         """Stage 1 (top 10 candidates) and stage 2 (cross-encoder re-sort), with per-step timings.
         mode="dense": the bi-encoder's top 10, as in the notebook.
         mode="hybrid": the bi-encoder's and BM25's top 20 fused by RRF, cut to 10. biRank and biScore are then
-        the fused rank and score; denseRank and bm25Rank say where each list put the chunk (None: not in its top 20)."""
+        the fused rank and score; denseRank and bm25Rank say where each list put the chunk (None: not in its top 20).
+        expansion (hybrid only): a rewrite of the query in the document's wording, e.g. a HyDE passage. It adds a
+        third list, the bi-encoder's ranking for the expansion, and BM25 searches query and expansion together.
+        The cross-encoder still scores against the original query."""
         if mode not in ("dense", "hybrid"):
             raise ValueError(f"Unknown retrieval mode {mode!r}")
+        if expansion and mode != "hybrid":
+            raise ValueError("A query expansion needs mode='hybrid'")
         k = min(TOP_K_RETRIEVE, len(self.texts))
         pool = min(HYBRID_POOL, len(self.texts)) if mode == "hybrid" else k
         t0 = time.perf_counter()
@@ -311,10 +316,14 @@ class DocIndex:
         t2 = time.perf_counter()
         extra = {}
         if mode == "hybrid":
-            bm_ids, _ = self.bm25.search(query, pool)
+            bm_ids, _ = self.bm25.search(f"{query} {expansion}" if expansion else query, pool)
             dense_rank = {cid: r for r, cid in enumerate(ids, start=1)}
             bm_rank = {cid: r for r, cid in enumerate(bm_ids, start=1)}
-            ids, scores = rrf(ids, bm_ids)
+            lists = [ids, bm_ids]
+            if expansion:
+                e = self.models.bi.encode([expansion], normalize_embeddings=True, convert_to_numpy=True).astype("float32")
+                lists.append(self.index.search(e, pool)[1][0].tolist())
+            ids, scores = rrf(*lists)
             ids, scores = ids[:k], scores[:k]
             extra = {cid: {"denseRank": dense_rank.get(cid), "bm25Rank": bm_rank.get(cid)} for cid in ids}
         t3 = time.perf_counter()
@@ -468,14 +477,14 @@ def stream_gemini(prompt, min_interval_s=13):
     raise QuotaExhausted(f"All Gemini models are unavailable or out of quota ({last_error})")
 
 
-def generate_local(prompt):
+def generate_local(prompt, max_tokens=700):
     """Same prompt and temperature as the Gemini path, sent to the local llama.cpp server.
     Returns (text, model, ms)."""
     import httpx
     t0 = time.perf_counter()
     try:
         r = httpx.post(f"{LOCAL_LLM_URL}/v1/chat/completions", timeout=300, **_local_request(
-            messages=[{"role": "user", "content": prompt}], temperature=0.0, max_tokens=700,
+            messages=[{"role": "user", "content": prompt}], temperature=0.0, max_tokens=max_tokens,
         ))
         r.raise_for_status()
     except httpx.HTTPError as e:
