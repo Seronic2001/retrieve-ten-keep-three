@@ -10,7 +10,10 @@ The dense rows should reproduce the report's Table 2, which checks that nothing 
                                                           # for up to 8 questions whose top 3 changed
   ../.venv/Scripts/python.exe eval_hybrid.py --hyde       # adds "hyde": hybrid plus a passage the local model writes
                                                           # in the regulation's wording (cached in hyde_passages.json)
-Writes notebook/results/hybrid_eval.json, hybrid_ranks.csv and (with --answers) hybrid_answers.csv.
+  ../.venv/Scripts/python.exe eval_hybrid.py --doc a914ab3a3b  # an uploaded document instead: its case study
+                                                                # ("study") and failure hunt from app/uploads/
+Writes notebook/results/hybrid_eval.json, hybrid_ranks.csv and (with --answers) hybrid_answers.csv; for an
+upload the names start with its id (a914ab3a3b_hybrid_eval.json, ...).
 """
 import argparse
 import ast
@@ -18,7 +21,10 @@ import csv
 import json
 import statistics
 
-from rag_core import RESULTS_DIR, TOP_K_FINAL, Models, gdpr_index, generate_local, local_status
+from rag_core import (ROOT, RESULTS_DIR, TOP_K_FINAL, DocIndex, LocalUnavailable, Models, gdpr_index, generate_local,
+                      local_status)
+
+UPLOADS = ROOT / "uploads"
 
 MODES = ("dense", "hybrid")
 LATENCY_RUNS = 5
@@ -30,14 +36,25 @@ Question: {question}
 Passage:"""
 
 
+def hunt_questions(path):
+    hunt = json.loads(path.read_text(encoding="utf-8"))["questions"]
+    return [{"set": "hunt", "category": "trap" if q["category"] == "trap" else "natural", "query": q["query"],
+             "gold": q["gold"], "evidence": (q["goldSnippets"] or [""])[0]} for q in hunt]
+
+
+def upload_sets(doc):
+    """An upload's generated case study (12 questions) and failure hunt, both saved by case_study.py."""
+    study = json.loads((UPLOADS / f"{doc}.study.json").read_text(encoding="utf-8"))["queries"]
+    study = [{"set": "study", "category": q["category"], "query": q["query"], "gold": q["gold"],
+              "evidence": (q["goldSnippets"] or [""])[0]} for q in study]
+    return study, hunt_questions(UPLOADS / f"{doc}.hunt.json")
+
+
 def question_sets():
     with open(RESULTS_DIR / "failure_hunt.csv", newline="", encoding="utf-8") as f:
         stress = [{"set": "stress", "category": r["category"], "query": r["query"],
                    "gold": ast.literal_eval(r["gold_chunks"])} for r in csv.DictReader(f)]
-    hunt = json.loads((RESULTS_DIR / "gdpr_hunt.json").read_text(encoding="utf-8"))["questions"]
-    hunt = [{"set": "hunt", "category": "trap" if q["category"] == "trap" else "natural", "query": q["query"],
-             "gold": q["gold"], "evidence": (q["goldSnippets"] or [""])[0]} for q in hunt]
-    return stress, hunt
+    return stress, hunt_questions(RESULTS_DIR / "gdpr_hunt.json")
 
 
 def first_gold(candidates, gold, key):
@@ -56,9 +73,8 @@ def top3(candidates, key):
     return [c["chunk"] for c in sorted(candidates, key=lambda c: c[key])[:TOP_K_FINAL]]
 
 
-def hyde_passages(idx, questions):
+def hyde_passages(idx, questions, path):
     """One local-model passage per question, cached by question so a rerun costs no generation."""
-    path = RESULTS_DIR / "hyde_passages.json"
     cache = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     model = None
     for i, q in enumerate(questions, 1):
@@ -78,13 +94,21 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--answers", type=int, default=0, help="answer up to N changed questions with the local model")
     ap.add_argument("--hyde", action="store_true", help="also evaluate hybrid with a local-model HyDE passage")
+    ap.add_argument("--doc", help="id of an uploaded document (see app/uploads/library.json); default: the GDPR")
     args = ap.parse_args()
     modes = MODES + ("hyde",) if args.hyde else MODES
+    out = lambda name: RESULTS_DIR / (f"{args.doc}_{name}" if args.doc else name)   # noqa: E731
 
-    idx = gdpr_index(Models())
+    if args.doc:
+        title = {d["id"]: d["title"] for d in json.loads((UPLOADS / "library.json").read_text(encoding="utf-8"))}
+        idx = DocIndex(Models(), UPLOADS / f"{args.doc}.pdf", title=title[args.doc],
+                       cache=UPLOADS / f"{args.doc}.emb.npz")
+        stress, hunt = upload_sets(args.doc)
+    else:
+        idx = gdpr_index(Models())
+        stress, hunt = question_sets()
     idx.retrieve_and_rerank("warm-up")
-    stress, hunt = question_sets()
-    hyde = hyde_passages(idx, stress + hunt) if args.hyde else {}
+    hyde = hyde_passages(idx, stress + hunt, out("hyde_passages.json")) if args.hyde else {}
     rows = []
     for q in stress + hunt:
         row = dict(q)
@@ -96,7 +120,7 @@ def main():
                          "top3": top3(cands, "ceRank")}
         rows.append(row)
 
-    groups = {"stress": [r for r in rows if r["set"] == "stress"],
+    groups = {stress[0]["set"]: [r for r in rows if r["set"] == stress[0]["set"]],
               "hunt": [r for r in rows if r["set"] == "hunt"],
               "hunt/natural": [r for r in rows if r["set"] == "hunt" and r["category"] == "natural"],
               "hunt/trap": [r for r in rows if r["set"] == "hunt" and r["category"] == "trap"]}
@@ -122,7 +146,7 @@ def main():
     if args.hyde:
         latency["hyde"] = {"generateMs": round(statistics.mean(h["ms"] for h in hyde.values()))}
 
-    with open(RESULTS_DIR / "hybrid_ranks.csv", "w", newline="", encoding="utf-8") as f:
+    with open(out("hybrid_ranks.csv"), "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["set", "category", "query", "gold"] + [f"{m}_{k}" for m in modes for k in ("stage1", "reranked")]
                    + [f"{m}_top3" for m in modes])
@@ -130,30 +154,33 @@ def main():
             w.writerow([r["set"], r["category"], r["query"], r["gold"]]
                        + [r[m][k] for m in modes for k in ("stage1", "reranked")] + [r[m]["top3"] for m in modes])
 
-    answers = []
+    out("hybrid_eval.json").write_text(json.dumps({"summary": summary, "latency": latency}, indent=2),
+                                       encoding="utf-8")
+    print(json.dumps({"summary": summary, "latency": latency}, indent=2))
+
     if args.answers:
         model = local_status(timeout=3)
         if not model:
             raise SystemExit("The local model is not reachable; start app/start_local_llm.sh in WSL first")
         in3 = lambda r, m: r[m]["reranked"] is not None and r[m]["reranked"] <= TOP_K_FINAL   # noqa: E731
         changed = [r for r in rows if in3(r, "dense") != in3(r, "hybrid")][:args.answers]
-        for i, r in enumerate(changed, 1):
-            print(f"answering {i}/{len(changed)} with {model}: {r['query'][:70]}", flush=True)
-            out = {"set": r["set"], "category": r["category"], "query": r["query"], "gold": r["gold"],
-                   "evidence": r.get("evidence", "")}
-            for mode in MODES:
-                text, used, ms = generate_local(idx.build_prompt(r["query"], r[mode]["top3"]))
-                out.update({f"{mode}_gold_in_top3": in3(r, mode), f"{mode}_answer": text, f"{mode}_ms": ms,
-                            "model": used})
-            answers.append(out)
-        with open(RESULTS_DIR / "hybrid_answers.csv", "w", newline="", encoding="utf-8") as f:
+        answers = []
+        try:
+            for i, r in enumerate(changed, 1):
+                print(f"answering {i}/{len(changed)} with {model}: {r['query'][:70]}", flush=True)
+                ans = {"set": r["set"], "category": r["category"], "query": r["query"], "gold": r["gold"],
+                       "evidence": r.get("evidence", "")}
+                for mode in MODES:
+                    text, used, ms = generate_local(idx.build_prompt(r["query"], r[mode]["top3"]))
+                    ans.update({f"{mode}_gold_in_top3": in3(r, mode), f"{mode}_answer": text, f"{mode}_ms": ms,
+                                "model": used})
+                answers.append(ans)
+        except LocalUnavailable as e:   # keep the answers written so far
+            print(f"stopped after {len(answers)} answers: {e}", flush=True)
+        with open(out("hybrid_answers.csv"), "w", newline="", encoding="utf-8") as f:
             w = csv.DictWriter(f, fieldnames=list(answers[0]) if answers else ["query"])
             w.writeheader()
             w.writerows(answers)
-
-    (RESULTS_DIR / "hybrid_eval.json").write_text(json.dumps(
-        {"summary": summary, "latency": latency, "answered": len(answers)}, indent=2), encoding="utf-8")
-    print(json.dumps({"summary": summary, "latency": latency}, indent=2))
 
 
 if __name__ == "__main__":

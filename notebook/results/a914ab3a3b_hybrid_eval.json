@@ -1,0 +1,164 @@
+{
+  "summary": {
+    "study": {
+      "dense/stage1": {
+        "n": 12,
+        "hit@1": 0.42,
+        "hit@3": 0.75,
+        "hit@10": 0.92,
+        "mrr@10": 0.57
+      },
+      "dense/reranked": {
+        "n": 12,
+        "hit@1": 0.83,
+        "hit@3": 0.83,
+        "hit@10": 0.92,
+        "mrr@10": 0.85
+      },
+      "hybrid/stage1": {
+        "n": 12,
+        "hit@1": 0.67,
+        "hit@3": 0.75,
+        "hit@10": 1.0,
+        "mrr@10": 0.75
+      },
+      "hybrid/reranked": {
+        "n": 12,
+        "hit@1": 0.83,
+        "hit@3": 0.92,
+        "hit@10": 1.0,
+        "mrr@10": 0.88
+      },
+      "hybridVsDense": {
+        "restored": 1,
+        "degraded": 0,
+        "recovered@10": 1,
+        "lost@10": 0
+      }
+    },
+    "hunt": {
+      "dense/stage1": {
+        "n": 124,
+        "hit@1": 0.32,
+        "hit@3": 0.56,
+        "hit@10": 0.77,
+        "mrr@10": 0.46
+      },
+      "dense/reranked": {
+        "n": 124,
+        "hit@1": 0.48,
+        "hit@3": 0.67,
+        "hit@10": 0.77,
+        "mrr@10": 0.58
+      },
+      "hybrid/stage1": {
+        "n": 124,
+        "hit@1": 0.46,
+        "hit@3": 0.7,
+        "hit@10": 0.91,
+        "mrr@10": 0.61
+      },
+      "hybrid/reranked": {
+        "n": 124,
+        "hit@1": 0.5,
+        "hit@3": 0.75,
+        "hit@10": 0.91,
+        "mrr@10": 0.64
+      },
+      "hybridVsDense": {
+        "restored": 12,
+        "degraded": 2,
+        "recovered@10": 19,
+        "lost@10": 2
+      }
+    },
+    "hunt/natural": {
+      "dense/stage1": {
+        "n": 105,
+        "hit@1": 0.33,
+        "hit@3": 0.59,
+        "hit@10": 0.81,
+        "mrr@10": 0.48
+      },
+      "dense/reranked": {
+        "n": 105,
+        "hit@1": 0.51,
+        "hit@3": 0.71,
+        "hit@10": 0.81,
+        "mrr@10": 0.63
+      },
+      "hybrid/stage1": {
+        "n": 105,
+        "hit@1": 0.5,
+        "hit@3": 0.75,
+        "hit@10": 0.93,
+        "mrr@10": 0.65
+      },
+      "hybrid/reranked": {
+        "n": 105,
+        "hit@1": 0.54,
+        "hit@3": 0.79,
+        "hit@10": 0.93,
+        "mrr@10": 0.68
+      },
+      "hybridVsDense": {
+        "restored": 10,
+        "degraded": 2,
+        "recovered@10": 14,
+        "lost@10": 1
+      }
+    },
+    "hunt/trap": {
+      "dense/stage1": {
+        "n": 19,
+        "hit@1": 0.26,
+        "hit@3": 0.37,
+        "hit@10": 0.58,
+        "mrr@10": 0.35
+      },
+      "dense/reranked": {
+        "n": 19,
+        "hit@1": 0.26,
+        "hit@3": 0.42,
+        "hit@10": 0.58,
+        "mrr@10": 0.36
+      },
+      "hybrid/stage1": {
+        "n": 19,
+        "hit@1": 0.26,
+        "hit@3": 0.42,
+        "hit@10": 0.79,
+        "mrr@10": 0.4
+      },
+      "hybrid/reranked": {
+        "n": 19,
+        "hit@1": 0.26,
+        "hit@3": 0.53,
+        "hit@10": 0.79,
+        "mrr@10": 0.42
+      },
+      "hybridVsDense": {
+        "restored": 2,
+        "degraded": 0,
+        "recovered@10": 5,
+        "lost@10": 1
+      }
+    }
+  },
+  "latency": {
+    "dense": {
+      "embedMs": 50.33,
+      "searchMs": 0.32,
+      "fuseMs": 0,
+      "rerankMs": 1767.84,
+      "totalMs": 1818.49
+    },
+    "hybrid": {
+      "embedMs": 55.6,
+      "searchMs": 0.17,
+      "fuseMs": 4.9,
+      "rerankMs": 2686.74,
+      "totalMs": 2747.41
+    }
+  }
+}

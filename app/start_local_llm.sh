@@ -17,6 +17,9 @@
 #   It keeps FIT_MARGIN_MIB free (stock default 1024, a third of this card; 256 here).
 # - CTX 2048 is enough: the RAG prompt is 3 chunks (~1,050 tokens) plus the answer.
 # - KV_TYPE=q8_0 halves the KV cache (288 -> 144 MiB at 2048 tokens).
+# - CACHE_RAM caps llama-server's prompt cache in system RAM. Its default (8192 MiB) is more than WSL gets on
+#   this machine (6.9 GB), so over a long evaluation it grew to 6.5 GB and the OOM killer stopped the server.
+#   RAG prompts rarely repeat, so a small cache loses nothing.
 # - Start the FastAPI backend with RAG_DEVICE=cpu so both encoders stay on the CPU. Sharing the GPU
 #   (RAG_RERANK_DEVICE=cuda) also fits, with only ~110 MiB to spare; see rag_core.py.
 # Thinking: Qwen3.5 thinks before answering by default, which at ~15 tok/s adds tens of seconds per
@@ -29,10 +32,11 @@ MODEL="${MODEL:-$HOME/models/$MODEL_NAME-$QUANT.gguf}"
 GPU_LAYERS="${GPU_LAYERS:-all}"   # all fits only with the backend set up as above
 CTX="${CTX:-2048}"
 KV_TYPE="${KV_TYPE:-q8_0}"
+CACHE_RAM="${CACHE_RAM:-512}"
 if [ "${THINKING:-0}" = "1" ]; then THINK_ARGS=(); else
   THINK_ARGS=(--chat-template-kwargs '{"enable_thinking":false}' --reasoning-budget 0); fi
 
 cd "$LLAMA_DIR"
 exec ./llama-server -m "$MODEL" --host 0.0.0.0 --port 8080 \
   -c "$CTX" -np 1 -ngl "$GPU_LAYERS" --fit-target "${FIT_MARGIN_MIB:-256}" \
-  -ctk "$KV_TYPE" -ctv "$KV_TYPE" --flash-attn on --jinja "${THINK_ARGS[@]}"
+  -ctk "$KV_TYPE" -ctv "$KV_TYPE" --cache-ram "$CACHE_RAM" --flash-attn on --jinja "${THINK_ARGS[@]}"
