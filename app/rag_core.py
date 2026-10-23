@@ -15,7 +15,16 @@ import numpy as np
 import pymupdf
 from dotenv import load_dotenv
 
-from onnx_encoders import CrossEncoder, SentenceTransformer
+# RAG_ENCODERS=torch loads the same models with sentence-transformers (PyTorch, on the GPU when there is one),
+# as the notebook did; used for batch evaluations on a GPU machine such as Kaggle. The app uses ONNX Runtime.
+if os.getenv("RAG_ENCODERS") == "torch":
+    import torch
+    from sentence_transformers import CrossEncoder as _TorchCE, SentenceTransformer as _TorchST
+    _DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+    SentenceTransformer = lambda name: _TorchST(name, device=_DEVICE)   # noqa: E731
+    CrossEncoder = lambda name: _TorchCE(name, device=_DEVICE)   # noqa: E731
+else:
+    from onnx_encoders import CrossEncoder, SentenceTransformer
 
 ROOT = Path(__file__).parent          # app/
 PROJECT = ROOT.parent                  # the repository root
@@ -98,8 +107,8 @@ def chunk_pages(pages):
         window = words[start:start + CHUNK_WORDS]
         if len(window) < 30 and chunks:
             break
-        chunks.append({"id": len(chunks), "start": start, "page": window[0][1], "endPage": window[-1][1],
-                       "text": " ".join(w for w, _ in window)})
+        chunks.append({"id": len(chunks), "start": start, "end": start + len(window), "page": window[0][1],
+                       "endPage": window[-1][1], "text": " ".join(w for w, _ in window)})
     return chunks, words
 
 
@@ -167,7 +176,7 @@ def add_citations(chunks, words):
                          else f"Recitals {nums[0]}–{nums[-1]}")
             continue
         if use_articles:
-            end = c["start"] + CHUNK_WORDS
+            end = c["end"]
             arts = [a for w, a in heads if w <= c["start"]][-1:] + [a for w, a in heads if c["start"] < w < end]
             if arts:
                 c["cite"] = f"Art. {arts[0]}" if len(arts) == 1 else f"Arts. {arts[0]}–{arts[-1]}"
@@ -262,14 +271,24 @@ class DocIndex:
         except (OSError, ValueError, KeyError):
             return None
 
-    def __init__(self, models, path, *, title, subject=None, profile="generic", on_progress=None, cache=None):
-        """cache: optional .npz path for the chunk embeddings, so a restart does not re-embed the document."""
+    def __init__(self, models, path, *, title, subject=None, profile="generic", on_progress=None, cache=None,
+                 chunking="window", headings=False):
+        """cache: optional .npz path for the chunk embeddings, so a restart does not re-embed the document.
+        chunking: "window" (sliding windows, the notebook's) or "structure" (one provision per chunk where the
+        document has recognisable provisions; see structure_chunks.py). headings: with "structure", embed and
+        re-rank each chunk under its provision headings ("Article 30 Records of processing activities")."""
         self.models, self.title, self.profile = models, title, profile
         self.subject = subject or f'the document "{title}"'
         report = on_progress or (lambda stage, done=0, total=0: None)
         report("reading")
         self.pages = load_pages(path, profile)
         self.chunks, words = chunk_pages(self.pages)
+        if chunking == "structure":
+            from structure_chunks import structure_chunks
+            self.chunks = structure_chunks(words) or self.chunks
+        elif chunking != "window":
+            raise ValueError(f"Unknown chunking {chunking!r}")
+        self.words = words
         self.first_article = add_citations(self.chunks, words)
         self.unit = "Article" if any(c["cite"].startswith("Art") for c in self.chunks) else "page"
         self.texts = [c["text"] for c in self.chunks]
@@ -279,6 +298,8 @@ class DocIndex:
         # plain text. The GDPR case study keeps the notebook's exact setup (no headers).
         self.search_texts = self.texts if profile == "gdpr" else [
             (" | ".join(c["refs"]) + "\n" + c["text"]) if c.get("refs") else c["text"] for c in self.chunks]
+        if headings:
+            self.search_texts = [(c["head"] + "\n" + c["text"]) if c.get("head") else c["text"] for c in self.chunks]
         emb = self._load_cache(cache)
         if emb is None:
             parts, batch = [], 16

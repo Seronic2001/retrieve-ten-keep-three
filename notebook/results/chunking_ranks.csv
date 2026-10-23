@@ -1,0 +1,114 @@
+set,query,window/dense stage1,window/dense reranked,window/hybrid stage1,window/hybrid reranked,structure/dense stage1,structure/dense reranked,structure/hybrid stage1,structure/hybrid reranked,structure+heading/dense stage1,structure+heading/dense reranked,structure+heading/hybrid stage1,structure+heading/hybrid reranked
+stress,Does a startup with 10 staff have to maintain records of processing?,7,3,3,5,1,1,4,3,1,1,1,3
+stress,How long can personal data be stored?,1,1,2,1,3,2,2,2,2,2,2,2
+stress,Must every company appoint a data protection officer?,4,1,2,1,2,1,2,1,3,1,2,1
+stress,Can data collected for one purpose be used for scientific research later?,9,2,10,2,,,,,10,6,,
+stress,Does a controller always have to notify the affected individuals about a data breach?,4,2,4,2,5,3,3,3,5,3,3,3
+stress,Can a company refuse a person's request to have their data erased?,3,3,2,3,,,,,,,,
+stress,Is processing someone's religious beliefs or health information prohibited?,10,2,3,2,1,1,1,1,2,1,2,1
+stress,Can the data protection officer be fired for doing their job?,1,1,1,1,3,2,1,2,2,2,1,2
+stress,In which cases does the right to data portability not apply?,3,1,1,1,1,1,1,1,1,3,1,3
+stress,What is the maximum fine for breaching the basic principles of processing?,7,1,4,1,5,1,1,1,5,1,3,1
+stress,At what age can a child give consent for an online service on their own?,1,1,1,1,1,1,1,1,1,1,1,1
+stress,Who pays if a person suffers harm because a company mishandled their data?,1,1,3,2,1,2,3,2,1,1,3,1
+stress,Can the Commission ask the Board to examine a matter that affects more than one Member State?,2,8,1,9,1,1,1,1,1,1,1,1
+hunt,Under what circumstances do GDPR rules not apply to individual people processing data?,,,,,5,2,9,2,,,,
+hunt,When should modifications to Regulation (EC) No 45/2001 occur so that the free movement of personal data is complemented by a unified framework?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What specific EU directive governs personal data processed by competent authorities for law enforcement purposes?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"What factors may Member States consider when establishing precise processing requirements for competent authorities, beyond any general margin of manoeuvre?",,,5,1,,,6,1,,,8,1
+hunt,What indicates that an organization has a genuine presence in the EU regardless of corporate structure?,6,1,5,10,9,1,2,1,,,2,1
+hunt,Under what condition does EU data law apply to non-EU controllers who do not engage in social networking and online activity?,2,6,2,5,,,,,,,,
+hunt,In what non-EU location of a Member State does this Regulation apply by virtue of public international law?,,,9,2,,,7,1,,,6,1
+hunt,"What criteria establish whether tracking individuals on the internet constitutes monitoring, outside the context of processing sensitive data?",1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What requirements must be met when public bodies request data disclosure so that the request does not improperly affect a whole filing system?,2,4,1,3,3,2,1,3,2,2,1,3
+hunt,What formal conditions must public authority disclosure requests satisfy to ensure requests are kept to a strict minimum?,1,3,1,4,5,2,2,3,3,2,1,3
+hunt,How is genetic data defined regarding biological samples under this Regulation?,1,1,1,1,1,1,1,1,1,2,1,2
+hunt,What condition must be met for individuals to consent to specific scientific research areas without giving an unambiguous indication for every future purpose?,2,2,2,2,1,1,1,1,2,2,1,2
+hunt,When is the supervisory authority of a processor's establishment not treated as a supervisory authority concerned?,,,7,1,1,1,1,1,5,1,2,1
+hunt,"When a group of undertakings is involved, under what exception is the controlling entity's headquarters not treated as the group's main establishment, even if a complaint has been lodged elsewhere?",1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What constraint applies to the duration for which information is retained?,4,1,4,1,1,3,1,2,1,2,1,1
+hunt,"How must details about data processing be communicated to individuals, without relying on technical tracking like radio frequency identification tags?",,,,,,,,,,,,
+hunt,What European legislation governs preformulated consent declarations to prevent unfair terms?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"When does a noticeable power disparity invalidate consent, regardless of whether a written declaration was used?",1,1,2,1,5,4,3,4,2,4,3,4
+hunt,Under what condition is personal data processing considered lawful to protect vital interests?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What type of legal entity under private law can perform tasks in the public interest outside the framework of a particular inquiry?,1,1,2,1,3,1,1,1,5,1,1,1
+hunt,On what date did the European Data Protection Supervisor issue an opinion after being consulted under Regulation (EC) No 45/2001?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"Regarding processing outside publicly available electronic communications services, until when do decisions adopted by the Commission under Directive 95/46/EC remain in force?",3,2,2,2,1,1,1,1,1,1,1,1
+hunt,In what situations does the GDPR not apply to personal data processing performed by individuals?,,,,,,,,,,,,
+hunt,"Even when Member States have a margin of manoeuvre, under what conditions does the GDPR apply to non-automated personal data handling?",,,9,2,,,4,6,,,4,4
+hunt,Does the GDPR apply when providing products to individuals in the Union if no fee is charged to them?,5,6,9,4,2,6,5,5,2,4,5,4
+hunt,"Outside of a diplomatic mission or consular post, how is an identifiable natural person defined under the GDPR?",3,2,3,2,3,1,3,1,3,1,4,1
+hunt,What constitutes a personal data breach under the GDPR?,9,2,7,2,,,8,9,,,10,9
+hunt,"Beyond deoxyribonucleic acid (DNA) or ribonucleic acid (RNA) analysis, what examples of biometric data are explicitly mentioned in the GDPR definitions?",2,4,2,4,5,4,3,6,2,7,2,8
+hunt,Does an entity need to have a specific legal form to be categorized as an enterprise under the GDPR?,1,1,1,1,2,1,1,1,1,1,1,1
+hunt,"Even if an entity does not exert a dominant influence, how is a group of undertakings defined under the GDPR?",2,7,2,8,1,3,1,3,1,3,1,3
+hunt,What action must be taken immediately when stored personal information is found to be incorrect?,,,7,3,2,8,1,5,1,6,1,5
+hunt,"Apart from context such as clinical trials, under what conditions is further processing of data for scientific research not considered incompatible with initial purposes?",3,1,2,1,7,1,3,1,6,2,3,2
+hunt,When does the legitimate interests legal basis for data processing not apply to public authorities?,,,3,5,,,9,7,,,4,6
+hunt,"Regardless of whether separate consent to be given is required, for which processing bases may Member States introduce more specific provisions?",2,4,3,5,1,1,1,1,1,1,1,1
+hunt,What language style must be used when requesting consent within a written document that addresses other matters?,4,1,2,1,3,1,2,1,3,1,2,1
+hunt,"Even when data is processed by a not-for-profit body with a political, philosophical, religious or trade union aim, how does a withdrawal of consent affect prior processing?",1,2,2,3,1,2,1,5,1,2,1,4
+hunt,What is the lowest age threshold that Member States may set by law for child consent?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"Even when personal data is published especially on the internet, what action must a controller take regarding parental authorization for a child?",7,2,4,2,2,4,2,5,2,3,2,2
+hunt,Under what condition may special categories of personal data be processed for health care system management purposes?,,,6,7,2,1,2,4,2,2,2,4
+hunt,"When processing is not conducted by central national health authorities, what must Union or Member State law contain to protect public health against serious cross-border threats?",2,2,2,2,3,2,3,2,4,2,3,2
+hunt,Under what circumstances is a data controller NOT required to collect or hold extra details solely to identify an individual for GDPR compliance?,2,1,2,1,2,1,1,1,1,1,1,1
+hunt,"When an unidentifiable data subject requests rights outside of a restriction of processing, under what condition do Articles 15 to 20 still apply?",4,4,1,4,3,2,1,2,3,2,1,2
+hunt,Which entity is granted the power to adopt delegated acts regarding standardized icons under Article 12?,2,4,2,5,1,1,1,1,1,1,1,1
+hunt,"What format requirement must standardized icons meet when presented electronically, even if personal data are obtained from another source?",2,3,2,4,3,7,3,9,3,3,2,6
+hunt,At what specific time must the controller provide the data subject with additional information to ensure fair and transparent processing under Article 13?,6,4,4,4,10,1,4,1,8,1,2,1
+hunt,"What information regarding storage duration must be provided at the time personal data are collected, regardless of whether the data came from publicly accessible sources?",7,4,6,7,,,7,3,,,6,2
+hunt,What info about where individual details were gathered must be supplied if they were not collected directly from the person?,,,,,,,,,,,,
+hunt,"What must be disclosed regarding legitimate interests when processing relies on point (f) of Article 6(1), even if information is not provided at the time when personal data are obtained?",,,9,2,,,7,2,4,1,2,1
+hunt,What action must a controller take to protect an individual's interests when providing required information proves impossible or requires disproportionate effort?,2,1,1,1,3,1,1,1,2,1,1,1
+hunt,"Under Article 14(5), what exemption applies to the information obligation when data secrecy is governed by statutory rules, regardless of the age of the data?",1,1,1,2,1,2,1,2,1,1,1,1
+hunt,"According to Article 15(4), what limit is placed on the data subject's right to obtain a duplicate of their personal data?",1,1,1,1,2,4,1,4,1,2,1,2
+hunt,"How may an individual complete unfinished personal details under Article 16, even if the processing involves trade secrets or intellectual property?",2,1,5,1,1,1,5,1,1,1,2,1
+hunt,"Under Article 17(3), what exception allows personal data to be processed despite an erasure request when legal disputes arise?",4,2,2,2,2,2,2,2,2,1,2,1
+hunt,"What exception to the right to erasure applies when processing is required to exercise a specific fundamental right, rather than making the information publicly available?",5,5,6,6,3,6,10,6,1,1,3,1
+hunt,To what type of processing does the right to data portability NOT apply?,5,1,2,1,1,2,1,2,1,2,1,2
+hunt,"What right does a data subject have when exercising data portability directly between entities, without requiring controllers to adopt systems that are technically compatible?",4,2,2,2,1,1,1,1,1,2,1,2
+hunt,How may a data subject exercise their right to object in the context of using information society services?,3,1,2,1,1,1,1,1,1,1,1,1
+hunt,"What right does an individual have regarding decisions based exclusively on automated processing, such as those that might occur during e-recruiting practices, when they produce legal effects?",2,2,2,2,2,2,2,2,2,2,2,2
+hunt,Article 23 allows restrictions on data subject rights to safeguard which specific professional ethics function?,,,6,3,,,4,9,1,1,1,1
+hunt,To what extent may Union or Member State law restrict the rights in Articles 12 to 22 during emergency situations such as natural or manmade disasters?,1,1,1,1,5,1,1,1,2,1,1,1
+hunt,What must a data protection officer provide advice on when requested under Article 39?,4,1,1,1,1,1,1,1,2,1,1,1
+hunt,"Regardless of an organization's organisational structure and size, who must a data protection officer act as a liaison for on processing issues?",1,3,2,2,4,2,2,2,4,2,2,2
+hunt,What kind of external legal conflict settlement mechanism can codes of conduct address between data controllers and individuals?,,,2,4,2,2,1,3,1,2,1,2
+hunt,"Even if an entity is not bound by an obligation of professional secrecy, who may adhere to approved codes of conduct with general validity despite not being subject to the GDPR?",1,1,1,1,3,1,2,1,2,1,2,1
+hunt,Under what specific procedure set out in Article 93(2) are implementing acts concerning the Union-wide validity of approved codes adopted?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"Aside from relying on contractual or other legally binding instruments, how must the Board make all approved codes of conduct and amendments accessible?",1,1,1,1,1,1,1,1,1,1,1,1
+hunt,To what specific type of processing operations does Article 41 on monitoring of approved codes of conduct not apply?,,,9,3,,,,,5,1,4,1
+hunt,"Without needing reference to Regulation (EC) No 765/2008, what action can a monitoring body take against a controller that infringes an approved code?",5,5,4,6,7,2,2,3,1,1,1,1
+hunt,What is the maximum duration for which a data protection certification can be granted to a controller or processor?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"While accreditation may be issued for a maximum period of five years, for how long is a certification issued to a controller or processor?",2,2,2,2,1,1,1,1,1,1,1,1
+hunt,In what specific case must the criteria for accreditation of certification bodies complement the requirements of Regulation (EC) No 765/2008?,2,2,2,2,1,1,1,1,1,1,1,1
+hunt,"While certification is issued for a maximum period of three years, who remains responsible for compliance with the GDPR during assessment and certification?",3,1,3,1,1,2,1,2,1,2,1,2
+hunt,What type of official legal measures can the European executive enact to set specific criteria for data security seal systems?,,,,,5,8,,,3,9,9,9
+hunt,"Without restricting rules to micro, small and medium-sized enterprises, under what condition may personal data undergoing processing be transferred to an international organisation?",,,9,6,4,2,2,2,3,1,2,1
+hunt,How frequently at minimum must the periodic review mechanism included in an adequacy implementing act take place?,,,4,1,1,1,1,1,4,1,2,1
+hunt,"Even without referencing the Council of Europe Convention of 28 January 1981, what details must an adequacy implementing act specify regarding its scope?",,,2,2,3,3,2,3,2,3,2,3
+hunt,Where must the Commission publish the list of third countries and international organisations for which adequate protection is or is no longer ensured?,4,1,1,1,1,1,1,1,,,6,1
+hunt,"To ensure protection guaranteed by this Regulation is not undermined, under what conditions may a controller transfer data internationally without an adequacy decision or specific supervisory authorisation?",2,8,5,7,1,2,6,3,3,2,,
+hunt,"What fundamental data management concepts, such as limiting storage duration and ensuring data accuracy, must binding corporate rules explicitly incorporate?",1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"Irrespective of rules concerning the access of public authorities to personal data, what details regarding transfers must binding corporate rules specify at minimum?",2,1,1,2,2,1,1,1,1,1,1,1
+hunt,How are supervisory authorities required to share required information with each other under Article 61?,2,1,1,1,,,6,3,6,2,3,2
+hunt,"When exceptional circumstances create an urgent need to act to protect data subjects, even in cases involving employees' personal data in the specific employment context, which procedure applies?",,,6,4,,,3,1,,,4,2
+hunt,How long does a requested supervisory authority have to respond to a request before the requesting authority can issue provisional measures?,1,3,1,2,1,2,1,2,2,1,1,2
+hunt,"Even though supervisory authorities act with complete independence, what action may a requesting authority take if another supervisory authority fails to provide mutual assistance within one month?",2,2,2,2,2,1,2,1,1,1,1,1
+hunt,In what situation is a Member State forbidden from demanding reimbursement from another Member State for damage caused during joint operations?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"While Member States ensure authorities receive human, technical and financial resources, which Member State assumes liability for damage caused by seconded staff operating during a joint operation?",1,1,1,1,3,2,2,2,2,2,2,2
+hunt,What must a national supervisory authority do before adopting standard clauses for data transfer contracts?,,,,,,,,,,,,
+hunt,"Even if an authority provides a complaint submission form which can also be completed electronically, when must it submit a draft decision to the Board regarding corporate rules?",,,8,6,8,4,5,5,7,4,4,5
+hunt,What scope of issues must the Board's binding decision cover when resolving a disagreement over a reasoned objection?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"In addition to submitting a summary of the relevant facts and grounds, under what circumstance regarding authority jurisdiction must the Board issue a binding decision?",1,1,3,1,1,1,1,1,1,1,1,1
+hunt,What is the deadline for a supervisory authority to adopt its final decision after receiving notification of the Board's decision?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"When Board members are split on a matter where a separate decision shall be adopted, how is the decision determined?",1,1,1,1,1,1,1,1,1,1,1,1
+hunt,Who makes up the membership of the European Data Protection Board?,1,2,1,2,1,1,2,1,1,1,2,1
+hunt,"While the Board is assisted by a secretariat provided by the European Data Protection Supervisor, what voting status does the European Commission hold when participating in Board meetings?",1,2,2,2,1,3,1,3,1,3,1,3
+hunt,What guidance must the Board publish regarding procedures for removing public web links or duplicate copies of personal records?,2,2,2,2,2,1,2,1,1,2,1,2
+hunt,"Regardless of shifts in information and communication technologies and commercial practices, what advice must the Board provide to the Commission regarding binding corporate rules?",,,5,1,,,9,1,,,4,1
+hunt,What information must the Commission furnish to the Board when assessing whether a third country offers an adequate level of protection?,2,2,2,2,1,8,1,8,1,7,1,7
+hunt,"Prior to Commission decisions being published in the Official Journal of the European Union, what opinion must the Board provide concerning standardized visual symbols?",10,7,2,9,,,5,9,9,8,2,9
+hunt,What proportion of votes is needed for the Board to adopt its rules of procedure?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"Although specific rules may apply to Union institutions, bodies, offices and agencies, to which bodies must the Board transmit its published annual report?",1,1,1,1,1,1,1,1,4,1,2,1
