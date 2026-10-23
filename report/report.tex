@@ -388,8 +388,8 @@ Added latency & -- & 1.3\,ms & 5.6\,s & -- & 1.3\,ms & 5.6\,s \\
 
 On the hunt, hybrid brought 16 of the 23 questions the bi-encoder missed into the top 10 and lost none; the gold
 reached the LLM for 12 more questions and 3 fewer. To check that this reaches the answers, the 16 questions whose
-top 3 changed were answered by Qwen from both top 3s. All 12 gains became correct answers (dense: 10 ``not in the
-context'', one wrong, one incomplete). Of the 4 losses, one stayed correct, one became an abstention, one partly
+top 3 changed were answered by Qwen from both top 3s. All 12 gains became correct answers (dense: 8 ``not in the
+context'', 3 wrong, among them two claiming that Art.~23 and Art.~41 contain no such rule, and one incomplete). Of the 4 losses, one stayed correct, one became an abstention, one partly
 right, and one wrong: the startup question, where BM25 matches ``records of processing'' in Art.~30(1) and pushes
 the Art.~30(5) exemption (``fewer than 250 persons'') from rank 3 to 5, and the model answers that a 10-person
 startup must keep records. The hand-labelled set was written to defeat keyword overlap, so its small loss is

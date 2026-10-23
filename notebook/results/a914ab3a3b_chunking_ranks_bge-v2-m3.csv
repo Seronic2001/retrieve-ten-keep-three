@@ -1,0 +1,126 @@
+set,query,window/dense stage1,window/dense reranked,window/hybrid stage1,window/hybrid reranked,structure/dense stage1,structure/dense reranked,structure/hybrid stage1,structure/hybrid reranked,structure+heading/dense stage1,structure+heading/dense reranked,structure+heading/hybrid stage1,structure+heading/hybrid reranked
+study,"Who handles staffing moves, career advancement, and time off for lower-ranking magistrates and bench members in a state?",5,1,8,1,3,1,6,1,4,1,7,1
+study,Under what legal title can civil proceedings be initiated against the national administration?,10,2,4,2,,,3,3,,,2,2
+study,"How many members, besides the Chairperson and Vice-Chairperson, comprise the Commission?",,,7,2,5,1,3,2,6,2,2,3
+study,"What is the meaning of ""appropriate High Court"" when an individual is detained under an order made by the Government of India?",1,1,1,1,1,1,1,1,1,1,1,1
+study,Who administers the oath to the President of India if the Chief Justice of India is absent?,3,1,1,2,1,1,1,1,1,1,1,1
+study,When is the Speaker of the House of the People prohibited from presiding over a sitting even if present?,2,1,1,1,1,1,1,1,1,1,1,1
+study,Under what condition is a discussion regarding the conduct of a Supreme Court or High Court judge permitted in Parliament?,3,1,1,1,10,1,4,1,5,1,2,1
+study,What restriction applies to the Comptroller and Auditor-General once they have left their position?,1,1,1,1,1,1,1,1,2,1,1,1
+study,Pre-existing state panchayat laws conflicting with Part IX continue in effect for what maximum duration following the commencement of the Seventy-third Amendment Act?,1,1,1,1,1,1,1,1,1,1,1,1
+study,What four states receive grants on the Consolidated Fund of India in lieu of export duty on jute and jute products?,1,1,1,1,1,1,1,1,1,1,1,1
+study,Which court's authority cannot be excluded by a law establishing administrative tribunals?,3,1,2,1,1,1,1,1,1,1,1,1
+study,What minimum proportion of members of a legislature party must consent in order to validate a party merger under the Tenth Schedule?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,Which groups are explicitly mentioned as grounds for discrimination that the Constitution prohibits in the context of elections?,2,5,3,4,4,2,1,3,4,5,4,5
+hunt,What specific provision allows the Governor to nominate a member of the Anglo-Indian community to a State Legislative Assembly?,10,3,5,3,8,4,5,4,9,3,4,3
+hunt,Under what condition does the reservation of seats for Scheduled Castes and Scheduled Tribes cease to apply?,4,4,3,4,6,3,5,4,7,4,5,4
+hunt,What power does the Parliament have regarding elections to Legislatures?,10,2,2,2,,,3,2,,,2,2
+hunt,"Notwithstanding anything in article 170, the Governor may, if he is of opinion that the Anglo-Indian community needs representation in the Legislative Assembly of the State and is not adequately represented therein, 3[nominate one member of that community to the Assembly].",,,6,4,,,6,4,,,6,4
+hunt,Can a person be refused entry to a school funded by the government solely because of their religious background?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,Is there any exception to the rule that the State cannot discriminate against minority-run schools when providing financial assistance?,1,1,1,1,6,1,2,1,5,1,2,1
+hunt,Under what circumstances is it NOT permissible to deny a student entry to a state-funded school based on their caste?,1,1,1,1,1,1,6,1,2,1,6,1
+hunt,"What specific date did the Forty-fourth Amendment Act, 1978, section 6, come into effect regarding the omission of Article 31?",,,,,,,,,,,,
+hunt,"Do all minorities, regardless of whether they are based on religion or language, have the right to establish and administer educational institutions of their choice?",1,1,1,1,1,1,1,1,1,1,1,1
+hunt,Does the State have the authority to validate certain Acts and Regulations that were previously omitted under Article 31D?,,,,,,,,,,,,
+hunt,What is the name of the head of state to whom the Ministers must remain responsible?,7,4,5,4,3,1,1,1,7,1,5,1
+hunt,Under what condition is a Minister disqualified from being appointed for a specific duration?,1,1,1,1,1,2,1,2,1,2,1,2
+hunt,Is a Minister required to contest an election before their term expires to avoid disqualification?,1,1,1,1,3,2,1,2,3,2,1,2
+hunt,How many consecutive months of absence from office can lead to disqualification?,3,1,1,1,,,2,2,,,6,2
+hunt,Who administers the oaths of office and secrecy to a Minister before they enter upon their office?,3,2,1,2,1,2,1,2,1,2,1,2
+hunt,Which legislative body must the Council of Ministers be collectively responsible to in the context of the Union?,,,8,3,,,9,3,,,10,2
+hunt,Can the President refuse to agree to a bill after it has been passed by Parliament?,3,1,1,1,1,1,1,1,1,1,1,1
+hunt,Under what specific condition is the President prohibited from withholding assent to a bill that has been passed again by the Houses?,2,1,2,1,1,1,1,1,3,1,2,1
+hunt,When is the President not allowed to withhold assent to a bill?,2,1,2,1,1,1,1,1,2,1,2,1
+hunt,What specific phrase does the President use to request reconsideration of a bill in his message?,2,1,2,1,3,1,2,1,3,1,2,1
+hunt,What must the President do when a bill has been passed by the Houses of Parliament?,6,1,1,1,1,1,1,1,1,1,1,1
+hunt,"If a bill is not a Money Bill, what action can the Governor take regarding the bill?",,,,,,,,,,,,
+hunt,How many judges must sit to decide cases involving a substantial question of law regarding the Constitution's interpretation?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What is the minimum number of judges required to sit for cases involving a substantial question of law as to the interpretation of the Constitution?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,Is it possible for a single judge to decide a case involving a substantial question of law as to the interpretation of the Constitution?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What year did the Constitution (Forty-second Amendment) Act amend the rule regarding the number of judges for substantial questions of law?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,How many judges must sit for the purpose of deciding any case involving a substantial question of law as to the interpretation of this Constitution?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,How many judges must sit for the purpose of deciding any case involving a substantial question of law as to the interpretation of this Constitution or for the purpose of hearing any reference under article 143?,1,2,1,2,1,1,1,1,1,1,1,1
+hunt,What is the name of the separate staff unit that the House or each House of the Legislature of a State must have?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,Under what specific condition regarding a Legislative Council does the creation of posts common to both Houses not prevent the clause?,,,5,1,,,3,1,,,3,1
+hunt,When does the Governor NOT have the authority to make rules regulating the recruitment and conditions of service for the secretarial staff?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,Who must the Governor consult with before making rules for the secretarial staff of the Assembly or the Council?,2,1,2,1,3,1,2,1,4,1,1,1
+hunt,Who may regulate the recruitment and conditions of service of persons appointed to the secretarial staff of the House or Houses of the Legislature of the State?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"Until provision is made by the Legislature of the State under clause (2), who may make rules regulating the recruitment and conditions of service of persons appointed to the secretarial staff of the Assembly or the Council?",1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What is the minimum number of years a person must have held a judicial office or been an advocate to qualify for appointment as a Judge of a High Court?,6,1,5,2,2,1,2,1,1,1,1,1
+hunt,Under what specific condition does the office of a Judge of a High Court get vacated by the President's appointment to the Supreme Court?,6,1,1,1,,,4,1,6,1,2,1
+hunt,Is it possible for a person who is not a citizen of India to be qualified for appointment as a Judge of a High Court?,8,2,5,2,2,2,2,2,1,1,2,2
+hunt,How many years must a person have held a judicial office or been an advocate to be qualified for appointment as a Judge of a High Court?,6,1,4,1,2,1,2,1,1,1,1,1
+hunt,"What is the age limit for a Judge of the Supreme Court, and what is the exception regarding the National Judicial Appointments Commission?",3,6,6,6,6,6,8,7,5,4,7,4
+hunt,By what method must a Judge of the Supreme Court be appointed by the President?,,,8,5,,,,,,,,
+hunt,What happens to the President's power to make regulations if the Legislature for Puducherry is dissolved?,2,1,2,1,1,1,1,1,1,1,1,1
+hunt,Under what specific condition may the President make regulations for the Union territory of Puducherry?,2,2,2,2,1,1,1,1,2,1,2,1
+hunt,"When is the President prohibited from making regulations for the peace, progress, and good government of Puducherry?",5,2,2,2,2,2,1,2,2,2,1,2
+hunt,"What is the specific date when the Constitution (Fourteenth Amendment) Act, 1962, came into effect regarding this section?",,,5,1,,,3,1,,,2,1
+hunt,What force and effect do regulations made by the President have when promulgated for Puducherry?,,,2,1,4,1,1,1,6,1,1,1
+hunt,What happens to regulations made by the President if the Legislature for Puducherry is dissolved?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What is the maximum number of directors allowed on a co-operative society board?,2,1,2,1,1,1,1,1,2,1,2,1
+hunt,Under what condition can the board fill a casual vacancy by nomination instead of election?,3,1,2,1,3,1,1,1,4,1,2,1
+hunt,When is it NOT required for the board to fill a casual vacancy by nomination?,3,1,2,1,2,1,1,1,3,1,2,1
+hunt,How many seats must be reserved for women on the board of a co-operative society consisting of individual members?,1,1,1,1,2,1,2,1,2,1,2,1
+hunt,What is the term of office for elected members of the board and its office bearers?,3,1,1,1,1,1,1,1,1,1,1,1
+hunt,Which funds do taxes collected by the Union for specific purposes NOT become part of?,3,1,2,1,,,,,,,9,1
+hunt,Under what specific condition does an amount collected as tax under clause (1) fail to join the Consolidated Fund of India?,6,1,2,1,7,1,2,1,8,1,2,1
+hunt,When is an amount collected as tax levied by a State under article 246A NOT included in the Consolidated Fund of the State?,1,1,1,1,10,1,2,1,10,1,2,1
+hunt,What specific subjects may Parliament formulate principles for determining the place of supply?,,,3,1,,,5,1,,,4,1
+hunt,"Where an amount collected as tax levied under clause (1) has been used for payment of the tax levied by a State under article 246A, such amount shall not form part of the Consolidated Fund of India.",1,1,1,1,2,1,2,1,2,1,1,1
+hunt,Which specific duties mentioned in the Union List shall be levied by the Government of India but shall be collected by the States within which such duties are respectively leviable?,2,2,2,2,2,2,2,2,2,2,2,2
+hunt,Can a state legislature give preference to one state over another in trade and commerce?,1,1,1,1,2,1,1,1,2,1,1,1
+hunt,Under what specific condition can Parliament make a law giving preference or discrimination regarding trade and commerce?,1,1,1,1,1,1,1,1,2,1,1,1
+hunt,Is it required for a state legislature to impose taxes on imported goods to ensure they are not discriminated against?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What is the maximum number of items listed in the Seventh Schedule that can relate to trade and commerce entries?,9,6,4,7,,,9,6,,,4,4
+hunt,What power does the Legislature of a State have regarding goods imported from other States?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,Can a state legislature impose a tax on the consumption or sale of electricity?,,,5,6,,,6,8,,,,
+hunt,Can a state legislature pass laws regarding the preparation of electoral rolls?,2,1,1,1,3,1,2,1,2,1,1,1
+hunt,Under what specific condition can an election to a State House of Legislature be called in question?,1,1,1,1,4,1,1,1,2,1,1,1
+hunt,Is the validity of a law made under article 327 or 328 regarding constituency delimitation subject to being called in question in any court?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What is the specific date when the words in section 329A were substituted by the Thirty-ninth Amendment Act?,,,4,1,,,4,1,,,3,1
+hunt,What authority must present an election petition to call in question an election to a State House of Legislature?,1,1,1,1,4,1,2,1,1,1,1,1
+hunt,Can a House of the Legislature of a State act notwithstanding any vacancy in the membership thereof?,,,8,7,,,,,,,,
+hunt,What happens to the English language if the State Legislature does not pass a law changing its status?,7,2,3,2,,,5,1,7,1,4,1
+hunt,Under what condition can the President issue directions regarding the report mentioned in clause (5)?,,,1,1,,,1,1,,,6,1
+hunt,When is the English language NOT required to be used for official purposes within a State?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What specific phrase describes the status of the English language before the Constitution commenced?,3,1,2,2,,,8,1,10,1,5,1
+hunt,Who may issue directions in accordance with the whole or any part of the report?,7,1,1,1,8,1,1,1,9,1,1,1
+hunt,"What language may be used for communication between States if they agree, as mentioned in the similar passage?",1,1,1,1,2,1,1,1,1,1,1,1
+hunt,What happens to existing laws in major ports or aerodromes after a specific date if the President issues a notification?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,When does a law cease to have effect in a major port or aerodrome?,2,1,2,1,1,1,1,1,1,1,1,1
+hunt,What is the minimum number of words in the phrase describing things that do not stop a law from ceasing to have effect?,,,9,3,,,8,5,,,8,4
+hunt,What power does the President have regarding major ports and aerodromes?,2,1,1,1,1,1,1,1,1,1,1,1
+hunt,What is the deadline for laying a special order made by the State Government before both Houses of the State Legislature?,8,1,1,1,7,1,2,1,5,1,2,1
+hunt,Which court has the power of superintendence over the Administrative Tribunal?,2,1,1,1,1,1,1,1,1,1,1,1
+hunt,Can any court other than the Supreme Court exercise jurisdiction in respect of matters subject to the Administrative Tribunal?,3,1,1,1,4,1,2,1,3,1,1,1
+hunt,What specific date marks the cutoff for appointments made to posts under the Government of Hyderabad?,2,1,2,1,3,1,2,1,4,1,2,1
+hunt,Under what condition may the President abolish the Administrative Tribunal?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,"What emoluments, allowances, and privileges are entitled to a person discharging the functions of the Governor?",5,1,2,1,,,9,1,,,10,1
+hunt,Does the entitlement to emoluments and allowances apply to a person acting for whom they do not discharge the functions?,,,3,1,,,7,1,,,6,2
+hunt,Is a person discharging the functions of the Governor entitled to different emoluments than the President?,,,4,1,,,4,1,,,4,1
+hunt,What is the current emoluments amount for a person discharging the functions of the Governor as of the Finance Act 2018?,3,1,1,1,2,1,1,1,2,1,1,1
+hunt,What financial benefits does an individual performing the duties of the Governor receive compared to the President?,2,1,6,1,,,,,,,,
+hunt,"What emoluments, allowances, and privileges are entitled to a person discharging the functions of the Governor or the President?",5,1,2,1,,,5,1,,,5,1
+hunt,Which local authorities are mentioned in the list of State subjects?,,,9,2,,,8,3,,,8,3
+hunt,"What specific condition applies to small, cottage, and rural industry regarding List I entries?",4,1,3,1,2,1,1,1,3,1,1,1
+hunt,Which type of ancient monuments are explicitly excluded from State control in this list?,6,3,3,3,,,7,2,,,3,2
+hunt,What is the entry number for lotteries in the Seventh Schedule?,2,1,1,1,1,1,1,1,,,1,1
+hunt,What institutions are financed and controlled by the State Government according to entry (xvi)?,6,1,1,1,,,6,3,,,6,2
+hunt,"Which institutions are controlled or financed by the State, similar to those mentioned in the similar passage?",,,7,3,,,7,3,,,7,3
+hunt,What specific legislative body must the Governor establish for each autonomous district as soon as possible after the Constitution begins?,8,1,2,1,1,1,1,1,2,1,1,1
+hunt,Under what condition may the Governor direct that an Act of Parliament or State Legislature has effect subject to exceptions or modifications?,,,,,8,1,2,1,1,1,1,1
+hunt,When will an Act of Parliament or the Legislature of the State NOT apply to an area within an autonomous district?,3,2,1,2,2,1,1,1,3,1,2,1
+hunt,"Until a District Council is constituted for an autonomous district, who shall vest the administration of such district?",10,1,5,1,,,4,1,,,9,1
+hunt,Which specific year saw the enactment of the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Third Amendment Act?,1,1,1,1,1,2,1,2,1,2,1,2
+hunt,Did the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Fourth Amendment Act occur in 1973?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,Was the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Sixth Amendment Act passed in 1973?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What is the Act number for the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Fifth Amendment Act of 1972?,1,1,1,1,1,1,1,1,1,1,1,1
+hunt,What is the full title of the amendment listed as item 174?,,,,,,,,,,,,
+hunt,Which Act is referred to as the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Second Amendment Act of 1979?,2,6,2,6,1,3,1,3,1,3,1,3
+hunt,When did the President declare that all clauses of Article 370 would cease to be operative except specific ones?,1,1,1,1,7,1,2,2,2,1,1,2
+hunt,Which specific clause of Article 370 was explicitly retained to remain operative after the August 2019 declaration?,1,1,1,1,3,1,1,2,2,1,1,2
+hunt,Did the President's August 2019 declaration remove the applicability of Article 370 entirely to the State of Jammu and Kashmir?,1,1,1,1,4,2,1,2,2,2,1,2
+hunt,"What is the notification number associated with the Presidential order dated August 6, 2019?",,,2,1,,,4,1,,,4,1
+hunt,On what date did the President declare that Article 370 would cease to be operative except for specific provisions?,1,1,1,1,,,7,2,10,1,3,2
+hunt,"According to the Presidential order, which article of the Constitution of Jammu and Kashmir is cited as having contrary provisions that do not apply?",6,1,4,1,6,3,4,3,6,2,3,2

@@ -1,0 +1,261 @@
+{
+  "chunks": {
+    "window": {
+      "count": 762,
+      "meanWords": 220
+    },
+    "structure": {
+      "count": 918,
+      "meanWords": 155
+    },
+    "structure+heading": {
+      "count": 918,
+      "meanWords": 155
+    }
+  },
+  "questions": {
+    "study": 12,
+    "hunt": 113
+  },
+  "skippedNoSnippet": 11,
+  "study": {
+    "window/dense": {
+      "stage1": {
+        "n": 12,
+        "hit@1": 0.42,
+        "hit@3": 0.75,
+        "hit@10": 0.92,
+        "mrr@10": 0.57
+      },
+      "reranked": {
+        "n": 12,
+        "hit@1": 0.83,
+        "hit@3": 0.92,
+        "hit@10": 0.92,
+        "mrr@10": 0.88
+      },
+      "contextWords": 660
+    },
+    "window/hybrid": {
+      "stage1": {
+        "n": 12,
+        "hit@1": 0.67,
+        "hit@3": 0.75,
+        "hit@10": 1.0,
+        "mrr@10": 0.75
+      },
+      "reranked": {
+        "n": 12,
+        "hit@1": 0.75,
+        "hit@3": 1.0,
+        "hit@10": 1.0,
+        "mrr@10": 0.88
+      },
+      "contextWords": 660
+    },
+    "structure/dense": {
+      "stage1": {
+        "n": 12,
+        "hit@1": 0.67,
+        "hit@3": 0.75,
+        "hit@10": 0.92,
+        "mrr@10": 0.72
+      },
+      "reranked": {
+        "n": 12,
+        "hit@1": 0.92,
+        "hit@3": 0.92,
+        "hit@10": 0.92,
+        "mrr@10": 0.92
+      },
+      "contextWords": 485
+    },
+    "structure/hybrid": {
+      "stage1": {
+        "n": 12,
+        "hit@1": 0.67,
+        "hit@3": 0.83,
+        "hit@10": 1.0,
+        "mrr@10": 0.76
+      },
+      "reranked": {
+        "n": 12,
+        "hit@1": 0.83,
+        "hit@3": 1.0,
+        "hit@10": 1.0,
+        "mrr@10": 0.9
+      },
+      "contextWords": 508
+    },
+    "structure+heading/dense": {
+      "stage1": {
+        "n": 12,
+        "hit@1": 0.58,
+        "hit@3": 0.67,
+        "hit@10": 0.92,
+        "mrr@10": 0.68
+      },
+      "reranked": {
+        "n": 12,
+        "hit@1": 0.83,
+        "hit@3": 0.92,
+        "hit@10": 0.92,
+        "mrr@10": 0.88
+      },
+      "contextWords": 473
+    },
+    "structure+heading/hybrid": {
+      "stage1": {
+        "n": 12,
+        "hit@1": 0.67,
+        "hit@3": 0.92,
+        "hit@10": 1.0,
+        "mrr@10": 0.8
+      },
+      "reranked": {
+        "n": 12,
+        "hit@1": 0.83,
+        "hit@3": 1.0,
+        "hit@10": 1.0,
+        "mrr@10": 0.9
+      },
+      "contextWords": 489
+    },
+    "structure/dense vs window/dense": {
+      "restored": 1,
+      "degraded": 1
+    },
+    "structure+heading/dense vs window/dense": {
+      "restored": 1,
+      "degraded": 1
+    },
+    "structure/hybrid vs window/hybrid": {
+      "restored": 0,
+      "degraded": 0
+    },
+    "structure+heading/hybrid vs window/hybrid": {
+      "restored": 0,
+      "degraded": 0
+    }
+  },
+  "hunt": {
+    "window/dense": {
+      "stage1": {
+        "n": 113,
+        "hit@1": 0.35,
+        "hit@3": 0.6,
+        "hit@10": 0.81,
+        "mrr@10": 0.49
+      },
+      "reranked": {
+        "n": 113,
+        "hit@1": 0.65,
+        "hit@3": 0.75,
+        "hit@10": 0.81,
+        "mrr@10": 0.71
+      },
+      "contextWords": 658
+    },
+    "window/hybrid": {
+      "stage1": {
+        "n": 113,
+        "hit@1": 0.5,
+        "hit@3": 0.76,
+        "hit@10": 0.96,
+        "mrr@10": 0.65
+      },
+      "reranked": {
+        "n": 113,
+        "hit@1": 0.72,
+        "hit@3": 0.87,
+        "hit@10": 0.96,
+        "mrr@10": 0.8
+      },
+      "contextWords": 658
+    },
+    "structure/dense": {
+      "stage1": {
+        "n": 113,
+        "hit@1": 0.36,
+        "hit@3": 0.55,
+        "hit@10": 0.7,
+        "mrr@10": 0.47
+      },
+      "reranked": {
+        "n": 113,
+        "hit@1": 0.58,
+        "hit@3": 0.68,
+        "hit@10": 0.7,
+        "mrr@10": 0.63
+      },
+      "contextWords": 519
+    },
+    "structure/hybrid": {
+      "stage1": {
+        "n": 113,
+        "hit@1": 0.5,
+        "hit@3": 0.7,
+        "hit@10": 0.93,
+        "mrr@10": 0.64
+      },
+      "reranked": {
+        "n": 113,
+        "hit@1": 0.68,
+        "hit@3": 0.87,
+        "hit@10": 0.93,
+        "mrr@10": 0.78
+      },
+      "contextWords": 536
+    },
+    "structure+heading/dense": {
+      "stage1": {
+        "n": 113,
+        "hit@1": 0.35,
+        "hit@3": 0.56,
+        "hit@10": 0.73,
+        "mrr@10": 0.47
+      },
+      "reranked": {
+        "n": 113,
+        "hit@1": 0.61,
+        "hit@3": 0.7,
+        "hit@10": 0.73,
+        "mrr@10": 0.66
+      },
+      "contextWords": 518
+    },
+    "structure+heading/hybrid": {
+      "stage1": {
+        "n": 113,
+        "hit@1": 0.5,
+        "hit@3": 0.71,
+        "hit@10": 0.93,
+        "mrr@10": 0.63
+      },
+      "reranked": {
+        "n": 113,
+        "hit@1": 0.68,
+        "hit@3": 0.88,
+        "hit@10": 0.93,
+        "mrr@10": 0.79
+      },
+      "contextWords": 533
+    },
+    "structure/dense vs window/dense": {
+      "restored": 6,
+      "degraded": 14
+    },
+    "structure+heading/dense vs window/dense": {
+      "restored": 4,
+      "degraded": 10
+    },
+    "structure/hybrid vs window/hybrid": {
+      "restored": 4,
+      "degraded": 4
+    },
+    "structure+heading/hybrid vs window/hybrid": {
+      "restored": 3,
+      "degraded": 2
+    }
+  }
+}

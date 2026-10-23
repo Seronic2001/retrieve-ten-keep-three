@@ -13,7 +13,9 @@ Variants:
 
   ../.venv/Scripts/python.exe eval_chunking.py                  # the GDPR
   ../.venv/Scripts/python.exe eval_chunking.py --doc a914ab3a3b # an upload (its case study and failure hunt)
-Writes notebook/results/chunking_eval.json and chunking_ranks.csv (an upload's start with its id).
+  RAG_ENCODERS=torch python eval_chunking.py --reranker bge-v2-m3   # another re-ranker (see eval_models.py)
+Writes notebook/results/chunking_eval.json and chunking_ranks.csv (an upload's start with its id; another
+re-ranker's end with its name, e.g. chunking_eval_bge-v2-m3.json).
 """
 import argparse
 import ast
@@ -87,10 +89,21 @@ def gold_chunks(idx, spans):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--doc", help="id of an uploaded document; default: the GDPR")
+    ap.add_argument("--reranker", help="a re-ranker from eval_models.RERANKERS instead of the app's (needs torch); "
+                                       "its name is added to the output files")
     args = ap.parse_args()
-    out = lambda name: RESULTS_DIR / (f"{args.doc}_{name}" if args.doc else name)   # noqa: E731
+    suffix = f"_{args.reranker}" if args.reranker else ""
+    out = lambda name: RESULTS_DIR / ((f"{args.doc}_" if args.doc else "") + name.replace(".", f"{suffix}.", 1))  # noqa: E731
 
     models = Models()
+    if args.reranker:
+        import torch
+        from sentence_transformers import CrossEncoder
+
+        from eval_models import RERANKERS
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        kw = {"model_kwargs": {"torch_dtype": torch.float16}} if args.reranker == "bge-v2-m3" and device == "cuda" else {}
+        models.ce = CrossEncoder(RERANKERS[args.reranker], device=device, max_length=512, **kw)
     if args.doc:
         title = {d["id"]: d["title"] for d in json.loads((UPLOADS / "library.json").read_text(encoding="utf-8"))}
         build = lambda **kw: DocIndex(models, UPLOADS / f"{args.doc}.pdf", title=title[args.doc], **kw)   # noqa: E731
