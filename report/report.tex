@@ -393,12 +393,56 @@ context'', one wrong, one incomplete). Of the 4 losses, one stayed correct, one 
 right, and one wrong: the startup question, where BM25 matches ``records of processing'' in Art.~30(1) and pushes
 the Art.~30(5) exemption (``fewer than 250 persons'') from rank 3 to 5, and the model answers that a 10-person
 startup must keep records. The hand-labelled set was written to defeat keyword overlap, so its small loss is
-expected; the hunt is closer to everyday questions.
+expected; the hunt is closer to everyday questions. On a second document, the Constitution of India (124 hunt
+questions), hybrid helps more evenly: re-ranked Hit@3 0.67 to 0.75 and Hit@10 0.77 to 0.91, with 12 questions
+restored and 2 degraded, and its 12-question case study gains one and loses none.
 
 HyDE adds almost nothing over hybrid on the hunt (Hit@3 $+1$ point; 6 restored, 5 degraded) and loses a question on
 the hand-labelled set, for 5.6\,s of generation per query. A 4B model's guess at the law is often wrong in the
 detail that matters: for the startup question it invented the Art.~30 criteria instead of the 250-person
 threshold, so the rewrite pulls toward the general rule. Hybrid is worth keeping; HyDE with a small model is not.
+
+\section{Follow-up: structure-aware chunking}
+
+The 220-word windows cut wherever the count falls, often mid-article. The alternative makes each provision
+(an Article or Recital of the GDPR, a ``21.~Title.---'' article of the Constitution) a unit: small units are
+packed together and long ones split at their numbered paragraphs, both up to the same 220 words, so only the
+boundaries change. A third variant embeds and re-ranks each chunk under its heading (``Article 30 Records of
+processing activities''). Gold chunk ids depend on the chunking, so gold is located in the text instead: each
+question's snippet is found inside its saved gold chunks, and under any chunking a chunk is gold if it holds at
+least half of that span. On the windows this returns the saved labels for 106 of 113 GDPR questions; the other
+7 add the neighbouring window that shares the snippet through the overlap.
+
+\begin{table}[!htbp]
+\centering\small
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+ & & \multicolumn{2}{c}{\textbf{GDPR (100)}} & \multicolumn{2}{c}{\textbf{Constitution (113)}} & \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+\textbf{Chunking} & \textbf{Retrieval} & \textbf{Hit@3} & \textbf{MRR@10} & \textbf{Hit@3} & \textbf{MRR@10} & \textbf{Words to LLM} \\
+\midrule
+Window (current)    & dense  & 0.63 & 0.55 & 0.73 & 0.64 & 660 \\
+Window              & hybrid & 0.72 & 0.61 & \textbf{0.82} & 0.70 & 660 \\
+Structure           & dense  & 0.71 & 0.61 & 0.65 & 0.60 & 490 \\
+Structure           & hybrid & 0.76 & 0.65 & 0.81 & \textbf{0.73} & 490 \\
+Structure + heading & dense  & 0.76 & 0.64 & 0.68 & 0.59 & 495 \\
+Structure + heading & hybrid & \textbf{0.79} & \textbf{0.69} & 0.79 & 0.71 & 500 \\
+\bottomrule
+\end{tabular}
+\caption{Failure-hunt questions after re-ranking. Words to LLM: mean length of the top 3 that reach the model.
+Window + dense reproduces Table~2 (GDPR); its Constitution figures differ from above because 11 questions without
+a locatable snippet are left out.}
+\end{table}
+
+On the GDPR, structure-aware chunks help with either retriever: with dense retrieval, Hit@3 rises 8 points
+(structure) or 13 (structure + heading; 18 questions restored, 5 degraded), and structure + heading + hybrid is the best configuration measured (Hit@3 0.79, MRR 0.69),
+while sending the model a quarter less text, because structure chunks average 151 words against 220. Headings add
+3 to 5 points; the GDPR windows had none. On the Constitution the picture is mixed: with dense retrieval alone
+structure chunks are worse (Hit@3 0.73 to 0.65, Hit@10 0.81 to 0.70), and with hybrid they tie on Hit@3 but rank
+the gold first more often (Hit@1 0.56 to 0.62). Its windows were already searched under their article labels, so
+headings add nothing there. The 13 and 12 hand-labelled questions move by one question either way and are not
+informative here. Structure-aware chunking is worth it for a cleanly structured regulation, not as a blanket
+default.
 
 \section*{Conclusion}
 
@@ -406,7 +450,9 @@ On a legal text where the deciding clause often sits beside a general rule (an e
 prohibition), a cross-encoder re-ranker is worth its 83\,ms: it turned 6 incomplete or wrong answers into correct,
 cited ones. It is not free of failure: wording traps can mislead it, and it cannot recover passages the bi-encoder
 never retrieves. Fusing BM25 into the first stage fixes most of those for 1.3\,ms (hunt Hit@10 0.77 to 0.93, Hit@3
-0.63 to 0.72); rewriting the query with a small local model does not pay for its 5.6\,s.
+0.63 to 0.72); rewriting the query with a small local model does not pay for its 5.6\,s. Cutting chunks at
+article boundaries, with headings, lifts the GDPR further (Hit@3 0.79) on a quarter less context, but did not help
+the Constitution of India, so it suits documents whose structure parses cleanly.
 
 \section*{Code}
 
