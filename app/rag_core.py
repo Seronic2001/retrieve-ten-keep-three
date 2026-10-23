@@ -27,6 +27,11 @@ BI_ENCODER_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 CROSS_ENCODER_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 CHUNK_WORDS, OVERLAP_WORDS = 220, 40
 TOP_K_RETRIEVE, TOP_K_FINAL = 10, 3
+# Hybrid retrieval: dense and BM25 each return their top HYBRID_POOL, Reciprocal Rank Fusion merges the two
+# lists (score = sum of 1 / (RRF_K + rank)), and the fused top TOP_K_RETRIEVE go to the cross-encoder, so
+# re-ranking costs the same as in the dense pipeline. RRF_K = 60 is the constant from Cormack et al. (2009).
+HYBRID_POOL, RRF_K = 20, 60
+BM25_K1, BM25_B = 1.5, 0.75
 # The encoders run on ONNX Runtime on the CPU (see onnx_encoders.py); the notebook used PyTorch, and the
 # scores agree to ~1e-6. Re-ranking 10 candidates takes ~0.8 s on 8 CPU threads.
 DEVICE = RERANK_DEVICE = "cpu"
@@ -171,6 +176,65 @@ def add_citations(chunks, words):
     return enacting
 
 
+TOKEN = re.compile(r"\w+")
+
+
+def tokenize(text):
+    """Lower-cased word and number tokens. Numbers are kept: 'Article 83' and '20 000 000' are what a dense
+    encoder blurs and a keyword match catches."""
+    return TOKEN.findall(text.lower())
+
+
+class BM25:
+    """Okapi BM25 over the chunks, as a sparse term-by-chunk weight matrix so a query is one sum per term."""
+
+    def __init__(self, texts):
+        docs = [tokenize(t) for t in texts]
+        self.vocab = {}
+        rows, cols, tfs = [], [], []
+        for d, toks in enumerate(docs):
+            counts = {}
+            for t in toks:
+                counts[t] = counts.get(t, 0) + 1
+            for t, n in counts.items():
+                rows.append(self.vocab.setdefault(t, len(self.vocab)))
+                cols.append(d)
+                tfs.append(n)
+        rows, cols, tfs = np.array(rows), np.array(cols), np.array(tfs, dtype="float32")
+        lengths = np.array([len(t) for t in docs], dtype="float32")
+        df = np.bincount(rows, minlength=len(self.vocab))
+        idf = np.log(1 + (len(docs) - df + 0.5) / (df + 0.5)).astype("float32")
+        norm = BM25_K1 * (1 - BM25_B + BM25_B * lengths / lengths.mean())
+        weights = idf[rows] * tfs * (BM25_K1 + 1) / (tfs + norm[cols])
+        # One row per term: a query's scores are the sum of its terms' rows.
+        self.weights = [dict() for _ in range(len(self.vocab))]
+        for r, c, w in zip(rows.tolist(), cols.tolist(), weights.tolist()):
+            self.weights[r][c] = w
+        self.n = len(docs)
+
+    def scores(self, query):
+        out = np.zeros(self.n, dtype="float32")
+        for t in tokenize(query):
+            for c, w in self.weights[self.vocab[t]].items() if t in self.vocab else ():
+                out[c] += w
+        return out
+
+    def search(self, query, k):
+        s = self.scores(query)
+        ids = np.argsort(-s, kind="stable")[:k]
+        return ids.tolist(), s[ids].tolist()
+
+
+def rrf(*rankings):
+    """Reciprocal Rank Fusion of ranked id lists; returns ids by fused score, best first, with the scores."""
+    fused = {}
+    for ranking in rankings:
+        for r, cid in enumerate(ranking, start=1):
+            fused[cid] = fused.get(cid, 0.0) + 1 / (RRF_K + r)
+    order = sorted(fused, key=lambda cid: -fused[cid])
+    return order, [fused[cid] for cid in order]
+
+
 class Models:
     """The two encoders, loaded once and shared by every document."""
 
@@ -227,27 +291,46 @@ class DocIndex:
                 np.savez(cache, emb=emb, key=self._cache_key())
         self.index = faiss.IndexFlatIP(emb.shape[1])
         self.index.add(emb)
+        self.bm25 = BM25(self.search_texts)
         report("ready", len(self.texts), len(self.texts))
 
-    def retrieve_and_rerank(self, query):
-        """Stage 1 (bi-encoder top 10) and stage 2 (cross-encoder re-sort), with per-step timings."""
+    def retrieve_and_rerank(self, query, mode="dense"):
+        """Stage 1 (top 10 candidates) and stage 2 (cross-encoder re-sort), with per-step timings.
+        mode="dense": the bi-encoder's top 10, as in the notebook.
+        mode="hybrid": the bi-encoder's and BM25's top 20 fused by RRF, cut to 10. biRank and biScore are then
+        the fused rank and score; denseRank and bm25Rank say where each list put the chunk (None: not in its top 20)."""
+        if mode not in ("dense", "hybrid"):
+            raise ValueError(f"Unknown retrieval mode {mode!r}")
         k = min(TOP_K_RETRIEVE, len(self.texts))
+        pool = min(HYBRID_POOL, len(self.texts)) if mode == "hybrid" else k
         t0 = time.perf_counter()
         q = self.models.bi.encode([query], normalize_embeddings=True, convert_to_numpy=True).astype("float32")
         t1 = time.perf_counter()
-        scores, ids = self.index.search(q, k)
-        t2 = time.perf_counter()
+        scores, ids = self.index.search(q, pool)
         ids, scores = ids[0].tolist(), scores[0].tolist()
-        ce_scores = self.models.ce.predict([(query, self.search_texts[i]) for i in ids], batch_size=len(ids))
+        t2 = time.perf_counter()
+        extra = {}
+        if mode == "hybrid":
+            bm_ids, _ = self.bm25.search(query, pool)
+            dense_rank = {cid: r for r, cid in enumerate(ids, start=1)}
+            bm_rank = {cid: r for r, cid in enumerate(bm_ids, start=1)}
+            ids, scores = rrf(ids, bm_ids)
+            ids, scores = ids[:k], scores[:k]
+            extra = {cid: {"denseRank": dense_rank.get(cid), "bm25Rank": bm_rank.get(cid)} for cid in ids}
         t3 = time.perf_counter()
+        ce_scores = self.models.ce.predict([(query, self.search_texts[i]) for i in ids], batch_size=len(ids))
+        t4 = time.perf_counter()
         ce_rank = {ids[j]: r for r, j in enumerate(np.argsort(-ce_scores), start=1)}
         candidates = [{"chunk": cid, "page": self.chunks[cid]["page"], "cite": self.chunks[cid]["cite"],
                        "biRank": r, "biScore": round(float(s), 4),
                        "ceRank": ce_rank[cid], "ceScore": round(float(ce_scores[r - 1]), 3),
-                       "text": self.texts[cid]}
+                       **extra.get(cid, {}), "text": self.texts[cid]}
                       for r, (cid, s) in enumerate(zip(ids, scores), start=1)]
         ms = lambda a, b: round((b - a) * 1000, 2)   # noqa: E731
-        return candidates, {"embedMs": ms(t0, t1), "searchMs": ms(t1, t2), "rerankMs": ms(t2, t3)}
+        timings = {"embedMs": ms(t0, t1), "searchMs": ms(t1, t2), "rerankMs": ms(t3, t4)}
+        if mode == "hybrid":
+            timings["fuseMs"] = ms(t2, t3)
+        return candidates, timings
 
     def build_prompt(self, question, chunk_ids):
         # Uploaded documents also name each passage's provisions, so answers can cite them; the GDPR

@@ -1,0 +1,266 @@
+set,category,query,gold,evidence,dense_gold_in_top3,dense_answer,dense_ms,model,hybrid_gold_in_top3,hybrid_answer,hybrid_ms
+stress,keyword_trap,Does a startup with 10 staff have to maintain records of processing?,[193],,True,"Based on the provided context, a startup with 10 staff members is **exempt** from the obligation to maintain records of processing activities, provided that the processing does not meet specific risk criteria.
+
+According to **Article 30(5)** (found in Passage 3, chunk 193), the obligations to maintain records ""shall not apply to an enterprise or an organisation employing fewer than 250 persons"" unless one of the following conditions is met:
+1.  The processing is likely to result in a **risk to the rights and freedoms of data subjects**;
+2.  The processing is **not occasional**; or
+3.  The processing includes **special categories of data** (as referred to in Article 9(1)) or personal data relating to **criminal convictions and offences** (as referred to in Article 10).
+
+Since the startup has fewer than 250 employees, it falls under the general derogation for micro, small, and medium-sized enterprises mentioned in **Recital 14** (Passage 2, chunk 8) and **Article 30(5)** (Passage 3, chunk 193). Therefore, it does not have to maintain records unless its specific processing activities involve high risks, are continuous (not occasional), or handle sensitive data (special categories or criminal data).",22988,Qwen3.5-4B-Q4_K_M,False,"Based on the provided context, **yes**, a startup with 10 staff members generally has to maintain records of processing activities, as the obligation applies to ""Each controller"" without an explicit exemption for small numbers of staff in the cited text.
+
+The context explicitly states in **Article 30(1)**:
+> ""Each controller and, where applicable, the controller's representative, shall maintain a record of processing activities under its responsibility.""
+
+The text further elaborates on the content of this record, which must include:
+*   (a) the name and contact details of the controller;
+*   (b) the purposes of the processing;
+*   (c) a description of the categories of data subjects and categories of personal data;
+*   (d) the categories of recipients; and
+*   (e) where applicable, transfers to third countries.
+
+Additionally, **Recital (82)** reinforces this obligation:
+> ""In order to demonstrate compliance with this Regulation, the controller or processor should maintain records of processing activities under its responsibility. Each controller and processor should be obliged to cooperate with the supervisory authority and make those records, on request, available to it...""
+
+The provided context does not mention any specific exemption based on the number of employees (e.g., a threshold of 10 or 250 staff) for the requirement to maintain records. Therefore, under the rules described in the text, the startup (acting as the controller) is obliged to maintain these records.",24340
+hunt,trap,"What factors may Member States consider when establishing precise processing requirements for competent authorities, beyond any general margin of manoeuvre?","[12, 13]","constitutional, organisational and administrative structure of the respective member state",False,"Based on the provided context passages, there is **no information** regarding the specific factors that Member States may consider when establishing precise processing requirements for competent authorities, nor does the text mention a ""general margin of manoeuvre"" in this context.
+
+The provided passages discuss:
+*   The tasks and powers of supervisory authorities (Passage 1).
+*   The structure, independence, and resources of supervisory authorities (Passage 2).
+*   The determination of the competent lead supervisory authority in cross-border cases involving controllers and processors (Passage 3).
+
+None of these sections address the specific criteria or factors for setting processing requirements for competent authorities.",14277,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context, when Member States establish more specific provisions for the processing of personal data by competent authorities (such as those tasked with safeguarding against threats to public security), they may consider the following factors:
+
+*   **Constitutional structure:** The constitutional framework of the respective Member State.
+*   **Organisational structure:** The organisational structure of the respective Member State.
+*   **Administrative structure:** The administrative structure of the respective Member State.
+
+These factors are explicitly mentioned in **Passage 1 (chunk 12, page 4)**, which states that such provisions may determine more precise requirements ""taking into account the constitutional, organisational and administrative structure of the respective Member State.""
+
+Additionally, **Passage 2 (chunk 6, page 2)** notes generally that Member States have a margin of manoeuvre to specify rules, including for the processing of special categories of data, and to determine more precisely the conditions under which processing is lawful, though the specific list of structural factors applies most directly to the context of competent authorities in Passage 1.",19832
+hunt,natural,What indicates that an organization has a genuine presence in the EU regardless of corporate structure?,"[14, 15]",effective and real exercise of activity through stable arrangements,True,"Based on the provided context, an organization has a genuine presence in the EU if it involves the **effective and real exercise of activity through stable arrangements**.
+
+The text explicitly states that the legal form of these arrangements—whether through a **branch** or a **subsidiary with a legal personality**—is **not the determining factor** in establishing this presence.
+
+*Note: While this definition is provided in the context, the specific Article number associated with this definition is not included in the provided text passages.*",12203,Qwen3.5-4B-Q4_K_M,False,"Based on the provided context, an organization has a genuine presence in the EU (specifically defined as a ""main establishment"") if it involves the **effective and real exercise of management activities** determining the main decisions as to the purposes and means of processing through **stable arrangements**.
+
+The text explicitly states that this criterion should not depend on whether the processing is carried out at that location. Furthermore, the mere presence and use of technical means or technologies for processing do not, in themselves, constitute a main establishment.
+
+**Relevant Citation:**
+*   **Passage 3 | chunk 24 | page 6**: ""The main establishment of a controller in the Union should be determined according to objective criteria and should imply the **effective and real exercise of management activities determining the main decisions as to the purposes and means of processing through stable arrangements**. That criterion should not depend on whether the processing of personal data is carried out at that location.""",18378
+hunt,natural,In what non-EU location of a Member State does this Regulation apply by virtue of public international law?,[17],in a member state's diplomatic mission or consular post,False,"Based on the provided context passages, the text does not contain information regarding specific non-EU locations of a Member State where the GDPR applies by virtue of public international law.
+
+The passages discuss the **extraterritorial application** of the Regulation (e.g., transfers to third countries, international organizations, or specified sectors within a third country) and the conditions under which such transfers are allowed (such as adequacy decisions or appropriate safeguards). However, they do not specify particular non-EU locations of Member States or define application based on ""public international law"" in the manner requested.
+
+Passage 1 mentions that the extraterritorial application of laws in third countries ""may be in breach of international law,"" but it does not state that the GDPR applies to non-EU locations of Member States based on such law.
+
+Therefore, the provided context does not contain the answer to this question.",20175,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context, the GDPR applies to a controller not established in the Union in a **Member State's diplomatic mission or consular post** by virtue of public international law.
+
+This is explicitly stated in **Passage 2, Recital 25**, which notes: ""Where Member State law applies by virtue of public international law, this Regulation should also apply to a controller not established in the Union, such as in a Member State's diplomatic mission or consular post.""
+
+While **Passage 1, Article 3(2)** mentions that the Regulation applies to controllers not established in the Union ""in a place where Member State law applies by virtue of public international law,"" **Passage 2** provides the specific examples of such locations.",17075
+hunt,natural,What requirements must be met when public bodies request data disclosure so that the request does not improperly affect a whole filing system?,[20],"always be in writing, reasoned and occasional",False,"Based on the provided context passages, there is **no information** regarding specific requirements that must be met when public bodies request data disclosure to prevent the request from ""improperly affecting a whole filing system.""
+
+The provided text discusses:
+*   **Consent requirements** for processing personal data (Passage 1).
+*   **Rights of access** and the obligation for controllers to verify identity and avoid retaining data solely for potential requests (Passage 2).
+*   **Exceptions to the obligation to provide information** (such as when providing information would involve a disproportionate effort, including for archiving, scientific, or statistical purposes) (Passage 3).
+
+While Passage 1 mentions that ""The processing of personal data by those public authorities should comply with the applicable data-protection rules according to the purposes of the processing,"" it does not specify requirements to avoid affecting a ""whole filing system"" in the context of a request.
+
+Therefore, the answer cannot be derived from the given context.",18418,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context, for a request from a public authority to be considered valid and not lead to the improper interconnection of filing systems, the following requirements must be met:
+
+*   **The request must be in writing.**
+*   **The request must be reasoned.**
+*   **The request must be occasional.**
+*   **The request must not concern the entirety of a filing system.**
+*   **The request must not lead to the interconnection of filing systems.**
+
+These conditions are explicitly stated in **Passage 3 (chunk 20, page 5)**, which notes that public authorities receiving data for official missions (such as tax, customs, or financial investigation units) should not be regarded as recipients if these specific constraints are followed. The text further clarifies that the processing of such data must comply with applicable data-protection rules according to the purposes of the processing.
+
+*(Note: While the text mentions these requirements in the context of Article 29 of the GDPR, the specific article number is not explicitly cited in the provided context passages.)*",19669
+hunt,trap,What formal conditions must public authority disclosure requests satisfy to ensure requests are kept to a strict minimum?,[20],"always be in writing, reasoned and occasional",True,"Based on the provided context, public authority disclosure requests must satisfy the following formal conditions to ensure they are kept to a strict minimum:
+
+*   **Written Form:** The requests must always be in writing.
+*   **Reasoned:** The requests must be reasoned.
+*   **Occasional:** The requests must be occasional.
+*   **Scope Limitation:** The requests must not concern the entirety of a filing system.
+*   **Interconnection Restriction:** The requests must not lead to the interconnection of filing systems.
+
+These conditions are outlined in **Recital 31** of the GDPR context provided, which states: ""The requests for disclosure sent by the public authorities should always be in writing, reasoned and occasional and should not concern the entirety of a filing system or lead to the interconnection of filing systems.""",20398,Qwen3.5-4B-Q4_K_M,False,"Based on the provided context passages, there are **no formal conditions** described for public authority disclosure requests that ensure such requests are ""kept to a strict minimum.""
+
+The context passages address the following points, but none link public authority disclosure requests to a ""strict minimum"" requirement:
+
+*   **Passage 1** discusses the general principle that personal data should be stored for a period limited to a ""strict minimum"" and that processing should only occur if the purpose could not reasonably be fulfilled by other means. However, this is a general principle for data controllers regarding personal data storage and processing, not a specific condition for public authority disclosure requests.
+*   **Passage 2** states that public access to official documents may be considered in the public interest and that personal data in documents held by public authorities can be disclosed if provided for by Union or Member State law. It mentions that such laws should reconcile public access with the right to protection of personal data, but it does not specify formal conditions to keep disclosure requests to a ""strict minimum.""
+*   **Passage 3** outlines the rules for mutual assistance between supervisory authorities (information requests, inspections, etc.), including requirements for the purpose and reasons for the request, but it does not mention ""public authority disclosure requests"" in the context of keeping them to a ""strict minimum.""
+
+Therefore, the provided text does not contain the answer to your specific question regarding formal conditions for public authority disclosure requests to ensure they are kept to a strict minimum.",27946
+hunt,natural,When is the supervisory authority of a processor's establishment not treated as a supervisory authority concerned?,[25],where the draft decision concerns only the controller,False,"Based on the provided context passages, the supervisory authority of a processor's establishment is **not treated as a ""supervisory authority concerned""** (or is excluded from competence) in the following specific scenarios:
+
+1.  **When the processing is carried out by public authorities or private bodies acting on the basis of Article 6(1)(c) or (e):**
+    In these cases, the supervisory authority of the Member State concerned is competent, but **Article 56 does not apply**. This implies the standard lead supervisory authority mechanism described in Article 56 (which defines the roles of lead and concerned authorities) is not triggered.
+    *   *Citation:* Passage 2, chunk 244, page 67: ""carried out by public authorities or private bodies acting on the basis of point (c) or (e) of Article 6(1), the supervisory authority of the Member State concerned shall be competent. In such cases Article 56 does not apply.""
+
+2.  **When supervising courts acting in their judicial capacity:**
+    Supervisory authorities are explicitly **not competent** to supervise processing operations of courts acting in their judicial capacity. Consequently, the standard cooperation and lead authority framework of Article 56 would not apply to these specific judicial processing operations.
+    *   *Citation:* Passage 2, chunk 244, page 67: ""Supervisory authorities shall not be competent to supervise processing operations of courts acting in their judicial capacity.""
+
+3.  **When the processing concerns only a single Member State and involves only data subjects in that single Member State (specifically regarding employee data in the employment context):**
+    While the lead supervisory authority is generally competent for cross-border processing, **each supervisory authority not acting as the lead** is competent to handle local cases where the subject matter concerns only processing in a single Member State involving only data subjects in that state (e.g., employees' personal data in a specific employment context). In such cases, the lead authority decides whether to handle the case, and the non-lead authority acts as the competent authority for that specific local matter rather than being a ""concerned"" authority in a cross-border joint operation.
+    *   *Citation:* Passage 1, chunk 99, page 23: ""Each supervisory authority not acting as the lead supervisory authority should be competent to handle local cases where the controller or processor is established in more than one Member State, but the subject matter of the specific processing concerns only processing carried out in a single Member State and involves only data subjects in that single Member State...""
+
+4.  **When the lead supervisory authority decides not to handle the case:**
+    If a supervisory authority (which may be the lead or a concerned authority in a cross-border scenario) is informed of a matter that relates only to its Member State, it must inform the lead supervisory authority. The lead supervisory authority then has the discretion to decide **whether or not it will handle the case**. If the lead authority decides not to handle it, the original authority retains competence, but the dynamic of ""concerned authority"" in a joint operation is bypassed.
+    *   *Citation:* Passage 2, chunk 244, page 67: ""Within a period of three weeks after being",56938,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context, the supervisory authorities of the Member State or Member States where the processor has one or more establishments are **not** considered supervisory authorities concerned in the following specific scenario:
+
+*   **When the draft decision concerns only the controller.**
+
+This is explicitly stated in **Passage 1 (chunk 25, page 7)**, which notes: ""In any case, the supervisory authorities of the Member State or Member States where the processor has one or more establishments should not be considered to be supervisory authorities concerned where the draft decision concerns only the controller.""
+
+In such cases, the competent lead supervisory authority remains the supervisory authority of the Member State where the **controller** has its main establishment, rather than the processor's establishments.",16658
+hunt,trap,"Even when Member States have a margin of manoeuvre, under what conditions does the GDPR apply to non-automated personal data handling?",[136],form part of a filing system or are intended to form part of a filing system,False,"Based on the provided context passages, the answer to your question is **not available**.
+
+The provided text discusses the margin of manoeuvre for Member States regarding the application of GDPR rules (specifically in **Passage 1**), but it does not contain information regarding the specific conditions under which the GDPR applies to **non-automated personal data handling**. The passages focus on:
+*   Member States' ability to specify rules for sensitive data and legal obligations.
+*   Cooperation between supervisory authorities.
+*   The scope of the Regulation regarding natural persons versus legal persons.
+*   Derogations for small and medium-sized enterprises.
+
+None of the excerpts mention ""non-automated"" processing or the specific conditions required for its applicability under the GDPR.",15770,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context, the GDPR applies to non-automated personal data handling under the following conditions:
+
+*   **The data must form part of a filing system or be intended to form part of a filing system.**
+    According to **Article 2(1)** of the Regulation (found in Passage 2), the Regulation applies to ""the processing other than by automated means of personal data which form part of a filing system or are intended to form part of a filing system.""
+
+*   **The processing must fall within the scope of Union law.**
+    According to **Article 2(2)(a)** of the Regulation (found in Passage 2), the Regulation does *not* apply to processing ""in the course of an activity which falls outside the scope of Union law."" Therefore, for the GDPR to apply to non-automated processing, the activity must be within the scope of Union law.
+
+*   **The processing must not be carried out by Member States for specific public authority activities.**
+    According to **Article 2(2)(b)** and **(d)** of the Regulation (found in Passage 2), the Regulation does not apply to:
+    *   Processing by Member States when carrying out activities within the scope of Chapter 2 of Title V of the TEU.
+    *   Processing by competent authorities for the purposes of the prevention, investigation, detection or prosecution of criminal offences or the execution of criminal penalties, including safeguarding against and preventing threats to public security.
+
+*   **The processing must not be a purely personal or household activity by a natural person.**
+    According to **Article 2(2)(c)** of the Regulation (found in Passage 2), the Regulation does not apply to processing by a natural person in the course of a purely personal or household activity.
+
+**Relevant Citation:**
+*   **Article 2** (Material scope) in Passage 2.",32168
+hunt,natural,What action must be taken immediately when stored personal information is found to be incorrect?,[146],erased or rectified without delay,False,"Based on the provided context, when stored personal information is found to be inaccurate, the controller must take **every reasonable step to ensure that the data are rectified or deleted**.
+
+This requirement is explicitly stated in **Passage 1**, which notes: ""Every reasonable step should be taken to ensure that personal data which are inaccurate are rectified or deleted."" The passage further emphasizes that personal data should be processed in a manner that ensures appropriate security and confidentiality, and that the period for which data are stored should be limited to a strict minimum.",14978,Qwen3.5-4B-Q4_K_M,True,"When stored personal information is found to be incorrect, every reasonable step must be taken to ensure that the data are **erased or rectified without delay**.
+
+This requirement is explicitly stated in **Article 5(1)(d)** of the GDPR, which mandates that personal data must be ""accurate and, where necessary, kept up to date; every reasonable step must be taken to ensure that personal data that are inaccurate, having regard to the purposes for which they are processed, are erased or rectified without delay.""
+
+Additionally, **Recital 29** (found in Passage 1) reinforces this by stating: ""Every reasonable step should be taken to ensure that personal data which are inaccurate are rectified or deleted.""",14758
+hunt,trap,"What format requirement must standardized icons meet when presented electronically, even if personal data are obtained from another source?",[161],where the icons are presented electronically they shall be machine-readable,True,"When standardized icons are presented electronically, they must be **machine-readable**.
+
+This requirement is explicitly stated in **Article 13(7)** of the GDPR (as cited in Passage 3, chunk 161):
+> ""Where the icons are presented electronically they shall be machine-readable.""
+
+This provision applies generally to the information provided pursuant to Articles 13 and 14, which includes scenarios where personal data are obtained from a source other than the data subject themselves (covered under Article 13(1)(e) and the general scope of Article 13 referenced in Passage 1, chunk 47).",14768,Qwen3.5-4B-Q4_K_M,False,"When standardized icons are presented electronically, they must be **machine-readable**.
+
+This requirement is explicitly stated in **Recital 61** of the GDPR (found in Passage 1), which notes: ""Where the icons are presented electronically, they should be machine-readable.""
+
+While the context indicates that information regarding processing (including the use of icons) should be provided to the data subject at the time of collection if obtained directly, or within a reasonable period if obtained from another source (Recital 61 and Article 13), the specific technical format requirement for electronic icons remains the same regardless of the source of the data.",12597
+hunt,trap,"What must be disclosed regarding legitimate interests when processing relies on point (f) of Article 6(1), even if information is not provided at the time when personal data are obtained?",[166],the legitimate interests pursued by the controller or by a third party,False,"Based on the provided context passages, there is **no information** regarding what must be disclosed specifically when processing relies on point (f) of Article 6(1) if information is not provided at the time personal data are obtained.
+
+The provided text contains the following relevant excerpts, but none address the specific scenario of disclosure requirements for point (f) when initial information is missing:
+
+*   **Passage 1** discusses the right to object to processing based on point (e) or (f) of Article 6(1) (specifically regarding profiling and direct marketing) and the controller's obligation to demonstrate compelling legitimate grounds to override the data subject's interests. It also states that the right to object must be explicitly brought to the data subject's attention at the time of the first communication. However, it does not specify what information must be disclosed *if* it was not provided at the time of obtaining the data.
+*   **Passage 2** discusses the concept of ""legitimate interests"" as a legal basis for processing, noting that such interests may exist where there is a relevant and (the text cuts off), but it does not detail disclosure obligations for point (f) in the absence of initial information.
+*   **Passage 3** discusses compatibility of processing purposes and proportionality but does not mention disclosure requirements for legitimate interests under point (f) when initial information is lacking.
+
+Therefore, the provided context does not contain the answer to your question.",25580,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context, when processing is based on point (f) of Article 6(1) (which refers to legitimate interests), the controller must provide the data subject with specific information to ensure fair and transparent processing.
+
+According to **Passage 2, paragraph 2, sub-paragraph (b)**, the controller must disclose:
+**""the legitimate interests pursued by the controller or by a third party.""**
+
+This information is required as part of the additional details necessary to ensure fair and transparent processing, alongside the period of storage and other rights. The context does not specify a different requirement for disclosure timing (i.e., distinguishing between when data is obtained and when it is processed), but rather lists this as part of the information the controller shall provide to the data subject in general to ensure transparency.
+
+**Relevant Article:** Article 13 and Article 14 of the GDPR (implied by the context of providing information to the data subject, though the specific article number is not explicitly cited in the provided text snippets).
+
+**Answer:**
+When processing is based on point (f) of Article 6(1), the controller must disclose **the legitimate interests pursued by the controller or by a third party**. This is required as part of the information necessary to ensure fair and transparent processing.",23288
+hunt,natural,Article 23 allows restrictions on data subject rights to safeguard which specific professional ethics function?,[180],"prevention, investigation, detection and prosecution of breaches of ethics for regulated professions",False,"Based on the provided context passages, **Article 23 does not allow restrictions on data subject rights to safeguard any specific professional ethics function.**
+
+The text of Article 23 (found in Passage 1, chunk 179, page 46) states that Union or Member State law may restrict the scope of data subject rights and obligations ""to safeguard the **public interest**."" It does not mention ""professional ethics"" as a specific function or basis for restriction.
+
+The relevant excerpt from Article 23(1) is:
+> ""Union or Member State law to which the data controller or processor is subject may restrict by way of a legislative measure the scope of the obligations and rights provided for in Articles 12 to 22 and Article 34, as well as Article 5 in so far as its provisions correspond to the rights and obligations provided for in Articles 12 to 22, **to safeguard the public interest**...""
+
+Therefore, the context indicates the restriction is for the **public interest**, not a specific professional ethics function.",20259,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context, **Article 23** allows restrictions on data subject rights to safeguard the **prevention, investigation, detection and prosecution of breaches of ethics for regulated professions**.
+
+This is explicitly stated in **Passage 3**, which lists the conditions under which restrictions may be imposed. Specifically, point **(g)** of the list in that passage refers to:
+> ""(g) the prevention, investigation, detection and prosecution of breaches of ethics for regulated professions;""
+
+The context further clarifies that such restrictions must be necessary and proportionate measures in a democratic society to safeguard this objective, alongside other listed objectives like national security, public security, and the protection of judicial independence.",14708
+hunt,natural,To what specific type of processing operations does Article 41 on monitoring of approved codes of conduct not apply?,"[215, 216]",processing carried out by public authorities and bodies,False,"Based on the provided context passages, **Article 41 does not apply to specific types of processing operations**; rather, it applies to **controllers or processors** who have undertaken to apply an approved code of conduct.
+
+The context clarifies the scope of Article 41 as follows:
+
+*   **Who it applies to:** It applies to ""controllers or processors which undertake to apply"" a code of conduct (Passage 1, chunk 211).
+*   **What it mandates:** It requires these controllers or processors to make ""binding and enforceable commitments... to apply those appropriate safeguards"" (Passage 1, chunk 211).
+*   **The Monitoring Body:** The monitoring is carried out by a body accredited by the competent supervisory authority, not by the processing operations themselves (Passage 3, chunk 214).
+
+The provided text **does not contain information** specifying any particular *type of processing operation* (e.g., health data, financial data, or cross-border transfers) to which Article 41 does not apply.
+
+*   **Passage 1** states that codes of conduct can be adhered to by controllers/processors ""not subject to this Regulation pursuant to Article 3"" to provide safeguards for transfers to third countries, implying Article 41 *does* apply to them in this specific context.
+*   **Passage 2** lists matters the Board examines regarding codes of conduct (e.g., compliance with the Regulation), but does not exclude specific processing types from Article 41's application.
+*   **Passage 3** defines the accreditation criteria for monitoring bodies but does not list exclusions based on processing operations.
+
+**Conclusion:**
+The provided context **does not specify** any type of processing operation to which Article 41 does not apply. Article 41 applies to **controllers or processors** (including those not subject to the Regulation under Article 3) who have undertaken to apply an approved code of conduct.",32727,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context passages, **Article 41** (specifically paragraph 4, cited in Passage 1) does not apply to **processing carried out by public authorities and bodies**.
+
+While Article 41 establishes mechanisms for the mandatory monitoring of compliance with codes of conduct by controllers or processors that undertake to apply them, the text explicitly notes an exception regarding public sector entities.
+
+**Relevant Citation:**
+*   **Passage 3 | chunk 216 | page 58** (Note: Although the header says ""Article 42 Certification,"" the text fragment beginning with ""to processing carried out by public authorities and bodies"" appears to be the continuation of the exception clause found in **Article 41(4)** of the GDPR, which states: ""This Article shall not apply to processing carried out by public authorities and bodies."")
+
+**Answer:**
+Article 41 on the monitoring of approved codes of conduct does not apply to **processing carried out by public authorities and bodies**.",18585
+hunt,natural,How frequently at minimum must the periodic review mechanism included in an adequacy implementing act take place?,[225],at least every four years,False,"Based on the provided context passages, the specific minimum frequency (e.g., ""every X months"") for the periodic review mechanism is **not explicitly stated**.
+
+Passage 1 (chunk 84) mentions that in adequacy decisions, the Commission should provide for a ""periodic review mechanism"" and that this review should be conducted ""within a reasonable time"" after evaluating the functioning of the decision. However, it does not define what constitutes a specific minimum interval (such as annually or every three months).
+
+Therefore, using **only** the provided context, the exact minimum frequency cannot be determined.",14111,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context, the periodic review mechanism included in an adequacy implementing act must take place **at least every four years**.
+
+This requirement is explicitly stated in **Passage 1, paragraph 3**, which notes:
+> ""The implementing act shall provide for a mechanism for a periodic review, **at least every four years**, which shall take into account all relevant developments in the third country or international organisation.""
+
+Additionally, **Passage 2** reinforces this by stating that in its adequacy decisions, the Commission should provide for a periodic review mechanism and should evaluate the functioning of these decisions ""within a reasonable time,"" though the specific four-year minimum is defined in the implementing act context found in Passage 1.",16381
+hunt,trap,"Even without referencing the Council of Europe Convention of 28 January 1981, what details must an adequacy implementing act specify regarding its scope?",[225],specify its territorial and sectoral application,False,"Based on the provided context passages, it is **not possible** to answer this question.
+
+The text mentions the Council of Europe Convention of 28 January 1981 in **Passage 1 (chunk 83)** as a factor the Commission should take into account when assessing the level of protection in third countries or international organisations. However, the text does not specify the details an adequacy implementing act must include regarding its scope, nor does it provide such details in the absence of referencing that Convention.
+
+The passages discuss:
+*   The requirement for the Commission to consult the Board when assessing protection levels (Passage 1).
+*   The Commission's duty to monitor decisions on adequacy and provide for periodic review mechanisms (Passage 1).
+*   The Commission's power to repeal, amend, or suspend adequacy decisions if a third country no longer ensures an adequate level of protection, including procedures for urgent acts (Passage 2).
+*   The repeal of Directive 95/46/EC and references to committee procedures (Passage 3).
+
+None of these sections explicitly list the required details for the scope of an adequacy implementing act.",21965,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context, an adequacy implementing act must specify its **territorial and sectoral application**.
+
+Additionally, where applicable, the act must identify the **supervisory authority or authorities** referred to in point (b) of paragraph 2 of the relevant Article.
+
+These requirements are found in **Passage 2, paragraph 3**, which states:
+> ""The implementing act shall specify its territorial and sectoral application and, where applicable, identify the supervisory authority or authorities referred to in point (b) of paragraph 2 of this Article.""
+
+*(Note: While Passage 1 mentions that the Commission should take into account the third country's accession to the Council of Europe Convention of 28 January 1981, Passage 2 does not list this convention as a mandatory specification within the implementing act itself, other than as a factor in the assessment of adequacy.)*",18307
+hunt,trap,"Regardless of shifts in information and communication technologies and commercial practices, what advice must the Board provide to the Commission regarding binding corporate rules?",[274],advise the commission on the format and procedures for the exchange of information,False,"Based on the provided context passages, there is **no information** regarding the Board's advice on binding corporate rules (BCRs) or how such advice must be provided regardless of shifts in information and communication technologies or commercial practices.
+
+The provided text covers:
+*   The tasks of the Board regarding the consistency mechanism (Article 70), including issuing binding decisions (Article 65) and opinions on codes of conduct (Article 40(9)).
+*   The Board's reporting obligations (Article 71).
+*   The Board's decision-making procedures (Article 72).
+*   The Board's chair and deputy chairs (Article 73).
+*   Urgent opinions and binding decisions (Article 75).
+*   The exchange of information (Article 67).
+
+However, none of these passages mention ""binding corporate rules"" specifically, nor do they contain the condition about ""shifts in information and communication technologies and commercial practices.""
+
+Therefore, I cannot answer the question using the provided context.",19864,Qwen3.5-4B-Q4_K_M,True,"Based on the provided context, the Board must advise the Commission on the **format and procedures for the exchange of information between controllers, processors and supervisory authorities for binding corporate rules**.
+
+This obligation is explicitly stated in **Article 70(1)(c)** of the GDPR (found in Passage 1). The text specifies that the Board shall:
+> ""(c) advise the Commission on the format and procedures for the exchange of information between controllers, processors and supervisory authorities for binding corporate rules;""
+
+The context does not mention any specific exceptions or conditions that limit this advice requirement regarding binding corporate rules.",13850

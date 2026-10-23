@@ -1,0 +1,165 @@
+{
+  "summary": {
+    "stress": {
+      "dense/stage1": {
+        "n": 13,
+        "hit@1": 0.23,
+        "hit@3": 0.46,
+        "hit@10": 0.92,
+        "mrr@10": 0.4
+      },
+      "dense/reranked": {
+        "n": 13,
+        "hit@1": 0.46,
+        "hit@3": 0.85,
+        "hit@10": 0.92,
+        "mrr@10": 0.64
+      },
+      "hybrid/stage1": {
+        "n": 13,
+        "hit@1": 0.31,
+        "hit@3": 0.69,
+        "hit@10": 0.92,
+        "mrr@10": 0.51
+      },
+      "hybrid/reranked": {
+        "n": 13,
+        "hit@1": 0.38,
+        "hit@3": 0.77,
+        "hit@10": 0.92,
+        "mrr@10": 0.59
+      },
+      "hybridVsDense": {
+        "restored": 0,
+        "degraded": 1,
+        "recovered@10": 0,
+        "lost@10": 0
+      }
+    },
+    "hunt": {
+      "dense/stage1": {
+        "n": 100,
+        "hit@1": 0.34,
+        "hit@3": 0.6,
+        "hit@10": 0.77,
+        "mrr@10": 0.5
+      },
+      "dense/reranked": {
+        "n": 100,
+        "hit@1": 0.42,
+        "hit@3": 0.63,
+        "hit@10": 0.77,
+        "mrr@10": 0.55
+      },
+      "hybrid/stage1": {
+        "n": 100,
+        "hit@1": 0.35,
+        "hit@3": 0.69,
+        "hit@10": 0.93,
+        "mrr@10": 0.55
+      },
+      "hybrid/reranked": {
+        "n": 100,
+        "hit@1": 0.43,
+        "hit@3": 0.72,
+        "hit@10": 0.93,
+        "mrr@10": 0.61
+      },
+      "hybridVsDense": {
+        "restored": 12,
+        "degraded": 3,
+        "recovered@10": 16,
+        "lost@10": 0
+      }
+    },
+    "hunt/natural": {
+      "dense/stage1": {
+        "n": 50,
+        "hit@1": 0.34,
+        "hit@3": 0.52,
+        "hit@10": 0.72,
+        "mrr@10": 0.47
+      },
+      "dense/reranked": {
+        "n": 50,
+        "hit@1": 0.5,
+        "hit@3": 0.64,
+        "hit@10": 0.72,
+        "mrr@10": 0.58
+      },
+      "hybrid/stage1": {
+        "n": 50,
+        "hit@1": 0.44,
+        "hit@3": 0.66,
+        "hit@10": 0.9,
+        "mrr@10": 0.59
+      },
+      "hybrid/reranked": {
+        "n": 50,
+        "hit@1": 0.52,
+        "hit@3": 0.76,
+        "hit@10": 0.9,
+        "mrr@10": 0.65
+      },
+      "hybridVsDense": {
+        "restored": 7,
+        "degraded": 1,
+        "recovered@10": 9,
+        "lost@10": 0
+      }
+    },
+    "hunt/trap": {
+      "dense/stage1": {
+        "n": 50,
+        "hit@1": 0.34,
+        "hit@3": 0.68,
+        "hit@10": 0.82,
+        "mrr@10": 0.52
+      },
+      "dense/reranked": {
+        "n": 50,
+        "hit@1": 0.34,
+        "hit@3": 0.62,
+        "hit@10": 0.82,
+        "mrr@10": 0.51
+      },
+      "hybrid/stage1": {
+        "n": 50,
+        "hit@1": 0.26,
+        "hit@3": 0.72,
+        "hit@10": 0.96,
+        "mrr@10": 0.52
+      },
+      "hybrid/reranked": {
+        "n": 50,
+        "hit@1": 0.34,
+        "hit@3": 0.68,
+        "hit@10": 0.96,
+        "mrr@10": 0.56
+      },
+      "hybridVsDense": {
+        "restored": 5,
+        "degraded": 2,
+        "recovered@10": 7,
+        "lost@10": 0
+      }
+    }
+  },
+  "latency": {
+    "dense": {
+      "embedMs": 26.71,
+      "searchMs": 0.09,
+      "fuseMs": 0,
+      "rerankMs": 790.55,
+      "totalMs": 817.35
+    },
+    "hybrid": {
+      "embedMs": 32.49,
+      "searchMs": 0.11,
+      "fuseMs": 1.09,
+      "rerankMs": 774.74,
+      "totalMs": 808.43
+    }
+  },
+  "answered": 16
+}

@@ -157,6 +157,8 @@ library = Library()
 class Question(BaseModel):
     query: str = Field(min_length=3, max_length=500)
     doc: str = GDPR_ID
+    # "hybrid" fuses the bi-encoder's and BM25's top 20 before re-ranking (see rag_core.retrieve_and_rerank)
+    retrieval: Literal["dense", "hybrid"] = "dense"
 
 
 class AnswerRequest(BaseModel):
@@ -304,8 +306,9 @@ def build_study(doc_id: str, req: BuildStudy):
 @app.post("/api/retrieve")
 def retrieve(q: Question):
     """Both retrieval stages; fast, no LLM."""
-    candidates, timings = library.index(q.doc).retrieve_and_rerank(q.query.strip())
-    return {"query": q.query.strip(), "doc": q.doc, "candidates": candidates, "timings": timings}
+    candidates, timings = library.index(q.doc).retrieve_and_rerank(q.query.strip(), q.retrieval)
+    return {"query": q.query.strip(), "doc": q.doc, "retrieval": q.retrieval, "candidates": candidates,
+            "timings": timings}
 
 
 def _checked(req):
