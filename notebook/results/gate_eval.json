@@ -1,0 +1,845 @@
+{
+ "reranker": "MiniLM-L6",
+ "judgedRows": 498,
+ "top3Mismatches": 0,
+ "groups": {
+  "gdpr/dense": {
+   "n": 113,
+   "hit@3": 0.65,
+   "top": {
+    "aurocGoldInTop3": 0.631,
+    "aurocCorrectVsWrong": 0.543,
+    "sweep": [
+     {
+      "threshold": -7.629,
+      "answered": 1.0,
+      "hit@3Answered": 0.65,
+      "missesCaught": 0.0,
+      "wrongCaught": 0.0,
+      "correctLost": 0.0,
+      "wrongAnswered": 0.05
+     },
+     {
+      "threshold": -2.312,
+      "answered": 0.89,
+      "hit@3Answered": 0.65,
+      "missesCaught": 0.1,
+      "wrongCaught": 0.0,
+      "correctLost": 0.12,
+      "wrongAnswered": 0.06
+     },
+     {
+      "threshold": -0.402,
+      "answered": 0.8,
+      "hit@3Answered": 0.69,
+      "missesCaught": 0.28,
+      "wrongCaught": 0.0,
+      "correctLost": 0.17,
+      "wrongAnswered": 0.07
+     },
+     {
+      "threshold": 0.91,
+      "answered": 0.7,
+      "hit@3Answered": 0.72,
+      "missesCaught": 0.44,
+      "wrongCaught": 0.17,
+      "correctLost": 0.23,
+      "wrongAnswered": 0.06
+     },
+     {
+      "threshold": 1.598,
+      "answered": 0.6,
+      "hit@3Answered": 0.74,
+      "missesCaught": 0.54,
+      "wrongCaught": 0.33,
+      "correctLost": 0.35,
+      "wrongAnswered": 0.06
+     },
+     {
+      "threshold": 2.146,
+      "answered": 0.5,
+      "hit@3Answered": 0.74,
+      "missesCaught": 0.62,
+      "wrongCaught": 0.5,
+      "correctLost": 0.45,
+      "wrongAnswered": 0.05
+     }
+    ],
+    "operatingPoints": {
+     "correctLost<=0.05": {
+      "threshold": -5.789,
+      "answered": 0.97,
+      "hit@3Answered": 0.65,
+      "missesCaught": 0.0,
+      "wrongCaught": 0.0,
+      "correctLost": 0.04,
+      "wrongAnswered": 0.05
+     },
+     "correctLost<=0.1": {
+      "threshold": -3.035,
+      "answered": 0.93,
+      "hit@3Answered": 0.66,
+      "missesCaught": 0.08,
+      "wrongCaught": 0.0,
+      "correctLost": 0.09,
+      "wrongAnswered": 0.06
+     },
+     "correctLost<=0.2": {
+      "threshold": -0.067,
+      "answered": 0.79,
+      "hit@3Answered": 0.69,
+      "missesCaught": 0.28,
+      "wrongCaught": 0.0,
+      "correctLost": 0.19,
+      "wrongAnswered": 0.07
+     }
+    }
+   },
+   "margin": {
+    "aurocGoldInTop3": 0.587,
+    "aurocCorrectVsWrong": 0.617,
+    "sweep": [
+     {
+      "threshold": 0.007,
+      "answered": 1.0,
+      "hit@3Answered": 0.65,
+      "missesCaught": 0.0,
+      "wrongCaught": 0.0,
+      "correctLost": 0.0,
+      "wrongAnswered": 0.05
+     },
+     {
+      "threshold": 0.143,
+      "answered": 0.89,
+      "hit@3Answered": 0.65,
+      "missesCaught": 0.1,
+      "wrongCaught": 0.17,
+      "correctLost": 0.12,
+      "wrongAnswered": 0.05
+     },
+     {
+      "threshold": 0.426,
+      "answered": 0.8,
+      "hit@3Answered": 0.68,
+      "missesCaught": 0.26,
+      "wrongCaught": 0.33,
+      "correctLost": 0.2,
+      "wrongAnswered": 0.04
+     },
+     {
+      "threshold": 0.537,
+      "answered": 0.7,
+      "hit@3Answered": 0.7,
+      "missesCaught": 0.38,
+      "wrongCaught": 0.67,
+      "correctLost": 0.3,
+      "wrongAnswered": 0.03
+     },
+     {
+      "threshold": 0.828,
+      "answered": 0.6,
+      "hit@3Answered": 0.72,
+      "missesCaught": 0.51,
+      "wrongCaught": 0.67,
+      "correctLost": 0.38,
+      "wrongAnswered": 0.03
+     },
+     {
+      "threshold": 1.276,
+      "answered": 0.5,
+      "hit@3Answered": 0.75,
+      "missesCaught": 0.64,
+      "wrongCaught": 0.67,
+      "correctLost": 0.46,
+      "wrongAnswered": 0.04
+     }
+    ],
+    "operatingPoints": {
+     "correctLost<=0.05": {
+      "threshold": 0.065,
+      "answered": 0.96,
+      "hit@3Answered": 0.66,
+      "missesCaught": 0.05,
+      "wrongCaught": 0.17,
+      "correctLost": 0.04,
+      "wrongAnswered": 0.05
+     },
+     "correctLost<=0.1": {
+      "threshold": 0.131,
+      "answered": 0.91,
+      "hit@3Answered": 0.66,
+      "missesCaught": 0.1,
+      "wrongCaught": 0.17,
+      "correctLost": 0.09,
+      "wrongAnswered": 0.05
+     },
+     "correctLost<=0.2": {
+      "threshold": 0.424,
+      "answered": 0.81,
+      "hit@3Answered": 0.68,
+      "missesCaught": 0.26,
+      "wrongCaught": 0.33,
+      "correctLost": 0.19,
+      "wrongAnswered": 0.04
+     }
+    }
+   }
+  },
+  "gdpr/hybrid": {
+   "n": 113,
+   "hit@3": 0.73,
+   "top": {
+    "aurocGoldInTop3": 0.638,
+    "aurocCorrectVsWrong": 0.796,
+    "sweep": [
+     {
+      "threshold": -7.629,
+      "answered": 1.0,
+      "hit@3Answered": 0.73,
+      "missesCaught": 0.0,
+      "wrongCaught": 0.0,
+      "correctLost": 0.0,
+      "wrongAnswered": 0.05
+     },
+     {
+      "threshold": -1.789,
+      "answered": 0.89,
+      "hit@3Answered": 0.76,
+      "missesCaught": 0.23,
+      "wrongCaught": 0.33,
+      "correctLost": 0.07,
+      "wrongAnswered": 0.04
+     },
+     {
+      "threshold": -0.007,
+      "answered": 0.8,
+      "hit@3Answered": 0.77,
+      "missesCaught": 0.32,
+      "wrongCaught": 0.5,
+      "correctLost": 0.13,
+      "wrongAnswered": 0.03
+     },
+     {
+      "threshold": 1.302,
+      "answered": 0.7,
+      "hit@3Answered": 0.78,
+      "missesCaught": 0.45,
+      "wrongCaught": 0.67,
+      "correctLost": 0.2,
+      "wrongAnswered": 0.03
+     },
+     {
+      "threshold": 1.924,
+      "answered": 0.6,
+      "hit@3Answered": 0.76,
+      "missesCaught": 0.48,
+      "wrongCaught": 0.67,
+      "correctLost": 0.33,
+      "wrongAnswered": 0.03
+     },
+     {
+      "threshold": 2.82,
+      "answered": 0.5,
+      "hit@3Answered": 0.77,
+      "missesCaught": 0.58,
+      "wrongCaught": 0.83,
+      "correctLost": 0.43,
+      "wrongAnswered": 0.02
+     }
+    ],
+    "operatingPoints": {
+     "correctLost<=0.05": {
+      "threshold": -2.775,
+      "answered": 0.94,
+      "hit@3Answered": 0.75,
+      "missesCaught": 0.13,
+      "wrongCaught": 0.17,
+      "correctLost": 0.04,
+      "wrongAnswered": 0.05
+     },
+     "correctLost<=0.1": {
+      "threshold": -0.869,
+      "answered": 0.85,
+      "hit@3Answered": 0.77,
+      "missesCaught": 0.29,
+      "wrongCaught": 0.33,
+      "correctLost": 0.09,
+      "wrongAnswered": 0.04
+     },
+     "correctLost<=0.2": {
+      "threshold": 1.37,
+      "answered": 0.7,
+      "hit@3Answered": 0.78,
+      "missesCaught": 0.45,
+      "wrongCaught": 0.67,
+      "correctLost": 0.2,
+      "wrongAnswered": 0.03
+     }
+    }
+   },
+   "margin": {
+    "aurocGoldInTop3": 0.567,
+    "aurocCorrectVsWrong": 0.596,
+    "sweep": [
+     {
+      "threshold": 0.007,
+      "answered": 1.0,
+      "hit@3Answered": 0.73,
+      "missesCaught": 0.0,
+      "wrongCaught": 0.0,
+      "correctLost": 0.0,
+      "wrongAnswered": 0.05
+     },
+     {
+      "threshold": 0.146,
+      "answered": 0.89,
+      "hit@3Answered": 0.71,
+      "missesCaught": 0.06,
+      "wrongCaught": 0.33,
+      "correctLost": 0.11,
+      "wrongAnswered": 0.04
+     },
+     {
+      "threshold": 0.37,
+      "answered": 0.8,
+      "hit@3Answered": 0.74,
+      "missesCaught": 0.26,
+      "wrongCaught": 0.33,
+      "correctLost": 0.18,
+      "wrongAnswered": 0.04
+     },
+     {
+      "threshold": 0.56,
+      "answered": 0.7,
+      "hit@3Answered": 0.75,
+      "missesCaught": 0.35,
+      "wrongCaught": 0.5,
+      "correctLost": 0.28,
+      "wrongAnswered": 0.04
+     },
+     {
+      "threshold": 0.8,
+      "answered": 0.6,
+      "hit@3Answered": 0.76,
+      "missesCaught": 0.48,
+      "wrongCaught": 0.5,
+      "correctLost": 0.34,
+      "wrongAnswered": 0.04
+     },
+     {
+      "threshold": 0.98,
+      "answered": 0.5,
+      "hit@3Answered": 0.77,
+      "missesCaught": 0.58,
+      "wrongCaught": 0.5,
+      "correctLost": 0.42,
+      "wrongAnswered": 0.05
+     }
+    ],
+    "operatingPoints": {
+     "correctLost<=0.05": {
+      "threshold": 0.065,
+      "answered": 0.96,
+      "hit@3Answered": 0.72,
+      "missesCaught": 0.03,
+      "wrongCaught": 0.17,
+      "correctLost": 0.04,
+      "wrongAnswered": 0.05
+     },
+     "correctLost<=0.1": {
+      "threshold": 0.141,
+      "answered": 0.9,
+      "hit@3Answered": 0.72,
+      "missesCaught": 0.06,
+      "wrongCaught": 0.33,
+      "correctLost": 0.09,
+      "wrongAnswered": 0.04
+     },
+     "correctLost<=0.2": {
+      "threshold": 0.424,
+      "answered": 0.78,
+      "hit@3Answered": 0.75,
+      "missesCaught": 0.29,
+      "wrongCaught": 0.33,
+      "correctLost": 0.2,
+      "wrongAnswered": 0.05
+     }
+    }
+   }
+  },
+  "constitution/dense": {
+   "n": 136,
+   "hit@3": 0.68,
+   "top": {
+    "aurocGoldInTop3": 0.665,
+    "aurocCorrectVsWrong": 0.515,
+    "sweep": [
+     {
+      "threshold": -10.478,
+      "answered": 1.0,
+      "hit@3Answered": 0.68,
+      "missesCaught": 0.0,
+      "wrongCaught": 0.0,
+      "correctLost": 0.0,
+      "wrongAnswered": 0.19
+     },
+     {
+      "threshold": -2.205,
+      "answered": 0.9,
+      "hit@3Answered": 0.72,
+      "missesCaught": 0.21,
+      "wrongCaught": 0.08,
+      "correctLost": 0.08,
+      "wrongAnswered": 0.2
+     },
+     {
+      "threshold": 0.776,
+      "answered": 0.8,
+      "hit@3Answered": 0.73,
+      "missesCaught": 0.33,
+      "wrongCaught": 0.19,
+      "correctLost": 0.14,
+      "wrongAnswered": 0.19
+     },
+     {
+      "threshold": 2.49,
+      "answered": 0.7,
+      "hit@3Answered": 0.74,
+      "missesCaught": 0.42,
+      "wrongCaught": 0.23,
+      "correctLost": 0.25,
+      "wrongAnswered": 0.21
+     },
+     {
+      "threshold": 3.316,
+      "answered": 0.6,
+      "hit@3Answered": 0.78,
+      "missesCaught": 0.58,
+      "wrongCaught": 0.38,
+      "correctLost": 0.32,
+      "wrongAnswered": 0.2
+     },
+     {
+      "threshold": 4.03,
+      "answered": 0.5,
+      "hit@3Answered": 0.78,
+      "missesCaught": 0.65,
+      "wrongCaught": 0.42,
+      "correctLost": 0.45,
+      "wrongAnswered": 0.22
+     }
+    ],
+    "operatingPoints": {
+     "correctLost<=0.05": {
+      "threshold": -5.403,
+      "answered": 0.96,
+      "hit@3Answered": 0.7,
+      "missesCaught": 0.09,
+      "wrongCaught": 0.0,
+      "correctLost": 0.04,
+      "wrongAnswered": 0.2
+     },
+     "correctLost<=0.1": {
+      "threshold": -1.302,
+      "answered": 0.88,
+      "hit@3Answered": 0.73,
+      "missesCaught": 0.26,
+      "wrongCaught": 0.12,
+      "correctLost": 0.09,
+      "wrongAnswered": 0.19
+     },
+     "correctLost<=0.2": {
+      "threshold": 1.797,
+      "answered": 0.75,
+      "hit@3Answered": 0.73,
+      "missesCaught": 0.35,
+      "wrongCaught": 0.23,
+      "correctLost": 0.19,
+      "wrongAnswered": 0.2
+     }
+    }
+   },
+   "margin": {
+    "aurocGoldInTop3": 0.609,
+    "aurocCorrectVsWrong": 0.443,
+    "sweep": [
+     {
+      "threshold": 0.002,
+      "answered": 1.0,
+      "hit@3Answered": 0.68,
+      "missesCaught": 0.0,
+      "wrongCaught": 0.0,
+      "correctLost": 0.0,
+      "wrongAnswered": 0.19
+     },
+     {
+      "threshold": 0.23,
+      "answered": 0.9,
+      "hit@3Answered": 0.7,
+      "missesCaught": 0.14,
+      "wrongCaught": 0.08,
+      "correctLost": 0.08,
+      "wrongAnswered": 0.2
+     },
+     {
+      "threshold": 0.599,
+      "answered": 0.8,
+      "hit@3Answered": 0.72,
+      "missesCaught": 0.3,
+      "wrongCaught": 0.19,
+      "correctLost": 0.14,
+      "wrongAnswered": 0.19
+     },
+     {
+      "threshold": 0.954,
+      "answered": 0.7,
+      "hit@3Answered": 0.75,
+      "missesCaught": 0.44,
+      "wrongCaught": 0.31,
+      "correctLost": 0.25,
+      "wrongAnswered": 0.19
+     },
+     {
+      "threshold": 1.445,
+      "answered": 0.6,
+      "hit@3Answered": 0.76,
+      "missesCaught": 0.53,
+      "wrongCaught": 0.35,
+      "correctLost": 0.38,
+      "wrongAnswered": 0.21
+     },
+     {
+      "threshold": 1.776,
+      "answered": 0.5,
+      "hit@3Answered": 0.78,
+      "missesCaught": 0.65,
+      "wrongCaught": 0.38,
+      "correctLost": 0.48,
+      "wrongAnswered": 0.24
+     }
+    ],
+    "operatingPoints": {
+     "correctLost<=0.05": {
+      "threshold": 0.171,
+      "answered": 0.93,
+      "hit@3Answered": 0.7,
+      "missesCaught": 0.12,
+      "wrongCaught": 0.0,
+      "correctLost": 0.04,
+      "wrongAnswered": 0.2
+     },
+     "correctLost<=0.1": {
+      "threshold": 0.353,
+      "answered": 0.86,
+      "hit@3Answered": 0.72,
+      "missesCaught": 0.23,
+      "wrongCaught": 0.19,
+      "correctLost": 0.09,
+      "wrongAnswered": 0.18
+     },
+     "correctLost<=0.2": {
+      "threshold": 0.777,
+      "answered": 0.74,
+      "hit@3Answered": 0.73,
+      "missesCaught": 0.37,
+      "wrongCaught": 0.27,
+      "correctLost": 0.19,
+      "wrongAnswered": 0.19
+     }
+    }
+   }
+  },
+  "constitution/hybrid": {
+   "n": 136,
+   "hit@3": 0.76,
+   "top": {
+    "aurocGoldInTop3": 0.603,
+    "aurocCorrectVsWrong": 0.495,
+    "sweep": [
+     {
+      "threshold": -10.478,
+      "answered": 1.0,
+      "hit@3Answered": 0.76,
+      "missesCaught": 0.0,
+      "wrongCaught": 0.0,
+      "correctLost": 0.0,
+      "wrongAnswered": 0.16
+     },
+     {
+      "threshold": -1.05,
+      "answered": 0.9,
+      "hit@3Answered": 0.79,
+      "missesCaught": 0.19,
+      "wrongCaught": 0.14,
+      "correctLost": 0.08,
+      "wrongAnswered": 0.16
+     },
+     {
+      "threshold": 1.797,
+      "answered": 0.8,
+      "hit@3Answered": 0.79,
+      "missesCaught": 0.28,
+      "wrongCaught": 0.23,
+      "correctLost": 0.16,
+      "wrongAnswered": 0.16
+     },
+     {
+      "threshold": 2.901,
+      "answered": 0.7,
+      "hit@3Answered": 0.82,
+      "missesCaught": 0.47,
+      "wrongCaught": 0.27,
+      "correctLost": 0.26,
+      "wrongAnswered": 0.17
+     },
+     {
+      "threshold": 3.847,
+      "answered": 0.6,
+      "hit@3Answered": 0.79,
+      "missesCaught": 0.47,
+      "wrongCaught": 0.32,
+      "correctLost": 0.37,
+      "wrongAnswered": 0.18
+     },
+     {
+      "threshold": 4.315,
+      "answered": 0.5,
+      "hit@3Answered": 0.78,
+      "missesCaught": 0.53,
+      "wrongCaught": 0.5,
+      "correctLost": 0.48,
+      "wrongAnswered": 0.16
+     }
+    ],
+    "operatingPoints": {
+     "correctLost<=0.05": {
+      "threshold": -2.001,
+      "answered": 0.93,
+      "hit@3Answered": 0.79,
+      "missesCaught": 0.16,
+      "wrongCaught": 0.09,
+      "correctLost": 0.05,
+      "wrongAnswered": 0.16
+     },
+     "correctLost<=0.1": {
+      "threshold": -0.433,
+      "answered": 0.88,
+      "hit@3Answered": 0.78,
+      "missesCaught": 0.19,
+      "wrongCaught": 0.14,
+      "correctLost": 0.09,
+      "wrongAnswered": 0.16
+     },
+     "correctLost<=0.2": {
+      "threshold": 2.462,
+      "answered": 0.76,
+      "hit@3Answered": 0.8,
+      "missesCaught": 0.34,
+      "wrongCaught": 0.23,
+      "correctLost": 0.2,
+      "wrongAnswered": 0.16
+     }
+    }
+   },
+   "margin": {
+    "aurocGoldInTop3": 0.625,
+    "aurocCorrectVsWrong": 0.456,
+    "sweep": [
+     {
+      "threshold": 0.048,
+      "answered": 1.0,
+      "hit@3Answered": 0.76,
+      "missesCaught": 0.0,
+      "wrongCaught": 0.0,
+      "correctLost": 0.0,
+      "wrongAnswered": 0.16
+     },
+     {
+      "threshold": 0.363,
+      "answered": 0.9,
+      "hit@3Answered": 0.79,
+      "missesCaught": 0.19,
+      "wrongCaught": 0.14,
+      "correctLost": 0.07,
+      "wrongAnswered": 0.16
+     },
+     {
+      "threshold": 0.661,
+      "answered": 0.8,
+      "hit@3Answered": 0.81,
+      "missesCaught": 0.34,
+      "wrongCaught": 0.23,
+      "correctLost": 0.15,
+      "wrongAnswered": 0.16
+     },
+     {
+      "threshold": 1.084,
+      "answered": 0.7,
+      "hit@3Answered": 0.82,
+      "missesCaught": 0.47,
+      "wrongCaught": 0.32,
+      "correctLost": 0.27,
+      "wrongAnswered": 0.16
+     },
+     {
+      "threshold": 1.445,
+      "answered": 0.6,
+      "hit@3Answered": 0.83,
+      "missesCaught": 0.56,
+      "wrongCaught": 0.36,
+      "correctLost": 0.36,
+      "wrongAnswered": 0.17
+     },
+     {
+      "threshold": 1.851,
+      "answered": 0.5,
+      "hit@3Answered": 0.85,
+      "missesCaught": 0.69,
+      "wrongCaught": 0.41,
+      "correctLost": 0.45,
+      "wrongAnswered": 0.19
+     }
+    ],
+    "operatingPoints": {
+     "correctLost<=0.05": {
+      "threshold": 0.312,
+      "answered": 0.92,
+      "hit@3Answered": 0.78,
+      "missesCaught": 0.16,
+      "wrongCaught": 0.14,
+      "correctLost": 0.05,
+      "wrongAnswered": 0.15
+     },
+     "correctLost<=0.1": {
+      "threshold": 0.536,
+      "answered": 0.85,
+      "hit@3Answered": 0.81,
+      "missesCaught": 0.31,
+      "wrongCaught": 0.18,
+      "correctLost": 0.09,
+      "wrongAnswered": 0.16
+     },
+     "correctLost<=0.2": {
+      "threshold": 0.777,
+      "answered": 0.76,
+      "hit@3Answered": 0.81,
+      "missesCaught": 0.38,
+      "wrongCaught": 0.23,
+      "correctLost": 0.2,
+      "wrongAnswered": 0.17
+     }
+    }
+   }
+  }
+ },
+ "transferTopScore": {
+  "gdpr->constitution/dense/correctLost<=0.05": {
+   "threshold": -5.789,
+   "answered": 0.96,
+   "hit@3Answered": 0.69,
+   "missesCaught": 0.07,
+   "wrongCaught": 0.0,
+   "correctLost": 0.04,
+   "wrongAnswered": 0.2
+  },
+  "gdpr->constitution/dense/correctLost<=0.1": {
+   "threshold": -3.035,
+   "answered": 0.93,
+   "hit@3Answered": 0.71,
+   "missesCaught": 0.14,
+   "wrongCaught": 0.0,
+   "correctLost": 0.05,
+   "wrongAnswered": 0.21
+  },
+  "gdpr->constitution/dense/correctLost<=0.2": {
+   "threshold": -0.067,
+   "answered": 0.82,
+   "hit@3Answered": 0.72,
+   "missesCaught": 0.28,
+   "wrongCaught": 0.15,
+   "correctLost": 0.13,
+   "wrongAnswered": 0.2
+  },
+  "gdpr->constitution/hybrid/correctLost<=0.05": {
+   "threshold": -2.775,
+   "answered": 0.95,
+   "hit@3Answered": 0.78,
+   "missesCaught": 0.12,
+   "wrongCaught": 0.05,
+   "correctLost": 0.03,
+   "wrongAnswered": 0.16
+  },
+  "gdpr->constitution/hybrid/correctLost<=0.1": {
+   "threshold": -0.869,
+   "answered": 0.9,
+   "hit@3Answered": 0.79,
+   "missesCaught": 0.19,
+   "wrongCaught": 0.14,
+   "correctLost": 0.08,
+   "wrongAnswered": 0.16
+  },
+  "gdpr->constitution/hybrid/correctLost<=0.2": {
+   "threshold": 1.37,
+   "answered": 0.82,
+   "hit@3Answered": 0.78,
+   "missesCaught": 0.25,
+   "wrongCaught": 0.23,
+   "correctLost": 0.15,
+   "wrongAnswered": 0.15
+  },
+  "constitution->gdpr/dense/correctLost<=0.05": {
+   "threshold": -5.403,
+   "answered": 0.94,
+   "hit@3Answered": 0.66,
+   "missesCaught": 0.08,
+   "wrongCaught": 0.0,
+   "correctLost": 0.07,
+   "wrongAnswered": 0.06
+  },
+  "constitution->gdpr/dense/correctLost<=0.1": {
+   "threshold": -1.302,
+   "answered": 0.85,
+   "hit@3Answered": 0.67,
+   "missesCaught": 0.18,
+   "wrongCaught": 0.0,
+   "correctLost": 0.14,
+   "wrongAnswered": 0.06
+  },
+  "constitution->gdpr/dense/correctLost<=0.2": {
+   "threshold": 1.797,
+   "answered": 0.58,
+   "hit@3Answered": 0.73,
+   "missesCaught": 0.54,
+   "wrongCaught": 0.33,
+   "correctLost": 0.38,
+   "wrongAnswered": 0.06
+  },
+  "constitution->gdpr/hybrid/correctLost<=0.05": {
+   "threshold": -2.001,
+   "answered": 0.91,
+   "hit@3Answered": 0.75,
+   "missesCaught": 0.16,
+   "wrongCaught": 0.17,
+   "correctLost": 0.07,
+   "wrongAnswered": 0.05
+  },
+  "constitution->gdpr/hybrid/correctLost<=0.1": {
+   "threshold": -0.433,
+   "answered": 0.82,
+   "hit@3Answered": 0.77,
+   "missesCaught": 0.32,
+   "wrongCaught": 0.5,
+   "correctLost": 0.11,
+   "wrongAnswered": 0.03
+  },
+  "constitution->gdpr/hybrid/correctLost<=0.2": {
+   "threshold": 2.462,
+   "answered": 0.52,
+   "hit@3Answered": 0.76,
+   "missesCaught": 0.55,
+   "wrongCaught": 0.83,
+   "correctLost": 0.42,
+   "wrongAnswered": 0.02
+  }
+ }
+}

@@ -1,0 +1,499 @@
+doc,set,mode,query,goldInTop3,label,top3Mismatch,top,margin
+gdpr,stress,dense,Does a startup with 10 staff have to maintain records of processing?,True,correct,False,-6.222,1.04
+gdpr,stress,hybrid,Does a startup with 10 staff have to maintain records of processing?,False,wrong,False,-4.404,1.818
+gdpr,stress,dense,How long can personal data be stored?,False,correct,False,4.279,0.198
+gdpr,stress,hybrid,How long can personal data be stored?,False,correct,False,4.279,0.198
+gdpr,stress,dense,Must every company appoint a data protection officer?,True,correct,False,1.37,0.019
+gdpr,stress,hybrid,Must every company appoint a data protection officer?,True,correct,False,1.37,0.019
+gdpr,stress,dense,Can data collected for one purpose be used for scientific research later?,True,correct,False,5.999,2.711
+gdpr,stress,hybrid,Can data collected for one purpose be used for scientific research later?,True,correct,False,5.999,2.711
+gdpr,stress,dense,Does a controller always have to notify the affected individuals about a data breach?,True,correct,False,7.344,1.797
+gdpr,stress,hybrid,Does a controller always have to notify the affected individuals about a data breach?,True,correct,False,7.344,1.797
+gdpr,stress,dense,Can a company refuse a person's request to have their data erased?,True,correct,False,1.531,0.007
+gdpr,stress,hybrid,Can a company refuse a person's request to have their data erased?,True,correct,False,1.531,0.007
+gdpr,stress,dense,Is processing someone's religious beliefs or health information prohibited?,True,correct,False,-0.067,0.131
+gdpr,stress,hybrid,Is processing someone's religious beliefs or health information prohibited?,True,correct,False,-0.067,0.131
+gdpr,stress,dense,Can the data protection officer be fired for doing their job?,True,correct,False,1.955,0.802
+gdpr,stress,hybrid,Can the data protection officer be fired for doing their job?,True,correct,False,1.955,0.802
+gdpr,stress,dense,In which cases does the right to data portability not apply?,True,partial,False,4.438,2.348
+gdpr,stress,hybrid,In which cases does the right to data portability not apply?,True,partial,False,4.438,2.348
+gdpr,stress,dense,What is the maximum fine for breaching the basic principles of processing?,True,correct,False,1.505,5.073
+gdpr,stress,hybrid,What is the maximum fine for breaching the basic principles of processing?,True,correct,False,1.505,5.073
+gdpr,stress,dense,At what age can a child give consent for an online service on their own?,True,correct,False,1.615,2.883
+gdpr,stress,hybrid,At what age can a child give consent for an online service on their own?,True,correct,False,1.615,2.883
+gdpr,stress,dense,Who pays if a person suffers harm because a company mishandled their data?,True,partial,False,-2.999,2.115
+gdpr,stress,hybrid,Who pays if a person suffers harm because a company mishandled their data?,True,partial,False,-0.666,3.101
+gdpr,stress,dense,Can the Commission ask the Board to examine a matter that affects more than one Member State?,False,correct,False,-1.095,0.451
+gdpr,stress,hybrid,Can the Commission ask the Board to examine a matter that affects more than one Member State?,False,wrong,False,2.161,0.134
+gdpr,hunt,dense,Under what circumstances do GDPR rules not apply to individual people processing data?,False,abstained,False,-0.826,0.462
+gdpr,hunt,hybrid,Under what circumstances do GDPR rules not apply to individual people processing data?,False,wrong,False,-0.826,0.559
+gdpr,hunt,dense,When should modifications to Regulation (EC) No 45/2001 occur so that the free movement of personal data is complemented by a unified framework?,True,correct,False,4.375,0.963
+gdpr,hunt,hybrid,When should modifications to Regulation (EC) No 45/2001 occur so that the free movement of personal data is complemented by a unified framework?,True,correct,False,4.375,0.963
+gdpr,hunt,dense,What specific EU directive governs personal data processed by competent authorities for law enforcement purposes?,True,correct,False,7.975,1.339
+gdpr,hunt,hybrid,What specific EU directive governs personal data processed by competent authorities for law enforcement purposes?,True,correct,False,7.975,1.339
+gdpr,hunt,dense,"What factors may Member States consider when establishing precise processing requirements for competent authorities, beyond any general margin of manoeuvre?",False,abstained,False,-0.604,0.564
+gdpr,hunt,hybrid,"What factors may Member States consider when establishing precise processing requirements for competent authorities, beyond any general margin of manoeuvre?",True,correct,False,1.6,0.865
+gdpr,hunt,dense,What indicates that an organization has a genuine presence in the EU regardless of corporate structure?,True,correct,False,-3.953,2.759
+gdpr,hunt,hybrid,What indicates that an organization has a genuine presence in the EU regardless of corporate structure?,False,partial,False,-6.712,0.804
+gdpr,hunt,dense,Under what condition does EU data law apply to non-EU controllers who do not engage in social networking and online activity?,False,wrong,False,1.808,2.961
+gdpr,hunt,hybrid,Under what condition does EU data law apply to non-EU controllers who do not engage in social networking and online activity?,False,partial,False,1.808,2.961
+gdpr,hunt,dense,In what non-EU location of a Member State does this Regulation apply by virtue of public international law?,False,abstained,False,1.216,1.973
+gdpr,hunt,hybrid,In what non-EU location of a Member State does this Regulation apply by virtue of public international law?,True,correct,False,1.888,0.252
+gdpr,hunt,dense,"What criteria establish whether tracking individuals on the internet constitutes monitoring, outside the context of processing sensitive data?",True,abstained,False,2.146,2.446
+gdpr,hunt,hybrid,"What criteria establish whether tracking individuals on the internet constitutes monitoring, outside the context of processing sensitive data?",True,correct,False,2.146,4.967
+gdpr,hunt,dense,What requirements must be met when public bodies request data disclosure so that the request does not improperly affect a whole filing system?,False,abstained,False,-1.161,2.751
+gdpr,hunt,hybrid,What requirements must be met when public bodies request data disclosure so that the request does not improperly affect a whole filing system?,True,correct,False,-1.161,5.154
+gdpr,hunt,dense,What formal conditions must public authority disclosure requests satisfy to ensure requests are kept to a strict minimum?,True,correct,False,-3.035,2.016
+gdpr,hunt,hybrid,What formal conditions must public authority disclosure requests satisfy to ensure requests are kept to a strict minimum?,False,abstained,False,-1.791,3.26
+gdpr,hunt,dense,How is genetic data defined regarding biological samples under this Regulation?,True,correct,False,1.99,2.657
+gdpr,hunt,hybrid,How is genetic data defined regarding biological samples under this Regulation?,True,correct,False,1.99,2.657
+gdpr,hunt,dense,What condition must be met for individuals to consent to specific scientific research areas without giving an unambiguous indication for every future purpose?,True,correct,False,3.167,0.429
+gdpr,hunt,hybrid,What condition must be met for individuals to consent to specific scientific research areas without giving an unambiguous indication for every future purpose?,True,correct,False,3.167,0.429
+gdpr,hunt,dense,When is the supervisory authority of a processor's establishment not treated as a supervisory authority concerned?,False,wrong,False,6.025,0.436
+gdpr,hunt,hybrid,When is the supervisory authority of a processor's establishment not treated as a supervisory authority concerned?,True,correct,False,7.213,1.188
+gdpr,hunt,dense,"When a group of undertakings is involved, under what exception is the controlling entity's headquarters not treated as the group's main establishment, even if a complaint has been lodged elsewhere?",True,abstained,False,2.01,4.249
+gdpr,hunt,hybrid,"When a group of undertakings is involved, under what exception is the controlling entity's headquarters not treated as the group's main establishment, even if a complaint has been lodged elsewhere?",True,abstained,False,2.01,4.249
+gdpr,hunt,dense,What constraint applies to the duration for which information is retained?,True,correct,False,-7.629,0.475
+gdpr,hunt,hybrid,What constraint applies to the duration for which information is retained?,True,partial,False,-7.629,0.475
+gdpr,hunt,dense,"How must details about data processing be communicated to individuals, without relying on technical tracking like radio frequency identification tags?",False,abstained,False,0.089,0.527
+gdpr,hunt,hybrid,"How must details about data processing be communicated to individuals, without relying on technical tracking like radio frequency identification tags?",False,abstained,False,0.256,0.167
+gdpr,hunt,dense,What European legislation governs preformulated consent declarations to prevent unfair terms?,True,correct,False,1.491,4.76
+gdpr,hunt,hybrid,What European legislation governs preformulated consent declarations to prevent unfair terms?,True,correct,False,1.491,4.76
+gdpr,hunt,dense,"When does a noticeable power disparity invalidate consent, regardless of whether a written declaration was used?",True,correct,False,-5.587,1.642
+gdpr,hunt,hybrid,"When does a noticeable power disparity invalidate consent, regardless of whether a written declaration was used?",True,correct,False,-5.587,1.642
+gdpr,hunt,dense,Under what condition is personal data processing considered lawful to protect vital interests?,True,partial,False,7.262,2.3
+gdpr,hunt,hybrid,Under what condition is personal data processing considered lawful to protect vital interests?,True,partial,False,7.262,2.3
+gdpr,hunt,dense,What type of legal entity under private law can perform tasks in the public interest outside the framework of a particular inquiry?,True,abstained,False,-0.061,1.987
+gdpr,hunt,hybrid,What type of legal entity under private law can perform tasks in the public interest outside the framework of a particular inquiry?,True,abstained,False,-0.061,0.859
+gdpr,hunt,dense,On what date did the European Data Protection Supervisor issue an opinion after being consulted under Regulation (EC) No 45/2001?,True,correct,False,4.444,0.513
+gdpr,hunt,hybrid,On what date did the European Data Protection Supervisor issue an opinion after being consulted under Regulation (EC) No 45/2001?,True,correct,False,4.444,0.513
+gdpr,hunt,dense,"Regarding processing outside publicly available electronic communications services, until when do decisions adopted by the Commission under Directive 95/46/EC remain in force?",True,correct,False,4.791,0.482
+gdpr,hunt,hybrid,"Regarding processing outside publicly available electronic communications services, until when do decisions adopted by the Commission under Directive 95/46/EC remain in force?",True,correct,False,4.791,0.482
+gdpr,hunt,dense,In what situations does the GDPR not apply to personal data processing performed by individuals?,False,abstained,False,0.543,0.047
+gdpr,hunt,hybrid,In what situations does the GDPR not apply to personal data processing performed by individuals?,False,correct,False,2.054,1.558
+gdpr,hunt,dense,"Even when Member States have a margin of manoeuvre, under what conditions does the GDPR apply to non-automated personal data handling?",False,abstained,False,2.081,6.823
+gdpr,hunt,hybrid,"Even when Member States have a margin of manoeuvre, under what conditions does the GDPR apply to non-automated personal data handling?",True,correct,False,2.081,7.242
+gdpr,hunt,dense,Does the GDPR apply when providing products to individuals in the Union if no fee is charged to them?,False,correct,False,-5.789,0.09
+gdpr,hunt,hybrid,Does the GDPR apply when providing products to individuals in the Union if no fee is charged to them?,False,correct,False,-5.789,0.603
+gdpr,hunt,dense,"Outside of a diplomatic mission or consular post, how is an identifiable natural person defined under the GDPR?",True,correct,False,3.155,7.569
+gdpr,hunt,hybrid,"Outside of a diplomatic mission or consular post, how is an identifiable natural person defined under the GDPR?",True,correct,False,3.155,7.569
+gdpr,hunt,dense,What constitutes a personal data breach under the GDPR?,True,correct,False,1.807,0.105
+gdpr,hunt,hybrid,What constitutes a personal data breach under the GDPR?,True,correct,False,1.807,0.105
+gdpr,hunt,dense,"Beyond deoxyribonucleic acid (DNA) or ribonucleic acid (RNA) analysis, what examples of biometric data are explicitly mentioned in the GDPR definitions?",False,abstained,False,-1.781,7.36
+gdpr,hunt,hybrid,"Beyond deoxyribonucleic acid (DNA) or ribonucleic acid (RNA) analysis, what examples of biometric data are explicitly mentioned in the GDPR definitions?",False,abstained,False,-1.781,7.074
+gdpr,hunt,dense,Does an entity need to have a specific legal form to be categorized as an enterprise under the GDPR?,True,correct,False,-6.716,0.424
+gdpr,hunt,hybrid,Does an entity need to have a specific legal form to be categorized as an enterprise under the GDPR?,True,correct,False,-6.716,0.424
+gdpr,hunt,dense,"Even if an entity does not exert a dominant influence, how is a group of undertakings defined under the GDPR?",False,partial,False,-5.418,0.306
+gdpr,hunt,hybrid,"Even if an entity does not exert a dominant influence, how is a group of undertakings defined under the GDPR?",False,partial,False,-5.418,0.306
+gdpr,hunt,dense,What action must be taken immediately when stored personal information is found to be incorrect?,False,correct,False,0.988,3.182
+gdpr,hunt,hybrid,What action must be taken immediately when stored personal information is found to be incorrect?,True,correct,False,0.988,3.182
+gdpr,hunt,dense,"Apart from context such as clinical trials, under what conditions is further processing of data for scientific research not considered incompatible with initial purposes?",True,partial,False,4.266,0.743
+gdpr,hunt,hybrid,"Apart from context such as clinical trials, under what conditions is further processing of data for scientific research not considered incompatible with initial purposes?",True,partial,False,4.266,0.743
+gdpr,hunt,dense,When does the legitimate interests legal basis for data processing not apply to public authorities?,False,abstained,False,6.636,1.945
+gdpr,hunt,hybrid,When does the legitimate interests legal basis for data processing not apply to public authorities?,False,abstained,False,6.636,1.945
+gdpr,hunt,dense,"Regardless of whether separate consent to be given is required, for which processing bases may Member States introduce more specific provisions?",False,wrong,False,4.179,2.364
+gdpr,hunt,hybrid,"Regardless of whether separate consent to be given is required, for which processing bases may Member States introduce more specific provisions?",False,correct,False,4.179,1.071
+gdpr,hunt,dense,What language style must be used when requesting consent within a written document that addresses other matters?,True,correct,False,-2.775,0.491
+gdpr,hunt,hybrid,What language style must be used when requesting consent within a written document that addresses other matters?,True,correct,False,-2.775,0.491
+gdpr,hunt,dense,"Even when data is processed by a not-for-profit body with a political, philosophical, religious or trade union aim, how does a withdrawal of consent affect prior processing?",True,correct,False,-1.899,0.693
+gdpr,hunt,hybrid,"Even when data is processed by a not-for-profit body with a political, philosophical, religious or trade union aim, how does a withdrawal of consent affect prior processing?",True,partial,False,-1.172,0.727
+gdpr,hunt,dense,What is the lowest age threshold that Member States may set by law for child consent?,True,correct,False,4.899,6.897
+gdpr,hunt,hybrid,What is the lowest age threshold that Member States may set by law for child consent?,True,correct,False,4.899,6.897
+gdpr,hunt,dense,"Even when personal data is published especially on the internet, what action must a controller take regarding parental authorization for a child?",True,correct,False,2.86,2.204
+gdpr,hunt,hybrid,"Even when personal data is published especially on the internet, what action must a controller take regarding parental authorization for a child?",True,correct,False,2.86,2.204
+gdpr,hunt,dense,Under what condition may special categories of personal data be processed for health care system management purposes?,False,partial,False,6.199,0.544
+gdpr,hunt,hybrid,Under what condition may special categories of personal data be processed for health care system management purposes?,False,partial,False,6.199,0.211
+gdpr,hunt,dense,"When processing is not conducted by central national health authorities, what must Union or Member State law contain to protect public health against serious cross-border threats?",True,correct,False,5.581,1.087
+gdpr,hunt,hybrid,"When processing is not conducted by central national health authorities, what must Union or Member State law contain to protect public health against serious cross-border threats?",True,correct,False,5.581,1.087
+gdpr,hunt,dense,Under what circumstances is a data controller NOT required to collect or hold extra details solely to identify an individual for GDPR compliance?,True,correct,False,1.933,1.586
+gdpr,hunt,hybrid,Under what circumstances is a data controller NOT required to collect or hold extra details solely to identify an individual for GDPR compliance?,True,correct,False,1.933,1.586
+gdpr,hunt,dense,"When an unidentifiable data subject requests rights outside of a restriction of processing, under what condition do Articles 15 to 20 still apply?",False,wrong,False,2.82,0.035
+gdpr,hunt,hybrid,"When an unidentifiable data subject requests rights outside of a restriction of processing, under what condition do Articles 15 to 20 still apply?",False,wrong,False,2.82,0.035
+gdpr,hunt,dense,Which entity is granted the power to adopt delegated acts regarding standardized icons under Article 12?,False,correct,False,3.025,2.485
+gdpr,hunt,hybrid,Which entity is granted the power to adopt delegated acts regarding standardized icons under Article 12?,False,correct,False,3.025,2.485
+gdpr,hunt,dense,"What format requirement must standardized icons meet when presented electronically, even if personal data are obtained from another source?",True,correct,False,3.274,3.165
+gdpr,hunt,hybrid,"What format requirement must standardized icons meet when presented electronically, even if personal data are obtained from another source?",False,correct,False,3.274,3.165
+gdpr,hunt,dense,At what specific time must the controller provide the data subject with additional information to ensure fair and transparent processing under Article 13?,False,abstained,False,5.888,0.395
+gdpr,hunt,hybrid,At what specific time must the controller provide the data subject with additional information to ensure fair and transparent processing under Article 13?,False,abstained,False,5.888,0.395
+gdpr,hunt,dense,"What information regarding storage duration must be provided at the time personal data are collected, regardless of whether the data came from publicly accessible sources?",False,abstained,False,2.561,0.752
+gdpr,hunt,hybrid,"What information regarding storage duration must be provided at the time personal data are collected, regardless of whether the data came from publicly accessible sources?",False,abstained,False,2.894,0.333
+gdpr,hunt,dense,What info about where individual details were gathered must be supplied if they were not collected directly from the person?,False,partial,False,0.388,0.225
+gdpr,hunt,hybrid,What info about where individual details were gathered must be supplied if they were not collected directly from the person?,False,partial,False,0.388,0.225
+gdpr,hunt,dense,"What must be disclosed regarding legitimate interests when processing relies on point (f) of Article 6(1), even if information is not provided at the time when personal data are obtained?",False,abstained,False,4.491,1.724
+gdpr,hunt,hybrid,"What must be disclosed regarding legitimate interests when processing relies on point (f) of Article 6(1), even if information is not provided at the time when personal data are obtained?",True,correct,False,4.491,1.273
+gdpr,hunt,dense,What action must a controller take to protect an individual's interests when providing required information proves impossible or requires disproportionate effort?,True,correct,False,4.589,2.132
+gdpr,hunt,hybrid,What action must a controller take to protect an individual's interests when providing required information proves impossible or requires disproportionate effort?,True,correct,False,4.589,2.132
+gdpr,hunt,dense,"Under Article 14(5), what exemption applies to the information obligation when data secrecy is governed by statutory rules, regardless of the age of the data?",True,correct,False,0.937,1.447
+gdpr,hunt,hybrid,"Under Article 14(5), what exemption applies to the information obligation when data secrecy is governed by statutory rules, regardless of the age of the data?",True,abstained,False,1.006,0.069
+gdpr,hunt,dense,"According to Article 15(4), what limit is placed on the data subject's right to obtain a duplicate of their personal data?",True,correct,False,4.135,1.22
+gdpr,hunt,hybrid,"According to Article 15(4), what limit is placed on the data subject's right to obtain a duplicate of their personal data?",True,correct,False,4.135,0.561
+gdpr,hunt,dense,"How may an individual complete unfinished personal details under Article 16, even if the processing involves trade secrets or intellectual property?",True,abstained,False,-0.869,2.816
+gdpr,hunt,hybrid,"How may an individual complete unfinished personal details under Article 16, even if the processing involves trade secrets or intellectual property?",True,correct,False,-0.869,1.259
+gdpr,hunt,dense,"Under Article 17(3), what exception allows personal data to be processed despite an erasure request when legal disputes arise?",True,abstained,False,4.432,0.071
+gdpr,hunt,hybrid,"Under Article 17(3), what exception allows personal data to be processed despite an erasure request when legal disputes arise?",True,abstained,False,4.432,0.071
+gdpr,hunt,dense,"What exception to the right to erasure applies when processing is required to exercise a specific fundamental right, rather than making the information publicly available?",False,abstained,False,3.15,0.922
+gdpr,hunt,hybrid,"What exception to the right to erasure applies when processing is required to exercise a specific fundamental right, rather than making the information publicly available?",False,abstained,False,3.15,0.835
+gdpr,hunt,dense,To what type of processing does the right to data portability NOT apply?,True,partial,False,5.121,1.353
+gdpr,hunt,hybrid,To what type of processing does the right to data portability NOT apply?,True,correct,False,5.121,1.353
+gdpr,hunt,dense,"What right does a data subject have when exercising data portability directly between entities, without requiring controllers to adopt systems that are technically compatible?",True,correct,False,5.616,0.616
+gdpr,hunt,hybrid,"What right does a data subject have when exercising data portability directly between entities, without requiring controllers to adopt systems that are technically compatible?",True,correct,False,5.616,0.616
+gdpr,hunt,dense,How may a data subject exercise their right to object in the context of using information society services?,True,correct,False,8.656,5.031
+gdpr,hunt,hybrid,How may a data subject exercise their right to object in the context of using information society services?,True,correct,False,8.656,5.104
+gdpr,hunt,dense,"What right does an individual have regarding decisions based exclusively on automated processing, such as those that might occur during e-recruiting practices, when they produce legal effects?",True,correct,False,5.198,2.003
+gdpr,hunt,hybrid,"What right does an individual have regarding decisions based exclusively on automated processing, such as those that might occur during e-recruiting practices, when they produce legal effects?",True,correct,False,5.198,2.003
+gdpr,hunt,dense,Article 23 allows restrictions on data subject rights to safeguard which specific professional ethics function?,False,wrong,False,1.287,0.301
+gdpr,hunt,hybrid,Article 23 allows restrictions on data subject rights to safeguard which specific professional ethics function?,True,correct,False,2.808,1.521
+gdpr,hunt,dense,To what extent may Union or Member State law restrict the rights in Articles 12 to 22 during emergency situations such as natural or manmade disasters?,True,correct,False,0.87,2.933
+gdpr,hunt,hybrid,To what extent may Union or Member State law restrict the rights in Articles 12 to 22 during emergency situations such as natural or manmade disasters?,True,partial,False,0.87,0.575
+gdpr,hunt,dense,What must a data protection officer provide advice on when requested under Article 39?,True,correct,False,6.739,1.276
+gdpr,hunt,hybrid,What must a data protection officer provide advice on when requested under Article 39?,True,correct,False,6.739,1.276
+gdpr,hunt,dense,"Regardless of an organization's organisational structure and size, who must a data protection officer act as a liaison for on processing issues?",True,correct,False,1.983,2.142
+gdpr,hunt,hybrid,"Regardless of an organization's organisational structure and size, who must a data protection officer act as a liaison for on processing issues?",True,correct,False,1.983,1.356
+gdpr,hunt,dense,What kind of external legal conflict settlement mechanism can codes of conduct address between data controllers and individuals?,False,abstained,False,-5.557,0.705
+gdpr,hunt,hybrid,What kind of external legal conflict settlement mechanism can codes of conduct address between data controllers and individuals?,False,wrong,False,-1.964,1.333
+gdpr,hunt,dense,"Even if an entity is not bound by an obligation of professional secrecy, who may adhere to approved codes of conduct with general validity despite not being subject to the GDPR?",True,correct,False,1.199,2.019
+gdpr,hunt,hybrid,"Even if an entity is not bound by an obligation of professional secrecy, who may adhere to approved codes of conduct with general validity despite not being subject to the GDPR?",True,correct,False,1.199,2.019
+gdpr,hunt,dense,Under what specific procedure set out in Article 93(2) are implementing acts concerning the Union-wide validity of approved codes adopted?,True,correct,False,6.55,1.958
+gdpr,hunt,hybrid,Under what specific procedure set out in Article 93(2) are implementing acts concerning the Union-wide validity of approved codes adopted?,True,correct,False,6.55,0.353
+gdpr,hunt,dense,"Aside from relying on contractual or other legally binding instruments, how must the Board make all approved codes of conduct and amendments accessible?",True,correct,False,1.442,1.347
+gdpr,hunt,hybrid,"Aside from relying on contractual or other legally binding instruments, how must the Board make all approved codes of conduct and amendments accessible?",True,correct,False,1.442,1.347
+gdpr,hunt,dense,To what specific type of processing operations does Article 41 on monitoring of approved codes of conduct not apply?,False,abstained,False,3.699,0.968
+gdpr,hunt,hybrid,To what specific type of processing operations does Article 41 on monitoring of approved codes of conduct not apply?,True,abstained,False,3.699,0.968
+gdpr,hunt,dense,"Without needing reference to Regulation (EC) No 765/2008, what action can a monitoring body take against a controller that infringes an approved code?",False,wrong,False,0.441,0.491
+gdpr,hunt,hybrid,"Without needing reference to Regulation (EC) No 765/2008, what action can a monitoring body take against a controller that infringes an approved code?",False,abstained,False,0.441,0.491
+gdpr,hunt,dense,What is the maximum duration for which a data protection certification can be granted to a controller or processor?,True,correct,False,6.515,2.314
+gdpr,hunt,hybrid,What is the maximum duration for which a data protection certification can be granted to a controller or processor?,True,correct,False,6.515,2.314
+gdpr,hunt,dense,"While accreditation may be issued for a maximum period of five years, for how long is a certification issued to a controller or processor?",True,correct,False,7.894,1.222
+gdpr,hunt,hybrid,"While accreditation may be issued for a maximum period of five years, for how long is a certification issued to a controller or processor?",True,correct,False,7.894,1.222
+gdpr,hunt,dense,In what specific case must the criteria for accreditation of certification bodies complement the requirements of Regulation (EC) No 765/2008?,True,correct,False,4.938,0.459
+gdpr,hunt,hybrid,In what specific case must the criteria for accreditation of certification bodies complement the requirements of Regulation (EC) No 765/2008?,True,correct,False,4.938,0.459
+gdpr,hunt,dense,"While certification is issued for a maximum period of three years, who remains responsible for compliance with the GDPR during assessment and certification?",True,correct,False,3.494,0.285
+gdpr,hunt,hybrid,"While certification is issued for a maximum period of three years, who remains responsible for compliance with the GDPR during assessment and certification?",True,correct,False,3.494,0.285
+gdpr,hunt,dense,What type of official legal measures can the European executive enact to set specific criteria for data security seal systems?,False,abstained,False,0.685,3.47
+gdpr,hunt,hybrid,What type of official legal measures can the European executive enact to set specific criteria for data security seal systems?,False,wrong,False,0.685,3.525
+gdpr,hunt,dense,"Without restricting rules to micro, small and medium-sized enterprises, under what condition may personal data undergoing processing be transferred to an international organisation?",False,correct,False,4.937,2.093
+gdpr,hunt,hybrid,"Without restricting rules to micro, small and medium-sized enterprises, under what condition may personal data undergoing processing be transferred to an international organisation?",False,correct,False,4.937,2.093
+gdpr,hunt,dense,How frequently at minimum must the periodic review mechanism included in an adequacy implementing act take place?,False,abstained,False,1.045,8.899
+gdpr,hunt,hybrid,How frequently at minimum must the periodic review mechanism included in an adequacy implementing act take place?,True,correct,False,3.31,2.265
+gdpr,hunt,dense,"Even without referencing the Council of Europe Convention of 28 January 1981, what details must an adequacy implementing act specify regarding its scope?",False,abstained,False,0.075,1.605
+gdpr,hunt,hybrid,"Even without referencing the Council of Europe Convention of 28 January 1981, what details must an adequacy implementing act specify regarding its scope?",True,correct,False,0.075,0.82
+gdpr,hunt,dense,Where must the Commission publish the list of third countries and international organisations for which adequate protection is or is no longer ensured?,True,correct,False,8.24,2.36
+gdpr,hunt,hybrid,Where must the Commission publish the list of third countries and international organisations for which adequate protection is or is no longer ensured?,True,correct,False,8.24,2.36
+gdpr,hunt,dense,"To ensure protection guaranteed by this Regulation is not undermined, under what conditions may a controller transfer data internationally without an adequacy decision or specific supervisory authorisation?",False,partial,False,6.732,0.914
+gdpr,hunt,hybrid,"To ensure protection guaranteed by this Regulation is not undermined, under what conditions may a controller transfer data internationally without an adequacy decision or specific supervisory authorisation?",False,partial,False,6.732,0.914
+gdpr,hunt,dense,"What fundamental data management concepts, such as limiting storage duration and ensuring data accuracy, must binding corporate rules explicitly incorporate?",True,correct,False,-0.099,0.065
+gdpr,hunt,hybrid,"What fundamental data management concepts, such as limiting storage duration and ensuring data accuracy, must binding corporate rules explicitly incorporate?",True,correct,False,-0.099,0.065
+gdpr,hunt,dense,"Irrespective of rules concerning the access of public authorities to personal data, what details regarding transfers must binding corporate rules specify at minimum?",True,correct,False,3.295,0.153
+gdpr,hunt,hybrid,"Irrespective of rules concerning the access of public authorities to personal data, what details regarding transfers must binding corporate rules specify at minimum?",True,correct,False,3.396,0.101
+gdpr,hunt,dense,How are supervisory authorities required to share required information with each other under Article 61?,True,correct,False,9.066,3.109
+gdpr,hunt,hybrid,How are supervisory authorities required to share required information with each other under Article 61?,True,correct,False,9.066,3.109
+gdpr,hunt,dense,"When exceptional circumstances create an urgent need to act to protect data subjects, even in cases involving employees' personal data in the specific employment context, which procedure applies?",False,abstained,False,2.087,0.834
+gdpr,hunt,hybrid,"When exceptional circumstances create an urgent need to act to protect data subjects, even in cases involving employees' personal data in the specific employment context, which procedure applies?",False,partial,False,2.684,0.597
+gdpr,hunt,dense,How long does a requested supervisory authority have to respond to a request before the requesting authority can issue provisional measures?,True,correct,False,6.348,1.834
+gdpr,hunt,hybrid,How long does a requested supervisory authority have to respond to a request before the requesting authority can issue provisional measures?,True,correct,False,6.348,0.336
+gdpr,hunt,dense,"Even though supervisory authorities act with complete independence, what action may a requesting authority take if another supervisory authority fails to provide mutual assistance within one month?",True,correct,False,5.066,0.041
+gdpr,hunt,hybrid,"Even though supervisory authorities act with complete independence, what action may a requesting authority take if another supervisory authority fails to provide mutual assistance within one month?",True,correct,False,5.066,0.041
+gdpr,hunt,dense,In what situation is a Member State forbidden from demanding reimbursement from another Member State for damage caused during joint operations?,True,abstained,False,5.355,1.51
+gdpr,hunt,hybrid,In what situation is a Member State forbidden from demanding reimbursement from another Member State for damage caused during joint operations?,True,partial,False,5.355,1.51
+gdpr,hunt,dense,"While Member States ensure authorities receive human, technical and financial resources, which Member State assumes liability for damage caused by seconded staff operating during a joint operation?",True,correct,False,4.504,2.954
+gdpr,hunt,hybrid,"While Member States ensure authorities receive human, technical and financial resources, which Member State assumes liability for damage caused by seconded staff operating during a joint operation?",True,correct,False,4.504,2.954
+gdpr,hunt,dense,What must a national supervisory authority do before adopting standard clauses for data transfer contracts?,False,abstained,False,3.555,0.792
+gdpr,hunt,hybrid,What must a national supervisory authority do before adopting standard clauses for data transfer contracts?,False,abstained,False,3.555,0.792
+gdpr,hunt,dense,"Even if an authority provides a complaint submission form which can also be completed electronically, when must it submit a draft decision to the Board regarding corporate rules?",False,abstained,False,-1.846,0.089
+gdpr,hunt,hybrid,"Even if an authority provides a complaint submission form which can also be completed electronically, when must it submit a draft decision to the Board regarding corporate rules?",False,abstained,False,-1.2,0.646
+gdpr,hunt,dense,What scope of issues must the Board's binding decision cover when resolving a disagreement over a reasoned objection?,True,correct,False,1.662,4.478
+gdpr,hunt,hybrid,What scope of issues must the Board's binding decision cover when resolving a disagreement over a reasoned objection?,True,correct,False,1.662,4.563
+gdpr,hunt,dense,"In addition to submitting a summary of the relevant facts and grounds, under what circumstance regarding authority jurisdiction must the Board issue a binding decision?",True,correct,False,3.085,0.141
+gdpr,hunt,hybrid,"In addition to submitting a summary of the relevant facts and grounds, under what circumstance regarding authority jurisdiction must the Board issue a binding decision?",True,correct,False,3.085,0.141
+gdpr,hunt,dense,What is the deadline for a supervisory authority to adopt its final decision after receiving notification of the Board's decision?,True,correct,False,6.07,0.665
+gdpr,hunt,hybrid,What is the deadline for a supervisory authority to adopt its final decision after receiving notification of the Board's decision?,True,correct,False,6.07,0.665
+gdpr,hunt,dense,"When Board members are split on a matter where a separate decision shall be adopted, how is the decision determined?",True,correct,False,5.445,3.405
+gdpr,hunt,hybrid,"When Board members are split on a matter where a separate decision shall be adopted, how is the decision determined?",True,correct,False,5.445,3.405
+gdpr,hunt,dense,Who makes up the membership of the European Data Protection Board?,True,correct,False,3.752,0.773
+gdpr,hunt,hybrid,Who makes up the membership of the European Data Protection Board?,True,correct,False,3.752,0.773
+gdpr,hunt,dense,"While the Board is assisted by a secretariat provided by the European Data Protection Supervisor, what voting status does the European Commission hold when participating in Board meetings?",True,correct,False,6.562,2.414
+gdpr,hunt,hybrid,"While the Board is assisted by a secretariat provided by the European Data Protection Supervisor, what voting status does the European Commission hold when participating in Board meetings?",True,correct,False,6.562,2.414
+gdpr,hunt,dense,What guidance must the Board publish regarding procedures for removing public web links or duplicate copies of personal records?,True,correct,False,-1.252,0.182
+gdpr,hunt,hybrid,What guidance must the Board publish regarding procedures for removing public web links or duplicate copies of personal records?,True,correct,False,-1.252,0.182
+gdpr,hunt,dense,"Regardless of shifts in information and communication technologies and commercial practices, what advice must the Board provide to the Commission regarding binding corporate rules?",False,abstained,False,-1.845,0.267
+gdpr,hunt,hybrid,"Regardless of shifts in information and communication technologies and commercial practices, what advice must the Board provide to the Commission regarding binding corporate rules?",True,correct,False,0.985,2.83
+gdpr,hunt,dense,What information must the Commission furnish to the Board when assessing whether a third country offers an adequate level of protection?,True,correct,False,5.768,0.409
+gdpr,hunt,hybrid,What information must the Commission furnish to the Board when assessing whether a third country offers an adequate level of protection?,True,correct,False,5.768,0.409
+gdpr,hunt,dense,"Prior to Commission decisions being published in the Official Journal of the European Union, what opinion must the Board provide concerning standardized visual symbols?",False,abstained,False,-2.371,1.251
+gdpr,hunt,hybrid,"Prior to Commission decisions being published in the Official Journal of the European Union, what opinion must the Board provide concerning standardized visual symbols?",False,abstained,False,-2.371,0.98
+gdpr,hunt,dense,What proportion of votes is needed for the Board to adopt its rules of procedure?,True,correct,False,-2.076,1.825
+gdpr,hunt,hybrid,What proportion of votes is needed for the Board to adopt its rules of procedure?,True,correct,False,-2.076,0.887
+gdpr,hunt,dense,"Although specific rules may apply to Union institutions, bodies, offices and agencies, to which bodies must the Board transmit its published annual report?",True,correct,False,0.681,1.051
+gdpr,hunt,hybrid,"Although specific rules may apply to Union institutions, bodies, offices and agencies, to which bodies must the Board transmit its published annual report?",True,correct,False,0.681,0.912
+constitution,study,dense,"Who handles staffing moves, career advancement, and time off for lower-ranking magistrates and bench members in a state?",True,correct,False,-10.478,0.085
+constitution,study,hybrid,"Who handles staffing moves, career advancement, and time off for lower-ranking magistrates and bench members in a state?",True,correct,False,-10.478,0.085
+constitution,study,dense,Under what legal title can civil proceedings be initiated against the national administration?,False,wrong,False,-2.89,1.919
+constitution,study,hybrid,Under what legal title can civil proceedings be initiated against the national administration?,False,wrong,False,-2.89,1.919
+constitution,study,dense,"How many members, besides the Chairperson and Vice-Chairperson, comprise the Commission?",False,correct,False,4.021,1.572
+constitution,study,hybrid,"How many members, besides the Chairperson and Vice-Chairperson, comprise the Commission?",True,correct,False,4.021,1.572
+constitution,study,dense,"What is the meaning of ""appropriate High Court"" when an individual is detained under an order made by the Government of India?",True,correct,False,7.486,5.311
+constitution,study,hybrid,"What is the meaning of ""appropriate High Court"" when an individual is detained under an order made by the Government of India?",True,correct,False,7.486,5.311
+constitution,study,dense,Who administers the oath to the President of India if the Chief Justice of India is absent?,True,correct,False,2.462,1.112
+constitution,study,hybrid,Who administers the oath to the President of India if the Chief Justice of India is absent?,True,correct,False,2.462,0.731
+constitution,study,dense,When is the Speaker of the House of the People prohibited from presiding over a sitting even if present?,True,correct,False,1.797,2.557
+constitution,study,hybrid,When is the Speaker of the House of the People prohibited from presiding over a sitting even if present?,True,correct,False,1.797,2.156
+constitution,study,dense,Under what condition is a discussion regarding the conduct of a Supreme Court or High Court judge permitted in Parliament?,True,correct,False,3.352,2.039
+constitution,study,hybrid,Under what condition is a discussion regarding the conduct of a Supreme Court or High Court judge permitted in Parliament?,True,correct,False,3.352,2.039
+constitution,study,dense,What restriction applies to the Comptroller and Auditor-General once they have left their position?,True,correct,False,1.315,1.602
+constitution,study,hybrid,What restriction applies to the Comptroller and Auditor-General once they have left their position?,True,correct,False,1.315,1.602
+constitution,study,dense,Pre-existing state panchayat laws conflicting with Part IX continue in effect for what maximum duration following the commencement of the Seventy-third Amendment Act?,True,correct,False,3.583,1.588
+constitution,study,hybrid,Pre-existing state panchayat laws conflicting with Part IX continue in effect for what maximum duration following the commencement of the Seventy-third Amendment Act?,True,correct,False,3.583,0.546
+constitution,study,dense,What four states receive grants on the Consolidated Fund of India in lieu of export duty on jute and jute products?,True,correct,False,5.359,3.428
+constitution,study,hybrid,What four states receive grants on the Consolidated Fund of India in lieu of export duty on jute and jute products?,True,correct,False,5.359,3.428
+constitution,study,dense,Which court's authority cannot be excluded by a law establishing administrative tribunals?,True,correct,False,4.067,1.63
+constitution,study,hybrid,Which court's authority cannot be excluded by a law establishing administrative tribunals?,True,correct,False,4.067,1.63
+constitution,study,dense,What minimum proportion of members of a legislature party must consent in order to validate a party merger under the Tenth Schedule?,True,correct,False,1.579,2.056
+constitution,study,hybrid,What minimum proportion of members of a legislature party must consent in order to validate a party merger under the Tenth Schedule?,True,correct,False,1.579,2.056
+constitution,hunt,dense,Which groups are explicitly mentioned as grounds for discrimination that the Constitution prohibits in the context of elections?,False,correct,False,-2.737,1.347
+constitution,hunt,hybrid,Which groups are explicitly mentioned as grounds for discrimination that the Constitution prohibits in the context of elections?,False,correct,False,-1.367,1.37
+constitution,hunt,dense,What specific provision allows the Governor to nominate a member of the Anglo-Indian community to a State Legislative Assembly?,True,correct,False,4.419,0.929
+constitution,hunt,hybrid,What specific provision allows the Governor to nominate a member of the Anglo-Indian community to a State Legislative Assembly?,True,correct,False,4.419,0.929
+constitution,hunt,dense,Under what condition does the reservation of seats for Scheduled Castes and Scheduled Tribes cease to apply?,False,partial,False,4.859,1.604
+constitution,hunt,hybrid,Under what condition does the reservation of seats for Scheduled Castes and Scheduled Tribes cease to apply?,False,partial,False,4.859,1.604
+constitution,hunt,dense,What is the specific fraction of total seats in a State Legislative Assembly that must be reserved for women?,False,wrong,False,4.482,0.228
+constitution,hunt,hybrid,What is the specific fraction of total seats in a State Legislative Assembly that must be reserved for women?,False,wrong,False,4.482,0.228
+constitution,hunt,dense,What power does the Parliament have regarding elections to Legislatures?,True,correct,False,4.461,0.723
+constitution,hunt,hybrid,What power does the Parliament have regarding elections to Legislatures?,True,correct,False,4.461,0.723
+constitution,hunt,dense,"Notwithstanding anything in article 170, the Governor may, if he is of opinion that the Anglo-Indian community needs representation in the Legislative Assembly of the State and is not adequately represented therein, 3[nominate one member of that community to the Assembly].",False,correct,False,6.116,0.86
+constitution,hunt,hybrid,"Notwithstanding anything in article 170, the Governor may, if he is of opinion that the Anglo-Indian community needs representation in the Legislative Assembly of the State and is not adequately represented therein, 3[nominate one member of that community to the Assembly].",False,correct,False,6.116,0.86
+constitution,hunt,dense,Can a person be refused entry to a school funded by the government solely because of their religious background?,True,correct,False,-2.001,0.607
+constitution,hunt,hybrid,Can a person be refused entry to a school funded by the government solely because of their religious background?,True,correct,False,-2.001,0.607
+constitution,hunt,dense,Is there any exception to the rule that the State cannot discriminate against minority-run schools when providing financial assistance?,True,wrong,False,-1.282,3.575
+constitution,hunt,hybrid,Is there any exception to the rule that the State cannot discriminate against minority-run schools when providing financial assistance?,True,wrong,False,-1.282,3.345
+constitution,hunt,dense,Under what circumstances is it NOT permissible to deny a student entry to a state-funded school based on their caste?,True,partial,False,1.033,4.992
+constitution,hunt,hybrid,Under what circumstances is it NOT permissible to deny a student entry to a state-funded school based on their caste?,True,partial,False,1.033,4.992
+constitution,hunt,dense,"What specific date did the Forty-fourth Amendment Act, 1978, section 6, come into effect regarding the omission of Article 31?",False,abstained,False,2.869,0.163
+constitution,hunt,hybrid,"What specific date did the Forty-fourth Amendment Act, 1978, section 6, come into effect regarding the omission of Article 31?",False,abstained,False,2.706,0.101
+constitution,hunt,dense,"Do all minorities, regardless of whether they are based on religion or language, have the right to establish and administer educational institutions of their choice?",True,correct,False,8.771,4.869
+constitution,hunt,hybrid,"Do all minorities, regardless of whether they are based on religion or language, have the right to establish and administer educational institutions of their choice?",True,correct,False,8.771,4.869
+constitution,hunt,dense,Does the State have the authority to validate certain Acts and Regulations that were previously omitted under Article 31D?,False,wrong,False,2.676,0.675
+constitution,hunt,hybrid,Does the State have the authority to validate certain Acts and Regulations that were previously omitted under Article 31D?,False,wrong,False,2.854,0.178
+constitution,hunt,dense,What is the name of the head of state to whom the Ministers must remain responsible?,False,wrong,False,-2.684,1.062
+constitution,hunt,hybrid,What is the name of the head of state to whom the Ministers must remain responsible?,False,wrong,False,-2.684,1.062
+constitution,hunt,dense,Under what condition is a Minister disqualified from being appointed for a specific duration?,True,correct,False,5.574,0.187
+constitution,hunt,hybrid,Under what condition is a Minister disqualified from being appointed for a specific duration?,True,correct,False,5.574,0.187
+constitution,hunt,dense,Is a Minister required to contest an election before their term expires to avoid disqualification?,True,correct,False,3.85,0.401
+constitution,hunt,hybrid,Is a Minister required to contest an election before their term expires to avoid disqualification?,True,correct,False,3.85,0.401
+constitution,hunt,dense,How many consecutive months of absence from office can lead to disqualification?,True,correct,False,-2.225,2.854
+constitution,hunt,hybrid,How many consecutive months of absence from office can lead to disqualification?,True,correct,False,-2.225,2.854
+constitution,hunt,dense,Who administers the oaths of office and secrecy to a Minister before they enter upon their office?,True,partial,False,3.358,2.02
+constitution,hunt,hybrid,Who administers the oaths of office and secrecy to a Minister before they enter upon their office?,True,partial,False,3.358,2.02
+constitution,hunt,dense,Which legislative body must the Council of Ministers be collectively responsible to in the context of the Union?,False,abstained,False,-0.52,1.541
+constitution,hunt,hybrid,Which legislative body must the Council of Ministers be collectively responsible to in the context of the Union?,True,correct,False,4.301,4.821
+constitution,hunt,dense,Can the President refuse to agree to a bill after it has been passed by Parliament?,True,correct,False,6.157,3.605
+constitution,hunt,hybrid,Can the President refuse to agree to a bill after it has been passed by Parliament?,True,correct,False,6.157,2.539
+constitution,hunt,dense,Under what specific condition is the President prohibited from withholding assent to a bill that has been passed again by the Houses?,True,partial,False,5.148,0.048
+constitution,hunt,hybrid,Under what specific condition is the President prohibited from withholding assent to a bill that has been passed again by the Houses?,True,partial,False,5.148,0.048
+constitution,hunt,dense,When is the President not allowed to withhold assent to a bill?,True,partial,False,6.836,1.919
+constitution,hunt,hybrid,When is the President not allowed to withhold assent to a bill?,True,partial,False,6.836,1.919
+constitution,hunt,dense,What specific phrase does the President use to request reconsideration of a bill in his message?,True,partial,False,3.947,0.661
+constitution,hunt,hybrid,What specific phrase does the President use to request reconsideration of a bill in his message?,True,correct,False,3.947,0.661
+constitution,hunt,dense,What must the President do when a bill has been passed by the Houses of Parliament?,True,correct,False,7.889,2.794
+constitution,hunt,hybrid,What must the President do when a bill has been passed by the Houses of Parliament?,True,partial,False,7.889,2.794
+constitution,hunt,dense,"If a bill is not a Money Bill, what action can the Governor take regarding the bill?",False,partial,False,2.7,1.587
+constitution,hunt,hybrid,"If a bill is not a Money Bill, what action can the Governor take regarding the bill?",False,partial,False,2.7,1.587
+constitution,hunt,dense,How many judges must sit to decide cases involving a substantial question of law regarding the Constitution's interpretation?,True,correct,False,0.052,6.145
+constitution,hunt,hybrid,How many judges must sit to decide cases involving a substantial question of law regarding the Constitution's interpretation?,True,correct,False,4.363,2.394
+constitution,hunt,dense,What is the minimum number of judges required to sit for cases involving a substantial question of law as to the interpretation of the Constitution?,True,correct,False,3.824,3.094
+constitution,hunt,hybrid,What is the minimum number of judges required to sit for cases involving a substantial question of law as to the interpretation of the Constitution?,True,correct,False,3.824,3.094
+constitution,hunt,dense,Is it possible for a single judge to decide a case involving a substantial question of law as to the interpretation of the Constitution?,False,wrong,False,2.908,0.345
+constitution,hunt,hybrid,Is it possible for a single judge to decide a case involving a substantial question of law as to the interpretation of the Constitution?,False,correct,False,4.655,1.747
+constitution,hunt,dense,What year did the Constitution (Forty-second Amendment) Act amend the rule regarding the number of judges for substantial questions of law?,True,correct,False,5.295,1.875
+constitution,hunt,hybrid,What year did the Constitution (Forty-second Amendment) Act amend the rule regarding the number of judges for substantial questions of law?,True,correct,False,5.295,1.875
+constitution,hunt,dense,How many judges must sit for the purpose of deciding any case involving a substantial question of law as to the interpretation of this Constitution?,True,correct,False,0.953,1.481
+constitution,hunt,hybrid,How many judges must sit for the purpose of deciding any case involving a substantial question of law as to the interpretation of this Constitution?,True,correct,False,5.126,3.281
+constitution,hunt,dense,How many judges must sit for the purpose of deciding any case involving a substantial question of law as to the interpretation of this Constitution or for the purpose of hearing any reference under article 143?,True,correct,False,6.229,3.667
+constitution,hunt,hybrid,How many judges must sit for the purpose of deciding any case involving a substantial question of law as to the interpretation of this Constitution or for the purpose of hearing any reference under article 143?,True,correct,False,6.229,3.667
+constitution,hunt,dense,What is the name of the separate staff unit that the House or each House of the Legislature of a State must have?,True,correct,False,3.915,7.407
+constitution,hunt,hybrid,What is the name of the separate staff unit that the House or each House of the Legislature of a State must have?,True,correct,False,3.915,2.111
+constitution,hunt,dense,Under what specific condition regarding a Legislative Council does the creation of posts common to both Houses not prevent the clause?,False,wrong,False,5.491,8.778
+constitution,hunt,hybrid,Under what specific condition regarding a Legislative Council does the creation of posts common to both Houses not prevent the clause?,True,correct,False,5.491,0.72
+constitution,hunt,dense,When does the Governor NOT have the authority to make rules regulating the recruitment and conditions of service for the secretarial staff?,True,correct,False,4.191,1.36
+constitution,hunt,hybrid,When does the Governor NOT have the authority to make rules regulating the recruitment and conditions of service for the secretarial staff?,True,correct,False,4.191,1.36
+constitution,hunt,dense,Who must the Governor consult with before making rules for the secretarial staff of the Assembly or the Council?,True,correct,False,2.483,0.353
+constitution,hunt,hybrid,Who must the Governor consult with before making rules for the secretarial staff of the Assembly or the Council?,True,correct,False,2.483,0.353
+constitution,hunt,dense,Who may regulate the recruitment and conditions of service of persons appointed to the secretarial staff of the House or Houses of the Legislature of the State?,True,correct,False,8.361,1.599
+constitution,hunt,hybrid,Who may regulate the recruitment and conditions of service of persons appointed to the secretarial staff of the House or Houses of the Legislature of the State?,True,correct,False,8.361,1.599
+constitution,hunt,dense,"Until provision is made by the Legislature of the State under clause (2), who may make rules regulating the recruitment and conditions of service of persons appointed to the secretarial staff of the Assembly or the Council?",True,correct,False,7.137,0.312
+constitution,hunt,hybrid,"Until provision is made by the Legislature of the State under clause (2), who may make rules regulating the recruitment and conditions of service of persons appointed to the secretarial staff of the Assembly or the Council?",True,correct,False,7.137,0.312
+constitution,hunt,dense,What is the minimum number of years a person must have held a judicial office or been an advocate to qualify for appointment as a Judge of a High Court?,False,abstained,False,2.44,0.421
+constitution,hunt,hybrid,What is the minimum number of years a person must have held a judicial office or been an advocate to qualify for appointment as a Judge of a High Court?,False,abstained,False,2.44,0.421
+constitution,hunt,dense,Under what specific condition does the office of a Judge of a High Court get vacated by the President's appointment to the Supreme Court?,False,abstained,False,2.403,0.525
+constitution,hunt,hybrid,Under what specific condition does the office of a Judge of a High Court get vacated by the President's appointment to the Supreme Court?,False,abstained,False,2.403,0.525
+constitution,hunt,dense,Is it possible for a person who is not a citizen of India to be qualified for appointment as a Judge of a High Court?,False,wrong,False,4.87,0.658
+constitution,hunt,hybrid,Is it possible for a person who is not a citizen of India to be qualified for appointment as a Judge of a High Court?,False,wrong,False,4.87,0.658
+constitution,hunt,dense,What is the specific date mentioned in the amendment history regarding the substitution of the age limit for High Court Judges?,True,correct,False,-0.27,0.171
+constitution,hunt,hybrid,What is the specific date mentioned in the amendment history regarding the substitution of the age limit for High Court Judges?,True,correct,False,-0.27,0.171
+constitution,hunt,dense,How many years must a person have held a judicial office or been an advocate to be qualified for appointment as a Judge of a High Court?,False,abstained,False,4.641,0.072
+constitution,hunt,hybrid,How many years must a person have held a judicial office or been an advocate to be qualified for appointment as a Judge of a High Court?,False,abstained,False,4.641,0.072
+constitution,hunt,dense,What happens if an Ordinance under this article makes any provision which Parliament would not under this Constitution be competent to enact?,False,wrong,False,5.919,0.309
+constitution,hunt,hybrid,What happens if an Ordinance under this article makes any provision which Parliament would not under this Constitution be competent to enact?,False,wrong,False,7.197,1.278
+constitution,hunt,dense,What is the maximum number of other Judges allowed in the Supreme Court before Parliament prescribes a larger number?,False,wrong,False,1.116,4.176
+constitution,hunt,hybrid,What is the maximum number of other Judges allowed in the Supreme Court before Parliament prescribes a larger number?,False,wrong,False,1.116,4.176
+constitution,hunt,dense,"What is the age limit for a Judge of the Supreme Court, and what is the exception regarding the National Judicial Appointments Commission?",False,wrong,False,4.962,3.687
+constitution,hunt,hybrid,"What is the age limit for a Judge of the Supreme Court, and what is the exception regarding the National Judicial Appointments Commission?",False,wrong,False,4.962,3.687
+constitution,hunt,dense,Can a Judge of the Supreme Court resign their office without writing to the President?,False,wrong,False,4.088,2.587
+constitution,hunt,hybrid,Can a Judge of the Supreme Court resign their office without writing to the President?,False,wrong,False,4.088,2.587
+constitution,hunt,dense,"In which year was the Supreme Court (Number of Judges) Amendment Act passed, changing the number of judges?",True,wrong,False,5.613,5.071
+constitution,hunt,hybrid,"In which year was the Supreme Court (Number of Judges) Amendment Act passed, changing the number of judges?",False,wrong,False,5.613,4.518
+constitution,hunt,dense,By what method must a Judge of the Supreme Court be appointed by the President?,False,abstained,False,2.603,0.231
+constitution,hunt,hybrid,By what method must a Judge of the Supreme Court be appointed by the President?,False,abstained,False,2.603,0.231
+constitution,hunt,dense,What happens to the President's power to make regulations if the Legislature for Puducherry is dissolved?,True,correct,False,2.947,0.472
+constitution,hunt,hybrid,What happens to the President's power to make regulations if the Legislature for Puducherry is dissolved?,True,wrong,False,2.947,0.472
+constitution,hunt,dense,Under what specific condition may the President make regulations for the Union territory of Puducherry?,True,correct,False,4.425,1.287
+constitution,hunt,hybrid,Under what specific condition may the President make regulations for the Union territory of Puducherry?,True,correct,False,4.425,1.287
+constitution,hunt,dense,"When is the President prohibited from making regulations for the peace, progress, and good government of Puducherry?",True,wrong,False,4.185,2.082
+constitution,hunt,hybrid,"When is the President prohibited from making regulations for the peace, progress, and good government of Puducherry?",True,wrong,False,4.185,2.082
+constitution,hunt,dense,"What is the specific date when the Constitution (Fourteenth Amendment) Act, 1962, came into effect regarding this section?",False,abstained,False,-3.485,0.161
+constitution,hunt,hybrid,"What is the specific date when the Constitution (Fourteenth Amendment) Act, 1962, came into effect regarding this section?",True,correct,False,2.306,2.868
+constitution,hunt,dense,What force and effect do regulations made by the President have when promulgated for Puducherry?,False,abstained,False,1.821,3.105
+constitution,hunt,hybrid,What force and effect do regulations made by the President have when promulgated for Puducherry?,True,correct,False,1.821,1.062
+constitution,hunt,dense,What happens to regulations made by the President if the Legislature for Puducherry is dissolved?,True,correct,False,3.847,1.386
+constitution,hunt,hybrid,What happens to regulations made by the President if the Legislature for Puducherry is dissolved?,True,abstained,False,3.847,1.386
+constitution,hunt,dense,What is the maximum number of directors allowed on a co-operative society board?,True,partial,False,4.671,1.445
+constitution,hunt,hybrid,What is the maximum number of directors allowed on a co-operative society board?,True,partial,False,4.671,1.445
+constitution,hunt,dense,Under what condition can the board fill a casual vacancy by nomination instead of election?,True,correct,False,-0.433,1.853
+constitution,hunt,hybrid,Under what condition can the board fill a casual vacancy by nomination instead of election?,True,correct,False,-0.433,1.853
+constitution,hunt,dense,When is it NOT required for the board to fill a casual vacancy by nomination?,True,abstained,False,-0.751,2.011
+constitution,hunt,hybrid,When is it NOT required for the board to fill a casual vacancy by nomination?,True,correct,False,-0.751,1.216
+constitution,hunt,dense,How many seats must be reserved for women on the board of a co-operative society consisting of individual members?,True,correct,False,4.436,4.285
+constitution,hunt,hybrid,How many seats must be reserved for women on the board of a co-operative society consisting of individual members?,True,correct,False,4.436,4.545
+constitution,hunt,dense,What is the term of office for elected members of the board and its office bearers?,True,correct,False,3.766,0.138
+constitution,hunt,hybrid,What is the term of office for elected members of the board and its office bearers?,True,correct,False,3.766,0.138
+constitution,hunt,dense,What does the term 'authorised person' refer to in the context of co-operative societies?,False,abstained,False,4.329,2.094
+constitution,hunt,hybrid,What does the term 'authorised person' refer to in the context of co-operative societies?,False,abstained,False,4.329,2.094
+constitution,hunt,dense,Which funds do taxes collected by the Union for specific purposes NOT become part of?,True,correct,False,2.029,0.088
+constitution,hunt,hybrid,Which funds do taxes collected by the Union for specific purposes NOT become part of?,True,correct,False,2.565,0.536
+constitution,hunt,dense,Under what specific condition does an amount collected as tax under clause (1) fail to join the Consolidated Fund of India?,True,correct,False,5.108,4.332
+constitution,hunt,hybrid,Under what specific condition does an amount collected as tax under clause (1) fail to join the Consolidated Fund of India?,True,correct,False,5.108,3.601
+constitution,hunt,dense,When is an amount collected as tax levied by a State under article 246A NOT included in the Consolidated Fund of the State?,True,correct,False,7.835,4.714
+constitution,hunt,hybrid,When is an amount collected as tax levied by a State under article 246A NOT included in the Consolidated Fund of the State?,True,correct,False,7.835,4.714
+constitution,hunt,dense,What specific subjects may Parliament formulate principles for determining the place of supply?,False,partial,False,3.806,6.08
+constitution,hunt,hybrid,What specific subjects may Parliament formulate principles for determining the place of supply?,True,partial,False,3.806,2.126
+constitution,hunt,dense,"Where an amount collected as tax levied under clause (1) has been used for payment of the tax levied by a State under article 246A, such amount shall not form part of the Consolidated Fund of India.",True,correct,False,9.304,3.134
+constitution,hunt,hybrid,"Where an amount collected as tax levied under clause (1) has been used for payment of the tax levied by a State under article 246A, such amount shall not form part of the Consolidated Fund of India.",True,correct,False,9.304,3.134
+constitution,hunt,dense,Which specific duties mentioned in the Union List shall be levied by the Government of India but shall be collected by the States within which such duties are respectively leviable?,True,wrong,False,8.372,3.415
+constitution,hunt,hybrid,Which specific duties mentioned in the Union List shall be levied by the Government of India but shall be collected by the States within which such duties are respectively leviable?,True,wrong,False,8.372,3.415
+constitution,hunt,dense,Can a state legislature give preference to one state over another in trade and commerce?,True,correct,False,7.867,8.492
+constitution,hunt,hybrid,Can a state legislature give preference to one state over another in trade and commerce?,True,correct,False,7.867,8.492
+constitution,hunt,dense,Under what specific condition can Parliament make a law giving preference or discrimination regarding trade and commerce?,True,correct,False,6.028,5.961
+constitution,hunt,hybrid,Under what specific condition can Parliament make a law giving preference or discrimination regarding trade and commerce?,True,correct,False,6.028,5.961
+constitution,hunt,dense,Is it required for a state legislature to impose taxes on imported goods to ensure they are not discriminated against?,True,wrong,False,4.279,3.696
+constitution,hunt,hybrid,Is it required for a state legislature to impose taxes on imported goods to ensure they are not discriminated against?,True,wrong,False,4.279,3.696
+constitution,hunt,dense,What is the maximum number of items listed in the Seventh Schedule that can relate to trade and commerce entries?,True,abstained,False,0.776,1.375
+constitution,hunt,hybrid,What is the maximum number of items listed in the Seventh Schedule that can relate to trade and commerce entries?,True,abstained,False,0.776,1.375
+constitution,hunt,dense,What power does the Legislature of a State have regarding goods imported from other States?,True,partial,False,4.423,2.383
+constitution,hunt,hybrid,What power does the Legislature of a State have regarding goods imported from other States?,True,partial,False,4.423,2.383
+constitution,hunt,dense,Can a state legislature impose a tax on the consumption or sale of electricity?,False,wrong,False,3.882,0.931
+constitution,hunt,hybrid,Can a state legislature impose a tax on the consumption or sale of electricity?,False,wrong,False,3.882,0.931
+constitution,hunt,dense,Can a state legislature pass laws regarding the preparation of electoral rolls?,True,correct,False,4.996,2.872
+constitution,hunt,hybrid,Can a state legislature pass laws regarding the preparation of electoral rolls?,True,correct,False,4.996,2.693
+constitution,hunt,dense,Under what specific condition can an election to a State House of Legislature be called in question?,True,correct,False,4.038,6.625
+constitution,hunt,hybrid,Under what specific condition can an election to a State House of Legislature be called in question?,True,correct,False,4.038,1.849
+constitution,hunt,dense,Is the validity of a law made under article 327 or 328 regarding constituency delimitation subject to being called in question in any court?,True,correct,False,6.445,1.106
+constitution,hunt,hybrid,Is the validity of a law made under article 327 or 328 regarding constituency delimitation subject to being called in question in any court?,True,correct,False,6.445,1.106
+constitution,hunt,dense,What is the specific date when the words in section 329A were substituted by the Thirty-ninth Amendment Act?,False,abstained,False,0.033,0.002
+constitution,hunt,hybrid,What is the specific date when the words in section 329A were substituted by the Thirty-ninth Amendment Act?,True,correct,False,3.354,3.323
+constitution,hunt,dense,What authority must present an election petition to call in question an election to a State House of Legislature?,True,correct,False,2.496,4.12
+constitution,hunt,hybrid,What authority must present an election petition to call in question an election to a State House of Legislature?,True,correct,False,2.496,0.839
+constitution,hunt,dense,Can a House of the Legislature of a State act notwithstanding any vacancy in the membership thereof?,False,wrong,False,8.41,4.08
+constitution,hunt,hybrid,Can a House of the Legislature of a State act notwithstanding any vacancy in the membership thereof?,False,wrong,False,8.41,4.08
+constitution,hunt,dense,What happens to the English language if the State Legislature does not pass a law changing its status?,True,partial,False,-0.819,1.798
+constitution,hunt,hybrid,What happens to the English language if the State Legislature does not pass a law changing its status?,True,partial,False,-0.819,1.798
+constitution,hunt,dense,Under what condition can the President issue directions regarding the report mentioned in clause (5)?,False,wrong,False,-0.006,0.337
+constitution,hunt,hybrid,Under what condition can the President issue directions regarding the report mentioned in clause (5)?,True,correct,False,5.114,4.624
+constitution,hunt,dense,When is the English language NOT required to be used for official purposes within a State?,True,correct,False,5.007,3.026
+constitution,hunt,hybrid,When is the English language NOT required to be used for official purposes within a State?,True,correct,False,5.007,3.026
+constitution,hunt,dense,What specific phrase describes the status of the English language before the Constitution commenced?,True,correct,False,-1.302,2.55
+constitution,hunt,hybrid,What specific phrase describes the status of the English language before the Constitution commenced?,True,correct,False,-1.302,1.278
+constitution,hunt,dense,Who may issue directions in accordance with the whole or any part of the report?,True,correct,False,-5.403,0.586
+constitution,hunt,hybrid,Who may issue directions in accordance with the whole or any part of the report?,True,correct,False,6.587,11.99
+constitution,hunt,dense,"What language may be used for communication between States if they agree, as mentioned in the similar passage?",True,correct,False,5.895,2.324
+constitution,hunt,hybrid,"What language may be used for communication between States if they agree, as mentioned in the similar passage?",True,correct,False,5.895,2.324
+constitution,hunt,dense,What happens to existing laws in major ports or aerodromes after a specific date if the President issues a notification?,True,correct,False,2.8,0.628
+constitution,hunt,hybrid,What happens to existing laws in major ports or aerodromes after a specific date if the President issues a notification?,True,correct,False,2.8,0.628
+constitution,hunt,dense,Under what condition can a law giving effect to directive principles be called in question in a court?,False,wrong,False,5.107,7.138
+constitution,hunt,hybrid,Under what condition can a law giving effect to directive principles be called in question in a court?,False,wrong,False,5.107,7.138
+constitution,hunt,dense,When does a law cease to have effect in a major port or aerodrome?,True,correct,False,4.123,2.59
+constitution,hunt,hybrid,When does a law cease to have effect in a major port or aerodrome?,True,correct,False,4.123,2.59
+constitution,hunt,dense,What is the minimum number of words in the phrase describing things that do not stop a law from ceasing to have effect?,False,correct,False,-7.026,0.979
+constitution,hunt,hybrid,What is the minimum number of words in the phrase describing things that do not stop a law from ceasing to have effect?,False,correct,False,-6.634,0.392
+constitution,hunt,dense,What power does the President have regarding major ports and aerodromes?,True,correct,False,3.283,1.953
+constitution,hunt,hybrid,What power does the President have regarding major ports and aerodromes?,True,correct,False,3.283,1.953
+constitution,hunt,dense,"Can a judgment, decree, or order of any court or Tribunal stop a law from continuing in force in a major port?",False,abstained,False,-4.045,0.844
+constitution,hunt,hybrid,"Can a judgment, decree, or order of any court or Tribunal stop a law from continuing in force in a major port?",False,wrong,False,-0.396,3.649
+constitution,hunt,dense,What is the deadline for laying a special order made by the State Government before both Houses of the State Legislature?,True,correct,False,3.291,0.852
+constitution,hunt,hybrid,What is the deadline for laying a special order made by the State Government before both Houses of the State Legislature?,True,correct,False,5.485,2.194
+constitution,hunt,dense,Which court has the power of superintendence over the Administrative Tribunal?,True,correct,False,5.882,5.971
+constitution,hunt,hybrid,Which court has the power of superintendence over the Administrative Tribunal?,True,correct,False,5.882,5.971
+constitution,hunt,dense,Can any court other than the Supreme Court exercise jurisdiction in respect of matters subject to the Administrative Tribunal?,True,correct,False,6.804,2.37
+constitution,hunt,hybrid,Can any court other than the Supreme Court exercise jurisdiction in respect of matters subject to the Administrative Tribunal?,True,correct,False,6.804,2.037
+constitution,hunt,dense,What specific date marks the cutoff for appointments made to posts under the Government of Hyderabad?,True,correct,False,1.76,7.528
+constitution,hunt,hybrid,What specific date marks the cutoff for appointments made to posts under the Government of Hyderabad?,False,abstained,False,1.76,1.562
+constitution,hunt,dense,Under what condition may the President abolish the Administrative Tribunal?,True,correct,False,5.72,4.077
+constitution,hunt,hybrid,Under what condition may the President abolish the Administrative Tribunal?,True,correct,False,5.72,4.077
+constitution,hunt,dense,"What emoluments, allowances, and privileges are entitled to a person discharging the functions of the Governor?",True,correct,False,4.645,0.224
+constitution,hunt,hybrid,"What emoluments, allowances, and privileges are entitled to a person discharging the functions of the Governor?",True,correct,False,6.722,2.077
+constitution,hunt,dense,Does the entitlement to emoluments and allowances apply to a person acting for whom they do not discharge the functions?,False,wrong,False,2.73,3.334
+constitution,hunt,hybrid,Does the entitlement to emoluments and allowances apply to a person acting for whom they do not discharge the functions?,True,correct,False,3.739,1.009
+constitution,hunt,dense,Is a person discharging the functions of the Governor entitled to different emoluments than the President?,False,correct,False,2.801,0.984
+constitution,hunt,hybrid,Is a person discharging the functions of the Governor entitled to different emoluments than the President?,True,correct,False,6.995,2.244
+constitution,hunt,dense,What is the current emoluments amount for a person discharging the functions of the Governor as of the Finance Act 2018?,True,abstained,False,4.853,3.863
+constitution,hunt,hybrid,What is the current emoluments amount for a person discharging the functions of the Governor as of the Finance Act 2018?,True,abstained,False,4.853,3.863
+constitution,hunt,dense,What financial benefits does an individual performing the duties of the Governor receive compared to the President?,True,abstained,False,-4.945,0.365
+constitution,hunt,hybrid,What financial benefits does an individual performing the duties of the Governor receive compared to the President?,True,partial,False,-4.945,0.365
+constitution,hunt,dense,"What emoluments, allowances, and privileges are entitled to a person discharging the functions of the Governor or the President?",True,partial,False,5.999,0.976
+constitution,hunt,hybrid,"What emoluments, allowances, and privileges are entitled to a person discharging the functions of the Governor or the President?",True,partial,False,7.226,1.227
+constitution,hunt,dense,Which local authorities are mentioned in the list of State subjects?,False,partial,False,-2.184,4.651
+constitution,hunt,hybrid,Which local authorities are mentioned in the list of State subjects?,True,partial,False,-1.491,0.693
+constitution,hunt,dense,"What specific condition applies to small, cottage, and rural industry regarding List I entries?",True,wrong,False,3.008,6.794
+constitution,hunt,hybrid,"What specific condition applies to small, cottage, and rural industry regarding List I entries?",True,correct,False,3.008,2.216
+constitution,hunt,dense,Which type of ancient monuments are explicitly excluded from State control in this list?,True,correct,False,-5.96,1.367
+constitution,hunt,hybrid,Which type of ancient monuments are explicitly excluded from State control in this list?,True,correct,False,-5.96,1.367
+constitution,hunt,dense,What is the entry number for lotteries in the Seventh Schedule?,True,correct,False,3.458,3.641
+constitution,hunt,hybrid,What is the entry number for lotteries in the Seventh Schedule?,True,correct,False,3.458,3.186
+constitution,hunt,dense,What institutions are financed and controlled by the State Government according to entry (xvi)?,True,correct,False,4.771,6.544
+constitution,hunt,hybrid,What institutions are financed and controlled by the State Government according to entry (xvi)?,True,correct,False,4.771,6.544
+constitution,hunt,dense,"Which institutions are controlled or financed by the State, similar to those mentioned in the similar passage?",False,abstained,False,-5.691,0.599
+constitution,hunt,hybrid,"Which institutions are controlled or financed by the State, similar to those mentioned in the similar passage?",True,correct,False,0.764,2.548
+constitution,hunt,dense,What specific legislative body must the Governor establish for each autonomous district as soon as possible after the Constitution begins?,True,correct,False,3.316,3.669
+constitution,hunt,hybrid,What specific legislative body must the Governor establish for each autonomous district as soon as possible after the Constitution begins?,True,correct,False,3.316,3.669
+constitution,hunt,dense,Under what condition may the Governor direct that an Act of Parliament or State Legislature has effect subject to exceptions or modifications?,False,partial,False,4.98,4.841
+constitution,hunt,hybrid,Under what condition may the Governor direct that an Act of Parliament or State Legislature has effect subject to exceptions or modifications?,False,partial,False,4.98,1.174
+constitution,hunt,dense,When will an Act of Parliament or the Legislature of the State NOT apply to an area within an autonomous district?,False,partial,False,5.165,0.435
+constitution,hunt,hybrid,When will an Act of Parliament or the Legislature of the State NOT apply to an area within an autonomous district?,False,partial,False,5.165,0.435
+constitution,hunt,dense,What is the specific date mentioned in the text regarding the omission of Paragraph 18?,False,abstained,False,-7.893,0.116
+constitution,hunt,hybrid,What is the specific date mentioned in the text regarding the omission of Paragraph 18?,False,abstained,False,-8.009,0.755
+constitution,hunt,dense,"Until a District Council is constituted for an autonomous district, who shall vest the administration of such district?",True,correct,False,5.261,0.624
+constitution,hunt,hybrid,"Until a District Council is constituted for an autonomous district, who shall vest the administration of such district?",True,correct,False,5.261,0.624
+constitution,hunt,dense,What specific commission can the Governor appoint to examine and report on matters relating to the administration of autonomous districts and autonomous regions?,False,wrong,False,8.375,3.878
+constitution,hunt,hybrid,What specific commission can the Governor appoint to examine and report on matters relating to the administration of autonomous districts and autonomous regions?,False,wrong,False,8.375,3.878
+constitution,hunt,dense,Which specific year saw the enactment of the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Third Amendment Act?,True,correct,False,6.891,1.443
+constitution,hunt,hybrid,Which specific year saw the enactment of the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Third Amendment Act?,True,correct,False,6.891,1.443
+constitution,hunt,dense,Did the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Fourth Amendment Act occur in 1973?,True,correct,False,7.881,1.935
+constitution,hunt,hybrid,Did the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Fourth Amendment Act occur in 1973?,True,correct,False,7.881,1.935
+constitution,hunt,dense,Was the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Sixth Amendment Act passed in 1973?,True,correct,False,8.344,1.925
+constitution,hunt,hybrid,Was the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Sixth Amendment Act passed in 1973?,True,correct,False,8.344,1.925
+constitution,hunt,dense,What is the Act number for the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Fifth Amendment Act of 1972?,True,correct,False,8.136,2.254
+constitution,hunt,hybrid,What is the Act number for the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Fifth Amendment Act of 1972?,True,correct,False,8.136,2.254
+constitution,hunt,dense,What is the full title of the amendment listed as item 174?,False,abstained,False,-6.367,1.466
+constitution,hunt,hybrid,What is the full title of the amendment listed as item 174?,False,abstained,False,-7.833,0.362
+constitution,hunt,dense,Which Act is referred to as the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Second Amendment Act of 1979?,True,wrong,False,7.581,0.218
+constitution,hunt,hybrid,Which Act is referred to as the Tamil Nadu Land Reforms (Fixation of Ceiling on Land) Second Amendment Act of 1979?,True,wrong,False,7.581,0.218
+constitution,hunt,dense,When did the President declare that all clauses of Article 370 would cease to be operative except specific ones?,True,correct,False,7.979,1.752
+constitution,hunt,hybrid,When did the President declare that all clauses of Article 370 would cease to be operative except specific ones?,True,correct,False,7.979,1.752
+constitution,hunt,dense,Which specific clause of Article 370 was explicitly retained to remain operative after the August 2019 declaration?,True,wrong,False,7.061,1.7
+constitution,hunt,hybrid,Which specific clause of Article 370 was explicitly retained to remain operative after the August 2019 declaration?,True,wrong,False,7.061,1.7
+constitution,hunt,dense,Did the President's August 2019 declaration remove the applicability of Article 370 entirely to the State of Jammu and Kashmir?,True,correct,False,6.275,1.754
+constitution,hunt,hybrid,Did the President's August 2019 declaration remove the applicability of Article 370 entirely to the State of Jammu and Kashmir?,True,correct,False,6.275,1.754
+constitution,hunt,dense,"What is the notification number associated with the Presidential order dated August 6, 2019?",False,wrong,False,-1.958,5.014
+constitution,hunt,hybrid,"What is the notification number associated with the Presidential order dated August 6, 2019?",True,correct,False,0.992,2.95
+constitution,hunt,dense,On what date did the President declare that Article 370 would cease to be operative except for specific provisions?,True,correct,False,7.584,1.873
+constitution,hunt,hybrid,On what date did the President declare that Article 370 would cease to be operative except for specific provisions?,True,correct,False,7.584,1.873
+constitution,hunt,dense,"According to the Presidential order, which article of the Constitution of Jammu and Kashmir is cited as having contrary provisions that do not apply?",True,correct,False,6.64,0.777
+constitution,hunt,hybrid,"According to the Presidential order, which article of the Constitution of Jammu and Kashmir is cited as having contrary provisions that do not apply?",True,correct,False,6.64,0.777
