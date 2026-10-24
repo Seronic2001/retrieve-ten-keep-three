@@ -1,0 +1,707 @@
+{
+ "generator": "Qwen/Qwen3.5-4B",
+ "judge": "Qwen/Qwen3-14B",
+ "generationMinutes": 60.4,
+ "judgeMinutes": 62.1,
+ "gpus": 2,
+ "distinctAnswers": 610,
+ "calibration": {
+  "answers": 60,
+  "exactAgreement": 0.87,
+  "correctVsNotAgreement": 0.92,
+  "confusion_humanRows_judgeColumns": {
+   "correct": {
+    "correct": 30,
+    "partial": 2,
+    "wrong": 2,
+    "abstained": 0,
+    "unparsed": 0
+   },
+   "partial": {
+    "correct": 1,
+    "partial": 2,
+    "wrong": 0,
+    "abstained": 0,
+    "unparsed": 0
+   },
+   "wrong": {
+    "correct": 0,
+    "partial": 1,
+    "wrong": 6,
+    "abstained": 2,
+    "unparsed": 0
+   },
+   "abstained": {
+    "correct": 0,
+    "partial": 0,
+    "wrong": 0,
+    "abstained": 14,
+    "unparsed": 0
+   }
+  }
+ },
+ "results": {
+  "gdpr/stress/dense+MiniLM-L6": {
+   "n": 13,
+   "correct": 0.85,
+   "partial": 0.15,
+   "wrong": 0.0,
+   "abstained": 0.0,
+   "goldInTop3": 0.85,
+   "correctWhenGoldInTop3": 0.82,
+   "wrongWhenGoldMissing": 0.0
+  },
+  "gdpr/stress/hybrid+MiniLM-L6": {
+   "n": 13,
+   "correct": 0.69,
+   "partial": 0.15,
+   "wrong": 0.15,
+   "abstained": 0.0,
+   "goldInTop3": 0.77,
+   "correctWhenGoldInTop3": 0.8,
+   "wrongWhenGoldMissing": 0.67
+  },
+  "gdpr/stress/hybrid+bge-v2-m3": {
+   "n": 13,
+   "correct": 0.46,
+   "partial": 0.46,
+   "wrong": 0.0,
+   "abstained": 0.08,
+   "goldInTop3": 0.69,
+   "correctWhenGoldInTop3": 0.44,
+   "wrongWhenGoldMissing": 0.0
+  },
+  "gdpr/hunt/dense+MiniLM-L6": {
+   "n": 100,
+   "correct": 0.58,
+   "partial": 0.07,
+   "wrong": 0.06,
+   "abstained": 0.29,
+   "goldInTop3": 0.63,
+   "correctWhenGoldInTop3": 0.86,
+   "wrongWhenGoldMissing": 0.16
+  },
+  "gdpr/hunt/hybrid+MiniLM-L6": {
+   "n": 100,
+   "correct": 0.67,
+   "partial": 0.13,
+   "wrong": 0.04,
+   "abstained": 0.16,
+   "goldInTop3": 0.72,
+   "correctWhenGoldInTop3": 0.85,
+   "wrongWhenGoldMissing": 0.14
+  },
+  "gdpr/hunt/hybrid+bge-v2-m3": {
+   "n": 100,
+   "correct": 0.79,
+   "partial": 0.07,
+   "wrong": 0.04,
+   "abstained": 0.1,
+   "goldInTop3": 0.85,
+   "correctWhenGoldInTop3": 0.87,
+   "wrongWhenGoldMissing": 0.13
+  },
+  "constitution/study/dense+MiniLM-L6": {
+   "n": 12,
+   "correct": 0.92,
+   "partial": 0.0,
+   "wrong": 0.08,
+   "abstained": 0.0,
+   "goldInTop3": 0.83,
+   "correctWhenGoldInTop3": 1.0,
+   "wrongWhenGoldMissing": 0.5
+  },
+  "constitution/study/hybrid+MiniLM-L6": {
+   "n": 12,
+   "correct": 0.92,
+   "partial": 0.0,
+   "wrong": 0.08,
+   "abstained": 0.0,
+   "goldInTop3": 0.92,
+   "correctWhenGoldInTop3": 1.0,
+   "wrongWhenGoldMissing": 1.0
+  },
+  "constitution/study/hybrid+bge-v2-m3": {
+   "n": 12,
+   "correct": 1.0,
+   "partial": 0.0,
+   "wrong": 0.0,
+   "abstained": 0.0,
+   "goldInTop3": 1.0,
+   "correctWhenGoldInTop3": 1.0,
+   "wrongWhenGoldMissing": 0.0
+  },
+  "constitution/hunt/dense+MiniLM-L6": {
+   "n": 124,
+   "correct": 0.53,
+   "partial": 0.12,
+   "wrong": 0.2,
+   "abstained": 0.15,
+   "goldInTop3": 0.67,
+   "correctWhenGoldInTop3": 0.75,
+   "wrongWhenGoldMissing": 0.41
+  },
+  "constitution/hunt/hybrid+MiniLM-L6": {
+   "n": 124,
+   "correct": 0.6,
+   "partial": 0.13,
+   "wrong": 0.17,
+   "abstained": 0.1,
+   "goldInTop3": 0.75,
+   "correctWhenGoldInTop3": 0.76,
+   "wrongWhenGoldMissing": 0.45
+  },
+  "constitution/hunt/hybrid+bge-v2-m3": {
+   "n": 124,
+   "correct": 0.7,
+   "partial": 0.08,
+   "wrong": 0.16,
+   "abstained": 0.06,
+   "goldInTop3": 0.81,
+   "correctWhenGoldInTop3": 0.84,
+   "wrongWhenGoldMissing": 0.58
+  }
+ },
+ "calibrationItems": [
+  {
+   "doc": "gdpr",
+   "query": "Does a startup with 10 staff have to maintain records of processing?",
+   "pipe": "dense",
+   "human": "correct",
+   "answer": "Based on the provided context, a startup with 10 staff members is **exempt** from the obligation to maintain records of processing activities, provided that the processing does not meet specific risk criteria.\n\nAccording to **Article 30(5)** (found in Passage 3, chunk 193), the obligations to maintain records \"shall not apply to an enterprise or an organisation employing fewer than 250 persons\" unless one of the following conditions is met:\n1.  The processing is likely to result in a **risk to the rights and freedoms of data subjects**;\n2.  The processing is **not occasional**; or\n3.  The processing includes **special categories of data** (as referred to in Article 9(1)) or personal data relating to **criminal convictions and offences** (as referred to in Article 10).\n\nSince the startup has fewer than 250 employees, it falls under the general derogation for micro, small, and medium-sized enterprises mentioned in **Recital 14** (Passage 2, chunk 8) and **Article 30(5)** (Passage 3, chunk 193). Therefore, it does not have to maintain records unless its specific processing activities involve high risks, are continuous (not occasional), or handle sensitive data (special categories or criminal data).",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly reflects the gold evidence by stating that a startup with 10 staff (fewer than 250 persons) is exempt from maintaining records unless specific conditions are met.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "Does a startup with 10 staff have to maintain records of processing?",
+   "pipe": "hybrid",
+   "human": "wrong",
+   "answer": "Based on the provided context, **yes**, a startup with 10 staff members generally has to maintain records of processing activities, as the obligation applies to \"Each controller\" without an explicit exemption for small numbers of staff in the cited text.\n\nThe context explicitly states in **Article 30(1)**:\n> \"Each controller and, where applicable, the controller's representative, shall maintain a record of processing activities under its responsibility.\"\n\nThe text further elaborates on the content of this record, which must include:\n*   (a) the name and contact details of the controller;\n*   (b) the purposes of the processing;\n*   (c) a description of the categories of data subjects and categories of personal data;\n*   (d) the categories of recipients; and\n*   (e) where applicable, transfers to third countries.\n\nAdditionally, **Recital (82)** reinforces this obligation:\n> \"In order to demonstrate compliance with this Regulation, the controller or processor should maintain records of processing activities under its responsibility. Each controller and processor should be obliged to cooperate with the supervisory authority and make those records, on request, available to it...\"\n\nThe provided context does not mention any specific exemption based on the number of employees (e.g., a threshold of 10 or 250 staff) for the requirement to maintain records. Therefore, under the rules described in the text, the startup (acting as the controller) is obliged to maintain these records.",
+   "judge": "wrong",
+   "judgeReply": "{\"label\": \"wrong\", \"reason\": \"The answer incorrectly states that there is no exemption based on the number of employees, while the gold evidence explicitly mentions an exemption for enterprises with fewer than 250 persons unless certain conditions are met.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What factors may Member States consider when establishing precise processing requirements for competent authorities, beyond any general margin of manoeuvre?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, there is **no information** regarding the specific factors that Member States may consider when establishing precise processing requirements for competent authorities, nor does the text mention a \"general margin of manoeuvre\" in this context.\n\nThe provided passages discuss:\n*   The tasks and powers of supervisory authorities (Passage 1).\n*   The structure, independence, and resources of supervisory authorities (Passage 2).\n*   The determination of the competent lead supervisory authority in cross-border cases involving controllers and processors (Passage 3).\n\nNone of these sections address the specific criteria or factors for setting processing requirements for competent authorities.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not mention or specify the factors Member States may consider when establishing precise processing requirements for competent authorities.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What factors may Member States consider when establishing precise processing requirements for competent authorities, beyond any general margin of manoeuvre?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, when Member States establish more specific provisions for the processing of personal data by competent authorities (such as those tasked with safeguarding against threats to public security), they may consider the following factors:\n\n*   **Constitutional structure:** The constitutional framework of the respective Member State.\n*   **Organisational structure:** The organisational structure of the respective Member State.\n*   **Administrative structure:** The administrative structure of the respective Member State.\n\nThese factors are explicitly mentioned in **Passage 1 (chunk 12, page 4)**, which states that such provisions may determine more precise requirements \"taking into account the constitutional, organisational and administrative structure of the respective Member State.\"\n\nAdditionally, **Passage 2 (chunk 6, page 2)** notes generally that Member States have a margin of manoeuvre to specify rules, including for the processing of special categories of data, and to determine more precisely the conditions under which processing is lawful, though the specific list of structural factors applies most directly to the context of competent authorities in Passage 1.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the constitutional, organisational, and administrative structure of the respective Member State as the factors to be considered, as explicitly stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What indicates that an organization has a genuine presence in the EU regardless of corporate structure?",
+   "pipe": "dense",
+   "human": "correct",
+   "answer": "Based on the provided context, an organization has a genuine presence in the EU if it involves the **effective and real exercise of activity through stable arrangements**.\n\nThe text explicitly states that the legal form of these arrangements—whether through a **branch** or a **subsidiary with a legal personality**—is **not the determining factor** in establishing this presence.\n\n*Note: While this definition is provided in the context, the specific Article number associated with this definition is not included in the provided text passages.*",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the key phrase 'effective and real exercise of activity through stable arrangements' as the indicator of a genuine presence in the EU, as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What indicates that an organization has a genuine presence in the EU regardless of corporate structure?",
+   "pipe": "hybrid",
+   "human": "partial",
+   "answer": "Based on the provided context, an organization has a genuine presence in the EU (specifically defined as a \"main establishment\") if it involves the **effective and real exercise of management activities** determining the main decisions as to the purposes and means of processing through **stable arrangements**.\n\nThe text explicitly states that this criterion should not depend on whether the processing is carried out at that location. Furthermore, the mere presence and use of technical means or technologies for processing do not, in themselves, constitute a main establishment.\n\n**Relevant Citation:**\n*   **Passage 3 | chunk 24 | page 6**: \"The main establishment of a controller in the Union should be determined according to objective criteria and should imply the **effective and real exercise of management activities determining the main decisions as to the purposes and means of processing through stable arrangements**. That criterion should not depend on whether the processing of personal data is carried out at that location.\"",
+   "judge": "partial",
+   "judgeReply": "{\"label\": \"partial\", \"reason\": \"The answer correctly identifies 'effective and real exercise of activity through stable arrangements' but incorrectly adds 'management activities determining the main decisions as to the purposes and means of processing,' which is not present in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "In what non-EU location of a Member State does this Regulation apply by virtue of public international law?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, the text does not contain information regarding specific non-EU locations of a Member State where the GDPR applies by virtue of public international law.\n\nThe passages discuss the **extraterritorial application** of the Regulation (e.g., transfers to third countries, international organizations, or specified sectors within a third country) and the conditions under which such transfers are allowed (such as adequacy decisions or appropriate safeguards). However, they do not specify particular non-EU locations of Member States or define application based on \"public international law\" in the manner requested.\n\nPassage 1 mentions that the extraterritorial application of laws in third countries \"may be in breach of international law,\" but it does not state that the GDPR applies to non-EU locations of Member States based on such law.\n\nTherefore, the provided context does not contain the answer to this question.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The passages do not contain information about non-EU locations of a Member State where the GDPR applies by virtue of public international law.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "In what non-EU location of a Member State does this Regulation apply by virtue of public international law?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, the GDPR applies to a controller not established in the Union in a **Member State's diplomatic mission or consular post** by virtue of public international law.\n\nThis is explicitly stated in **Passage 2, Recital 25**, which notes: \"Where Member State law applies by virtue of public international law, this Regulation should also apply to a controller not established in the Union, such as in a Member State's diplomatic mission or consular post.\"\n\nWhile **Passage 1, Article 3(2)** mentions that the Regulation applies to controllers not established in the Union \"in a place where Member State law applies by virtue of public international law,\" **Passage 2** provides the specific examples of such locations.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the non-EU location as a Member State's diplomatic mission or consular post, as explicitly stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What requirements must be met when public bodies request data disclosure so that the request does not improperly affect a whole filing system?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, there is **no information** regarding specific requirements that must be met when public bodies request data disclosure to prevent the request from \"improperly affecting a whole filing system.\"\n\nThe provided text discusses:\n*   **Consent requirements** for processing personal data (Passage 1).\n*   **Rights of access** and the obligation for controllers to verify identity and avoid retaining data solely for potential requests (Passage 2).\n*   **Exceptions to the obligation to provide information** (such as when providing information would involve a disproportionate effort, including for archiving, scientific, or statistical purposes) (Passage 3).\n\nWhile Passage 1 mentions that \"The processing of personal data by those public authorities should comply with the applicable data-protection rules according to the purposes of the processing,\" it does not specify requirements to avoid affecting a \"whole filing system\" in the context of a request.\n\nTherefore, the answer cannot be derived from the given context.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not mention or specify requirements for public bodies requesting data disclosure to avoid improperly affecting a whole filing system.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What requirements must be met when public bodies request data disclosure so that the request does not improperly affect a whole filing system?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, for a request from a public authority to be considered valid and not lead to the improper interconnection of filing systems, the following requirements must be met:\n\n*   **The request must be in writing.**\n*   **The request must be reasoned.**\n*   **The request must be occasional.**\n*   **The request must not concern the entirety of a filing system.**\n*   **The request must not lead to the interconnection of filing systems.**\n\nThese conditions are explicitly stated in **Passage 3 (chunk 20, page 5)**, which notes that public authorities receiving data for official missions (such as tax, customs, or financial investigation units) should not be regarded as recipients if these specific constraints are followed. The text further clarifies that the processing of such data must comply with applicable data-protection rules according to the purposes of the processing.\n\n*(Note: While the text mentions these requirements in the context of Article 29 of the GDPR, the specific article number is not explicitly cited in the provided context passages.)*",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer accurately reflects the requirements stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What formal conditions must public authority disclosure requests satisfy to ensure requests are kept to a strict minimum?",
+   "pipe": "dense",
+   "human": "correct",
+   "answer": "Based on the provided context, public authority disclosure requests must satisfy the following formal conditions to ensure they are kept to a strict minimum:\n\n*   **Written Form:** The requests must always be in writing.\n*   **Reasoned:** The requests must be reasoned.\n*   **Occasional:** The requests must be occasional.\n*   **Scope Limitation:** The requests must not concern the entirety of a filing system.\n*   **Interconnection Restriction:** The requests must not lead to the interconnection of filing systems.\n\nThese conditions are outlined in **Recital 31** of the GDPR context provided, which states: \"The requests for disclosure sent by the public authorities should always be in writing, reasoned and occasional and should not concern the entirety of a filing system or lead to the interconnection of filing systems.\"",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer accurately reflects the formal conditions outlined in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What formal conditions must public authority disclosure requests satisfy to ensure requests are kept to a strict minimum?",
+   "pipe": "hybrid",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, there are **no formal conditions** described for public authority disclosure requests that ensure such requests are \"kept to a strict minimum.\"\n\nThe context passages address the following points, but none link public authority disclosure requests to a \"strict minimum\" requirement:\n\n*   **Passage 1** discusses the general principle that personal data should be stored for a period limited to a \"strict minimum\" and that processing should only occur if the purpose could not reasonably be fulfilled by other means. However, this is a general principle for data controllers regarding personal data storage and processing, not a specific condition for public authority disclosure requests.\n*   **Passage 2** states that public access to official documents may be considered in the public interest and that personal data in documents held by public authorities can be disclosed if provided for by Union or Member State law. It mentions that such laws should reconcile public access with the right to protection of personal data, but it does not specify formal conditions to keep disclosure requests to a \"strict minimum.\"\n*   **Passage 3** outlines the rules for mutual assistance between supervisory authorities (information requests, inspections, etc.), including requirements for the purpose and reasons for the request, but it does not mention \"public authority disclosure requests\" in the context of keeping them to a \"strict minimum.\"\n\nTherefore, the provided text does not contain the answer to your specific question regarding formal conditions for public authority disclosure requests to ensure they are kept to a strict minimum.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The passages do not mention or specify formal conditions for public authority disclosure requests to ensure they are kept to a strict minimum.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "When is the supervisory authority of a processor's establishment not treated as a supervisory authority concerned?",
+   "pipe": "dense",
+   "human": "wrong",
+   "answer": "Based on the provided context passages, the supervisory authority of a processor's establishment is **not treated as a \"supervisory authority concerned\"** (or is excluded from competence) in the following specific scenarios:\n\n1.  **When the processing is carried out by public authorities or private bodies acting on the basis of Article 6(1)(c) or (e):**\n    In these cases, the supervisory authority of the Member State concerned is competent, but **Article 56 does not apply**. This implies the standard lead supervisory authority mechanism described in Article 56 (which defines the roles of lead and concerned authorities) is not triggered.\n    *   *Citation:* Passage 2, chunk 244, page 67: \"carried out by public authorities or private bodies acting on the basis of point (c) or (e) of Article 6(1), the supervisory authority of the Member State concerned shall be competent. In such cases Article 56 does not apply.\"\n\n2.  **When supervising courts acting in their judicial capacity:**\n    Supervisory authorities are explicitly **not competent** to supervise processing operations of courts acting in their judicial capacity. Consequently, the standard cooperation and lead authority framework of Article 56 would not apply to these specific judicial processing operations.\n    *   *Citation:* Passage 2, chunk 244, page 67: \"Supervisory authorities shall not be competent to supervise processing operations of courts acting in their judicial capacity.\"\n\n3.  **When the processing concerns only a single Member State and involves only data subjects in that single Member State (specifically regarding employee data in the employment context):**\n    While the lead supervisory authority is generally competent for cross-border processing, **each supervisory authority not acting as the lead** is competent to handle local cases where the subject matter concerns only processing in a single Member State involving only data subjects in that state (e.g., employees' personal data in a specific employment context). In such cases, the lead authority decides whether to handle the case, and the non-lead authority acts as the competent authority for that specific local matter rather than being a \"concerned\" authority in a cross-border joint operation.\n    *   *Citation:* Passage 1, chunk 99, page 23: \"Each supervisory authority not acting as the lead supervisory authority should be competent to handle local cases where the controller or processor is established in more than one Member State, but the subject matter of the specific processing concerns only processing carried out in a single Member State and involves only data subjects in that single Member State...\"\n\n4.  **When the lead supervisory authority decides not to handle the case:**\n    If a supervisory authority (which may be the lead or a concerned authority in a cross-border scenario) is informed of a matter that relates only to its Member State, it must inform the lead supervisory authority. The lead supervisory authority then has the discretion to decide **whether or not it will handle the case**. If the lead authority decides not to handle it, the original authority retains competence, but the dynamic of \"concerned authority\" in a joint operation is bypassed.\n    *   *Citation:* Passage 2, chunk 244, page 67: \"Within a period of three weeks after being",
+   "judge": "wrong",
+   "judgeReply": "{\"label\": \"wrong\", \"reason\": \"The answer incorrectly provides scenarios not mentioned in the gold evidence and contradicts it by asserting rules not present in the given passage.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "When is the supervisory authority of a processor's establishment not treated as a supervisory authority concerned?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, the supervisory authorities of the Member State or Member States where the processor has one or more establishments are **not** considered supervisory authorities concerned in the following specific scenario:\n\n*   **When the draft decision concerns only the controller.**\n\nThis is explicitly stated in **Passage 1 (chunk 25, page 7)**, which notes: \"In any case, the supervisory authorities of the Member State or Member States where the processor has one or more establishments should not be considered to be supervisory authorities concerned where the draft decision concerns only the controller.\"\n\nIn such cases, the competent lead supervisory authority remains the supervisory authority of the Member State where the **controller** has its main establishment, rather than the processor's establishments.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the scenario where the supervisory authorities of the processor's establishment are not considered concerned, as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "Even when Member States have a margin of manoeuvre, under what conditions does the GDPR apply to non-automated personal data handling?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, the answer to your question is **not available**.\n\nThe provided text discusses the margin of manoeuvre for Member States regarding the application of GDPR rules (specifically in **Passage 1**), but it does not contain information regarding the specific conditions under which the GDPR applies to **non-automated personal data handling**. The passages focus on:\n*   Member States' ability to specify rules for sensitive data and legal obligations.\n*   Cooperation between supervisory authorities.\n*   The scope of the Regulation regarding natural persons versus legal persons.\n*   Derogations for small and medium-sized enterprises.\n\nNone of the excerpts mention \"non-automated\" processing or the specific conditions required for its applicability under the GDPR.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not mention or specify the conditions under which the GDPR applies to non-automated personal data handling.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "Even when Member States have a margin of manoeuvre, under what conditions does the GDPR apply to non-automated personal data handling?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, the GDPR applies to non-automated personal data handling under the following conditions:\n\n*   **The data must form part of a filing system or be intended to form part of a filing system.**\n    According to **Article 2(1)** of the Regulation (found in Passage 2), the Regulation applies to \"the processing other than by automated means of personal data which form part of a filing system or are intended to form part of a filing system.\"\n\n*   **The processing must fall within the scope of Union law.**\n    According to **Article 2(2)(a)** of the Regulation (found in Passage 2), the Regulation does *not* apply to processing \"in the course of an activity which falls outside the scope of Union law.\" Therefore, for the GDPR to apply to non-automated processing, the activity must be within the scope of Union law.\n\n*   **The processing must not be carried out by Member States for specific public authority activities.**\n    According to **Article 2(2)(b)** and **(d)** of the Regulation (found in Passage 2), the Regulation does not apply to:\n    *   Processing by Member States when carrying out activities within the scope of Chapter 2 of Title V of the TEU.\n    *   Processing by competent authorities for the purposes of the prevention, investigation, detection or prosecution of criminal offences or the execution of criminal penalties, including safeguarding against and preventing threats to public security.\n\n*   **The processing must not be a purely personal or household activity by a natural person.**\n    According to **Article 2(2)(c)** of the Regulation (found in Passage 2), the Regulation does not apply to processing by a natural person in the course of a purely personal or household activity.\n\n**Relevant Citation:**\n*   **Article 2** (Material scope) in Passage 2.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies that the GDPR applies to non-automated personal data handling when the data form part of a filing system or are intended to form part of a filing system, as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What action must be taken immediately when stored personal information is found to be incorrect?",
+   "pipe": "dense",
+   "human": "partial",
+   "answer": "Based on the provided context, when stored personal information is found to be inaccurate, the controller must take **every reasonable step to ensure that the data are rectified or deleted**.\n\nThis requirement is explicitly stated in **Passage 1**, which notes: \"Every reasonable step should be taken to ensure that personal data which are inaccurate are rectified or deleted.\" The passage further emphasizes that personal data should be processed in a manner that ensures appropriate security and confidentiality, and that the period for which data are stored should be limited to a strict minimum.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly states that the data must be rectified or deleted without delay, as indicated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What action must be taken immediately when stored personal information is found to be incorrect?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "When stored personal information is found to be incorrect, every reasonable step must be taken to ensure that the data are **erased or rectified without delay**.\n\nThis requirement is explicitly stated in **Article 5(1)(d)** of the GDPR, which mandates that personal data must be \"accurate and, where necessary, kept up to date; every reasonable step must be taken to ensure that personal data that are inaccurate, having regard to the purposes for which they are processed, are erased or rectified without delay.\"\n\nAdditionally, **Recital 29** (found in Passage 1) reinforces this by stating: \"Every reasonable step should be taken to ensure that personal data which are inaccurate are rectified or deleted.\"",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly states that incorrect personal information must be erased or rectified without delay, as explicitly mentioned in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What format requirement must standardized icons meet when presented electronically, even if personal data are obtained from another source?",
+   "pipe": "dense",
+   "human": "correct",
+   "answer": "When standardized icons are presented electronically, they must be **machine-readable**.\n\nThis requirement is explicitly stated in **Article 13(7)** of the GDPR (as cited in Passage 3, chunk 161):\n> \"Where the icons are presented electronically they shall be machine-readable.\"\n\nThis provision applies generally to the information provided pursuant to Articles 13 and 14, which includes scenarios where personal data are obtained from a source other than the data subject themselves (covered under Article 13(1)(e) and the general scope of Article 13 referenced in Passage 1, chunk 47).",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies that standardized icons must be machine-readable when presented electronically, as explicitly stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What format requirement must standardized icons meet when presented electronically, even if personal data are obtained from another source?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "When standardized icons are presented electronically, they must be **machine-readable**.\n\nThis requirement is explicitly stated in **Recital 61** of the GDPR (found in Passage 1), which notes: \"Where the icons are presented electronically, they should be machine-readable.\"\n\nWhile the context indicates that information regarding processing (including the use of icons) should be provided to the data subject at the time of collection if obtained directly, or within a reasonable period if obtained from another source (Recital 61 and Article 13), the specific technical format requirement for electronic icons remains the same regardless of the source of the data.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly states that standardized icons must be machine-readable when presented electronically, as explicitly stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What must be disclosed regarding legitimate interests when processing relies on point (f) of Article 6(1), even if information is not provided at the time when personal data are obtained?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, there is **no information** regarding what must be disclosed specifically when processing relies on point (f) of Article 6(1) if information is not provided at the time personal data are obtained.\n\nThe provided text contains the following relevant excerpts, but none address the specific scenario of disclosure requirements for point (f) when initial information is missing:\n\n*   **Passage 1** discusses the right to object to processing based on point (e) or (f) of Article 6(1) (specifically regarding profiling and direct marketing) and the controller's obligation to demonstrate compelling legitimate grounds to override the data subject's interests. It also states that the right to object must be explicitly brought to the data subject's attention at the time of the first communication. However, it does not specify what information must be disclosed *if* it was not provided at the time of obtaining the data.\n*   **Passage 2** discusses the concept of \"legitimate interests\" as a legal basis for processing, noting that such interests may exist where there is a relevant and (the text cuts off), but it does not detail disclosure obligations for point (f) in the absence of initial information.\n*   **Passage 3** discusses compatibility of processing purposes and proportionality but does not mention disclosure requirements for legitimate interests under point (f) when initial information is lacking.\n\nTherefore, the provided context does not contain the answer to your question.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not contain information about what must be disclosed regarding legitimate interests under Article 6(1)(f) when information is not provided at the time personal data are obtained.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "What must be disclosed regarding legitimate interests when processing relies on point (f) of Article 6(1), even if information is not provided at the time when personal data are obtained?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, when processing is based on point (f) of Article 6(1) (which refers to legitimate interests), the controller must provide the data subject with specific information to ensure fair and transparent processing.\n\nAccording to **Passage 2, paragraph 2, sub-paragraph (b)**, the controller must disclose:\n**\"the legitimate interests pursued by the controller or by a third party.\"**\n\nThis information is required as part of the additional details necessary to ensure fair and transparent processing, alongside the period of storage and other rights. The context does not specify a different requirement for disclosure timing (i.e., distinguishing between when data is obtained and when it is processed), but rather lists this as part of the information the controller shall provide to the data subject in general to ensure transparency.\n\n**Relevant Article:** Article 13 and Article 14 of the GDPR (implied by the context of providing information to the data subject, though the specific article number is not explicitly cited in the provided text snippets).\n\n**Answer:**\nWhen processing is based on point (f) of Article 6(1), the controller must disclose **the legitimate interests pursued by the controller or by a third party**. This is required as part of the information necessary to ensure fair and transparent processing.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies that the legitimate interests pursued by the controller or a third party must be disclosed when processing relies on point (f) of Article 6(1), as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "Article 23 allows restrictions on data subject rights to safeguard which specific professional ethics function?",
+   "pipe": "dense",
+   "human": "wrong",
+   "answer": "Based on the provided context passages, **Article 23 does not allow restrictions on data subject rights to safeguard any specific professional ethics function.**\n\nThe text of Article 23 (found in Passage 1, chunk 179, page 46) states that Union or Member State law may restrict the scope of data subject rights and obligations \"to safeguard the **public interest**.\" It does not mention \"professional ethics\" as a specific function or basis for restriction.\n\nThe relevant excerpt from Article 23(1) is:\n> \"Union or Member State law to which the data controller or processor is subject may restrict by way of a legislative measure the scope of the obligations and rights provided for in Articles 12 to 22 and Article 34, as well as Article 5 in so far as its provisions correspond to the rights and obligations provided for in Articles 12 to 22, **to safeguard the public interest**...\"\n\nTherefore, the context indicates the restriction is for the **public interest**, not a specific professional ethics function.",
+   "judge": "wrong",
+   "judgeReply": "{\"label\": \"wrong\", \"reason\": \"The answer contradicts the gold evidence by incorrectly stating that Article 23 does not allow restrictions to safeguard professional ethics, while the gold evidence explicitly mentions this as one of the purposes under Article 23(1)(g).\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "Article 23 allows restrictions on data subject rights to safeguard which specific professional ethics function?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, **Article 23** allows restrictions on data subject rights to safeguard the **prevention, investigation, detection and prosecution of breaches of ethics for regulated professions**.\n\nThis is explicitly stated in **Passage 3**, which lists the conditions under which restrictions may be imposed. Specifically, point **(g)** of the list in that passage refers to:\n> \"(g) the prevention, investigation, detection and prosecution of breaches of ethics for regulated professions;\"\n\nThe context further clarifies that such restrictions must be necessary and proportionate measures in a democratic society to safeguard this objective, alongside other listed objectives like national security, public security, and the protection of judicial independence.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the specific professional ethics function safeguarded by Article 23 as the prevention, investigation, detection and prosecution of breaches of ethics for regulated professions, as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "To what specific type of processing operations does Article 41 on monitoring of approved codes of conduct not apply?",
+   "pipe": "dense",
+   "human": "wrong",
+   "answer": "Based on the provided context passages, **Article 41 does not apply to specific types of processing operations**; rather, it applies to **controllers or processors** who have undertaken to apply an approved code of conduct.\n\nThe context clarifies the scope of Article 41 as follows:\n\n*   **Who it applies to:** It applies to \"controllers or processors which undertake to apply\" a code of conduct (Passage 1, chunk 211).\n*   **What it mandates:** It requires these controllers or processors to make \"binding and enforceable commitments... to apply those appropriate safeguards\" (Passage 1, chunk 211).\n*   **The Monitoring Body:** The monitoring is carried out by a body accredited by the competent supervisory authority, not by the processing operations themselves (Passage 3, chunk 214).\n\nThe provided text **does not contain information** specifying any particular *type of processing operation* (e.g., health data, financial data, or cross-border transfers) to which Article 41 does not apply.\n\n*   **Passage 1** states that codes of conduct can be adhered to by controllers/processors \"not subject to this Regulation pursuant to Article 3\" to provide safeguards for transfers to third countries, implying Article 41 *does* apply to them in this specific context.\n*   **Passage 2** lists matters the Board examines regarding codes of conduct (e.g., compliance with the Regulation), but does not exclude specific processing types from Article 41's application.\n*   **Passage 3** defines the accreditation criteria for monitoring bodies but does not list exclusions based on processing operations.\n\n**Conclusion:**\nThe provided context **does not specify** any type of processing operation to which Article 41 does not apply. Article 41 applies to **controllers or processors** (including those not subject to the Regulation under Article 3) who have undertaken to apply an approved code of conduct.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not specify the types of processing operations to which Article 41 does not apply.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "To what specific type of processing operations does Article 41 on monitoring of approved codes of conduct not apply?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context passages, **Article 41** (specifically paragraph 4, cited in Passage 1) does not apply to **processing carried out by public authorities and bodies**.\n\nWhile Article 41 establishes mechanisms for the mandatory monitoring of compliance with codes of conduct by controllers or processors that undertake to apply them, the text explicitly notes an exception regarding public sector entities.\n\n**Relevant Citation:**\n*   **Passage 3 | chunk 216 | page 58** (Note: Although the header says \"Article 42 Certification,\" the text fragment beginning with \"to processing carried out by public authorities and bodies\" appears to be the continuation of the exception clause found in **Article 41(4)** of the GDPR, which states: \"This Article shall not apply to processing carried out by public authorities and bodies.\")\n\n**Answer:**\nArticle 41 on the monitoring of approved codes of conduct does not apply to **processing carried out by public authorities and bodies**.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies that Article 41 does not apply to processing carried out by public authorities and bodies, as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "How frequently at minimum must the periodic review mechanism included in an adequacy implementing act take place?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, the specific minimum frequency (e.g., \"every X months\") for the periodic review mechanism is **not explicitly stated**.\n\nPassage 1 (chunk 84) mentions that in adequacy decisions, the Commission should provide for a \"periodic review mechanism\" and that this review should be conducted \"within a reasonable time\" after evaluating the functioning of the decision. However, it does not define what constitutes a specific minimum interval (such as annually or every three months).\n\nTherefore, using **only** the provided context, the exact minimum frequency cannot be determined.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not specify the minimum frequency for the periodic review mechanism in an adequacy implementing act.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "How frequently at minimum must the periodic review mechanism included in an adequacy implementing act take place?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, the periodic review mechanism included in an adequacy implementing act must take place **at least every four years**.\n\nThis requirement is explicitly stated in **Passage 1, paragraph 3**, which notes:\n> \"The implementing act shall provide for a mechanism for a periodic review, **at least every four years**, which shall take into account all relevant developments in the third country or international organisation.\"\n\nAdditionally, **Passage 2** reinforces this by stating that in its adequacy decisions, the Commission should provide for a periodic review mechanism and should evaluate the functioning of these decisions \"within a reasonable time,\" though the specific four-year minimum is defined in the implementing act context found in Passage 1.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly states that the periodic review mechanism must take place at least every four years, as explicitly mentioned in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "Even without referencing the Council of Europe Convention of 28 January 1981, what details must an adequacy implementing act specify regarding its scope?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, it is **not possible** to answer this question.\n\nThe text mentions the Council of Europe Convention of 28 January 1981 in **Passage 1 (chunk 83)** as a factor the Commission should take into account when assessing the level of protection in third countries or international organisations. However, the text does not specify the details an adequacy implementing act must include regarding its scope, nor does it provide such details in the absence of referencing that Convention.\n\nThe passages discuss:\n*   The requirement for the Commission to consult the Board when assessing protection levels (Passage 1).\n*   The Commission's duty to monitor decisions on adequacy and provide for periodic review mechanisms (Passage 1).\n*   The Commission's power to repeal, amend, or suspend adequacy decisions if a third country no longer ensures an adequate level of protection, including procedures for urgent acts (Passage 2).\n*   The repeal of Directive 95/46/EC and references to committee procedures (Passage 3).\n\nNone of these sections explicitly list the required details for the scope of an adequacy implementing act.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not specify the details an adequacy implementing act must include regarding its scope without referencing the Council of Europe Convention of 28 January 1981.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "Even without referencing the Council of Europe Convention of 28 January 1981, what details must an adequacy implementing act specify regarding its scope?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, an adequacy implementing act must specify its **territorial and sectoral application**.\n\nAdditionally, where applicable, the act must identify the **supervisory authority or authorities** referred to in point (b) of paragraph 2 of the relevant Article.\n\nThese requirements are found in **Passage 2, paragraph 3**, which states:\n> \"The implementing act shall specify its territorial and sectoral application and, where applicable, identify the supervisory authority or authorities referred to in point (b) of paragraph 2 of this Article.\"\n\n*(Note: While Passage 1 mentions that the Commission should take into account the third country's accession to the Council of Europe Convention of 28 January 1981, Passage 2 does not list this convention as a mandatory specification within the implementing act itself, other than as a factor in the assessment of adequacy.)*",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the requirement for an adequacy implementing act to specify its territorial and sectoral application as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "Regardless of shifts in information and communication technologies and commercial practices, what advice must the Board provide to the Commission regarding binding corporate rules?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, there is **no information** regarding the Board's advice on binding corporate rules (BCRs) or how such advice must be provided regardless of shifts in information and communication technologies or commercial practices.\n\nThe provided text covers:\n*   The tasks of the Board regarding the consistency mechanism (Article 70), including issuing binding decisions (Article 65) and opinions on codes of conduct (Article 40(9)).\n*   The Board's reporting obligations (Article 71).\n*   The Board's decision-making procedures (Article 72).\n*   The Board's chair and deputy chairs (Article 73).\n*   Urgent opinions and binding decisions (Article 75).\n*   The exchange of information (Article 67).\n\nHowever, none of these passages mention \"binding corporate rules\" specifically, nor do they contain the condition about \"shifts in information and communication technologies and commercial practices.\"\n\nTherefore, I cannot answer the question using the provided context.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not mention binding corporate rules or the Board's advice regarding them in the context of shifts in technology and commercial practices.\"}"
+  },
+  {
+   "doc": "gdpr",
+   "query": "Regardless of shifts in information and communication technologies and commercial practices, what advice must the Board provide to the Commission regarding binding corporate rules?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, the Board must advise the Commission on the **format and procedures for the exchange of information between controllers, processors and supervisory authorities for binding corporate rules**.\n\nThis obligation is explicitly stated in **Article 70(1)(c)** of the GDPR (found in Passage 1). The text specifies that the Board shall:\n> \"(c) advise the Commission on the format and procedures for the exchange of information between controllers, processors and supervisory authorities for binding corporate rules;\"\n\nThe context does not mention any specific exceptions or conditions that limit this advice requirement regarding binding corporate rules.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the advice the Board must provide to the Commission regarding binding corporate rules as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "How many members, besides the Chairperson and Vice-Chairperson, comprise the Commission?",
+   "pipe": "dense",
+   "human": "correct",
+   "answer": "Based on the provided context passages, the Commission consists of **three** other members besides the Chairperson and Vice-Chairperson.\n\nThis is explicitly stated in:\n*   **Article 338(2)** (Passage 2): \"the Commission shall consist of a Chairperson, Vice-Chairperson and **three other Members**...\"\n*   **Article 338(2)** (Passage 1): \"the Commission shall consist of a Chairperson, Vice-Chairperson and **three other Members**...\"\n\n**Answer:** Three other members.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly states that the Commission consists of three other members besides the Chairperson and Vice-Chairperson, as explicitly mentioned in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "How many members, besides the Chairperson and Vice-Chairperson, comprise the Commission?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context passages, the Commission consists of **three** other members besides the Chairperson and Vice-Chairperson.\n\nThis is explicitly stated in:\n*   **Article 338, Clause (2)** (Passage 2): \"the Commission shall consist of a Chairperson, Vice-Chairperson and **three other Members**...\"\n*   **Article 338, Clause (2)** (Passage 1): \"the Commission shall consist of a Chairperson, Vice-Chairperson and **three other Members**...\"\n\n**Answer:** Three other Members.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly states that the Commission consists of three other members besides the Chairperson and Vice-Chairperson, as explicitly mentioned in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Which legislative body must the Council of Ministers be collectively responsible to in the context of the Union?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, there is **no explicit statement** in the given text that defines the legislative body to which the Council of Ministers of the **Union** (Central Government) is collectively responsible.\n\nThe provided context includes:\n*   **Article 79** (Passage 1), which establishes the Parliament of the Union consisting of the President, the Council of States, and the House of the People, but does not specify the collective responsibility clause for the Union Council of Ministers in this excerpt.\n*   **Article 164** (Passage 3), which explicitly states in clause (2): \"The Council of Ministers shall be collectively responsible to the **Legislative Assembly of the State**.\" This applies to State Governments, not the Union.\n\nWhile the actual Constitution of India (Article 79(4)) states that the Council of Ministers is collectively responsible to the House of the People, this specific provision is **not present** in the provided context passages.\n\n**Answer:** The provided context does not contain the answer regarding the legislative body the Union Council of Ministers is responsible to. It only specifies that the Council of Ministers of a State is collectively responsible to the Legislative Assembly of the State (Article 164(2)).",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided context does not mention or specify the legislative body to which the Union Council of Ministers is collectively responsible.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Which legislative body must the Council of Ministers be collectively responsible to in the context of the Union?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context passages, the Council of Ministers must be collectively responsible to the **House of the People** (also referred to as the Legislative Assembly in specific contexts like the National Capital Territory).\n\n*   **Article 75, Clause (3)** explicitly states: \"The Council of Ministers shall be collectively responsible to the House of the People.\"\n*   **Article 237, Clause (6)** states: \"The Council of Ministers shall be collectively responsible to the Legislative Assembly.\" This applies specifically in relation to the National Capital Territory, where the Lieutenant Governor and Legislative Assembly functions are governed by Article 239AB.\n\nTherefore, for the Union as a whole, the responsibility is to the **House of the People**.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies that the Council of Ministers is collectively responsible to the House of the People, as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Under what specific condition regarding a Legislative Council does the creation of posts common to both Houses not prevent the clause?",
+   "pipe": "dense",
+   "human": "wrong",
+   "answer": "Based on the provided context, the creation of posts common to both Houses of Parliament does **not** prevent the clause when such posts are created for the **secretarial staff** of either House of Parliament.\n\nThis is explicitly stated in **Article 98(1)** of the Constitution:\n> \"Each House of Parliament shall have a separate secretarial staff: **Provided that nothing in this clause shall be construed as preventing the creation of posts common to both Houses of Parliament.**\"\n\nThe context does not specify any further conditions or exceptions regarding the nature of these common posts other than they must be within the secretarial staff of the Houses of Parliament.",
+   "judge": "wrong",
+   "judgeReply": "{\"label\": \"wrong\", \"reason\": \"The answer incorrectly references Article 98 and 'Parliament' instead of the correct reference to the State Legislature with a Legislative Council as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Under what specific condition regarding a Legislative Council does the creation of posts common to both Houses not prevent the clause?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "The creation of posts common to both Houses does not prevent the clause **in the case of the Legislature of a State having a Legislative Council**.\n\nThis exception is explicitly stated in **Article 187(1)** of the Constitution:\n> \"Provided that nothing in this clause shall, in the case of the Legislature of a State having a Legislative Council, be construed as preventing the creation of posts common to both Houses of such Legislature.\"\n\n(Note: Article 98(1) regarding Parliament does not contain this specific exception and only allows for common posts generally without the conditional phrasing found in Article 187.)",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the condition and quotes the relevant clause from the Constitution as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "In which year was the Supreme Court (Number of Judges) Amendment Act passed, changing the number of judges?",
+   "pipe": "dense",
+   "human": "correct",
+   "answer": "The Supreme Court (Number of Judges) Amendment Act was passed in **2019**.\n\nAccording to Passage 1, the text states: \"Now 'thirty-three' vide the Supreme Court (Number of Judges) Amendment Act, 2019 (37 of 2019), s. 2 (w.e.f. 9-8-2019).\" This amendment changed the number of judges to thirty-three.",
+   "judge": "wrong",
+   "judgeReply": "{\"label\": \"wrong\", \"reason\": \"The gold evidence does not mention the year 2019 or the Supreme Court (Number of Judges) Amendment Act, thus contradicting the answer.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "In which year was the Supreme Court (Number of Judges) Amendment Act passed, changing the number of judges?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "The Supreme Court (Number of Judges) Amendment Act was passed in **2019**.\n\nAccording to Passage 2 (chunk 148), the text states: \"Now 'thirty-three' vide the Supreme Court (Number of Judges) Amendment Act, 2019 (37 of 2019), s. 2 (w.e.f. 9-8-2019).\" This amendment changed the number of judges to thirty-three.",
+   "judge": "wrong",
+   "judgeReply": "{\"label\": \"wrong\", \"reason\": \"The gold evidence does not mention the year 2019 or the Supreme Court (Number of Judges) Amendment Act, and thus contradicts the answer provided.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What is the specific date when the Constitution (Fourteenth Amendment) Act, 1962, came into effect regarding this section?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, there is no mention of the **Constitution (Fourteenth Amendment) Act, 1962**, nor is there any specific date associated with its commencement or effect regarding the section discussed in the text.\n\nThe provided passages reference the following amendments and dates:\n*   **Constitution (Seventh Amendment) Act, 1956** (effective 1-11-1956) [Passage 1]\n*   **Constitution (Twenty-fourth Amendment) Act, 1971** (effective 5-11-1971) [Passage 1]\n*   **Constitution (Forty-second Amendment) Act, 1976** [Passage 1]\n*   **Constitution (Forty-fourth Amendment) Act, 1978** [Passage 3]\n*   **Constitution (Sixty-fourth Amendment) Act, 1990** [Passage 3]\n*   **Constitution (Sixty-seventh Amendment) Act, 1990** [Passage 3]\n*   **Constitution (Sixty-eighth Amendment) Act, 1991** [Passage 3]\n*   **Constitution (Ninth Amendment) Act, 1960** [Passage 2]\n*   **Constitution (One Hundredth Amendment) Act, 2015** [Passage 2]\n*   **Constitution (Forty-second Amendment) Act, 1976** (specifically section 55) [Passage 1]\n\nSince the document provided does not contain information about the Constitution (Fourteenth Amendment) Act, 1962, I cannot state the specific date it came into effect based on this context.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not mention the Constitution (Fourteenth Amendment) Act, 1962, or its effective date.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What is the specific date when the Constitution (Fourteenth Amendment) Act, 1962, came into effect regarding this section?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context passages, the **Constitution (Fourteenth Amendment) Act, 1962** came into effect on **28-12-1962** regarding the insertion of the relevant section (Article 239AB, proviso).\n\nThis is explicitly stated in:\n*   **Passage 1**: \"10. Ins. by the Constitution (Fourteenth Amendment) Act, 1962, s. 5 (w.e.f. **28-12-1962**).\"\n*   **Passage 2**: \"10. Ins. by the Constitution (Fourteenth Amendment) Act, 1962, s. 5 (w.e.f. **28-12-1962**).\"\n\n**Article Reference**: Article 239AB (specifically the proviso added by Section 5 of the Act).\n\n**Exceptions or Conditions**:\nThe context notes that this amendment inserted a proviso to Article 239AB which applies specifically when the legislature for the Union territory of **Puducherry** is dissolved or its functioning is suspended due to action under the law referred to in clause (1) of Article 239A. During such periods, the President may make regulations for the peace, progress, and good government of that Union territory.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the date 28-12-1962 as the effective date of the Constitution (Fourteenth Amendment) Act, 1962, based on the gold evidence provided.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What force and effect do regulations made by the President have when promulgated for Puducherry?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, there is **no information** regarding the force and effect of **regulations** made by the President for Puducherry.\n\nThe document provided discusses **Ordinances** promulgated by the **Administrator** of the Union Territory of Puducherry under **Article 239B** (Passage 1), but it does not mention \"regulations\" or the specific legal effect of regulations in this context.\n\n**Relevant Context on Ordinances (for comparison):**\n*   **Article 239B(2)** states that an Ordinance promulgated by the Administrator of Puducherry \"shall be deemed to be an Act of the Legislature of the Union territory which has been duly enacted after complying with the provisions in that behalf contained in any such law as is referred to in clause (1) of article 239A.\"\n*   However, this applies specifically to **Ordinances**, not **regulations**.\n\n**Conclusion:**\nThe provided text does not contain the answer regarding the force and effect of **regulations** made by the President for Puducherry.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not mention or specify the force and effect of regulations made by the President for Puducherry.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What force and effect do regulations made by the President have when promulgated for Puducherry?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context passages, regulations made by the President for the Union territory of Puducherry have the **same force and effect as an Act of Parliament** which applies to that territory.\n\nThis is explicitly stated in **Article 240, Clause (2)** (found in Passage 3), which reads:\n> \"Any regulation so made may repeal or amend any Act made by Parliament or any other law, which is for the time being applicable to the Union territory and, when promulgated by the President, shall have the same force and effect as an Act of Parliament which applies to that territory.\"\n\n**Exceptions and Conditions:**\n*   **Legislature Functioning:** According to **Article 240, Clause (1)** (Passage 2), the President shall **not** make any regulation for the peace, progress, and good government of Puducherry with effect from the date appointed for the first meeting of the Legislature created under Article 239A.\n*   **Dissolution or Suspension:** However, if the body functioning as the Legislature for Puducherry is dissolved, or its functioning is suspended due to actions under Article 239A, the President **may** make regulations during such periods (as noted in the proviso to Article 240, Clause (1) in Passage 3).\n*   **Scope of Regulation:** The regulations can only repeal or amend Acts of Parliament or other laws that are currently applicable to the Union territory.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly states that regulations made by the President for Puducherry have the same force and effect as an Act of Parliament, as explicitly mentioned in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What specific subjects may Parliament formulate principles for determining the place of supply?",
+   "pipe": "dense",
+   "human": "wrong",
+   "answer": "Based on the provided context, **Article 286(2)** specifies the subjects for which Parliament may formulate principles.\n\nAccording to **Article 286(2)**:\n> \"Parliament may by law formulate principles for determining when a **supply of goods or of services or both** in any of the ways mentioned in clause (1).\"\n\nThe \"ways mentioned in clause (1)\" (as per **Article 286(1)**) are:\n1.  Outside the State; or\n2.  In the course of the import of the goods or services or both into, or export of the goods or services or both out of, the territory of India.\n\nTherefore, Parliament may formulate principles for determining the place of supply of **goods, services, or both** when the supply takes place **outside the State** or **in the course of import into or export out of India**.\n\n*Note: The context provided includes a partial text of Article 286(2) which ends abruptly (\"for 'sale or\"), but the preceding text clearly identifies the subjects as \"supply of goods or of services or both\" and the conditions as those listed in clause (1).*",
+   "judge": "partial",
+   "judgeReply": "{\"label\": \"partial\", \"reason\": \"The answer correctly identifies the subjects as 'supply of goods or of services or both' but incorrectly references Article 286(2) instead of the correct Article 286(5) mentioned in the gold passage.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What specific subjects may Parliament formulate principles for determining the place of supply?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context passages, Parliament may formulate principles for determining the place of supply in the following specific subjects:\n\n*   **Goods or services in inter-State trade or commerce:** Under **Article 269(5)**, Parliament may formulate principles for determining \"the place of supply, and when a supply of goods, or of services, or both takes place in the course of inter-State trade or commerce.\"\n*   **Sale or purchase of goods:** Under **Article 269(3)** (as amended), Parliament may formulate principles for determining \"when a sale or purchase of, or consignment of goods takes place in the course of inter-State trade or commerce.\"\n*   **Consignment of goods:** Under **Article 269(3)** (as amended), the principles also apply to determining when a \"consignment of goods\" takes place in the course of inter-State trade or commerce.\n\nThese provisions are found in **Passage 2** (Article 269, clause 5) and **Passage 3** (Article 269, clause 3 and Article 269A).",
+   "judge": "partial",
+   "judgeReply": "{\"label\": \"partial\", \"reason\": \"The answer incorrectly includes references to Article 269(3) and Article 269A, which are not mentioned in the gold passage, and it adds information not present in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What is the specific date when the words in section 329A were substituted by the Thirty-ninth Amendment Act?",
+   "pipe": "dense",
+   "human": "abstained",
+   "answer": "Based on the provided context passages, there is no information regarding **Article 329A** or the **Thirty-ninth Amendment Act**.\n\nThe provided text contains details about:\n*   **Article 338** (Commission for Scheduled Tribes) and its amendments (89th, 65th, 102nd).\n*   **Articles 335–336** (Reservation in services and Anglo-Indian community) and amendments (95th, 79th, 62nd, 45th, 106th).\n*   **Articles 80–82** (President, Vice-President, and Readjustment after each census) and various amendments (35th, 36th, 31st, Goa Daman and Diu Reorganisation Act).\n\nNone of the passages mention Article 329A or the Thirty-ninth Amendment Act. Therefore, the specific date cannot be determined from the given context.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The provided passages do not mention Article 329A or the Thirty-ninth Amendment Act.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What is the specific date when the words in section 329A were substituted by the Thirty-ninth Amendment Act?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context, the words in Article 329A were substituted by the **Constitution (Thirty-ninth Amendment) Act, 1975, s. 3** with effect from **10-8-1975** (October 10, 1975).\n\nThis is explicitly stated in Passage 1:\n> \"1. Subs. by the Constitution (Thirty-ninth Amendment) Act, 1975, s. 3, for certain words (w.e.f. 10-8-1975).\"\n\n*(Note: The text indicates that the words \"but subject to the provisions of article 329A\" were subsequently omitted by the Constitution (Forty-fourth Amendment) Act, 1978, s. 35, effective 20-6-1979.)*",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the date (10-8-1975) and the act (Constitution (Thirty-ninth Amendment) Act, 1975, s. 3) as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Under what condition can the President issue directions regarding the report mentioned in clause (5)?",
+   "pipe": "dense",
+   "human": "wrong",
+   "answer": "Based on the provided context passages, the President does **not** issue directions regarding the report mentioned in clause (5) under any condition.\n\nThe text explicitly states the following procedure for reports under Article 338:\n*   **Clause (6)** states: \"The President shall cause all such reports to be laid before each House of Parliament...\"\n*   **Clause (7)** states: \"Where any such report... relates to any matter with which any State Government is concerned, a copy of such report shall be forwarded to the Governor of the State...\"\n\nThe document does not mention the President issuing \"directions\" regarding these reports. Instead, the President's role is to lay the report before Parliament, and the Governor's role (for State matters) is to lay the report before the State Legislature. The text notes that the Governor must explain the \"action taken or proposed to be taken\" on the recommendations, but it does not describe the President issuing directions to the Governor or the Legislature regarding the report itself.\n\nTherefore, using **ONLY** the provided context, there is no condition under which the President issues directions regarding the report mentioned in clause (5).",
+   "judge": "wrong",
+   "judgeReply": "{\"label\": \"wrong\", \"reason\": \"The answer contradicts the gold evidence, which explicitly states that the President may issue directions after considering the report referred to in clause (5).\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Under what condition can the President issue directions regarding the report mentioned in clause (5)?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context passages, the President can issue directions regarding the report mentioned in clause (5) under the following condition:\n\n**Notwithstanding anything in Article 343**, the President may, **after consideration of the report referred to in clause (5)**, issue directions in accordance with the whole or any part of that report.\n\nThis provision is explicitly stated in:\n*   **Article 344, Clause (6)** (Passage 2)\n*   **Article 345** (Passage 1)\n\nThe condition applies to reports made by the Commission constituted under Article 344 regarding the official language of the Union and the language for communication between the Union and a State or between one State and another.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the condition that the President may issue directions after considering the report referred to in clause (5), as stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What specific date marks the cutoff for appointments made to posts under the Government of Hyderabad?",
+   "pipe": "dense",
+   "human": "correct",
+   "answer": "Based on the provided context passages, the specific date that marks the cutoff for appointments made to posts under the Government of Hyderabad is **the 1st day of November, 1956**.\n\nThis is explicitly stated in **Article 369, Clause (9)(a)(i)**:\n> \"no appointment, posting, promotion or transfer of any person— (i) made before the **1st day of November, 1956**, to any post under the Government of, or any local authority within, the State of Hyderabad as it existed before that date...\"\n\nThe text further clarifies that provisions regarding such appointments are deemed illegal or void if they were not made in accordance with laws providing for residence requirements within the State of Hyderabad at that time.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the cutoff date as the 1st day of November, 1956, which is explicitly stated in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What specific date marks the cutoff for appointments made to posts under the Government of Hyderabad?",
+   "pipe": "hybrid",
+   "human": "abstained",
+   "answer": "Based on the provided context, there is **no specific date** mentioned that marks the cutoff for appointments made to posts under the Government of Hyderabad.\n\nThe text in **Passage 1 (Art. 369)** refers to appointments made \"before the commencement of the Constitution (Thirty-second Amendment) Act, 1973\" to posts within the State of Andhra Pradesh, but it does not specify a date for appointments to posts under the Government of **Hyderabad** itself. The passage only states that such appointments (made before the 1973 Act to Andhra Pradesh posts or to Hyderabad posts as they existed before 1956) shall be deemed illegal or void if not made in accordance with the law regarding residence requirements.\n\nTherefore, the document does not contain the answer to what specific date marks the cutoff for appointments to posts under the Government of Hyderabad.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The passages do not mention or specify a cutoff date for appointments made to posts under the Government of Hyderabad.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Is a person discharging the functions of the Governor entitled to different emoluments than the President?",
+   "pipe": "dense",
+   "human": "correct",
+   "answer": "Based on the provided context passages, there is **no explicit statement** indicating that a person discharging the functions of the Governor is entitled to *different* emoluments than the President. In fact, the text suggests they are entitled to the **same** emoluments, allowances, and privileges.\n\nHere is the breakdown based on the text:\n\n1.  **President's Entitlements (Article 60):**\n    *   The President is entitled to emoluments, allowances, and privileges determined by Parliament by law.\n    *   Until such provision is made, they are entitled to those specified in the **Second Schedule**.\n    *   *Passage 1, Article 60(3):* \"...entitled to such emoluments, allowances and privileges as may be determined by Parliament by law and, until provision in that behalf is so made, such emoluments, allowances and privileges as are specified in the Second Schedule.\"\n\n2.  **Governor's Entitlements (Article 158):**\n    *   The Governor is entitled to the exact same categories of benefits.\n    *   Until such provision is made, they are entitled to those specified in the **Second Schedule**.\n    *   *Passage 2, Article 158(3):* \"...entitled to such emoluments, allowances and privileges as may be determined by Parliament by law and, until provision in that behalf is so made, such emoluments, allowances and privileges as are specified in the Second Schedule.\"\n\n3.  **Vice-President Acting as President (Article 65):**\n    *   The text explicitly confirms that when the Vice-President acts as President, they have \"all the powers and immunities of the President\" and are entitled to the same emoluments as the President.\n    *   *Passage 3, Article 65(3):* \"...have all the powers and immunities of the President and be entitled to such emoluments, allowances and privileges as may be determined by Parliament by law...\"\n\n**Conclusion:**\nAccording to the provided text, a person discharging the functions of the Governor is entitled to the **same** emoluments, allowances, and privileges as the President (specifically, those determined by Parliament or those in the Second Schedule). The text does not mention any difference in entitlements between the two roles.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly states that a person discharging the functions of the Governor is entitled to the same emoluments, allowances, and privileges as the President, as explicitly mentioned in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Is a person discharging the functions of the Governor entitled to different emoluments than the President?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "No, a person discharging the functions of the Governor is **not** entitled to different emoluments than the President; rather, they are entitled to the **same** emoluments, allowances, and privileges as the President (or the Governor whose functions they are discharging, depending on the specific context of the acting role).\n\nAccording to **Article 164(5)** (cited in Passage 2, Second Schedule, Part A), while a person is discharging the functions of the Governor, \"he shall be entitled to the same emoluments, allowances and privileges as the President or the Governor whose functions he discharges or for whom he acts, as the case may be.\"\n\nAdditionally, **Article 59(3)** (also cited in Passage 2) states that the President is entitled to emoluments, allowances, and privileges as specified in the Second Schedule. While Article 59(3) specifically lists the President's entitlements, the proviso in Article 164(5) ensures that an acting Governor receives the same terms as the President if they are acting in that capacity.\n\n**Exceptions/Conditions:**\n*   The entitlement applies specifically when a person is \"discharging the functions of the Governor.\"\n*   The specific emoluments and allowances are determined by the Second Schedule (which lists the President's emoluments as 10,000 rupees and the Governor's as 5,500 rupees per month under the original text, though these amounts have been amended by subsequent Finance Acts as noted in the context).\n*   The entitlement includes the same privileges as the President or Governor whose functions are being discharged.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly states that a person discharging the functions of the Governor is entitled to the same emoluments, allowances, and privileges as the President, as explicitly mentioned in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Which local authorities are mentioned in the list of State subjects?",
+   "pipe": "dense",
+   "human": "partial",
+   "answer": "Based on **Entry 5** of the **Twelfth Schedule** (State List) found in **Passage 1**, the local authorities mentioned in the list of State subjects are:\n\n*   **Municipal corporations**\n*   **Improvement trusts**\n*   **Districts boards**\n*   **Mining settlement authorities**\n*   **Other local authorities**\n\nThe context specifies that these authorities are included for the purpose of **local self-government or village administration**.\n\n**Relevant Citation:**\n> **Passage 1 | chunk 686 | page 348 | Sch. Sixth**\n> \"5. Local government, that is to say, the constitution and powers of municipal corporations, improvement trusts, districts boards, mining settlement authorities and other local authorities for the purpose of local self-government or village administration.\"",
+   "judge": "partial",
+   "judgeReply": "{\"label\": \"partial\", \"reason\": \"The answer includes 'mining settlement authorities' which is not mentioned in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Which local authorities are mentioned in the list of State subjects?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context passages, the local authorities mentioned in the list of State subjects (List II of the Seventh Schedule) are:\n\n*   **Municipal corporations**\n*   **Improvement trusts**\n*   **District boards**\n*   **Mining settlement authorities**\n*   **Other local authorities** (specifically defined as those \"for the purpose of local self-government or village administration\")\n\nThese are found in **Entry 5** of the State List in **Passage 1** and reiterated in **Passage 3**. The text defines this entry as: \"Local government, that is to say, the constitution and powers of municipal corporations, improvement trusts, districts boards, mining settlement authorities and other local authorities for the purpose of local self-government or village administration.\"\n\nAdditionally, **Entry 19** in **Passage 3** specifically lists: \"municipal corporation, improvement trust, district boards and other local authorities.\"",
+   "judge": "partial",
+   "judgeReply": "{\"label\": \"partial\", \"reason\": \"The answer includes 'mining settlement authorities' which is not mentioned in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Which institutions are controlled or financed by the State, similar to those mentioned in the similar passage?",
+   "pipe": "dense",
+   "human": "wrong",
+   "answer": "Based on the provided context passages, the institutions controlled or financed by the State are those in which **justice, social, economic, and political** justice shall inform all their operations.\n\nAccording to **Article 38(1)** in Passage 1:\n> \"The State shall strive to promote the welfare of the people by securing and protecting as effectively as it may a social order in which justice, social, economic and political, shall inform all the institutions of the national life.\"\n\nThe text does not list specific named institutions (such as courts, schools, or hospitals) in this passage; rather, it refers broadly to \"all the institutions of the national life.\" The State's duty is to ensure that these institutions are guided by the four types of justice mentioned.\n\nAdditionally, **Article 39** in Passage 1 outlines specific principles of policy the State must direct toward securing rights and distributions within these institutions, such as:\n*   Ensuring citizens have an adequate means of livelihood.\n*   Distributing ownership and control of material resources for the common good.\n*   Preventing the concentration of wealth.\n*   Ensuring equal pay for equal work.\n*   Protecting the health and strength of workers and children.\n\n**Article 283** in Passage 3 mentions the custody and regulation of funds (Consolidated Fund, Contingency Fund, and public accounts) for the Union and States, which relates to the financial control of the State over public moneys, but it does not name specific operational institutions in the same manner as Article 38.\n\n**Answer:**\nThe institutions controlled or financed by the State are **\"all the institutions of the national life,\"** which must be guided by **justice, social, economic, and political** justice. This is stipulated in **Article 38(1)**. The State is required to direct its policy toward securing specific outcomes within these institutions, including adequate livelihood, equitable distribution of resources, and protection of workers' rights, as detailed in **Article 39**.",
+   "judge": "abstained",
+   "judgeReply": "{\"abstained\": true, \"reason\": \"The passages do not specify or mention particular institutions controlled or financed by the State, only general principles and policies.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "Which institutions are controlled or financed by the State, similar to those mentioned in the similar passage?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "Based on the provided context passages from the Seventh Schedule of the Constitution of India, the institutions controlled or financed by the State (specifically State Governments) are mentioned in the following entries:\n\n*   **Libraries, museums, and similar institutions:** Entry 12 of List II (State List) covers \"Libraries, museums and other similar institutions controlled or financed by the State.\"\n*   **Ancient and historical monuments:** Entry 12 of List II also includes \"ancient and historical monuments and records other than those declared by or under law made by Parliament to be of national importance.\"\n*   **Library services:** Entry 16 of List II specifies \"library services (financed and controlled by the State Government).\"\n*   **Museum and archaeology institutions:** Entry 20 of List II covers \"museum and archaeology institutions controlled or financed by the State.\"\n*   **Ancient and historical monuments (State context):** Entry 20 of List II reiterates \"ancient and historical monuments and records other than those declared by or under any law made by Parliament to be of national importance.\"\n\n**Relevant Articles/Entries:**\n*   **List II, Entry 12:** \"Libraries, museums and other similar institutions controlled or financed by the State; ancient and historical monuments and records other than those declared by or under law made by Parliament to be of national importance.\"\n*   **List II, Entry 16:** \"library services (financed and controlled by the State Government).\"\n*   **List II, Entry 20:** \"museum and archaeology institutions controlled or financed by the State, ancient and historical monuments and records other than those declared by or under any law made by Parliament to be of national importance.\"\n\n**Exceptions/Conditions:**\n*   The inclusion of \"ancient and historical monuments and records\" is explicitly **excluded** if they are \"declared by or under law made by Parliament to be of national importance.\" This means such monuments fall under the Union's jurisdiction rather than the State's, as per the text in Entries 12 and 20 of List II.\n*   Similarly, in List I (Union List), Entry 62 and 63 specify institutions declared by Parliament by law to be of \"national importance,\" which are financed by the Government of India.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer accurately identifies the institutions controlled or financed by the State, as mentioned in the gold evidence.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What is the notification number associated with the Presidential order dated August 6, 2019?",
+   "pipe": "dense",
+   "human": "wrong",
+   "answer": "Based on the provided context, the notification number associated with the Presidential order dated August 6, 2019, is **C.O. 272**.\n\nThis is found in **Passage 1 | chunk 518 | page 263 | Art. 369**, specifically in the footnote:\n> \"1[clause (2) of Legislative Assembly of the State] shall be necessary before the President issues such a notification. See Appendix II. 1. Subs. by **C.O. 272**, dated the **5-8-2019**, s.2. for \"Constituent Assembly of the State referred to in clause (2)\" (w.e.f. 5-8-2019).\"\n\n*Note: The date in the text is listed as 5-8-2019 (August 5, 2019), which is the date of the order/substitution, while the order came into effect (w.e.f.) on the same date.*",
+   "judge": "wrong",
+   "judgeReply": "{\"label\": \"wrong\", \"reason\": \"The answer states 'C.O. 272' as the notification number, but the gold evidence clearly specifies 'notification no. G.S.R. 562(E)' as the correct number associated with the Presidential order dated August 6, 2019.\"}"
+  },
+  {
+   "doc": "constitution",
+   "query": "What is the notification number associated with the Presidential order dated August 6, 2019?",
+   "pipe": "hybrid",
+   "human": "correct",
+   "answer": "The notification number associated with the Presidential order dated August 6, 2019, is **G.S.R. 562(E)**.\n\nThis is explicitly stated in **Passage 1**, which reads:\n\"Published with the Ministry of Law and Justice, (Legislative Department) notification No. **G.S.R. 562(E)**, dated the 6th August, 2019...\"\n\nThis notification pertains to the declaration under Article 370 that all its clauses ceased to be operative as of August 6, 2019, except for the modified text provided in the schedule.",
+   "judge": "correct",
+   "judgeReply": "{\"label\": \"correct\", \"reason\": \"The answer correctly identifies the notification number G.S.R. 562(E) as stated in the gold evidence.\"}"
+  }
+ ]
+}

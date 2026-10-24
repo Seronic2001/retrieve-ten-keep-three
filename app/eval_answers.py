@@ -7,10 +7,14 @@ Pipelines (sliding-window chunks, so the saved gold chunk ids apply):
   hybrid+bge-v2-m3   the strongest re-ranker in eval_models.py
 Answers come from GENERATOR with the app's prompt (DocIndex.build_prompt), greedy and without thinking, as in
 start_local_llm.sh; an answer is generated once per distinct top 3. The judge is a different, larger model.
+It first decides from the question and answer alone whether the answer abstains: shown the gold passage, it read
+"the context does not contain this" as a false claim about that passage and labelled every abstention wrong.
+The answers that do not abstain are then graded against the gold passage.
 It is calibrated first: it also labels the answers graded by hand in hand_labels.json, and its agreement with
 those labels is reported next to the results.
 
 Needs a GPU and transformers (Kaggle):  RAG_ENCODERS=torch python eval_answers.py
+With several GPUs (Kaggle's T4 x2) each LLM is loaded once per GPU and the prompts are split between the copies.
 Writes notebook/results/answers_eval.json (summary and calibration) and answers_judged.csv (every answer).
 The generated answers are saved to answers_raw.json before judging and reused on a rerun.
 """
@@ -20,6 +24,7 @@ import json
 import os
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 os.environ.setdefault("RAG_ENCODERS", "torch")
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
@@ -38,7 +43,7 @@ JUDGES = ("Qwen/Qwen3-14B", "Qwen/Qwen2.5-14B-Instruct")   # 4-bit; the first th
 PIPELINES = {"dense+MiniLM-L6": ("dense", "MiniLM-L6"), "hybrid+MiniLM-L6": ("hybrid", "MiniLM-L6"),
              "hybrid+bge-v2-m3": ("hybrid", "bge-v2-m3")}
 LABELS = ("correct", "partial", "wrong", "abstained")
-GEN_TOKENS, JUDGE_TOKENS = 512, 120
+GEN_TOKENS, JUDGE_TOKENS, ABSTAIN_TOKENS = 512, 120, 60
 GEN_BATCH, JUDGE_BATCH = 8, 2   # 14B judge prompts are long; batches of 8 ran a T4 out of memory
 
 JUDGE_PROMPT = """You are grading an answer to a question about {subject}. The gold evidence below is the passage
@@ -59,9 +64,20 @@ Labels:
 - partial: it gives only part of that fact, or the right content with a wrong article or a material slip.
 - wrong: it asserts something the evidence contradicts, gives a different rule as the answer, or claims the rule
   does not exist.
-- abstained: it says the context does not contain the answer, without asserting a wrong answer.
 
-Reply with JSON only: {{"label": "correct|partial|wrong|abstained", "reason": "<one sentence>"}}"""
+Reply with JSON only: {{"label": "correct|partial|wrong", "reason": "<one sentence>"}}"""
+
+ABSTAIN_PROMPT = """An assistant answered a question about {subject} using only some retrieved passages.
+
+Question: {question}
+
+Answer:
+{answer}
+
+Does the answer abstain, that is, say that the passages do not contain, mention or specify what was asked, without
+giving an answer to the question? An answer that gives an answer and only adds a caveat does not abstain.
+
+Reply with JSON only: {{"abstained": true|false, "reason": "<one sentence>"}}"""
 
 
 def documents(models):
@@ -76,14 +92,33 @@ def documents(models):
 
 
 def load_llm(name, four_bit=False):
+    """One copy of the model per GPU, as (tokenizer, model) pairs."""
     tok = AutoTokenizer.from_pretrained(name, padding_side="left")
-    kw = ({"quantization_config": BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4",
-                                                     bnb_4bit_compute_dtype=torch.float16)}
-          if four_bit else {"torch_dtype": torch.float16})
-    return tok, AutoModelForCausalLM.from_pretrained(name, device_map="cuda", **kw)
+    copies = []
+    for d in range(torch.cuda.device_count()):
+        kw = ({"quantization_config": BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4",
+                                                         bnb_4bit_compute_dtype=torch.float16)}
+              if four_bit else {"torch_dtype": torch.float16})
+        copies.append((tok, AutoModelForCausalLM.from_pretrained(name, device_map={"": d}, **kw)))
+    return copies
 
 
-def chat(tok, model, prompts, max_new, batch):
+def chat_all(copies, prompts, max_new, batch):
+    """chat() with the prompts dealt round-robin to the copies, one thread per GPU; replies in prompt order."""
+    n = len(copies)
+
+    def shard(d):
+        torch.cuda.set_device(d)   # bitsandbytes kernels run on the thread's current device
+        return chat(*copies[d], prompts[d::n], max_new, batch, tag=f"gpu{d} ")
+    with ThreadPoolExecutor(n) as ex:
+        parts = list(ex.map(shard, range(n)))
+    out = [None] * len(prompts)
+    for d, part in enumerate(parts):
+        out[d::n] = part
+    return out
+
+
+def chat(tok, model, prompts, max_new, batch, tag=""):
     """Greedy replies to prompts, batched, with thinking switched off where the chat template supports it."""
     def template(p):
         msgs = [{"role": "user", "content": p}]
@@ -95,11 +130,11 @@ def chat(tok, model, prompts, max_new, batch):
         tok.pad_token = tok.eos_token
     out = []
     for i in range(0, len(prompts), batch):
-        enc = tok([template(p) for p in prompts[i:i + batch]], return_tensors="pt", padding=True).to("cuda")
+        enc = tok([template(p) for p in prompts[i:i + batch]], return_tensors="pt", padding=True).to(model.device)
         with torch.no_grad():
             gen = model.generate(**enc, max_new_tokens=max_new, do_sample=False)
         out += [tok.decode(g[enc["input_ids"].shape[1]:], skip_special_tokens=True).strip() for g in gen]
-        print(f"   {min(i + batch, len(prompts))}/{len(prompts)}", flush=True)
+        print(f"   {tag}{min(i + batch, len(prompts))}/{len(prompts)}", flush=True)
     return out
 
 
@@ -112,6 +147,11 @@ def parse_label(reply):
     if label not in LABELS:
         label = next((lab for lab in LABELS if lab in reply.lower()), "unparsed")
     return label
+
+
+def parse_abstained(reply):
+    m = re.search(r'"abstained"\s*:\s*(true|false)', reply, re.I)
+    return bool(m) and m.group(1).lower() == "true"
 
 
 def release_gpu():
@@ -151,16 +191,17 @@ def main():
     gen_minutes = saved_raw.get("generationMinutes")
     todo = [k for k in keys if k not in answers]
     if todo:
-        tok, llm = load_llm(GENERATOR)
-        print(f"generating {len(todo)} answers with {GENERATOR} ({len(keys) - len(todo)} saved)", flush=True)
+        gens = load_llm(GENERATOR)
+        print(f"generating {len(todo)} answers with {GENERATOR} on {len(gens)} GPU(s) "
+              f"({len(keys) - len(todo)} saved)", flush=True)
         t0 = time.time()
-        replies = chat(tok, llm, [docs[d][0].build_prompt(q, list(t)) for d, q, t in todo], GEN_TOKENS, GEN_BATCH)
+        replies = chat_all(gens, [docs[d][0].build_prompt(q, list(t)) for d, q, t in todo], GEN_TOKENS, GEN_BATCH)
         gen_minutes = round((time.time() - t0) / 60, 1)
         answers.update(zip(todo, replies))
         raw.write_text(json.dumps({"generator": GENERATOR, "generationMinutes": gen_minutes,
                                    "answers": [{"doc": d, "query": q, "top3": list(t), "answer": answers[(d, q, t)]}
                                                for d, q, t in keys]}, ensure_ascii=False), encoding="utf-8")
-        del llm, tok
+        del gens
         release_gpu()
     for it in items:
         it["answer"] = answers[(it["doc"], it["query"], tuple(it["top3"]))]
@@ -185,22 +226,34 @@ def main():
         return JUDGE_PROMPT.format(subject=idx.subject, question=query, snippet=q.get("evidence") or "(see passage)",
                                    gold=gold, answer=answer)
 
+    def abstain_prompt(doc, query, answer):
+        return ABSTAIN_PROMPT.format(subject=docs[doc][0].subject, question=query, answer=answer)
+
+    def grade(keys):
+        """(label, judge reply) per (doc, query, answer): abstention check first, gold grading for the rest."""
+        a_replies = chat_all(judges, [abstain_prompt(*k) for k in keys], ABSTAIN_TOKENS, GEN_BATCH)
+        out = {k: ("abstained", r) for k, r in zip(keys, a_replies) if parse_abstained(r)}
+        rest = [k for k in keys if k not in out]
+        g_replies = chat_all(judges, [judge_prompt(*k) for k in rest], JUDGE_TOKENS, JUDGE_BATCH)
+        out.update({k: (parse_label(r), r) for k, r in zip(rest, g_replies)})
+        return out
+
     judge_name = None
     for name in JUDGES:
         try:
-            jtok, judge = load_llm(name, four_bit=True)
+            judges = load_llm(name, four_bit=True)
             judge_name = name
             break
         except Exception as e:  # noqa: BLE001 - try the next judge
             print(f"could not load {name}: {e}", flush=True)
-    print(f"judging with {judge_name}", flush=True)
-    c_replies = chat(jtok, judge, [judge_prompt(c["doc"], c["query"], c["answer"]) for c in calib], JUDGE_TOKENS,
-                     JUDGE_BATCH)
-    for c, r in zip(calib, c_replies):
-        c["judge"], c["judgeReply"] = parse_label(r), r
-    akeys = sorted({(it["doc"], it["query"], it["answer"]) for it in items})
-    a_replies = chat(jtok, judge, [judge_prompt(d, q, a) for d, q, a in akeys], JUDGE_TOKENS, JUDGE_BATCH)
-    verdict = {k: (parse_label(r), r) for k, r in zip(akeys, a_replies)}
+            release_gpu()
+    print(f"judging with {judge_name} on {len(judges)} GPU(s)", flush=True)
+    t0 = time.time()
+    c_verdict = grade(sorted({(c["doc"], c["query"], c["answer"]) for c in calib}))
+    for c in calib:
+        c["judge"], c["judgeReply"] = c_verdict[(c["doc"], c["query"], c["answer"])]
+    verdict = grade(sorted({(it["doc"], it["query"], it["answer"]) for it in items}))
+    judge_minutes = round((time.time() - t0) / 60, 1)
     for it in items:
         it["label"], it["judgeReply"] = verdict[(it["doc"], it["query"], it["answer"])]
 
@@ -210,7 +263,7 @@ def main():
     confusion = {h: {j: sum(c["human"] == h and c["judge"] == j for c in calib) for j in LABELS + ("unparsed",)}
                  for h in LABELS}
     summary = {"generator": GENERATOR, "judge": judge_name, "generationMinutes": gen_minutes,
-               "distinctAnswers": len(keys),
+               "judgeMinutes": judge_minutes, "gpus": torch.cuda.device_count(), "distinctAnswers": len(keys),
                "calibration": {"answers": len(calib), "exactAgreement": round(agree / len(calib), 2),
                                "correctVsNotAgreement": round(binary / len(calib), 2),
                                "confusion_humanRows_judgeColumns": confusion},
