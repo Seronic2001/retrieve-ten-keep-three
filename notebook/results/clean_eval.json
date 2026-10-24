@@ -1,0 +1,217 @@
+{
+ "suspectQuestions": [
+  "constitution: Can a Judge of the Supreme Court resign their office without writing to the President?",
+  "constitution: Can a judgment, decree, or order of any court or Tribunal stop a law from continuing in force in a major port?",
+  "constitution: In which year was the Supreme Court (Number of Judges) Amendment Act passed, changing the number of judges?",
+  "constitution: Under what condition can a law giving effect to directive principles be called in question in a court?",
+  "constitution: What does the term 'authorised person' refer to in the context of co-operative societies?",
+  "constitution: What happens if an Ordinance under this article makes any provision which Parliament would not under this Constitution be competent to enact?",
+  "constitution: What is the maximum number of other Judges allowed in the Supreme Court before Parliament prescribes a larger number?",
+  "constitution: What is the specific date mentioned in the amendment history regarding the substitution of the age limit for High Court Judges?",
+  "constitution: What is the specific date mentioned in the text regarding the omission of Paragraph 18?",
+  "constitution: What is the specific fraction of total seats in a State Legislative Assembly that must be reserved for women?",
+  "constitution: What specific commission can the Governor appoint to examine and report on matters relating to the administration of autonomous districts and autonomous regions?"
+ ],
+ "answers": {
+  "all": {
+   "constitution/dense+MiniLM-L6": {
+    "n": 136,
+    "correct": 0.57,
+    "partial": 0.11,
+    "wrong": 0.19,
+    "abstained": 0.13,
+    "goldInTop3": 0.68
+   },
+   "constitution/hybrid+MiniLM-L6": {
+    "n": 136,
+    "correct": 0.63,
+    "partial": 0.12,
+    "wrong": 0.16,
+    "abstained": 0.09,
+    "goldInTop3": 0.76
+   },
+   "constitution/hybrid+bge-v2-m3": {
+    "n": 136,
+    "correct": 0.73,
+    "partial": 0.07,
+    "wrong": 0.15,
+    "abstained": 0.05,
+    "goldInTop3": 0.82
+   },
+   "gdpr/dense+MiniLM-L6": {
+    "n": 113,
+    "correct": 0.61,
+    "partial": 0.08,
+    "wrong": 0.05,
+    "abstained": 0.26,
+    "goldInTop3": 0.65
+   },
+   "gdpr/hybrid+MiniLM-L6": {
+    "n": 113,
+    "correct": 0.67,
+    "partial": 0.13,
+    "wrong": 0.05,
+    "abstained": 0.14,
+    "goldInTop3": 0.73
+   },
+   "gdpr/hybrid+bge-v2-m3": {
+    "n": 113,
+    "correct": 0.75,
+    "partial": 0.12,
+    "wrong": 0.04,
+    "abstained": 0.1,
+    "goldInTop3": 0.83
+   }
+  },
+  "clean": {
+   "constitution/dense+MiniLM-L6": {
+    "n": 125,
+    "correct": 0.61,
+    "partial": 0.12,
+    "wrong": 0.15,
+    "abstained": 0.12,
+    "goldInTop3": 0.73
+   },
+   "constitution/hybrid+MiniLM-L6": {
+    "n": 125,
+    "correct": 0.68,
+    "partial": 0.13,
+    "wrong": 0.11,
+    "abstained": 0.08,
+    "goldInTop3": 0.82
+   },
+   "constitution/hybrid+bge-v2-m3": {
+    "n": 125,
+    "correct": 0.77,
+    "partial": 0.08,
+    "wrong": 0.11,
+    "abstained": 0.04,
+    "goldInTop3": 0.88
+   },
+   "gdpr/dense+MiniLM-L6": {
+    "n": 113,
+    "correct": 0.61,
+    "partial": 0.08,
+    "wrong": 0.05,
+    "abstained": 0.26,
+    "goldInTop3": 0.65
+   },
+   "gdpr/hybrid+MiniLM-L6": {
+    "n": 113,
+    "correct": 0.67,
+    "partial": 0.13,
+    "wrong": 0.05,
+    "abstained": 0.14,
+    "goldInTop3": 0.73
+   },
+   "gdpr/hybrid+bge-v2-m3": {
+    "n": 113,
+    "correct": 0.75,
+    "partial": 0.12,
+    "wrong": 0.04,
+    "abstained": 0.1,
+    "goldInTop3": 0.83
+   }
+  }
+ },
+ "support": {
+  "all": {
+   "Qwen3.5-4B/constitution": {
+    "n": 371,
+    "wrong": 68,
+    "wrongFlagged": 0.26,
+    "correctFlagged": 0.03,
+    "wrongAmongUnflagged": 0.15
+   },
+   "Qwen3.5-4B/gdpr": {
+    "n": 283,
+    "wrong": 16,
+    "wrongFlagged": 0.38,
+    "correctFlagged": 0.04,
+    "wrongAmongUnflagged": 0.04
+   },
+   "Qwen3-14B/constitution": {
+    "n": 371,
+    "wrong": 68,
+    "wrongFlagged": 0.37,
+    "correctFlagged": 0.03,
+    "wrongAmongUnflagged": 0.13
+   },
+   "Qwen3-14B/gdpr": {
+    "n": 283,
+    "wrong": 16,
+    "wrongFlagged": 0.5,
+    "correctFlagged": 0.0,
+    "wrongAmongUnflagged": 0.03
+   }
+  },
+  "clean": {
+   "Qwen3.5-4B/constitution": {
+    "n": 345,
+    "wrong": 47,
+    "wrongFlagged": 0.34,
+    "correctFlagged": 0.03,
+    "wrongAmongUnflagged": 0.1
+   },
+   "Qwen3.5-4B/gdpr": {
+    "n": 283,
+    "wrong": 16,
+    "wrongFlagged": 0.38,
+    "correctFlagged": 0.04,
+    "wrongAmongUnflagged": 0.04
+   },
+   "Qwen3-14B/constitution": {
+    "n": 345,
+    "wrong": 47,
+    "wrongFlagged": 0.45,
+    "correctFlagged": 0.03,
+    "wrongAmongUnflagged": 0.09
+   },
+   "Qwen3-14B/gdpr": {
+    "n": 283,
+    "wrong": 16,
+    "wrongFlagged": 0.5,
+    "correctFlagged": 0.0,
+    "wrongAmongUnflagged": 0.03
+   }
+  }
+ },
+ "gate": {
+  "all": {
+   "constitution/dense": {
+    "n": 136,
+    "aurocCorrectVsWrong": 0.515
+   },
+   "constitution/hybrid": {
+    "n": 136,
+    "aurocCorrectVsWrong": 0.495
+   },
+   "gdpr/dense": {
+    "n": 113,
+    "aurocCorrectVsWrong": 0.543
+   },
+   "gdpr/hybrid": {
+    "n": 113,
+    "aurocCorrectVsWrong": 0.796
+   }
+  },
+  "clean": {
+   "constitution/dense": {
+    "n": 125,
+    "aurocCorrectVsWrong": 0.56
+   },
+   "constitution/hybrid": {
+    "n": 125,
+    "aurocCorrectVsWrong": 0.519
+   },
+   "gdpr/dense": {
+    "n": 113,
+    "aurocCorrectVsWrong": 0.543
+   },
+   "gdpr/hybrid": {
+    "n": 113,
+    "aurocCorrectVsWrong": 0.796
+   }
+  }
+ }
+}
