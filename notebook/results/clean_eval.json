@@ -12,6 +12,7 @@
   "constitution: What is the specific fraction of total seats in a State Legislative Assembly that must be reserved for women?",
   "constitution: What specific commission can the Governor appoint to examine and report on matters relating to the administration of autonomous districts and autonomous regions?"
  ],
+ "regraded": true,
  "answers": {
   "all": {
    "constitution/dense+MiniLM-L6": {
@@ -112,6 +113,56 @@
     "abstained": 0.1,
     "goldInTop3": 0.83
    }
+  },
+  "fixed": {
+   "constitution/dense+MiniLM-L6": {
+    "n": 122,
+    "correct": 0.67,
+    "partial": 0.11,
+    "wrong": 0.09,
+    "abstained": 0.12,
+    "goldInTop3": 0.78
+   },
+   "constitution/hybrid+MiniLM-L6": {
+    "n": 122,
+    "correct": 0.74,
+    "partial": 0.13,
+    "wrong": 0.05,
+    "abstained": 0.08,
+    "goldInTop3": 0.88
+   },
+   "constitution/hybrid+bge-v2-m3": {
+    "n": 122,
+    "correct": 0.83,
+    "partial": 0.09,
+    "wrong": 0.04,
+    "abstained": 0.04,
+    "goldInTop3": 0.95
+   },
+   "gdpr/dense+MiniLM-L6": {
+    "n": 113,
+    "correct": 0.61,
+    "partial": 0.08,
+    "wrong": 0.05,
+    "abstained": 0.26,
+    "goldInTop3": 0.65
+   },
+   "gdpr/hybrid+MiniLM-L6": {
+    "n": 113,
+    "correct": 0.67,
+    "partial": 0.13,
+    "wrong": 0.05,
+    "abstained": 0.14,
+    "goldInTop3": 0.73
+   },
+   "gdpr/hybrid+bge-v2-m3": {
+    "n": 113,
+    "correct": 0.75,
+    "partial": 0.12,
+    "wrong": 0.04,
+    "abstained": 0.1,
+    "goldInTop3": 0.83
+   }
   }
  },
  "support": {
@@ -174,6 +225,36 @@
     "correctFlagged": 0.0,
     "wrongAmongUnflagged": 0.03
    }
+  },
+  "fixed": {
+   "Qwen3.5-4B/constitution": {
+    "n": 336,
+    "wrong": 22,
+    "wrongFlagged": 0.5,
+    "correctFlagged": 0.03,
+    "wrongAmongUnflagged": 0.04
+   },
+   "Qwen3.5-4B/gdpr": {
+    "n": 283,
+    "wrong": 16,
+    "wrongFlagged": 0.38,
+    "correctFlagged": 0.04,
+    "wrongAmongUnflagged": 0.04
+   },
+   "Qwen3-14B/constitution": {
+    "n": 336,
+    "wrong": 22,
+    "wrongFlagged": 0.59,
+    "correctFlagged": 0.04,
+    "wrongAmongUnflagged": 0.03
+   },
+   "Qwen3-14B/gdpr": {
+    "n": 283,
+    "wrong": 16,
+    "wrongFlagged": 0.5,
+    "correctFlagged": 0.0,
+    "wrongAmongUnflagged": 0.03
+   }
   }
  },
  "gate": {
@@ -203,6 +284,24 @@
    "constitution/hybrid": {
     "n": 125,
     "aurocCorrectVsWrong": 0.519
+   },
+   "gdpr/dense": {
+    "n": 113,
+    "aurocCorrectVsWrong": 0.543
+   },
+   "gdpr/hybrid": {
+    "n": 113,
+    "aurocCorrectVsWrong": 0.796
+   }
+  },
+  "fixed": {
+   "constitution/dense": {
+    "n": 122,
+    "aurocCorrectVsWrong": 0.666
+   },
+   "constitution/hybrid": {
+    "n": 122,
+    "aurocCorrectVsWrong": 0.63
    },
    "gdpr/dense": {
     "n": 113,

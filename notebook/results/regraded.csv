@@ -1,0 +1,181 @@
+doc,query,answer,label,judgeReply
+constitution,By what method must a Judge of the Supreme Court be appointed by the President?,"Based on the provided context, a Judge of the Supreme Court must be appointed by the President **by warrant under his hand and seal on the recommendation of the National Judicial Appointments Commission**.
+
+This is explicitly stated in **Article 124(2)** of the Constitution:
+> ""Every Judge of the Supreme Court shall be appointed by the President by warrant under his hand and seal [on the recommendation of the National Judicial Appointments Commission referred to in article 124A]...""
+
+**Exceptions or Conditions:**
+*   **Resignation:** A Judge may resign their office by writing under their hand addressed to the President (Article 124(2)(a)).
+*   **Removal:** A Judge may be removed from office in the manner provided in clause (4) of Article 124 (Article 124(2)(b)).
+*   **Ad hoc Attendance:** While not a permanent appointment, a Judge of a High Court may be designated as an *ad hoc* Judge of the Supreme Court upon a request made by the Chief Justice of India (with the President's consent) to the National Judicial Appointments Commission (Article 126).
+*   **Retired Judges:** A retired Judge of the Supreme Court or a High Court may be requested to attend sittings as an *ad hoc* Judge (Article 128).
+
+The primary method for appointing a permanent Judge remains the warrant issued by the President based on the recommendation of the National Judicial Appointments Commission.",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly states that a Judge of the Supreme Court must be appointed by the President by warrant under his hand and seal on the recommendation of the National Judicial Appointments Commission, as explicitly mentioned in the gold evidence.""}"
+constitution,Can a House of the Legislature of a State act notwithstanding any vacancy in the membership thereof?,"Yes, a House of the Legislature of a State can act notwithstanding any vacancy in its membership.
+
+According to **Article 189(2)** of the Constitution of India:
+> ""A House of the Legislature of a State shall have power to act notwithstanding any vacancy in the membership thereof, and any proceedings in the Legislature of a State shall be valid notwithstanding that it is discovered subsequently that some person who was not entitled so to do sat or voted or otherwise took part in the proceedings.""
+
+This provision is reiterated in **Article 100(2)** regarding the Houses of Parliament, confirming the principle applies to State Legislatures as well.
+
+**Exceptions or Conditions:**
+*   **Validity of Proceedings:** While the House can *act* despite vacancies, the validity of specific proceedings may be affected if it is discovered that a person who was not entitled to do so sat, voted, or took part in the proceedings. However, the Article states that such proceedings shall be **valid** regardless of this subsequent discovery.
+*   **Quorum:** The power to act notwithstanding vacancies does not override the requirement for a quorum. **Article 189(4)** (and Article 100(4)) states that if there is no quorum, it is the duty of the Speaker or Chairman to adjourn or suspend the meeting until a quorum is present. The quorum requirement is defined in **Article 189(3)** as ten members or one-tenth of the total number of members, whichever is greater, unless the Legislature of the State provides otherwise by law.",partial,"{""label"": ""partial"", ""reason"": ""The answer correctly states that a House can act despite vacancies, but incorrectly references Article 100(2) which pertains to Parliament, not State Legislatures, and the gold evidence does not mention Article 100.""}"
+constitution,Can a House of the Legislature of a State act notwithstanding any vacancy in the membership thereof?,"Yes, a House of the Legislature of a State can act notwithstanding any vacancy in its membership.
+
+According to **Article 189(2)** of the Constitution of India:
+> ""A House of the Legislature of a State shall have power to act notwithstanding any vacancy in the membership thereof, and any proceedings in the Legislature of a State shall be valid notwithstanding that it is discovered subsequently that some person who was not entitled so to do sat or voted or otherwise took part in the proceedings.""
+
+This provision is reiterated in **Article 190** (specifically the first sentence of the passage provided, which appears to be a continuation of Article 189 or a related clause regarding the validity of proceedings).
+
+**Conditions and Exceptions:**
+*   **Validity of Proceedings:** The article explicitly states that proceedings remain valid even if it is later discovered that a person who was not entitled to do so sat, voted, or took part in the proceedings.
+*   **Quorum:** While the House can act despite vacancies, **Article 189(3)** (found in Passage 1) sets a specific quorum requirement: ""Until the Legislature of the State by law otherwise provides, the quorum to constitute a meeting of a House of the Legislature of a State shall be ten members or one-tenth of the total number of members of the House, whichever is greater."" If there is no quorum, the Speaker or Chairman must adjourn or suspend the meeting (**Article 189(4)**).
+*   **State Law:** The Legislature of the State may, by law, provide otherwise regarding the quorum (**Article 189(3)**).",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly states that a House of the Legislature of a State can act notwithstanding any vacancy in its membership, as explicitly mentioned in the gold evidence.""}"
+constitution,Can a state legislature impose a tax on the consumption or sale of electricity?,"Based on the provided context passages, the answer is **no**, a state legislature generally cannot impose a tax on the consumption or sale of electricity, with specific exceptions.
+
+**General Prohibition:**
+According to **Article 287**, ""Save in so far as Parliament may by law otherwise provide, no law of a State shall impose, or authorise the imposition of, a tax on the consumption or sale of electricity."" This establishes a blanket ban on state taxation of electricity, subject to an override by Parliament.
+
+**Exceptions and Conditions:**
+
+1.  **Parliamentary Override:** The primary exception is if **Parliament** enacts a law to allow such taxation. The article explicitly states this restriction applies ""Save in so far as Parliament may by law otherwise provide.""
+2.  **Inter-State River/Water Authority Exemption (Article 288):** While Article 288 primarily deals with water and electricity stored, generated, consumed, distributed, or sold by authorities established for regulating or developing **inter-State river or river-valley** projects, it notes that existing laws of States in force immediately before the Constitution's commencement cannot impose taxes on these specific activities unless the **President** issues an order to the contrary (""Save in so far as the President may by order otherwise provide"").
+3.  **Railway Consumption Pricing (Article 287):** While this clause does not explicitly grant the power to *impose* a tax, it mandates that if a tax is imposed (presumably by Parliament under the exception above), the price of electricity sold to the Government of India or railway companies for construction/maintenance must be less by the amount of the tax than the price charged to other consumers.
+
+**Conclusion:**
+A state legislature cannot impose a tax on the consumption or sale of electricity unless **Parliament** has enacted a law permitting it. Additionally, existing pre-Constitution laws regarding inter-State river authorities are generally exempt from new state taxation unless the **President** orders otherwise.",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly states that a state legislature cannot impose a tax on the consumption or sale of electricity unless Parliament provides otherwise, as explicitly stated in the gold evidence.""}"
+constitution,Can a state legislature impose a tax on the consumption or sale of electricity?,"Based on the provided context, a State Legislature **cannot** impose a tax on the consumption or sale of electricity, with the following exceptions and conditions:
+
+*   **General Prohibition:** Under **Article 287**, ""Save in so far as Parliament may by law otherwise provide, no law of a State shall impose, or authorise the imposition of, a tax on the consumption or sale of electricity.""
+*   **Exception by Parliament:** The prohibition does not apply if **Parliament** enacts a law to the contrary (""Save in so far as Parliament may by law otherwise provide"").
+*   **Exception for Inter-State Water/Electricity:** Under **Article 288**, no law of a State in force immediately before the Constitution's commencement can impose a tax on water or electricity stored, generated, consumed, distributed, or sold by authorities established by existing laws or laws made by Parliament for regulating **inter-State river or river-valley** development. However, the Legislature of a State *may* impose such a tax on this specific category only after the law has been reserved for the consideration of the President and received his assent.
+
+**Relevant Articles:**
+*   **Article 287** (Exemption from taxes on electricity)
+*   **Article 288** (Exemption from taxation by States in respect of water or electricity in certain cases)",partial,"{""label"": ""partial"", ""reason"": ""The answer correctly identifies the general prohibition under Article 287 but incorrectly includes Article 288 and its provisions, which are not relevant to the question about imposing a tax on the consumption or sale of electricity.""}"
+constitution,"If a bill is not a Money Bill, what action can the Governor take regarding the bill?","Based on the provided context passages, if a bill is **not** a Money Bill, the Governor has the following actions he can take regarding the bill:
+
+1.  **Withhold Assent:** The Governor may declare that he withholds assent from the Bill.
+2.  **Reserve the Bill for the Consideration of the President:** The Governor may reserve the Bill for the consideration of the President.
+3.  **Return the Bill:** The Governor may return the Bill to the House or Houses of the Legislature together with a message requesting that they reconsider the Bill or any specified provisions thereof. This message should specifically consider the desirability of introducing any amendments recommended by the Governor.
+
+**Relevant Articles and Conditions:**
+
+*   **Article 200:** States that when a Bill is presented to the Governor, he shall declare either that he assents, withholds assent, or reserves the Bill for the President.
+    *   *Condition:* The Governor may return the Bill **only if it is not a Money Bill**.
+*   **Article 200 (Second Provision):** The Governor shall not withhold assent if the Bill is passed again by the House after being returned.
+*   **Article 200 (Third Provision):** The Governor shall not assent to, but shall **reserve for the consideration of the President**, any Bill which, in his opinion, would derogate from the powers of the High Court as to endanger its position.
+*   **Article 201:** Clarifies that when a Bill is reserved by the Governor, the President may, **where the Bill is not a Money Bill**, direct the Governor to return the Bill to the House with a message similar to that mentioned in the first proviso to Article 200.",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly identifies that the Governor can return the Bill if it is not a Money Bill, along with a message requesting reconsideration, as stated in the gold evidence.""}"
+constitution,"If a bill is not a Money Bill, what action can the Governor take regarding the bill?","Based on the provided context passages, if a bill is **not** a Money Bill, the Governor has the following actions regarding the bill:
+
+1.  **Withhold Assent:** The Governor may declare that he withholds assent from the bill.
+2.  **Reserve for the President:** The Governor may reserve the bill for the consideration of the President.
+3.  **Return the Bill:** The Governor may return the bill to the House or Houses of the Legislature together with a message requesting that they reconsider the bill or any specified provisions thereof. This message should specifically consider the desirability of introducing amendments recommended by the Governor.
+
+**Relevant Articles and Conditions:**
+
+*   **Article 200:** States that when a bill is presented to the Governor, he shall declare whether he assents, withholds assent, or reserves it for the President. It explicitly provides that the Governor may return a bill **if it is not a Money Bill**.
+*   **Article 200 (Proviso):** The Governor shall not withhold assent if the bill is passed again by the House after being returned.
+*   **Article 200 (Further Proviso):** The Governor shall not assent to, but shall **reserve for the consideration of the President**, any bill which, in the Governor's opinion, would derogate from the powers of the High Court as to endanger its position.
+*   **Article 201:** Details the process when a bill is reserved by the Governor for the President. It reiterates that where the bill is **not a Money Bill**, the President may direct the Governor to return the bill to the House with a message similar to that mentioned in the first proviso to Article 200.
+
+**Summary of Actions:**
+The Governor can **withhold assent**, **reserve the bill for the President**, or **return the bill** to the Legislature for reconsideration (provided it is not a Money Bill).",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly identifies that the Governor can return the bill if it is not a Money Bill, along with a message requesting reconsideration, as stated in the gold evidence.""}"
+constitution,Under what condition does the reservation of seats for Scheduled Castes and Scheduled Tribes cease to apply?,"Based on the provided context passages, the reservation of seats for Scheduled Castes and Scheduled Tribes ceases to have effect under the following condition:
+
+**It ceases on the expiration of the period specified in Article 334.**
+
+This is explicitly stated in **Article 334(4)** (found in Passage 2), which notes that notwithstanding other provisions, the Constitution's relations to the reservation of seats for Scheduled Castes and Scheduled Tribes in the House of the People and Legislative Assemblies shall cease after a certain period.
+
+Additionally, **Article 243U(5)** (found in Passage 3) confirms this condition regarding Municipalities, stating that the reservation of seats under clauses (1) and (2) shall cease to have effect on the expiration of the period specified in Article 334.
+
+*Note: The provided text mentions that these provisions relate to a ""certain period"" but does not specify the exact duration of that period within the excerpts given.*",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly identifies that the reservation ceases on the expiration of the period specified in Article 334, which aligns with the gold evidence.""}"
+constitution,Under what condition does the reservation of seats for Scheduled Castes and Scheduled Tribes cease to apply?,"Based on the provided context passages, the reservation of seats for Scheduled Castes and Scheduled Tribes ceases to have effect under the following condition:
+
+The reservation shall cease to have effect on the **expiration of the period specified in Article 334**.
+
+This is explicitly stated in **Article 243(5)** regarding Municipalities:
+> ""(5) The reservation of seats under clauses (1) and (2) and the reservation of offices of Chairpersons (other than the reservation for women) under clause (4) shall cease to have effect on the expiration of the period specified in article 334.""
+
+Additionally, **Article 334** itself is titled ""Reservation of seats and special representation to cease after certain period"" and states:
+> ""Notwithstanding anything in the foregoing provisions of this Part, the provisions of this Constitution relating to— (a) the reservation of seats for the Scheduled Castes and the Scheduled Tribes in the House of the People and in the Legislative Assemblies of the States; and (b) the representation of the Anglo-Indian community in the House of the People and in the Legislative Assemblies of the States by nomination...""
+
+The context indicates that these provisions are subject to a specific time limit defined in Article 334, after which they no longer apply.",wrong,"{""label"": ""wrong"", ""reason"": ""The answer incorrectly references Article 243(5) and misattributes the condition for the cessation of reservation, whereas the gold evidence explicitly states that the reservation ceases on the expiration of a period of eighty years for clause (a) and seventy years for clause (b) from the commencement of the Constitution.""}"
+constitution,"What is the age limit for a Judge of the Supreme Court, and what is the exception regarding the National Judicial Appointments Commission?","Based on the provided context passages, here are the answers to your questions:
+
+**Age Limit for a Judge of the Supreme Court**
+According to **Article 124(2)** of the Constitution of India, every Judge of the Supreme Court shall hold office until they attain the age of **sixty-five years**.
+
+**Exception Regarding the National Judicial Appointments Commission**
+The context indicates that the appointment of a Judge of the Supreme Court is made by the President by warrant under his hand and seal **on the recommendation of the National Judicial Appointments Commission**. This is explicitly stated in **Article 124(2)** as: ""...appointed by the President by warrant under his hand and seal **on the recommendation of the National Judicial Appointments Commission referred to in article 124A**.""
+
+*Note: While the text mentions the NJAC in the context of appointment recommendations, it does not specify an ""exception"" to the age limit of 65 years regarding the NJAC. The NJAC's role described here is strictly regarding the recommendation for appointment, not an alteration of the retirement age.*",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly states the age limit of 65 years for Supreme Court Judges and accurately notes the role of the National Judicial Appointments Commission in the appointment process without incorrectly implying an exception to the age limit.""}"
+constitution,"What is the age limit for a Judge of the Supreme Court, and what is the exception regarding the National Judicial Appointments Commission?","Based on the provided context passages, here are the answers to your questions:
+
+**Age Limit for a Judge of the Supreme Court**
+According to **Article 124(2)** of the Constitution of India, every Judge of the Supreme Court shall hold office until they attain the age of **sixty-five years**.
+
+**Exception Regarding the National Judicial Appointments Commission**
+The context provided does not contain an exception to the age limit of sixty-five years specifically related to the National Judicial Appointments Commission.
+
+*   **Clarification on Appointment:** While **Article 124(2)** states that Judges are appointed by the President ""on the recommendation of the National Judicial Appointments Commission,"" this refers to the *appointment process*, not an exception to the *age limit*.
+*   **Clarification on Retired Judges:** **Article 224A** (found in Passage 2 and Passage 3) discusses the appointment of retired Judges to sit and act as Judges of *High Courts* (not the Supreme Court). It notes that such retired persons are entitled to allowances and have all the jurisdiction and powers of a Judge but ""shall not otherwise be deemed to be, a Judge of that High Court."" However, this article does not mention an age exception for Supreme Court Judges.
+
+Therefore, based strictly on the provided text, the age limit for a Supreme Court Judge is sixty-five years, and there is no exception to this limit mentioned in relation to the National Judicial Appointments Commission.",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly states the age limit of sixty-five years for Supreme Court Judges and accurately notes there is no exception related to the National Judicial Appointments Commission in the provided text.""}"
+constitution,"When is the President prohibited from making regulations for the peace, progress, and good government of Puducherry?","Based on the provided context, the President is prohibited from making regulations for the peace, progress, and good government of the Union territory of **Puducherry** under the following condition:
+
+*   **When a Legislature has been created:** When any body is created under **Article 239A** to function as a Legislature for the Union territory of Puducherry, the President shall not make any such regulation with effect from the date appointed for the first meeting of that Legislature.
+
+This exception is explicitly stated in **Article 240(10)** (found in Passage 1), which reads:
+> ""Provided that when any body is created under article 239A to function as a Legislature for the Union territory of 7[Puducherry], the President shall not make any regulation for the peace, progress and good government of that Union territory with effect from the date appointed for the first meeting of the Legislature:""
+
+Additionally, **Article 239AB(1)** (found in Passage 2) provides a further proviso regarding the dissolution or suspension of the Puducherry Legislature:
+> ""Provided further that whenever the body functioning as a Legislature for the Union territory of 2[Puducherry] is dissolved, or the functioning of that body as such Legislature remains suspended on account of any action taken under any such law as is referred to in clause (1) of article 239A, the President may, during the period of such dissolution or suspension, make regulations for the peace, progress and good government of that Union territory.""
+
+*Note: The second proviso in Article 239AB(1) actually grants the President the power to make regulations during dissolution/suspension, rather than prohibiting it. The prohibition specifically applies only when a functioning Legislature exists and has met for the first time.*",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly identifies the condition under which the President is prohibited from making regulations for Puducherry, as stated in the gold evidence.""}"
+constitution,"When is the President prohibited from making regulations for the peace, progress, and good government of Puducherry?","Based on the provided context, the President is prohibited from making regulations for the peace, progress, and good government of the Union territory of **Puducherry** under the following condition:
+
+*   **When a body created under Article 239A is functioning as the Legislature for Puducherry.**
+
+According to **Article 240(1)(10)** (as cited in Passage 1), the President shall not make any regulation for the peace, progress, and good government of Puducherry with effect from the date appointed for the first meeting of that Legislature.
+
+Additionally, **Article 239AB(1)** (as cited in Passage 2) provides a further proviso stating that if the body functioning as the Legislature for Puducherry is **dissolved** or if its functioning as a Legislature is **suspended** due to action taken under Article 239A, the President is prohibited from making regulations during that period of dissolution or suspension.
+
+**Relevant Article:**
+*   **Article 240(1)(10)**: ""Provided that when any body is created under article 239A to function as a Legislature for the Union territory of 7[Puducherry], the President shall not make any regulation for the peace, progress and good government of that Union territory with effect from the date appointed for the first meeting of the Legislature.""
+*   **Article 239AB(1)**: ""Provided further that whenever the body functioning as a Legislature for the Union territory of 2[Puducherry] is dissolved, or the functioning of that body as such Legislature remains suspended on account of any action taken under any such law as is referred to in clause (1) of article 239A, the President may, during the period of such dissolution or suspension, make regulations..."" (Note: The text in Passage 2 implies the prohibition applies during this suspension/dissolution period, as the President *may* make regulations only *during* it, implying the restriction is lifted then; however, the primary prohibition regarding the Legislature's existence is found in Art. 240).
+
+*Correction on Interpretation of Passage 2:* Reading Passage 2 carefully, Article 239AB(1) actually states the President **may** make regulations during dissolution/suspension. Therefore, the prohibition (from making regulations) applies when the Legislature is **in session** (covered by Art.",partial,"{""label"": ""partial"", ""reason"": ""The answer correctly identifies the condition under which the President is prohibited from making regulations for Puducherry, but it incorrectly references Article 239AB(1) and misinterprets its content, which is not mentioned in the gold passage.""}"
+constitution,"When is the President prohibited from making regulations for the peace, progress, and good government of Puducherry?","Based on the provided context, the President is prohibited from making regulations for the peace, progress, and good government of the Union territory of **Puducherry** under the following condition:
+
+When **any body is created under Article 239A to function as a Legislature for the Union territory of Puducherry**, the President shall not make such regulations with effect from the **date appointed for the first meeting of that Legislature**.
+
+This exception is explicitly stated in **Article 240(10)** (found in Passage 1), which provides:
+> ""Provided that when any body is created under article 239A to function as a Legislature for the Union territory of 7[Puducherry], the President shall not make any regulation for the peace, progress and good government of that Union territory with effect from the date appointed for the first meeting of the Legislature:""
+
+Additionally, **Article 240(1)** (also in Passage 1) lists Puducherry as one of the territories for which the President may make regulations, subject to the proviso mentioned above.",correct,"{""label"": ""correct"", ""reason"": ""The answer accurately reflects the condition under which the President is prohibited from making regulations for Puducherry as stated in the gold evidence.""}"
+constitution,Which specific duties mentioned in the Union List shall be levied by the Government of India but shall be collected by the States within which such duties are respectively leviable?,"Based on **Article 268** of the Constitution of India (as provided in Passage 1), the specific duties mentioned in the Union List that shall be levied by the Government of India but collected by the States are:
+
+**Stamp duties**
+
+The relevant text states:
+> ""(1) Such **stamp duties** 2*** as are mentioned in the Union List shall be levied by the Government of India but shall be collected— (a) in the case where such duties are leviable within any 3[Union territory], by the Government of India, and (b) in other cases, by the States within which such duties are respectively leviable.""
+
+**Conditions and Exceptions:**
+*   **Scope:** This applies only to stamp duties specifically listed in the **Union List**.
+*   **Collection Authority:**
+    *   If the duty is leviable within a **Union Territory**, it is collected by the **Government of India**.
+    *   In all other cases (i.e., within States), it is collected by the **States** within which the duty is leviable.
+*   **Financial Treatment:** The proceeds of such duties leviable within any State do **not** form part of the Consolidated Fund of India; instead, they are assigned directly to that State (Clause 2).",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly identifies 'stamp duties' as the specific duties mentioned in the Union List that are levied by the Government of India but collected by the States.""}"
+constitution,Which specific duties mentioned in the Union List shall be levied by the Government of India but shall be collected by the States within which such duties are respectively leviable?,"Based on **Article 268** of the Constitution of India (specifically **Clause (1)** as cited in Passage 1), the specific duties mentioned in the Union List that shall be levied by the Government of India but collected by the States are:
+
+**Stamp duties**
+
+The text explicitly states:
+> ""(1) Such **stamp duties** 2*** as are mentioned in the Union List shall be levied by the Government of India but shall be collected— ... (b) in other cases, by the States within which such duties are respectively leviable.""
+
+**Conditions and Exceptions:**
+*   **Union Territories:** If the stamp duty is leviable within a Union Territory, it shall be collected by the Government of India (Clause 1(a)).
+*   **States:** In all other cases (i.e., within States), the duties are collected by the respective States (Clause 1(b)).
+*   **Consolidated Fund:** The proceeds of these duties leviable within a State do not form part of the Consolidated Fund of India but are assigned to that State (Clause 2).",correct,"{""label"": ""correct"", ""reason"": ""The answer correctly identifies 'stamp duties' as the specific duties mentioned in the Union List that are levied by the Government of India but collected by the States.""}"
