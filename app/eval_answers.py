@@ -110,6 +110,11 @@ def chat_all(copies, prompts, max_new, batch):
     def shard(d):
         torch.cuda.set_device(d)   # bitsandbytes kernels run on the thread's current device
         return chat(*copies[d], prompts[d::n], max_new, batch, tag=f"gpu{d} ")
+    # torch.linalg loads its CUDA backend lazily and not thread-safely; Qwen3.5's attention calls
+    # solve_triangular, so two threads making the first call at once fail ("lazy wrapper ... at most once")
+    for d in range(n):
+        torch.linalg.solve_triangular(torch.eye(2, device=f"cuda:{d}"), torch.ones(2, 1, device=f"cuda:{d}"),
+                                      upper=False)
     with ThreadPoolExecutor(n) as ex:
         parts = list(ex.map(shard, range(n)))
     out = [None] * len(prompts)
