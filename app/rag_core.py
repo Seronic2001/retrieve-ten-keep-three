@@ -7,6 +7,7 @@ notebook; .env sits at the project root and is shared by both.
 import hashlib
 import os
 import re
+import threading
 import time
 from pathlib import Path
 
@@ -22,7 +23,7 @@ if os.getenv("RAG_ENCODERS") == "torch":
     from sentence_transformers import CrossEncoder as _TorchCE, SentenceTransformer as _TorchST
     _DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
     SentenceTransformer = lambda name: _TorchST(name, device=_DEVICE)   # noqa: E731
-    CrossEncoder = lambda name: _TorchCE(name, device=_DEVICE)   # noqa: E731
+    CrossEncoder = lambda name, file=None: _TorchCE(name, device=_DEVICE)   # noqa: E731  (no int8 export on torch)
 else:
     from onnx_encoders import CrossEncoder, SentenceTransformer
 
@@ -34,6 +35,13 @@ PDF_PATH = PROJECT / "notebook" / "data" / "gdpr.pdf"
 RESULTS_DIR = PROJECT / "notebook" / "results"
 BI_ENCODER_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 CROSS_ENCODER_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+# Re-rankers the chat can switch between: name -> (repo, ONNX export). MiniLM-L6 is the notebook's and the default,
+# the fastest on CPU (~0.9 s per question on 8 threads, ~1.4 s on 2). MiniLM-L12, int8, ranks the gold passage in
+# the top 3 6-8 points more often on the GDPR for ~1.8x the time; bge-reranker-v2-m3 is more accurate still but
+# takes 14-25 s per question on CPU, so it is left out (eval_rerank_cpu.py, notebook/results/rerank_cpu_eval.json).
+RERANKERS = {"MiniLM-L6": (CROSS_ENCODER_NAME, "onnx/model.onnx"),
+             "MiniLM-L12": ("cross-encoder/ms-marco-MiniLM-L-12-v2", "onnx/model_quint8_avx2.onnx")}
+DEFAULT_RERANKER = "MiniLM-L6"
 CHUNK_WORDS, OVERLAP_WORDS = 220, 40
 TOP_K_RETRIEVE, TOP_K_FINAL = 10, 3
 # Hybrid retrieval: dense and BM25 each return their top HYBRID_POOL, Reciprocal Rank Fusion merges the two
@@ -245,11 +253,23 @@ def rrf(*rankings):
 
 
 class Models:
-    """The two encoders, loaded once and shared by every document."""
+    """The encoders, loaded once and shared by every document. ce is the default re-ranker; the others load on
+    first use."""
 
     def __init__(self):
         self.bi = SentenceTransformer(BI_ENCODER_NAME)
-        self.ce = CrossEncoder(CROSS_ENCODER_NAME)
+        self.ce = CrossEncoder(RERANKERS[DEFAULT_RERANKER][0], file=RERANKERS[DEFAULT_RERANKER][1])
+        self._rerankers = {DEFAULT_RERANKER: self.ce}
+        self._lock = threading.Lock()
+
+    def reranker(self, name=DEFAULT_RERANKER):
+        if name not in RERANKERS:
+            raise ValueError(f"Unknown re-ranker {name!r}")
+        with self._lock:
+            if name not in self._rerankers:
+                repo, file = RERANKERS[name]
+                self._rerankers[name] = CrossEncoder(repo, file=file)
+            return self._rerankers[name]
 
 
 class DocIndex:
@@ -315,20 +335,22 @@ class DocIndex:
         self.bm25 = BM25(self.search_texts)
         report("ready", len(self.texts), len(self.texts))
 
-    def retrieve_and_rerank(self, query, mode="dense", expansion=None):
+    def retrieve_and_rerank(self, query, mode="dense", expansion=None, reranker=DEFAULT_RERANKER):
         """Stage 1 (top 10 candidates) and stage 2 (cross-encoder re-sort), with per-step timings.
         mode="dense": the bi-encoder's top 10, as in the notebook.
         mode="hybrid": the bi-encoder's and BM25's top 20 fused by RRF, cut to 10. biRank and biScore are then
         the fused rank and score; denseRank and bm25Rank say where each list put the chunk (None: not in its top 20).
         expansion (hybrid only): a rewrite of the query in the document's wording, e.g. a HyDE passage. It adds a
         third list, the bi-encoder's ranking for the expansion, and BM25 searches query and expansion together.
-        The cross-encoder still scores against the original query."""
+        The cross-encoder still scores against the original query.
+        reranker: a name from RERANKERS."""
         if mode not in ("dense", "hybrid"):
             raise ValueError(f"Unknown retrieval mode {mode!r}")
         if expansion and mode != "hybrid":
             raise ValueError("A query expansion needs mode='hybrid'")
         k = min(TOP_K_RETRIEVE, len(self.texts))
         pool = min(HYBRID_POOL, len(self.texts)) if mode == "hybrid" else k
+        ce = self.models.reranker(reranker)   # before the clock: a first use loads the model
         t0 = time.perf_counter()
         q = self.models.bi.encode([query], normalize_embeddings=True, convert_to_numpy=True).astype("float32")
         t1 = time.perf_counter()
@@ -348,7 +370,7 @@ class DocIndex:
             ids, scores = ids[:k], scores[:k]
             extra = {cid: {"denseRank": dense_rank.get(cid), "bm25Rank": bm_rank.get(cid)} for cid in ids}
         t3 = time.perf_counter()
-        ce_scores = self.models.ce.predict([(query, self.search_texts[i]) for i in ids], batch_size=len(ids))
+        ce_scores = ce.predict([(query, self.search_texts[i]) for i in ids], batch_size=len(ids))
         t4 = time.perf_counter()
         ce_rank = {ids[j]: r for r, j in enumerate(np.argsort(-ce_scores), start=1)}
         candidates = [{"chunk": cid, "page": self.chunks[cid]["page"], "cite": self.chunks[cid]["cite"],

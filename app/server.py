@@ -24,7 +24,7 @@ import chunk_space
 
 from rag_core import (BI_ENCODER_NAME, CHUNK_WORDS, CROSS_ENCODER_NAME, DEVICE, LOCAL_LLM_HOSTED, OVERLAP_WORDS,
                       PDF_PATH, RERANK_DEVICE, RESULTS_DIR, ROOT, TOP_K_FINAL, DocIndex, EmptyDocument,
-                      LocalUnavailable, Models,
+                      DEFAULT_RERANKER, RERANKERS, LocalUnavailable, Models,
                       QuotaExhausted, gdpr_index, generate, generate_local, local_status, stream_gemini,
                       stream_local)
 
@@ -159,6 +159,7 @@ class Question(BaseModel):
     doc: str = GDPR_ID
     # "hybrid" fuses the bi-encoder's and BM25's top 20 before re-ranking (see rag_core.retrieve_and_rerank)
     retrieval: Literal["dense", "hybrid"] = "dense"
+    reranker: Literal[tuple(RERANKERS)] = DEFAULT_RERANKER
 
 
 class AnswerRequest(BaseModel):
@@ -306,9 +307,9 @@ def build_study(doc_id: str, req: BuildStudy):
 @app.post("/api/retrieve")
 def retrieve(q: Question):
     """Both retrieval stages; fast, no LLM."""
-    candidates, timings = library.index(q.doc).retrieve_and_rerank(q.query.strip(), q.retrieval)
-    return {"query": q.query.strip(), "doc": q.doc, "retrieval": q.retrieval, "candidates": candidates,
-            "timings": timings}
+    candidates, timings = library.index(q.doc).retrieve_and_rerank(q.query.strip(), q.retrieval, reranker=q.reranker)
+    return {"query": q.query.strip(), "doc": q.doc, "retrieval": q.retrieval, "reranker": q.reranker,
+            "candidates": candidates, "timings": timings}
 
 
 def _checked(req):

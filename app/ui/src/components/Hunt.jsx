@@ -256,7 +256,8 @@ export default function Hunt() {
             Questions written by {hunt.generated.questionsBy} on{' '}
             {new Date(hunt.generated.at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}.
             Every question is saved in <span className="mono">{isGdpr ? 'notebook/results/gdpr_hunt.csv' : `app/uploads/${activeDoc.id}.hunt.csv`}</span>.
-            {hunt.generated.note && <> {hunt.generated.note}</>}{' '}
+            {hunt.generated.note && <> {hunt.generated.note}</>}
+            {hunt.generated.goldCorrected && <> {hunt.generated.goldCorrected}</>}{' '}
             {!building && live && <button className="linkish" onClick={() => start(hunt.generated.backend).catch((e) => setErr(e.message))}>Run again with new questions</button>}
           </p>
         </>

@@ -5,6 +5,17 @@ const Store = createContext(null)
 export const useStore = () => useContext(Store)
 
 export const GDPR_ID = 'gdpr'
+// The live server's re-rankers (rag_core.RERANKERS). MiniLM-L6 is the notebook's; saved answers were made with it.
+export const DEFAULT_RERANKER = 'MiniLM-L6'
+export const RERANKERS = {
+  'MiniLM-L6': 'ms-marco-MiniLM-L-6-v2, as in the notebook: the fastest, about 1 s per question on a CPU',
+  'MiniLM-L12': 'ms-marco-MiniLM-L-12-v2 (int8): the gold passage reaches the top 3 more often, about twice as slow',
+}
+/** Names of a question's two answers; the notebook's own setup (dense + MiniLM-L6) keeps "Pipeline 1/2". */
+export const pipelineLabels = (retrieval = 'dense', reranker = DEFAULT_RERANKER) => ({
+  baseline: retrieval === 'hybrid' ? 'Baseline · hybrid, no re-rank' : 'Baseline · Pipeline 1',
+  reranked: retrieval === 'hybrid' || reranker !== DEFAULT_RERANKER ? `Re-ranked · ${retrieval} + ${reranker}` : 'Re-ranked · Pipeline 2',
+})
 const ACTIVE_KEY = 'rag.activeDoc'
 
 const sameText = (a, b) => a.trim().toLowerCase().replace(/\s+/g, ' ') === b.trim().toLowerCase().replace(/\s+/g, ' ')
@@ -46,7 +57,7 @@ export function StoreProvider({ children }) {
   const setActiveId = useCallback((id) => { setActiveIdRaw(id); writeActive(id); setFlowTarget(null) }, [])
 
   useEffect(() => {
-    fetch('data.json')
+    fetch('data.json', { cache: 'no-cache' })   // revalidate: a cached copy can be older than the UI code
       .then((r) => r.json())
       .then((d) => {
         setData(d)
@@ -251,7 +262,7 @@ export function StoreProvider({ children }) {
     backend: turn.backend ?? 'gemini', pipelines: [pipeline],
   }), [streamAnswers])
 
-  const ask = useCallback(async (query, { withLlm, backend = 'gemini', compare = false, retrieval = 'dense' }) => {
+  const ask = useCallback(async (query, { withLlm, backend = 'gemini', compare = false, retrieval = 'dense', reranker = DEFAULT_RERANKER }) => {
     const id = nextId.current++
     const docId = activeDoc?.id ?? GDPR_ID
     const isCase = docId === GDPR_ID
@@ -261,7 +272,7 @@ export function StoreProvider({ children }) {
     // Stage 1 + 2: live retrieval, or the precomputed result for a known test question.
     let candidates, timings, source
     try {
-      const r = await post('api/retrieve', { query, doc: docId, retrieval })
+      const r = await post('api/retrieve', { query, doc: docId, retrieval, reranker })
       candidates = r.candidates
       timings = r.timings
       source = 'live'
@@ -282,19 +293,20 @@ export function StoreProvider({ children }) {
       candidates = study.queries[test].candidates
       timings = null
       source = 'saved'
-      retrieval = 'dense'   // the saved notebook run used the bi-encoder alone
+      retrieval = 'dense'   // the saved notebook run used the bi-encoder alone, and MiniLM-L6
+      reranker = DEFAULT_RERANKER
     }
     if (test >= 0) {
       const gold = new Set(study.queries[test].gold)
       candidates = candidates.map((c) => ({ ...c, gold: gold.has(c.chunk) }))
     }
-    patch(id, { candidates, timings, source, backend, retrieval, status: withLlm ? 'answering' : 'done' })
+    patch(id, { candidates, timings, source, backend, retrieval, reranker, status: withLlm ? 'answering' : 'done' })
     if (!withLlm) return
 
     // Stage 3: answers. Saved case-study answers are reused for test questions when they came from the
     // same kind of model, to spare the API quota; otherwise answers are generated fresh.
     const savedBackend = study?.generated?.backend ?? 'gemini'
-    const saved = test >= 0 && backend === savedBackend && retrieval === 'dense' ? study.queries[test].answers : null
+    const saved = test >= 0 && backend === savedBackend && retrieval === 'dense' && reranker === DEFAULT_RERANKER ? study.queries[test].answers : null
     if (saved) {
       patch(id, {
         status: 'done',

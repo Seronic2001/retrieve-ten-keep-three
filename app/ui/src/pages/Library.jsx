@@ -119,8 +119,9 @@ export default function Library() {
             <h1 id="lib-title"><span className="ln">Any PDF.</span> <span className="ln"><span className="c-bi">Ten</span> passages in,</span> <span className="ln"><span className="c-ce">three</span> out.</span></h1>
             <p className="lede">
               Add a document and ask it questions. Each question pulls <b>10 candidate passages</b> with a fast
-              bi-encoder, then a <b>cross-encoder re-reads</b> them to choose the 3 the language model sees. You
-              get both answers side by side.
+              bi-encoder, optionally fused with BM25 keyword search, then a <b>cross-encoder re-reads</b> them to
+              choose the 3 the language model sees: MiniLM-L6 by default, or the slower, more accurate MiniLM-L12.
+              You get both answers side by side.
             </p>
             <ol className="lib-steps">
               <li><span><b>Read</b> pages and drop running headers, footers and page numbers</span></li>

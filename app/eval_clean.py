@@ -27,13 +27,18 @@ QUESTION_FILES = {"gdpr": [RESULTS_DIR / "gdpr_hunt.json"],
                   "constitution": [UPLOADS / "a914ab3a3b.hunt.json", UPLOADS / "a914ab3a3b.study.json"]}
 
 
+NO_EVIDENCE = "evidence not in its gold chunk"
+
+
 def suspect_questions():
-    """{(doc, query)} whose evidence quote was not found in their gold chunk."""
+    """{(doc, query)} whose evidence quote was not found in their gold chunk, including those correct_hunt() has
+    already removed from a hunt file."""
     out = set()
     for doc, paths in QUESTION_FILES.items():
         for path in paths:
             data = json.loads(path.read_text(encoding="utf-8"))
             out |= {(doc, q["query"]) for q in data.get("questions") or data["queries"] if not q["goldSnippets"]}
+            out |= {(doc, d["query"]) for d in data.get("dropped", []) if d["reason"] == NO_EVIDENCE}
     return out
 
 
@@ -100,7 +105,51 @@ def gate(rows):
     return out
 
 
+def correct_hunt():
+    """Applies the same corrections to the Constitution failure hunt the UI shows (app/uploads/<id>.hunt.json and
+    .csv): suspect and broken questions dropped, corrected gold re-scored. Running it again changes nothing."""
+    from case_study import _status, _tally, hunt_csv
+    from rag_core import chunk_pages, load_pages
+    path = UPLOADS / "a914ab3a3b.hunt.json"
+    hunt = json.loads(path.read_text(encoding="utf-8"))
+    spec = json.loads((RESULTS_DIR / "gold_fixes.json").read_text(encoding="utf-8"))
+    fixes = {f["query"]: f for f in spec["fixes"]}
+    suspect = suspect_questions()
+    texts = None
+    questions, dropped = [], hunt.get("dropped", [])
+    for q in hunt["questions"]:
+        fix = fixes.get(q["query"])
+        if (spec["doc"], q["query"]) in suspect or (fix and fix.get("drop")):
+            dropped.append({"query": q["query"], "reason": fix["note"] if fix else NO_EVIDENCE})
+            continue
+        if fix and q["gold"] != fix["gold"]:
+            gold = set(fix["gold"])
+            for c in q["candidates"]:
+                c["gold"] = c["chunk"] in gold
+            rank = lambda key: min((c[key] for c in q["candidates"] if c["gold"]), default=None)   # noqa: E731
+            q.update(gold=fix["gold"], goldSnippets=[fix["evidence"]], baselineRank=rank("biRank"),
+                     rerankedRank=rank("ceRank"))
+            q["status"] = _status(q["baselineRank"], q["rerankedRank"])
+            if q["status"] in ("restored", "degraded") and "text" not in q["candidates"][0]:   # the UI shows these
+                texts = texts or [c["text"] for c in chunk_pages(load_pages(UPLOADS / "a914ab3a3b.pdf", "generic"))[0]]
+                for c in q["candidates"]:
+                    c["text"] = texts[c["chunk"]]
+        questions.append(q)
+    hunt["questions"], hunt["dropped"] = questions, dropped
+    hunt["summary"] = {"all": _tally(questions),
+                       "natural": _tally([q for q in questions if q["category"] != "trap"]),
+                       "trap": _tally([q for q in questions if q["category"] == "trap"])}
+    hunt["generated"]["goldCorrected"] = (
+        f"Gold checked by hand: questions whose quoted evidence is missing from their answer chunk or whose premise is "
+        f"broken are dropped, and {sum('gold' in f for f in spec['fixes'])} answer chunks are corrected "
+        f"(notebook/results/gold_fixes.json).")
+    path.write_text(json.dumps(hunt, ensure_ascii=False), encoding="utf-8")
+    hunt_csv(hunt, path.with_suffix(".csv"))
+    return hunt["summary"]
+
+
 def main():
+    print("Constitution hunt corrected:", correct_hunt()["all"])
     suspect = suspect_questions()
     keep = lambda rows: [r for r in rows if (r["doc"], r["query"]) not in suspect]   # noqa: E731
     judged = read("answers_judged.csv")

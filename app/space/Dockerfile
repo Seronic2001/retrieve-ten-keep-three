@@ -22,8 +22,9 @@ WORKDIR $HOME/project
 COPY --chown=user app/space/requirements.txt requirements.txt
 RUN pip install --no-cache-dir --user -r requirements.txt
 
-# Bake both encoders' ONNX exports and tokenizers into the image so the first request does not wait for a download
-RUN python -c "from huggingface_hub import hf_hub_download as d; [d(r, f) for r in ('sentence-transformers/all-MiniLM-L6-v2', 'cross-encoder/ms-marco-MiniLM-L-6-v2')  for f in ('tokenizer.json', 'onnx/model.onnx')]"
+# Bake the encoders' ONNX exports and tokenizers (the bi-encoder and every re-ranker the chat offers, rag_core.RERANKERS)
+# into the image so no request waits for a download
+RUN python -c "from huggingface_hub import hf_hub_download as d; [d(r, f) for r, fs in (('sentence-transformers/all-MiniLM-L6-v2', ['onnx/model.onnx']), ('cross-encoder/ms-marco-MiniLM-L-6-v2', ['onnx/model.onnx']), ('cross-encoder/ms-marco-MiniLM-L-12-v2', ['onnx/model_quint8_avx2.onnx'])) for f in ['tokenizer.json'] + fs]"
 ENV HF_HUB_OFFLINE=1
 
 COPY --chown=user notebook/data notebook/data

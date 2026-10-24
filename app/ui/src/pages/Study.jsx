@@ -10,6 +10,7 @@ const SUB = [
   ['replay', 'Re-rank replay'],
   ['results', 'Results'],
   ['cost', 'Cost'],
+  ['next', 'Next steps'],
 ]
 
 const STAGES = {
@@ -112,6 +113,7 @@ export function StudyOverview() {
       `${count('restored')} rescued · ${count('degraded')} broken`],
     ['/study/models', 'Two readers', 'How a bi-encoder and a cross-encoder read the same question and passage.', 'hover to compare'],
     ['/study/cost', 'Cost', 'What re-ranking ten candidates costs, and why nobody re-ranks the whole corpus.', `+${fmtDuration(study.latency.rerankMs)}`],
+    ['/study/next', 'Next steps', 'Hybrid search, larger re-rankers and whether the answers are right, on both test documents.', 'after the study'],
   ]
   const rebuild = () => { setErr(null); buildStudy(gen.backend).catch((e) => setErr(e.message)) }
   return (

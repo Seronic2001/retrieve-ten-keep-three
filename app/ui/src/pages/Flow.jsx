@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { GDPR_ID, top3, useStore } from '../store.jsx'
+import { DEFAULT_RERANKER, GDPR_ID, pipelineLabels, top3, useStore } from '../store.jsx'
+import PipelinePicker from '../components/PipelinePicker.jsx'
 import { DEMO_NOTE, STATIC_DEMO, fmtDuration } from '../lib.js'
 
-const STAGES = [
+// Stage names; the search and re-rank subtitles follow the question's retrieval mode and re-ranker.
+const stages = (hybrid, reranker) => [
   ['Chunk & embed', 'Offline, once'],
-  ['Search', 'Bi-encoder top 10'],
-  ['Re-rank', 'Cross-encoder'],
+  ['Search', hybrid ? 'Dense + BM25, fused' : 'Bi-encoder top 10'],
+  ['Re-rank', reranker],
   ['Select', 'Each keeps 3'],
   ['Generate', 'Two answers'],
 ]
@@ -71,6 +73,11 @@ function Board({ map, target, stage, hover, setHover }) {
   const shortlist = new Set(cands.map((c) => c.chunk))
   const gold = new Set(target.gold ?? [])
   const y = (r) => (r - 0.5) * ROW
+  const hybrid = target.retrieval === 'hybrid'
+  const labels = pipelineLabels(target.retrieval, target.reranker)
+  const rankNote = (c) => hybrid
+    ? `dense ${c.denseRank ? `#${c.denseRank}` : 'not in top 20'} · BM25 ${c.bm25Rank ? `#${c.bm25Rank}` : 'not in top 20'}`
+    : undefined
 
   const row = (c, rank, kept) => (
     <div
@@ -78,6 +85,7 @@ function Board({ map, target, stage, hover, setHover }) {
       className={`frow ${gold.has(c.chunk) ? 'gold' : ''} ${hover === c.chunk ? 'hover' : ''} ${stage >= 3 && kept ? 'kept' : ''}`}
       onMouseEnter={() => setHover(c.chunk)}
       onMouseLeave={() => setHover(null)}
+      title={rankNote(c)}
     >
       <span className="r">{rank}</span>
       <span className="c">{c.cite}</span>
@@ -128,7 +136,7 @@ function Board({ map, target, stage, hover, setHover }) {
       </div>
 
       <div className={`fcol bi ${stage >= 1 ? 'on' : ''}`}>
-        <span className="sheet-label">Bi-encoder order</span>
+        <span className="sheet-label">{hybrid ? 'Fused order · dense + BM25' : 'Bi-encoder order'}</span>
         <div className="flist">{byBi.map((c) => row(c, c.biRank, p1.has(c.chunk)))}</div>
       </div>
 
@@ -144,14 +152,14 @@ function Board({ map, target, stage, hover, setHover }) {
       </svg>
 
       <div className={`fcol ce ${stage >= 2 ? 'on' : ''}`}>
-        <span className="sheet-label">Cross-encoder order</span>
+        <span className="sheet-label">Cross-encoder order · {target.reranker}</span>
         <div className="flist">{byCe.map((c) => row(c, c.ceRank, p2.has(c.chunk)))}</div>
       </div>
 
       <div className={`fcol llm ${stage >= 3 ? 'on' : ''}`}>
         <span className="sheet-label">What the LLM reads</span>
-        {box('Pipeline 1 · baseline', p1, target.answers?.baseline, 'bi')}
-        {box('Pipeline 2 · re-ranked', p2, target.answers?.reranked, 'ce')}
+        {box(labels.baseline, p1, target.answers?.baseline, 'bi')}
+        {box(labels.reranked, p2, target.answers?.reranked, 'ce')}
       </div>
     </div>
   )
@@ -180,8 +188,10 @@ export default function Flow() {
   const { data, study, qi, setQi, turns, flowTarget, setFlowTarget, activeDoc, server } = useStore()
   const [stage, setStage] = useState(4)
   const [hover, setHover] = useState(null)
-  const [traces, setTraces] = useState({})      // per document: { query, candidates, timings }
+  const [traces, setTraces] = useState({})      // per document: { query, candidates, timings, retrieval, reranker }
   const [traceText, setTraceText] = useState('')
+  const [retrieval, setRetrieval] = useState('dense')
+  const [reranker, setReranker] = useState(DEFAULT_RERANKER)
   const [tracing, setTracing] = useState(false)
   const [traceError, setTraceError] = useState(null)
   const [pick, setPick] = useState(null)        // 'trace' | 'chat:<id>' | 'test:<i>'
@@ -207,12 +217,14 @@ export default function Flow() {
     const t = chatTurns.find((c) => `chat:${c.id}` === sel)
     target = {
       query: t.query, candidates: t.candidates, timings: t.timings,
+      retrieval: t.retrieval ?? 'dense', reranker: t.reranker ?? DEFAULT_RERANKER,
       gold: t.candidates.filter((c) => c.gold).map((c) => c.chunk),
       answers: t.answers?.reranked && { baseline: t.answers.baseline?.text, reranked: t.answers.reranked.text },
     }
   } else if (sel?.startsWith('test:')) {
     const q = study.queries[+sel.slice(5)]
-    target = { query: q.query, candidates: q.candidates, gold: q.gold, answers: q.answers, timings: null }
+    target = { query: q.query, candidates: q.candidates, gold: q.gold, answers: q.answers, timings: null,
+      retrieval: 'dense', reranker: DEFAULT_RERANKER }   // the case study runs the notebook's pipelines
   }
 
   const runTrace = async (e) => {
@@ -222,10 +234,10 @@ export default function Flow() {
     setTracing(true)
     setTraceError(null)
     try {
-      const r = await fetch('api/retrieve', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query, doc: docId }) })
+      const r = await fetch('api/retrieve', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query, doc: docId, retrieval, reranker }) })
       const body = await r.json()
       if (!r.ok) throw new Error(body.detail ?? `HTTP ${r.status}`)
-      setTraces((all) => ({ ...all, [docId]: { query, candidates: body.candidates, timings: body.timings } }))
+      setTraces((all) => ({ ...all, [docId]: { query, candidates: body.candidates, timings: body.timings, retrieval, reranker } }))
       setPick('trace')
       setStage(3)
     } catch (err) {
@@ -248,7 +260,7 @@ export default function Flow() {
     timer.current = setInterval(() => {
       s += 1
       setStage(s)
-      if (s >= STAGES.length - 1) clearInterval(timer.current)
+      if (s >= 4) clearInterval(timer.current)   // the last stage
     }, 1500)
   }
 
@@ -262,11 +274,16 @@ export default function Flow() {
     ? top3(target.candidates, 'ceRank').filter((c) => !top3(target.candidates, 'biRank').some((b) => b.chunk === c.chunk)).length
     : 0
   const k = target?.candidates.length ?? 10
+  const hybrid = target?.retrieval === 'hybrid'
+  const ce = target?.reranker ?? DEFAULT_RERANKER
+  const STAGES = stages(hybrid, ce)
   const captions = [
     `The PDF is cut into ${nChunks} overlapping chunks and each one is embedded once into a 384-number vector. This happens when the document is added, before any question.`,
-    `The question is embedded with the same bi-encoder and compared with all ${nChunks} vectors. The ${k} closest chunks are kept (${fmtDuration(searchMs)}).`,
-    `The cross-encoder reads the question together with each of the ${k} chunks and scores the pair. The lines show how the order changed (${fmtDuration(rerankMs)}).`,
-    `Pipeline 1 keeps the bi-encoder's top 3; Pipeline 2 keeps the cross-encoder's top 3. Here they differ in ${swapped} of 3 chunks.`,
+    hybrid
+      ? `The question is embedded with the same bi-encoder and compared with all ${nChunks} vectors, and BM25 keyword search scores the chunks by the words they share with it. Each list keeps its top 20; Reciprocal Rank Fusion merges them and the ${k} best are kept (${fmtDuration(searchMs + (t?.fuseMs ?? 0))}). Hover a chunk to see its place in each list.`
+      : `The question is embedded with the same bi-encoder and compared with all ${nChunks} vectors. The ${k} closest chunks are kept (${fmtDuration(searchMs)}).`,
+    `The cross-encoder (${ce}) reads the question together with each of the ${k} chunks and scores the pair. The lines show how the order changed (${fmtDuration(rerankMs)}).`,
+    `The baseline keeps the ${hybrid ? 'fused' : "bi-encoder's"} top 3; the re-ranked pipeline keeps the cross-encoder's top 3. Here they differ in ${swapped} of 3 chunks.`,
     'Both sets go into the same prompt for the same LLM, which writes Answer 1 and Answer 2.',
   ]
 
@@ -308,6 +325,7 @@ export default function Flow() {
             <button className="btn hot" disabled={tracing || traceText.trim().length < 3 || server.state !== 'live'}>
               {tracing ? 'Tracing…' : 'Trace'}
             </button>
+            <PipelinePicker retrieval={retrieval} setRetrieval={setRetrieval} reranker={reranker} setReranker={setReranker} live />
           </form>
           {traceError && <p className="red-note small">{traceError}</p>}
           {(chatTurns.length > 0 || isCase || trace) && (

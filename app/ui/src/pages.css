@@ -456,3 +456,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .finding-text .legal { max-height: 220px; overflow: auto; }
 .finding-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
 .hunt-foot { margin-top: 10px; max-width: 90ch; }
+
+/* Results: follow-up experiments */
+.exp-h { margin: 34px 0 12px; font-size: 1.25rem; font-weight: 700; }
+.exp-note { margin-top: 10px; max-width: 72ch; }

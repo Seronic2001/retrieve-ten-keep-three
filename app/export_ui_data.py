@@ -2,7 +2,7 @@
 
 Re-runs only the deterministic retrieval steps through rag_core (same settings as rag_rerank.ipynb).
 LLM answers and timings are read from notebook/results/, so no API calls are made.
-Run from app/:  ../.venv/Scripts/python.exe export_ui_data.py
+Run from notebook/ (it reads rag_rerank.ipynb there):  ../.venv/Scripts/python.exe ../app/export_ui_data.py
 """
 import ast
 import json
@@ -63,6 +63,32 @@ mid = next(i for i, t in enumerate(NT) if "20 000 000 eur" in t)
 example = [{"chunk": c["id"], "page": c["page"], "cite": c["cite"], "text": c["text"]}
            for c in rag.chunks[mid - 1:mid + 2]]
 
+
+
+def experiments():
+    """The follow-up experiments on both test documents (GDPR, Constitution of India), from their saved results:
+    re-rankers behind hybrid retrieval on a CPU (eval_rerank_cpu.py) and judged answer quality with the corrected
+    gold (eval_clean.py, "fixed" stage)."""
+    cpu = json.loads((RESULTS / "rerank_cpu_eval.json").read_text(encoding="utf-8"))
+    answers = json.loads((RESULTS / "clean_eval.json").read_text(encoding="utf-8"))["answers"]["fixed"]
+
+    def hit3(res, doc):   # pooled over the document's question sets
+        sets = [k for k in cpu["questions"] if k.startswith(f"{doc}/")]
+        return round(sum(res[k]["hit@3"] * res[k]["n"] for k in sets) / sum(res[k]["n"] for k in sets), 2)
+
+    shown = {"MiniLM-L6": "MiniLM-L6", "MiniLM-L12-int8": "MiniLM-L12 (int8)", "bge-v2-m3-int8": "bge-reranker-v2-m3 (int8)"}
+    rerankers = [{"name": "None (fused order)", "ms": 0, "ms2": 0,
+                  "gdpr": hit3(cpu["fused"], "gdpr"), "constitution": hit3(cpu["fused"], "constitution")}]
+    rerankers += [{"name": label, "ms": cpu["rerankers"][k]["msPerQuestion"], "ms2": cpu["rerankers"][k]["msPerQuestion2Threads"],
+                   "gdpr": hit3(cpu["rerankers"][k], "gdpr"), "constitution": hit3(cpu["rerankers"][k], "constitution")}
+                  for k, label in shown.items()]
+    return {"questions": {d: sum(n for k, n in cpu["questions"].items() if k.startswith(f"{d}/")) for d in ("gdpr", "constitution")},
+            "cpuThreads": cpu["cpuThreads"], "rerankers": rerankers,
+            "answers": [{"doc": key.split("/")[0], "pipeline": key.split("/")[1],
+                         **{k: v[k] for k in ("n", "correct", "partial", "wrong", "abstained", "goldInTop3")}}
+                        for key, v in answers.items()]}
+
+
 lat = pd.read_csv(RESULTS / "latency_stages.csv")
 scaling = pd.read_csv(RESULTS / "scaling.csv")
 data = {
@@ -82,6 +108,7 @@ data = {
                 "perPairMs": float(scaling.cross_encoder_full_scan_s[0] * 1000 / scaling.corpus_size_chunks[0])},
     # From the question-generation sweep (612 Gemini-written questions, one source chunk each).
     "sweep": {"questions": 612, "restored": 93, "degraded": 11},
+    "experiments": experiments(),
 }
 OUT.parent.mkdir(parents=True, exist_ok=True)
 OUT.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")

@@ -11,6 +11,7 @@ import Models from './pages/Models.jsx'
 import Replay from './pages/Replay.jsx'
 import Results from './pages/Results.jsx'
 import CostPage from './pages/CostPage.jsx'
+import Experiments from './components/Experiments.jsx'
 
 function Shell() {
   const { data, error, server, library, libraryReady, activeDoc, study, studyState } = useStore()
@@ -61,6 +62,7 @@ function Shell() {
             <Route path="replay" element={<Replay />} />
             <Route path="results" element={<Results />} />
             <Route path="cost" element={<CostPage />} />
+            <Route path="next" element={<Experiments />} />
           </Route>
           {/* old single-study paths */}
           <Route path="/models" element={<Navigate to="/study/models" replace />} />

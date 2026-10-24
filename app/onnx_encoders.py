@@ -24,15 +24,18 @@ def _cpus():
     return n
 
 
-def _load(repo, max_length):
+def _load(repo, max_length, file="onnx/model.onnx", threads=None):
+    """file: the ONNX export to run, e.g. a quantized one. threads: ONNX Runtime threads, by default every CPU
+    the process may use."""
     tok = Tokenizer.from_file(hf_hub_download(repo, "tokenizer.json"))
     tok.enable_truncation(max_length=max_length)
-    tok.enable_padding(pad_id=0, pad_token="[PAD]")
+    pad = "[PAD]" if tok.token_to_id("[PAD]") is not None else "<pad>"   # BERT vocabularies vs XLM-RoBERTa's
+    tok.enable_padding(pad_id=tok.token_to_id(pad), pad_token=pad)
     opts = ort.SessionOptions()
     # No memory arena: it keeps the largest batch's buffers for good, which pushed start-up past 1.4 GB.
-    opts.intra_op_num_threads = _cpus()
+    opts.intra_op_num_threads = threads or _cpus()
     opts.enable_cpu_mem_arena = False
-    sess = ort.InferenceSession(hf_hub_download(repo, "onnx/model.onnx"), opts, providers=["CPUExecutionProvider"])
+    sess = ort.InferenceSession(hf_hub_download(repo, file), opts, providers=["CPUExecutionProvider"])
     return tok, sess
 
 
@@ -65,8 +68,8 @@ class SentenceTransformer:
 class CrossEncoder:
     """Cross-encoder: one raw logit per (query, passage) pair; the model's default activation is identity."""
 
-    def __init__(self, repo, max_length=512):
-        self.tok, self.sess = _load(repo, max_length)
+    def __init__(self, repo, max_length=512, file="onnx/model.onnx", threads=None):
+        self.tok, self.sess = _load(repo, max_length, file, threads)
 
     def predict(self, pairs, batch_size=32):
         out = []

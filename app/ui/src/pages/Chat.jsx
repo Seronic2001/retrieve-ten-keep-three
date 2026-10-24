@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Markdown from 'react-markdown'
-import { GDPR_ID, top3, useStore } from '../store.jsx'
+import { DEFAULT_RERANKER, GDPR_ID, pipelineLabels, top3, useStore } from '../store.jsx'
 import { STATIC_DEMO, fmtDuration } from '../lib.js'
 import AnswerChecks from '../components/AnswerChecks.jsx'
+import PipelinePicker from '../components/PipelinePicker.jsx'
 
 const GDPR_OWN = [
   'Can my employer read my work emails?',
@@ -25,8 +26,8 @@ function Trace({ turn }) {
   const t = turn.timings
   const nAnswers = Object.keys(turn.answers ?? {}).length
   const steps = [
-    [nChunks ? `Searched ${nChunks} chunks` : 'Searched the document', turn.candidates ? (t ? fmtDuration(t.embedMs + t.searchMs) : 'saved') : null, !turn.candidates],
-    [`Re-ranked the top ${k}`, turn.candidates ? (t ? fmtDuration(t.rerankMs) : 'saved') : null, !turn.candidates],
+    [`${nChunks ? `Searched ${nChunks} chunks` : 'Searched the document'}${turn.retrieval === 'hybrid' ? ' · dense + BM25' : ''}`, turn.candidates ? (t ? fmtDuration(t.embedMs + t.searchMs) : 'saved') : null, !turn.candidates],
+    [`Re-ranked the top ${k} · ${turn.reranker ?? DEFAULT_RERANKER}`, turn.candidates ? (t ? fmtDuration(t.rerankMs) : 'saved') : null, !turn.candidates],
     [turn.status === 'answering' ? 'Writing' : nAnswers === 1 ? 'Wrote the answer' : nAnswers ? `Wrote ${nAnswers} answers` : 'Answer',
       turn.status === 'answering'
         ? (turn.answers?.baseline?.streaming ? 'streaming baseline' : turn.answers?.reranked?.streaming ? 'streaming re-ranked' : 'waiting for model')
@@ -76,11 +77,8 @@ function AssistantTurn({ turn, onOpen }) {
   const base = top3(turn.candidates, 'biRank')
   const rer = top3(turn.candidates, 'ceRank')
   const swapped = rer.filter((c) => !base.some((b) => b.chunk === c.chunk)).length
-  const hybrid = turn.retrieval === 'hybrid'
-  const panes = {
-    baseline: [hybrid ? 'Baseline · hybrid, no re-rank' : 'Baseline · Pipeline 1', base],
-    reranked: [hybrid ? 'Re-ranked · hybrid + cross-encoder' : 'Re-ranked · Pipeline 2', rer],
-  }
+  const labels = pipelineLabels(turn.retrieval, turn.reranker)
+  const panes = { baseline: [labels.baseline, base], reranked: [labels.reranked, rer] }
   const shown = view === 'compare' ? ['baseline', 'reranked'] : [view]
 
   return (
@@ -196,6 +194,8 @@ export default function Chat() {
   const [backend, setBackend] = useState('local')
   // 'dense': the bi-encoder's top 10 (the notebook's pipeline). 'hybrid': bi-encoder and BM25 fused by RRF.
   const [retrieval, setRetrieval] = useState('dense')
+  // The re-ranker: MiniLM-L6 (the notebook's, fastest) or MiniLM-L12 (more accurate, about twice as slow on a CPU).
+  const [reranker, setReranker] = useState(DEFAULT_RERANKER)
   const llm = backend === 'local' && server.local ? 'local' : 'gemini'
   const [open, setOpen] = useState(null)
   const isCase = activeDoc?.id === GDPR_ID
@@ -227,7 +227,7 @@ export default function Chat() {
     const query = (q ?? text).trim()
     if (query.length < 3 || busy || !canAsk) return
     setText('')
-    ask(query, { withLlm: mode !== 'chunks', compare: mode === 'compare', backend: llm, retrieval })
+    ask(query, { withLlm: mode !== 'chunks', compare: mode === 'compare', backend: llm, retrieval, reranker })
   }
   const suggestions = study
     ? [...study.queries.filter((q) => q.answers).map((q) => q.query).slice(0, 4), ...(isCase && server.state === 'live' ? GDPR_OWN : [])]
@@ -309,14 +309,8 @@ export default function Chat() {
             <button type="button" aria-pressed={mode === 'compare'} onClick={() => setMode('compare')}>Compare both</button>
             <button type="button" aria-pressed={mode === 'chunks'} onClick={() => setMode('chunks')}>Chunks only</button>
           </div>
-          <div className="tabs" role="group" aria-label="Retrieval">
-            <button type="button" aria-pressed={retrieval === 'dense'} onClick={() => setRetrieval('dense')}
-              title="Bi-encoder top 10, as in the notebook">Dense</button>
-            <button type="button" aria-pressed={retrieval === 'hybrid'} disabled={server.state !== 'live'}
-              title="Bi-encoder and BM25 keyword search, fused by Reciprocal Rank Fusion" onClick={() => setRetrieval('hybrid')}>
-              Hybrid + BM25
-            </button>
-          </div>
+          <PipelinePicker retrieval={retrieval} setRetrieval={setRetrieval} reranker={reranker} setReranker={setReranker}
+            live={server.state === 'live'} />
           {mode !== 'chunks' && (
             <div className="tabs" role="group" aria-label="Language model">
               <button type="button" aria-pressed={llm === 'gemini'} onClick={() => setBackend('gemini')}>Gemini</button>
